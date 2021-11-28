@@ -1,0 +1,15 @@
+{
+    "name": "nodejs_console_app",
+    "version": "1.0.0",
+    "description": "Node.js app with OpenTelemetry",
+    "main": "src/app.js",
+    "scripts": {
+      "start": "node app.js"
+    },
+    "dependencies": {
+      "@opentelemetry/api": "^1.0.3",
+      "@opentelemetry/auto-instrumentations-node": "^0.26.2",
+      "@opentelemetry/sdk-node": "^0.27.0",
+      "express": "^4.17.1"
+    }
+  }
