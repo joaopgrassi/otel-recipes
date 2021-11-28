@@ -1,0 +1,20 @@
+{
+    "name": "nodejs_app",
+    "version": "1.0.0",
+    "description": "Node.js app with OpenTelemetry",
+    "main": "src/server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "@opentelemetry/api": "^1.0.3",
+      "@opentelemetry/auto-instrumentations-node": "^0.26.2",
+      "@opentelemetry/exporter-collector-grpc": "^0.25.0",
+      "@opentelemetry/resources": "^1.0.1",
+      "@opentelemetry/semantic-conventions": "^1.0.1",
+      "@opentelemetry/sdk-trace-node": "^1.0.1",
+      "@opentelemetry/sdk-trace-base": "^1.0.1",
+      "axios": "^0.24.0",
+      "express": "^4.17.1"
+    }
+  }
