@@ -1,0 +1,27 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+processors:
+exporters:
+  
+  # Data sources: traces, metrics, logs
+  logging:
+    loglevel: debug
+
+  # Data sources: traces
+  jaeger:
+    endpoint: "jaeger-otel-recipes:14250"
+    tls:
+      insecure: true
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: []
+      exporters: [logging, jaeger]
+    metrics:
+      receivers: [otlp]
+      processors: []
+      exporters: [logging]
