@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "$id": "https://example.com/product.schema.json",
+  "title": "JSON Schema for OTel recipe files",
+  "type": "object",
+  "properties": {
+    "lang": {
+      "type": "string",
+      "description": "The name of the language.",
+      "enum": ["csharp", "js", "go", "java", "python"]
+    },
+    "signals":{
+      "type": "array",
+      "description": "The list of the languages's signals",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/signalContent"
+      }
+    }
+  },
+  "required": ["lang", "signals"],
+  "definitions": {
+    "signalContent":{
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of the signal",
+          "enum": ["trace", "metric", "log"]
+        },
+        "apps":{
+          "type": "array",
+          "description": "The list of the signal's sample apps",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/appContent"
+          }
+        }
+      },
+      "required": ["type", "apps"]
+    },
+    "appContent": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of app.",
+          "enum": ["console", "api", "webapp"],
+          "default": "console"
+        },
+        "source": {
+          "type": "string",
+          "description": "The link to the source code of the app on GitHub.",
+          "format": "uri"
+        },
+        "recipeFile": {
+          "type": "string",
+          "description": "The name of the file that contains the recipe to display on the website."
+        },
+        "dependencies": {
+          "type": "array",
+          "description": "The list of OpenTelemetry dependencies.",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/dependencyContent"
+          }
+        }
+      },
+      "required": ["type", "source", "recipeFile", "dependencies"]
+    },
+    "dependencyContent":{
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The id/name of the dependency."
+        },
+        "version":{
+          "type": "string",
+          "description": "The version of the depedency needed."
+        }
+      },
+      "required":["id", "version"]
+    }
+  }
+}
