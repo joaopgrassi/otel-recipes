@@ -7,6 +7,7 @@ namespace Console
 {
     public class App
     {
+        // Creates the tracer
         private static readonly ActivitySource tracer = new ActivitySource("csharp.console.app");
         
         public static void Main(string[] args)
