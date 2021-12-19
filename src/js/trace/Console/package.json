@@ -1,0 +1,14 @@
+{
+  "name": "nodejs.console.app",
+  "version": "1.0.0",
+  "description": "Node.js app with OpenTelemetry",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "^1.0.3",
+    "@opentelemetry/sdk-trace-base": "^1.0.1",
+    "@opentelemetry/exporter-trace-otlp-grpc": "^0.27.0"
+  }
+}
