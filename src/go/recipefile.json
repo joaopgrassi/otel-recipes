@@ -1,0 +1,26 @@
+{
+    "$schema": "../../otel-recipes-schema.json",
+    "lang": "go",
+    "signals": [
+      {
+        "type": "trace",
+        "apps": [
+          {
+            "type": "console",
+            "source": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/go/trace/console",
+            "recipeFile": "app.go",
+            "dependencies": [
+              {
+                "id": "go.opentelemetry.io/otel/sdk",
+                "version": "v1.3.0"
+              },
+              {
+                "id": "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc",
+                "version": "v1.3.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

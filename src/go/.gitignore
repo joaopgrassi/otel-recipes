@@ -13,6 +13,7 @@
 !*.go
 !go.sum
 !go.mod
+!recipefile.json
 
 !README.md
 !LICENSE
