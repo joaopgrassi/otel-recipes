@@ -1,0 +1,19 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation platform("io.opentelemetry:opentelemetry-bom:1.9.1")
+    implementation("io.opentelemetry:opentelemetry-api:1.9.1")
+    implementation("io.opentelemetry:opentelemetry-exporter-otlp:1.9.1")
+    implementation("io.opentelemetry:opentelemetry-sdk:1.9.1")
+    implementation("io.opentelemetry:opentelemetry-semconv:1.10.0-alpha-rc.1")
+}
+
+application {
+    mainClass = 'otel.recipes.App'
+}

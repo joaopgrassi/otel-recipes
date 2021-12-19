@@ -1,0 +1,38 @@
+{
+    "$schema": "../../otel-recipes-schema.json",
+    "lang": "java",
+    "signals": [
+      {
+        "type": "trace",
+        "apps": [
+          {
+            "type": "console",
+            "source": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/java/trace/Console",
+            "recipeFile": "App.java",
+            "dependencies": [
+              {
+                "id": "io.opentelemetry:opentelemetry-bom",
+                "version": "1.9.1"
+              },
+              {
+                "id": "io.opentelemetry:opentelemetry-api",
+                "version": "1.9.1"
+              },
+              {
+                "id": "io.opentelemetry:opentelemetry-exporter-otlp",
+                "version": "1.9.1"
+              },
+              {
+                "id": "io.opentelemetry:opentelemetry-sdk",
+                "version": "1.9.1"
+              },
+              {
+                "id": "io.opentelemetry:opentelemetry-semconv",
+                "version": "1.10.0-alpha-rc.1"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
