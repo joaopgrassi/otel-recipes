@@ -149,3 +149,4 @@ dist
 
 # Extra
 *-lock.json
+.idea
