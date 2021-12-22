@@ -7,7 +7,7 @@
       "apps": [
         {
           "type": "console",
-          "source": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/csharp/trace/Console",
+          "source": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/csharp/trace/console",
           "recipeFile": "App.cs",
           "dependencies": [
             {
