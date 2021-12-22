@@ -71,3 +71,4 @@ gradle-app.setting
 
 # Extra stuff
 .idea
+.vscode
