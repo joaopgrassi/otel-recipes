@@ -1,7 +1,6 @@
 ###############################
 # Core EditorConfig Options   #
 ###############################
-root = true
 # All files
 [*]
 indent_style = space
