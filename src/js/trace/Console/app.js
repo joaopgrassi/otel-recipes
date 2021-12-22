@@ -1,4 +1,4 @@
-const api = require ('@opentelemetry/api');
+const api = require('@opentelemetry/api');
 const { BasicTracerProvider, SimpleSpanProcessor } = require('@opentelemetry/sdk-trace-base');
 const { OTLPTraceExporter } = require('@opentelemetry/exporter-trace-otlp-grpc');
 const { Resource } = require('@opentelemetry/resources');
@@ -19,10 +19,10 @@ provider.register();
 const tracer = api.trace.getTracer("nodejs.console.app");
 
 // Start a span with an attribute
-const span = tracer.startSpan("HelloWorldSpan", { 
-  attributes: { 
-    foo : 'bar' 
-  } 
+const span = tracer.startSpan("HelloWorldSpan", {
+  attributes: {
+    foo: 'bar'
+  }
 });
 
 console.log('Hello World');

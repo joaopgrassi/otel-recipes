@@ -9,7 +9,7 @@ namespace Console
     {
         // Creates the tracer
         private static readonly ActivitySource tracer = new ActivitySource("csharp.console.app");
-        
+
         public static void Main(string[] args)
         {
             // Configures the SDK, exporting to a local running Collector
