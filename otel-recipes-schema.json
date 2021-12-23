@@ -20,7 +20,7 @@
   },
   "required": ["lang", "signals"],
   "definitions": {
-    "signalContent":{
+    "signalContent": {
       "type": "object",
       "properties": {
         "type": {
