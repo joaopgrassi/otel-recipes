@@ -1,11 +1,5 @@
 name: C# Console Sample Integration tests
 on:
-  push:
-    paths:
-      - 'src/csharp/trace/console'
-      - 'test/trace/**'
-      - '.github/workflows/integration-template.yml'
-      - '.github/workflows/csharp-console.yml'
   pull_request:
     paths:
       - 'src/csharp/trace/console'
