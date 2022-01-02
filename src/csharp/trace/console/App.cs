@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using OpenTelemetry;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
@@ -13,11 +12,6 @@ namespace Console
 
         public static void Main(string[] args)
         {
-
-            string endpoint = Environment.GetEnvironmentVariable("OTEL_EXPORTER_OTLP_ENDPOINT");
-            System.Console.WriteLine(endpoint);
-            System.Console.WriteLine("test console log");
-
             // Configures the SDK, exporting to a local running Collector
             using var tracerProvider = Sdk.CreateTracerProviderBuilder()
                 // Need to register the tracer. Wildcard is supported: e.g. MyApp.*
