@@ -16,7 +16,7 @@ on:
 jobs:
   integration-tests:
     name: Test
-    uses: joaopgrassi/otel-recipes/.github/workflows/integration-template.yml@add-ci-test
+    uses: joaopgrassi/otel-recipes/.github/workflows/integration-template.yml@main
     with:
       sample_name: csharp.console.app
       sample_path: ./src/csharp/trace/console
