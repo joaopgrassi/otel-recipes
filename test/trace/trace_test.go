@@ -32,9 +32,6 @@ var sample = flag.String("sample", "none", "The name of the sample app used to q
 
 func TestTraceGeneratedFromSample(t *testing.T) {
 	trace := getTrace(t)
-	if trace == nil {
-		t.Fatalf("error")
-	}
 
 	assert.NotNil(t, trace.TraceID)
 	assert.Equal(t, 1, len(trace.Spans))
