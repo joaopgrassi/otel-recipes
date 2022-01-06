@@ -1,5 +1,5 @@
 plugins {
-    id 'application'
+    id 'java'
     id "com.diffplug.spotless" version "6.0.0"
 }
 
@@ -12,11 +12,17 @@ dependencies {
     implementation("io.opentelemetry:opentelemetry-api")
     implementation("io.opentelemetry:opentelemetry-exporter-otlp")
     implementation("io.opentelemetry:opentelemetry-sdk")
-    implementation("io.opentelemetry:opentelemetry-semconv:1.10.0-alpha-rc.1")
+    implementation("io.opentelemetry:opentelemetry-semconv:1.10.0-alpha-rc.2")
 }
 
-application {
-    mainClass = 'otel.recipes.App'
+jar {
+    duplicatesStrategy = 'exclude'
+    manifest {
+        attributes 'Main-Class': 'otel.recipes.App'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
 
 spotless {
