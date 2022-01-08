@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema",
-  "$id": "https://example.com/product.schema.json",
+  "$id": "https://github.com/joaopgrassi/otel-recipes/otel-recipes-schema.json",
   "title": "JSON Schema for OTel recipe files",
   "type": "object",
   "properties": {
