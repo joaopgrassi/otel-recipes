@@ -34,7 +34,7 @@ public class App {
     span.setAttribute("foo", "bar");
     span.end();
 
-    // Shuts the Trace Provider down after finishing its usage
+    // Shuts the Trace Provider down right before finishing the app
     tracerProvider.shutdown();
   }
 }
