@@ -1,0 +1,23 @@
+name: JSON Schema validation reusable workflow
+on:
+  workflow_call:
+    inputs:
+      lang:
+        description: 'The name of the language folder containing the recipefile.json to be validated'
+        required: true
+        type: string
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.17'
+
+      - name: Test
+        working-directory: ./test/jsonschema
+        run: go test -v -lang=${{ inputs.lang }}
