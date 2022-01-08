@@ -1,0 +1,30 @@
+{
+  "$schema": "../../otel-recipes-schema.json",
+  "lang": "python",
+  "signals": [
+    {
+      "type": "trace",
+      "apps": [
+        {
+          "type": "console",
+          "source": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/python/trace/console",
+          "recipeFile": "app.py",
+          "dependencies": [
+            {
+              "id": "opentelemetry-api",
+              "version": "1.8.0"
+            },
+            {
+              "id": "opentelemetry-sdk",
+              "version": "1.8.0"
+            },
+            {
+              "id": "opentelemetry-exporter-otlp-proto-grpc",
+              "version": "1.8.0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
