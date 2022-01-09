@@ -5,13 +5,29 @@ import preprocess from 'svelte-preprocess';
 const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
-	preprocess: preprocess(),
+	preprocess: [
+		preprocess({
+			scss: {
+				prependData: '@use "src/variables.scss" as *;'
+			}
+		})
+	],
 
 	kit: {
 		adapter: adapter(),
 
 		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#svelte'
+		target: '#svelte',
+
+		vite: {
+			css: {
+				preprocessorOptions: {
+					scss: {
+						additionalData: '@use "src/variables.scss" as *;'
+					}
+				}
+			}
+		}
 	}
 };
 
