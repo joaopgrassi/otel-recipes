@@ -25,79 +25,85 @@
 	</div>
 </nav>
 
-<div class="container">
-	<div class="is-max-w-lg mx-auto has-text-centered mb-6">
-		<h2 class="title is-spaced">
-			<span>OpenTelemetry Recipes</span>
-		</h2>
-		<p class="subtitle" data-removed="true">
-			Learn how to get started with OpenTelemetry without all the fuss, with the help of small, bite
-			size recipes.
-		</p>
-	</div>
-</div>
-
-<div class="content is-medium has-background-light">
-	<div class="hero-body">
+<section class="section">
+	<div class="container">
 		<div class="columns is-vcentered">
-			<div class="column is-three-fifths">
-				<div class="content has-text-centered is-large">
-					<h1>How it works</h1>
+			<div class="column is-half is-5-fullhd is-offset-1-fullhd">
+				<div class="section-header">
+					<h1 class="title is-spaced is-1">
+						OpenTelemetry<span class="is-hidden-touch"><br /></span> Recipes
+					</h1>
 
-					<div class="tile is-ancestor">
-						<div class="tile is-parent">
-							<article class="tile is-child box">
-								<p class="title">1</p>
-								<p class="subtitle">Pick a language</p>
-							</article>
-						</div>
-						<div class="tile is-parent">
-							<article class="tile is-child box">
-								<p class="title">2</p>
-								<p class="subtitle">Then the type of instrumentation (Signal) </p>
-							</article>
-						</div>
-						<div class="tile is-parent">
-							<article class="tile is-child box">
-								<p class="title">3</p>
-								<p class="subtitle">And finally, the sample type</p>
-							</article>
-						</div>
+					<div class="block">
+						<span class="subtitle is-4">
+							The place to get started with OpenTelemetry <span class="is-hidden-touch"><br /></span
+							>
+							<span class="is-underlined">the easy way.</span></span
+						>
 					</div>
 
+					<div class="block">
+						<span class="subtitle is-4">
+							Explore the collection of bite-sized samples, specially curated to get you started
+							quickly.
+						</span>
+					</div>
+
+					<div class="field is-grouped">
+						<div class="control">
+							<a class="button is-link is-medium" href="#">🌮 Check the recipes</a>
+						</div>
+					</div>
 				</div>
 			</div>
-
-			<div class="column">
-				<figure class="image">
-					<img src="wfh_1.svg" />
-				</figure>
+			<div class="column is-6">
+				<div class="section-media">
+					<img role="presentation" src="wfh_1.svg" alt="Girl on laptop chilling with cute dogue" />
+				</div>
 			</div>
 		</div>
-		<!-- <div class="columns">
-			<div class="column mb-3">
-				<div class="box">
-					<div class="numberCircle">1</div>
-					<div class="block">Pick a programming language</div>
-				</div>
-			</div>
-
-			<div class="column mb-3">
-				<div class="box">
-					<div class="numberCircle">2</div>
-					<div class="block">Then the type of instrumentation (Signal)</div>
-				</div>
-			</div>
-
-			<div class="column mb-3">
-				<div class="box">
-					<div class="numberCircle">3</div>
-					<div class="block">And finally, the sample type</div>
-				</div>
-			</div>
-		</div> -->
 	</div>
-</div>
+</section>
+
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-4">
+				<div class="card">
+					<figure class="image is-128x128">
+						<img src="language-icon.svg" alt="language" />
+					</figure>
+					<hr class="spacer is-1" />
+					<h3 class="title is-4 is-spaced">Pick a language</h3>
+					<p class="subtitle is-5">Select one of the available languages.</p>
+				</div>
+			</div>
+			<div class="column is-4">
+				<div class="card is-usp">
+					<figure class="image is-128x128">
+						<img src="signal-icon.svg" alt="language" />
+					</figure>
+					<hr class="spacer is-1" />
+					<h3 class="title is-4 is-spaced">Then a Signal</h3>
+					<p class="subtitle is-5">
+						Select the telemetry you want to add to your app: Trace, Metric or Log.
+					</p>
+				</div>
+			</div>
+			<div class="column is-4">
+				<div class="card is-usp">
+					<figure class="image is-128x128">
+						<img src="sample-icon.svg" alt="language" />
+					</figure>
+					<hr class="spacer is-1" />
+					<h3 class="title is-4 is-spaced">Lastly, the sample type</h3>
+					<p class="subtitle is-5">Select the type of app.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
 
 <style>
 	.step {
@@ -125,5 +131,31 @@
 		z-index: 1;
 		transform: translateY(-90%);
 		line-height: 33px;
+	}
+
+	.card {
+		background-color: transparent;
+		box-shadow: none;
+		color: #998da0;
+		max-width: 100%;
+		position: relative;
+	}
+
+	.card.is-usp {
+		max-width: 320px;
+		margin: 0 auto;
+	}
+
+	.spacer {
+		display: block;
+		margin: 0;
+		padding: 0;
+		height: 0;
+		background: none;
+		border: none;
+	}
+
+	.spacer.is-1 {
+		height: 1rem;
 	}
 </style>
