@@ -25,7 +25,7 @@
 	</div>
 </nav>
 
-<section class="section">
+<section class="section hero-image">
 	<div class="container">
 		<div class="columns is-vcentered">
 			<div class="column is-half is-5-fullhd is-offset-1-fullhd">
@@ -56,9 +56,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="column is-6">
+			<div
+				class="column is-full-mobile is-three-fifths-tablet is-half-desktop is-one-third-widescreen is-half-fullhd"
+			>
 				<div class="section-media">
-					<img role="presentation" src="wfh_1.svg" alt="Girl on laptop chilling with cute dogue" />
+					<img src="wfh_1.svg" alt="Girl on laptop chilling with cute dogue" />
 				</div>
 			</div>
 		</div>
@@ -68,84 +70,31 @@
 <section class="section">
 	<div class="container">
 		<div class="columns">
-			<div class="column is-4">
-				<div class="card">
-					<figure class="image is-128x128">
-						<img src="language-icon.svg" alt="language" />
-					</figure>
-					<hr class="spacer is-1" />
-					<h3 class="title is-4 is-spaced">Pick a language</h3>
-					<p class="subtitle is-5">Select one of the available languages.</p>
-				</div>
+			<div class="column is-4 has-text-centered">
+				<img src="language-icon.svg" alt="language" width="150" />
+				<hr class="spacer is-1" />
+				<h3 class="title is-4 is-spaced">1. Language</h3>
+				<p class="subtitle is-5">Select one of the available languages.</p>
 			</div>
-			<div class="column is-4">
-				<div class="card is-usp">
-					<figure class="image is-128x128">
-						<img src="signal-icon.svg" alt="language" />
-					</figure>
-					<hr class="spacer is-1" />
-					<h3 class="title is-4 is-spaced">Then a Signal</h3>
-					<p class="subtitle is-5">
-						Select the telemetry you want to add to your app: Trace, Metric or Log.
-					</p>
-				</div>
+			<div class="column is-4 has-text-centered">
+				<img src="signal-icon.svg" alt="language" width="150" />
+				<hr class="spacer is-1" />
+				<h3 class="title is-4 is-spaced">2. Telemetry Signal</h3>
+				<p class="subtitle is-5">
+					Then, the telemetry you want to add to your app: Trace, Metric or Log.
+				</p>
 			</div>
-			<div class="column is-4">
-				<div class="card is-usp">
-					<figure class="image is-128x128">
-						<img src="sample-icon.svg" alt="language" />
-					</figure>
-					<hr class="spacer is-1" />
-					<h3 class="title is-4 is-spaced">Lastly, the sample type</h3>
-					<p class="subtitle is-5">Select the type of app.</p>
-				</div>
+			<div class="column is-4 has-text-centered">
+				<img src="sample-icon.svg" alt="language" width="150" />
+				<hr class="spacer is-1" />
+				<h3 class="title is-4 is-spaced">3. Sample</h3>
+				<p class="subtitle is-5">Lastly, select the sample type</p>
 			</div>
 		</div>
 	</div>
 </section>
 
-
 <style>
-	.step {
-		width: 40px;
-		height: 40px;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		border-radius: 50%;
-		border: none;
-		text-decoration: none;
-	}
-
-	.numberCircle {
-		width: 40px;
-		height: 40px;
-		text-align: center;
-		font-size: 22px;
-		border-radius: 50%;
-		border: 2px solid #3498db;
-		box-shadow: 0 0 0 8px #fff;
-		color: #000;
-		background: #fff;
-		margin: 0 auto;
-		z-index: 1;
-		transform: translateY(-90%);
-		line-height: 33px;
-	}
-
-	.card {
-		background-color: transparent;
-		box-shadow: none;
-		color: #998da0;
-		max-width: 100%;
-		position: relative;
-	}
-
-	.card.is-usp {
-		max-width: 320px;
-		margin: 0 auto;
-	}
-
 	.spacer {
 		display: block;
 		margin: 0;
@@ -157,5 +106,24 @@
 
 	.spacer.is-1 {
 		height: 1rem;
+	}
+
+	.hero-image {
+		position: relative;
+	}
+
+	.hero-image:before {
+		content: ' ';
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0.2;
+		background-image: url('pattern5.svg');
+		background-repeat: no-repeat;
+		background-position: 20% 93%;
+		background-size: cover;
 	}
 </style>
