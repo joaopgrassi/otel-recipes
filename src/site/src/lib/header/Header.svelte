@@ -92,6 +92,7 @@
 	</div>
 </section>
 
+<!-- How it works section -->
 <section class="section is-medium">
 	<div class="container">
 		<div class="column has-text-centered mb-3">
@@ -122,7 +123,8 @@
 	</div>
 </section>
 
-<section class="section is-medium demo">
+<!-- Code slidshow section -->
+<section class="section is-medium code-slideshow">
 	<div class="container">
 		<div class="columns is-5 is-variable is-vcentered">
 			<div class="column is-half">
@@ -142,31 +144,63 @@
 				</div>
 			</div>
 			<div class="column">
-				<h1 class="title is-4 has-text-light is-spaced">Easily find how to configure SDKs</h1>
-				<p class="subtitle has-text-light">
-					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-					been the industry's standard dummy text ever since the 1500s, when an unknown printer took
-					a galley of type and scrambled it to make a type specimen book.
-				</p>
+				<div class="content">
+					<h1 class="title is-3 is-spaced has-text-light">
+						Learn how to configure and use OTel in your projects.
+					</h1>
+					<p class="subtitle is-5 has-text-light">
+						The OpenTelemetry project can greatly improve the observability of your your apps, but
+						it also brings a bit of a baggage with it.
+					</p>
+					<p class="subtitle is-5 has-text-light">
+						If you are new to the concepts that OpenTelemetry uses, it can be a bit overwhelming.
+						But don't worry, <b>we're here for you.</b>
+					</p>
+
+					<p class="subtitle is-5 has-text-light">
+						With the help of <i>small, to-the-point samples,</i>
+						you can learn how to quickly get started and add OTel to your projects.
+					</p>
+
+					<p class="subtitle is-5 has-text-light">
+						Once you are ready, you can dive into more more advance topics, over on
+						<a href="https://opentelemetry.io" class="has-text-light islink-underline">
+							opentelemetry.io
+						</a>
+						and on
+						<a
+							href="https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification"
+							class="has-text-light islink-underline"
+						>
+							GitHub.
+						</a>
+					</p>
+				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
+<!-- Welcome section -->
 <section class="section">
 	<div class="container">
 		<div class="columns is-5 is-variable is-vcentered">
 			<div class="column is-half">
-				<h1 class="title is-3 is-spaced">Get involved!</h1>
-				<p class="subtitle">
-					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-					been the industry's standard dummy text ever since the 1500s, when an unknown printer took
-					a galley of type and scrambled it to make a type specimen book.
-				</p>
-
-				<div class="field is-grouped">
-					<div class="control">
-						<a class="button is-dark is-medium" href="#">Visit the repo on GitHub</a>
+				<div class="content">
+					<h1 class="title is-2 is-spaced">Get involved!</h1>
+					<p class="subtitle is-4">
+						You can contribute to OTel Recipes in several ways. Helping maintaining existing
+						samples, adding new ones or improving our docs and website, and all contributions are
+						welcome!
+					</p>
+					<p class="subtitle is-4">
+						We foster an inclusive and welcoming community. Whether you are already familiar with
+						OpenTelemetry or just getting started, it doesn't matter.
+					</p>
+					<div class="field is-grouped">
+						<div class="control">
+							<a class="button is-dark is-medium" href="https:">View project on GitHub</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -200,11 +234,7 @@
 		padding: 18px;
 	}
 
-	.demo {
-		/* background: #CB356B;
-background: -webkit-linear-gradient(to bottom, #BD3F32, #CB356B);
-background: linear-gradient(to bottom, #BD3F32, #CB356B); */
-
+	.code-slideshow {
 		background: #e96443; /* fallback for old browsers */
 		background: -webkit-linear-gradient(
 			to bottom,
@@ -216,5 +246,9 @@ background: linear-gradient(to bottom, #BD3F32, #CB356B); */
 			#904e95,
 			#e96443
 		); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}
+
+	.islink-underline {
+		border-bottom: 1px solid currentColor;
 	}
 </style>
