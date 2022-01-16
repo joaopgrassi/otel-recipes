@@ -1,10 +1,8 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { loop_guard, onMount } from 'svelte/internal';
-	import { fade, fly } from 'svelte/transition';
+	import { onMount } from 'svelte/internal';
+	import { fade } from 'svelte/transition';
 
 	import logo from './svelte-logo.svg';
-	let toggle = false;
 
 	const texts = [
 		'xLorem Ipsum is simply dummy text of\n the printing and typesetting industry. Lorem Ipsum has',
@@ -148,6 +146,7 @@
 					<h1 class="title is-3 is-spaced has-text-light">
 						Learn how to configure and use OTel in your projects.
 					</h1>
+					<hr class="is-line-learn" />
 					<p class="subtitle is-5 has-text-light">
 						The OpenTelemetry project can greatly improve the observability of your your apps, but
 						it also brings a bit of a baggage with it.
@@ -182,12 +181,13 @@
 </section>
 
 <!-- Welcome section -->
-<section class="section">
+<section class="section is-medium">
 	<div class="container">
 		<div class="columns is-5 is-variable is-vcentered">
 			<div class="column is-half">
 				<div class="content">
 					<h1 class="title is-2 is-spaced">Get involved!</h1>
+					<hr class="is-line-involved" />
 					<p class="subtitle is-4">
 						You can contribute to OTel Recipes in several ways. Helping maintaining existing
 						samples, adding new ones or improving our docs and website, and all contributions are
@@ -250,5 +250,17 @@
 
 	.islink-underline {
 		border-bottom: 1px solid currentColor;
+	}
+
+	hr {
+		height: 1px;
+	}
+
+	.is-line-learn {
+		background: linear-gradient(to right, #fff 10%, rgba(1, 254, 228, 0) 100%);
+	}
+
+	.is-line-involved {
+		background: linear-gradient(to right, #e96443 10%, rgba(1, 254, 228, 0) 100%);
 	}
 </style>
