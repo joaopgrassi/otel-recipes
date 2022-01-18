@@ -1,4 +1,8 @@
 /* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */ /* Import only what you need from Bulma */
+@import 'font.scss';
+
+$family-serif: "Heebo", linkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default;
+$family-primary: $family-serif;
 
 @import 'bulma/sass/utilities/_all';
 @import 'bulma/sass/base/_all';
