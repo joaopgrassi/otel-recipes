@@ -4,7 +4,7 @@
 	let showNav = false;
 </script>
 
-<nav class="navbar py-3 site-nav">
+<nav class="navbar py-3 has-background-light">
 	<div class="container">
 		<div class="navbar-brand">
 			<a class="navbar-item" href="#">
@@ -38,10 +38,6 @@
 <style lang="scss">
 	@import 'bulma/sass/utilities/initial-variables.sass';
 
-	.site-nav {
-		background-color: $white-ter;
-	}
-
 	.navbar-menu .navbar-item {
 		margin-left: 1.2rem;
 		font-size: 1.3rem;
@@ -62,6 +58,6 @@
 	.navbar-link:hover,
 	.navbar-link.is-active {
 		background-color: transparent;
-		color: $orange;
+		color: $link;
 	}
 </style>

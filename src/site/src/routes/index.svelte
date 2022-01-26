@@ -70,7 +70,7 @@
 				</div>
 			</div>
 			<div class="column is-7">
-				<img src="wfh_1.svg" alt="Girl on laptop chilling with cute dogue" />
+				<img src="vision.svg" alt="Girl on laptop chilling with cute dogue" />
 			</div>
 		</div>
 	</div>
