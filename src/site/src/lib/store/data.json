@@ -1,0 +1,50 @@
+[
+  {
+    "lang": "csharp",
+    "signals": [
+      {
+        "type": "trace",
+        "apps": [
+          {
+            "type": "console",
+            "source": "https://raw.githubusercontent.com/joaopgrassi/httpclient-token-identityserver/main/src/Clients/ProtectedApi/Controllers/ProtectedController.cs",
+            "dependencies": [
+              {
+                "id": "OpenTelemetry",
+                "version": "1.2.0-rc1"
+              },
+              {
+                "id": "OpenTelemetry.Exporter.OpenTelemetryProtocol",
+                "version": "1.2.0-rc1"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "go",
+    "signals": [
+      {
+        "type": "metrics",
+        "apps": [
+          {
+            "type": "console",
+            "source": "https://raw.githubusercontent.com/open-telemetry/opentelemetry-go/main/example/otel-collector/main.go",
+            "dependencies": [
+              {
+                "id": "go.opentelemetry.io/otel/sdk",
+                "version": "v1.3.0"
+              },
+              {
+                "id": "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc",
+                "version": "v1.3.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
