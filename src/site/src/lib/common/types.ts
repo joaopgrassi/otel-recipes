@@ -23,18 +23,21 @@ export class Dependency {
 }
 
 export enum AppType {
+	none,
   console,
   api,
   webapp
 }
 
 export enum SignalType {
+	none,
   trace,
   metric,
   log
 }
 
 export enum Language {
+	none,
   csharp,
   js,
   go,
