@@ -7,7 +7,7 @@
 <nav class="navbar py-3 has-background-light">
 	<div class="container">
 		<div class="navbar-brand">
-			<a class="navbar-item" href="#">
+			<a class="navbar-item" href="/">
 				<img src={logo} alt="" style="min-height: 40px;" width="auto" />
 			</a>
 			<a
