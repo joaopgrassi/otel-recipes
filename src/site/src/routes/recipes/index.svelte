@@ -22,7 +22,7 @@
 							<select name="lang" bind:value={$selectedLanguage}>
 								{#each $languages as lang}
 									<option value={lang}>
-										{lang}
+										{lang.displayName}
 									</option>
 								{/each}
 							</select>
@@ -38,7 +38,7 @@
 							<select name="signal" bind:value={$selectedSignal}>
 								{#each $filteredSignals as signal}
 									<option value={signal}>
-										{signal}
+										{signal.displayName}
 									</option>
 								{/each}
 							</select>
@@ -48,13 +48,13 @@
 			</div>
 			<div class="column">
 				<div class="field">
-					<label class="label" for="sample">Sample type</label>
+					<label class="label" for="sample">Sample app</label>
 					<div class="control">
 						<div class="select is-rounded is-medium">
 							<select name="sample" bind:value={$selectedSample}>
 								{#each $filteredSamples as sample}
 									<option value={sample}>
-										{sample.type}
+										{sample.displayName}
 									</option>
 								{/each}
 							</select>
