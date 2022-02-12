@@ -86,22 +86,22 @@
 			<div class="column is-4 has-text-centered">
 				<img src="language-icon.svg" alt="language" width="150" />
 				<hr class="spacer is-1" />
-				<h3 class="title is-4 is-spaced">1. Language</h3>
-				<p class="subtitle is-5">Select one of the available languages.</p>
+				<h3 class="title is-4 is-spaced">1. Programming language</h3>
+				<p class="subtitle is-5">Select one of the available programming languages.</p>
 			</div>
 			<div class="column is-4 has-text-centered">
 				<img src="signal-icon.svg" alt="language" width="150" />
 				<hr class="spacer is-1" />
-				<h3 class="title is-4 is-spaced">2. Telemetry Signal</h3>
+				<h3 class="title is-4 is-spaced">2. Signal</h3>
 				<p class="subtitle is-5">
-					Then, the telemetry you want to add to your app: Trace, Metric or Log.
+					Then, the <a href="https://github.com/open-telemetry/opentelemetry-specification/blob/v1.8.0/specification/glossary.md#signals">Signal</a> you want to add to your app: Trace, Metric or Log.
 				</p>
 			</div>
 			<div class="column is-4 has-text-centered">
 				<img src="sample-icon.svg" alt="language" width="150" />
 				<hr class="spacer is-1" />
-				<h3 class="title is-4 is-spaced">3. Sample</h3>
-				<p class="subtitle is-5">Lastly, select the sample type.</p>
+				<h3 class="title is-4 is-spaced">3. Sample app</h3>
+				<p class="subtitle is-5">Lastly, select the sample app. The sample app will demonstrate in a concise way what you need to do to configure OTel in <b>your</b> apps.</p>
 			</div>
 		</div>
 	</div>
@@ -176,16 +176,16 @@
 					<hr class="is-line-involved" />
 					<p class="subtitle is-4">
 						You can contribute to OTel Recipes in several ways. Helping maintaining existing
-						samples, adding new ones or improving our docs and website, and all contributions are
+						samples, adding new ones or improving our docs and website. All contributions are
 						welcome!
 					</p>
 					<p class="subtitle is-4">
-						We foster an inclusive and welcoming community. Whether you are already familiar with
-						OpenTelemetry or just getting started, it doesn't matter.
+						We foster an inclusive and welcoming community. It doesn't matter whether you are already familiar with
+						OpenTelemetry or just getting started.
 					</p>
 					<div class="field is-grouped">
 						<div class="control">
-							<a class="button is-dark is-medium" href="https:">View project on GitHub</a>
+							<a class="button is-dark is-medium" href="https:">View the project on GitHub</a>
 						</div>
 					</div>
 				</div>
