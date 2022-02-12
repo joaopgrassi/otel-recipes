@@ -12,7 +12,15 @@
 					{
 						"id": "console",
 						"displayName": "Console app",
-						"source": "https://raw.githubusercontent.com/joaopgrassi/httpclient-token-identityserver/main/src/Clients/ProtectedApi/Controllers/ProtectedController.cs",
+						"steps": [
+							{
+								"displayName": "Configure the SDK",
+								"description": "",
+								"order": 1,
+								"source": "https://raw.githubusercontent.com/joaopgrassi/httpclient-token-identityserver/main/src/Clients/ProtectedApi/Controllers/ProtectedController.cs",
+								"required": true
+							}
+						],
 						"dependencies": [
 							{
 								"id": "OpenTelemetry",
@@ -41,7 +49,15 @@
 					{
 						"id": "console",
 						"displayName": "Console app",
-						"source": "https://raw.githubusercontent.com/open-telemetry/opentelemetry-go/main/example/otel-collector/main.go",
+						"steps": [
+							{
+								"displayName": "Configure the SDK",
+								"description": "",
+								"order": 1,
+								"source": "https://raw.githubusercontent.com/open-telemetry/opentelemetry-go/main/example/otel-collector/main.go",
+								"required": true
+							}
+						],
 						"dependencies": [
 							{
 								"id": "go.opentelemetry.io/otel/sdk",

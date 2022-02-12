@@ -20,8 +20,16 @@ export class Signal {
 export class Sample {
 	id: string;
 	displayName: string;
+	steps: Step[];
 	dependencies: Dependency[];
+}
+
+export class Step {
+	displayName: string;
+	description: string;
+	order: number;
 	source: string;
+	required: boolean
 }
 
 export class Dependency {
@@ -31,4 +39,4 @@ export class Dependency {
 
 export const NoneLanguage: Language = { id: 'none', displayName: 'Select a language' };
 export const NoneSignal: Signal = { id: 'none', displayName: 'Select a signal', apps: [] };
-export const NoneSample: Sample = { id: 'none', displayName: 'Select a sample', dependencies: [], source: null };
+export const NoneSample: Sample = { id: 'none', displayName: 'Select a sample', dependencies: [], steps:[] };
