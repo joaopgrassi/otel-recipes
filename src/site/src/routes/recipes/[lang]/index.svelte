@@ -1,7 +1,10 @@
 <script lang="ts">
-	import { page } from '$app/stores'
+	import { page } from '$app/stores';
+	import RecipeSelector from '$lib/components/recipe-selector/RecipeSelector.svelte';
+	import { selectedLanguage } from '$lib/store/store';
 
 	const lang = $page.params.lang;
-	</script>
+	$: selectedLanguage.set(lang);
+</script>
 
-	<h1>/recipes/{lang}</h1>
+<RecipeSelector />

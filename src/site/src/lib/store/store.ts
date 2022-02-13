@@ -5,7 +5,10 @@ import {
 	Language,
 	NoneLanguage,
 	NoneSignal,
-	NoneSample
+	NoneSample,
+	Languages,
+	Signals,
+	Samples
 } from '$lib/common/types';
 import { readable, writable, derived } from 'svelte/store';
 import type { Readable } from 'svelte/store';
@@ -23,21 +26,22 @@ class LangStore {
 }
 
 export const store = new LangStore();
-export const selectedLanguage = writable(NoneLanguage);
-export const selectedSignal = writable(NoneSignal);
-export const selectedSample = writable(NoneSample);
+export const selectedLanguage = writable(Languages.none);
+export const selectedSignal = writable(Signals.none);
+export const selectedSample = writable(Samples.none);
 
 export const languages: Readable<Language[]> = derived(
 	[store.allLanguages, selectedLanguage],
 	([$langStore, $selectedLanguage]) => {
-		if ($selectedLanguage) {
-			// if the selected language changed, clear the selected signal/sample stores
-			selectedSignal.set(NoneSignal);
-			selectedSample.set(NoneSample);
-		}
-
 		let langs = $langStore.map((l: Recipe) => l.lang);
 		langs.unshift(NoneLanguage);
+
+		// if the selected language does not exist in the list, set to none
+		// This can happen for ex if someone changes the URL. E.g. /recipes/madeup-lang
+		if (!$langStore.some((r: Recipe) => r.lang.id === $selectedLanguage)) {
+			selectedLanguage.set(Languages.none);
+		}
+
 		return langs;
 	}
 );
@@ -45,19 +49,28 @@ export const languages: Readable<Language[]> = derived(
 export const filteredSignals: Readable<Signal[]> = derived(
 	[store.allLanguages, selectedLanguage, selectedSignal],
 	([$langStore, $selectedLanguage, $selectedSignal]) => {
-		if ($selectedLanguage.id == NoneLanguage.id) {
+		if ($selectedLanguage === Languages.none) {
 			return [];
 		}
-		if ($selectedSignal) {
-			// if the signal changes, clear the selected sample
-			selectedSample.set(NoneSample);
+
+		// if the selected language does not exist in the list, return empty
+		// This can happen for ex if someone changes the URL. E.g. /recipes/madeup-lang
+		if (!$langStore.some((r: Recipe) => r.lang.id === $selectedLanguage)) {
+			return [];
 		}
 
 		let signals = $langStore
-			.find((l: Recipe) => l.lang.id === $selectedLanguage.id)
+			.find((r: Recipe) => r.lang.id === $selectedLanguage)
 			.signals.map((s: Signal) => s);
 
 		signals.unshift(NoneSignal);
+
+		// if the selected signal does not exist for the language return empty
+		// This can happen for ex if someone changes the URL. E.g. recipes/csharp/madeup-signal
+		if (!signals.some((s: Signal) => s.id === $selectedSignal)) {
+			return [];
+		}
+
 		return signals;
 	}
 );
@@ -65,15 +78,19 @@ export const filteredSignals: Readable<Signal[]> = derived(
 export const filteredSamples: Readable<Sample[]> = derived(
 	[store.allLanguages, selectedLanguage, selectedSignal],
 	([$store, $selectedLanguage, $selectedSignal]) => {
-		if ($selectedLanguage.id == NoneLanguage.id || $selectedSignal.id == NoneSignal.id) {
+		if ($selectedLanguage === NoneLanguage.id || $selectedSignal === NoneSignal.id) {
 			return [];
 		}
 
-		let samples = $store
-			.find((l: Recipe) => l.lang.id === $selectedLanguage.id)
-			.signals.find((s: Signal) => s.id === $selectedSignal.id)
-			.apps.map((app: Sample) => app);
+		let signal = $store
+			.find((l: Recipe) => l.lang.id === $selectedLanguage)
+			.signals.find((s: Signal) => s.id === $selectedSignal);
 
+		if (!signal) {
+			return [];
+		}
+
+		let samples = signal.apps.map((app: Sample) => app);
 		samples.unshift(NoneSample);
 		return samples;
 	}

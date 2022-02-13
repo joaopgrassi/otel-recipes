@@ -37,6 +37,24 @@ export class Dependency {
 	version: string;
 }
 
+export class Languages {
+	static readonly none = "none";
+	static readonly csharp = "csharp";
+	static readonly go = "go";
+	static readonly js = "javascript";
+}
+
+export class Signals {
+	static readonly none = "none";
+	static readonly trace = "trace";
+	static readonly metric = "metric";
+	static readonly log = "log";
+}
+
+export class Samples {
+	static readonly none = "none";
+}
+
 export const NoneLanguage: Language = { id: 'none', displayName: 'Select a language' };
 export const NoneSignal: Signal = { id: 'none', displayName: 'Select a signal', apps: [] };
 export const NoneSample: Sample = { id: 'none', displayName: 'Select a sample', dependencies: [], steps:[] };
