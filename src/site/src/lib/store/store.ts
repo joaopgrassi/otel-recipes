@@ -28,7 +28,7 @@ class LangStore {
 export const store = new LangStore();
 export const selectedLanguage = writable(Languages.none);
 export const selectedSignal = writable(Signals.none);
-export const selectedSample = writable(Samples.none);
+export const selectedSampleId = writable(Samples.none);
 
 export const languages: Readable<Language[]> = derived(
 	[store.allLanguages, selectedLanguage],
@@ -93,5 +93,30 @@ export const filteredSamples: Readable<Sample[]> = derived(
 		let samples = signal.apps.map((app: Sample) => app);
 		samples.unshift(NoneSample);
 		return samples;
+	}
+);
+
+export const selectedSample: Readable<Sample> = derived(
+	[store.allLanguages, selectedLanguage, selectedSignal, selectedSampleId],
+	([$store, $selectedLanguage, $selectedSignal, $selectedSampleId]) => {
+		if ($selectedLanguage === Languages.none || $selectedSignal === Signals.none || $selectedSampleId == Samples.none) {
+			return NoneSample;
+		}
+
+		const recipe = $store.find((l: Recipe) => l.lang.id === $selectedLanguage);
+		if (!recipe) {
+			return NoneSample;
+		}
+
+		const signal = recipe.signals.find((s: Signal) => s.id === $selectedSignal);
+		if (!signal) {
+			return NoneSample;
+		}
+
+		const sample = signal.apps.find((app: Sample) => app.id === $selectedSampleId);
+		if (!sample) {
+			return NoneSample;
+		}
+		return sample;
 	}
 );

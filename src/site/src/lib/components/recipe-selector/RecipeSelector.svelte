@@ -1,26 +1,26 @@
 <script lang="ts">
-	import { Signals, NoneSample, Samples } from '$lib/common/types';
+	import { Signals, Samples } from '$lib/common/types';
 
 	import {
 		selectedLanguage,
 		languages,
 		filteredSignals,
 		selectedSignal,
-		selectedSample,
+		selectedSampleId,
 		filteredSamples
 	} from '$lib/store/store';
 
 	function languageChanged() {
 		selectedSignal.set(Signals.none);
-		selectedSample.set(Samples.none);
+		selectedSampleId.set(Samples.none);
 	}
 
 	function signalChanged() {
-		selectedSample.set(Samples.none);
+		selectedSampleId.set(Samples.none);
 	}
 </script>
 
-<section class="section is-medium">
+<section class="section">
 	<div class="container">
 		<div class="columns has-text-centered">
 			<div class="column">
@@ -60,7 +60,7 @@
 					<label class="label" for="sample">Sample app</label>
 					<div class="control">
 						<div class="select is-rounded is-medium">
-							<select name="sample" bind:value={$selectedSample}>
+							<select name="sample" bind:value={$selectedSampleId}>
 								{#each $filteredSamples as sample}
 									<option value={sample.id}>
 										{sample.displayName}
