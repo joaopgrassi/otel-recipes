@@ -8,6 +8,7 @@
 
 <RecipeSelector />
 
+{#if $selectedSample.id !== Samples.none}
 <div class="section">
 	<div class="content">
 		<div class="columns is-centered">
@@ -49,6 +50,7 @@
 		</div>
 	</div>
 </div>
+{/if}
 
 <style lang="scss">
 	@import 'bulma/sass/utilities/initial-variables.sass';
