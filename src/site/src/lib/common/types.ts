@@ -2,7 +2,7 @@
  * Mapping types for the schema file.
  */
 export class Recipe {
-	lang: Language;
+	languageId: string;
 	signals: Signal[];
 }
 
@@ -38,10 +38,14 @@ export class Dependency {
 }
 
 export class Languages {
-	static readonly none = "none";
-	static readonly csharp = "csharp";
-	static readonly go = "go";
-	static readonly js = "javascript";
+	static none: Language = { id: 'none', displayName: 'Select a language' };
+
+	static readonly all: Language[] = [
+		{ id: 'csharp', displayName: 'C#' },
+		{ id: 'go', displayName: 'Go' },
+		{ id: 'java', displayName: 'Java' },
+		{ id: 'js', displayName: 'JavaScript' }
+	]
 }
 
 export class Signals {
@@ -55,6 +59,5 @@ export class Samples {
 	static readonly none = "none";
 }
 
-export const NoneLanguage: Language = { id: 'none', displayName: 'Select a language' };
 export const NoneSignal: Signal = { id: 'none', displayName: 'Select a signal', apps: [] };
 export const NoneSample: Sample = { id: 'none', displayName: 'Select a sample', dependencies: [], steps:[] };

@@ -30,7 +30,7 @@
 						<div class="select is-rounded is-medium">
 							<select name="lang" bind:value={$selectedLanguage} on:change={languageChanged}>
 								{#each $languages as lang}
-									<option value={lang.id}>
+									<option value={lang}>
 										{lang.displayName}
 									</option>
 								{/each}

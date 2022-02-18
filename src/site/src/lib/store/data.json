@@ -1,9 +1,6 @@
 [
 	{
-		"lang": {
-			"id": "csharp",
-			"displayName": "C#"
-		},
+		"languageId": "csharp",
 		"signals": [
 			{
 				"id": "trace",
@@ -37,10 +34,7 @@
 		]
 	},
 	{
-		"lang": {
-			"id": "go",
-			"displayName": "Go"
-		},
+		"languageId": "go",
 		"signals": [
 			{
 				"id": "metric",

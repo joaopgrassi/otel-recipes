@@ -3,7 +3,6 @@ import {
 	Recipe,
 	Signal,
 	Language,
-	NoneLanguage,
 	NoneSignal,
 	NoneSample,
 	Languages,
@@ -31,16 +30,12 @@ export const selectedSignal = writable(Signals.none);
 export const selectedSampleId = writable(Samples.none);
 
 export const languages: Readable<Language[]> = derived(
-	[store.allLanguages, selectedLanguage],
-	([$langStore, $selectedLanguage]) => {
-		let langs = $langStore.map((l: Recipe) => l.lang);
-		langs.unshift(NoneLanguage);
+	[store.allLanguages], ([$langStore]) => {
+		// The set of languages we have samples for
+		const langIds = new Set($langStore.map((r: Recipe) => r.languageId));
 
-		// if the selected language does not exist in the list, set to none
-		// This can happen for ex if someone changes the URL. E.g. /recipes/madeup-lang
-		if (!$langStore.some((r: Recipe) => r.lang.id === $selectedLanguage)) {
-			selectedLanguage.set(Languages.none);
-		}
+		const langs = Languages.all.filter((l: Language) => langIds.has(l.id));
+		langs.unshift(Languages.none);
 
 		return langs;
 	}
@@ -49,18 +44,18 @@ export const languages: Readable<Language[]> = derived(
 export const filteredSignals: Readable<Signal[]> = derived(
 	[store.allLanguages, selectedLanguage, selectedSignal],
 	([$langStore, $selectedLanguage, $selectedSignal]) => {
-		if ($selectedLanguage === Languages.none) {
+		if ($selectedLanguage.id === Languages.none.id) {
 			return [];
 		}
 
 		// if the selected language does not exist in the list, return empty
 		// This can happen for ex if someone changes the URL. E.g. /recipes/madeup-lang
-		if (!$langStore.some((r: Recipe) => r.lang.id === $selectedLanguage)) {
+		if (!$langStore.some((r: Recipe) => r.languageId === $selectedLanguage.id)) {
 			return [];
 		}
 
 		let signals = $langStore
-			.find((r: Recipe) => r.lang.id === $selectedLanguage)
+			.find((r: Recipe) => r.languageId === $selectedLanguage.id)
 			.signals.map((s: Signal) => s);
 
 		signals.unshift(NoneSignal);
@@ -78,12 +73,12 @@ export const filteredSignals: Readable<Signal[]> = derived(
 export const filteredSamples: Readable<Sample[]> = derived(
 	[store.allLanguages, selectedLanguage, selectedSignal],
 	([$store, $selectedLanguage, $selectedSignal]) => {
-		if ($selectedLanguage === NoneLanguage.id || $selectedSignal === NoneSignal.id) {
+		if ($selectedLanguage.id === Languages.none.id || $selectedSignal === NoneSignal.id) {
 			return [];
 		}
 
 		let signal = $store
-			.find((l: Recipe) => l.lang.id === $selectedLanguage)
+			.find((l: Recipe) => l.languageId === $selectedLanguage.id)
 			.signals.find((s: Signal) => s.id === $selectedSignal);
 
 		if (!signal) {
@@ -99,11 +94,15 @@ export const filteredSamples: Readable<Sample[]> = derived(
 export const selectedSample: Readable<Sample> = derived(
 	[store.allLanguages, selectedLanguage, selectedSignal, selectedSampleId],
 	([$store, $selectedLanguage, $selectedSignal, $selectedSampleId]) => {
-		if ($selectedLanguage === Languages.none || $selectedSignal === Signals.none || $selectedSampleId == Samples.none) {
+		if (
+			$selectedLanguage.id === Languages.none.id ||
+			$selectedSignal === Signals.none ||
+			$selectedSampleId == Samples.none
+		) {
 			return NoneSample;
 		}
 
-		const recipe = $store.find((l: Recipe) => l.lang.id === $selectedLanguage);
+		const recipe = $store.find((l: Recipe) => l.languageId === $selectedLanguage.id);
 		if (!recipe) {
 			return NoneSample;
 		}
@@ -117,6 +116,20 @@ export const selectedSample: Readable<Sample> = derived(
 		if (!sample) {
 			return NoneSample;
 		}
+
 		return sample;
 	}
 );
+
+export function setSelectedLanguage(langId: string): void {
+	const lang = Languages.all.find((l: Language) => l.id === langId);
+
+	if (lang) {
+		selectedLanguage.set(lang);
+		return;
+	}
+
+	// if the selected language does not exist in the list, set to none
+	// This can happen for ex if someone changes the URL. E.g. /recipes/madeup-lang
+	selectedLanguage.set(Languages.none);
+}
