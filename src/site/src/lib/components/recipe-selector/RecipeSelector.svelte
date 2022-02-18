@@ -12,11 +12,11 @@
 
 	function languageChanged() {
 		selectedSignal.set(Signals.none);
-		selectedSampleId.set(Samples.none);
+		selectedSampleId.set(Samples.none.id);
 	}
 
 	function signalChanged() {
-		selectedSampleId.set(Samples.none);
+		selectedSampleId.set(Samples.none.id);
 	}
 </script>
 
@@ -46,7 +46,7 @@
 						<div class="select is-rounded is-medium">
 							<select name="signal" bind:value={$selectedSignal} on:change={signalChanged}>
 								{#each $filteredSignals as signal}
-									<option value={signal.id}>
+									<option value={signal}>
 										{signal.displayName}
 									</option>
 								{/each}

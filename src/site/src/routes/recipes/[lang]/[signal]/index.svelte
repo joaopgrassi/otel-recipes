@@ -1,13 +1,16 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import RecipeSelector from '$lib/components/recipe-selector/RecipeSelector.svelte';
-	import { selectedLanguage, selectedSignal, setSelectedLanguage } from '$lib/store/store';
+	import { setSelectedLanguage, setSelectedSignal } from '$lib/store/store';
+	import { onMount } from 'svelte';
 
-	const lang = $page.params.lang;
-	setSelectedLanguage(lang);
+	onMount(() => {
+		const lang = $page.params.lang;
+		setSelectedLanguage(lang);
 
-	const signal = $page.params.signal;
-	$: selectedSignal.set(signal);
+		const signal = $page.params.signal;
+		setSelectedSignal(signal);
+	});
 </script>
 
 <RecipeSelector />

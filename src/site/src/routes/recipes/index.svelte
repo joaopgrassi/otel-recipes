@@ -1,55 +1,62 @@
 <script lang="ts">
-	import { Signals, Samples, Step } from '$lib/common/types';
-
-	import { selectedLanguage, selectedSignal, selectedSample } from '$lib/store/store';
-
+	import { Samples } from '$lib/common/types';
+	import { selectedSample, selectedSignal } from '$lib/store/store';
 	import RecipeSelector from '$lib/components/recipe-selector/RecipeSelector.svelte';
 </script>
 
 <RecipeSelector />
 
-{#if $selectedSample.id !== Samples.none}
-<div class="section">
-	<div class="content">
-		<div class="columns is-centered">
-			<div class="column is-four-fifths">
-				<div class="steps">
-					<div class="center-line">
-						<a href="#" class="scroll-icon">
-							<img class="caret-up" alt="^" src="caret-up.svg" />
-						</a>
-					</div>
-					<div class="step indicator">
-						<section>
-							<small class="icon">0</small>
-							<div class="block">
-								<h1 class="title is-5 is-spaced">Install the packages</h1>
-							</div>
-							<div class="block">
-								{#each $selectedSample.dependencies as dep}
-									<p>{dep.id}@{dep.version}</p>
-								{/each}
-							</div>
-						</section>
-					</div>
-					{#each $selectedSample.steps as step}
+{#if $selectedSample.id !== Samples.none.id}
+	<section>
+		<div class="container has-text-centered">
+			<h1 class="title is-4">Steps</h1>
+			<h2 class="subtitle is-6">
+				Follow the steps below to configure OpenTelemetry in your project 🔭
+			</h2>
+		</div>
+	</section>
+	<div class="section">
+		<div class="content">
+			<div class="columns is-centered">
+				<div class="column is-four-fifths">
+					<div class="steps">
+						<div class="center-line">
+							<a href="#" class="scroll-icon">
+								<img class="caret-up" alt="^" src="caret-up.svg" />
+							</a>
+						</div>
+
 						<div class="step indicator">
 							<section>
-								<small class="icon">{step.order}</small>
+								<small class="icon">0</small>
 								<div class="block">
-									<h1 class="title is-5 is-spaced">{step.displayName}</h1>
+									<h1 class="title is-5 is-spaced">Install the packages</h1>
 								</div>
 								<div class="block">
-									<pre>{step.source}</pre>
+									{#each $selectedSample.dependencies as dep}
+										<p>{dep.id}@{dep.version}</p>
+									{/each}
 								</div>
 							</section>
 						</div>
-					{/each}
+						{#each $selectedSample.steps as step}
+							<div class="step indicator">
+								<section>
+									<small class="icon">{step.order}</small>
+									<div class="block">
+										<h1 class="title is-5 is-spaced">{step.displayName}</h1>
+									</div>
+									<div class="block">
+										<pre>{step.source}</pre>
+									</div>
+								</section>
+							</div>
+						{/each}
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 {/if}
 
 <style lang="scss">
