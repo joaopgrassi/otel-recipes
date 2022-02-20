@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
+	import { fly, fade } from 'svelte/transition';
 	import { Samples } from '$lib/common/types';
 	import { selectedSample } from '$lib/store/store';
 	import RecipeSelector from '$lib/components/recipe-selector/RecipeSelector.svelte';
@@ -10,7 +10,7 @@
 	<RecipeSelector />
 
 	{#if $selectedSample.id === Samples.none.id}
-		<section class="section" in:fade>
+		<section class="section" in:fly={{ x: 100, duration: 300 }}>
 			<div class="container">
 				<div class="columns is-5 is-variable is-vcentered ml-5">
 					<div class="column is-half">

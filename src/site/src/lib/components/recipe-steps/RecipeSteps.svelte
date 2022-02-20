@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
-	import { Samples, Step } from '$lib/common/types';
+	import { Languages, Samples, Step } from '$lib/common/types';
 	import { selectedSample } from '$lib/store/store';
 
 	const getSortedSteps = (steps: Step[]) => {
@@ -10,7 +10,7 @@
 </script>
 
 {#if $selectedSample.id !== Samples.none.id}
-	<div in:fly={{ x: 100, duration: 300 }} out:fade>
+	<div in:fly="{{ x: 100, duration: 300 }}">
 		<section>
 			<div class="container has-text-centered">
 				<h1 class="title is-4">Steps</h1>
