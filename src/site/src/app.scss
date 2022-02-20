@@ -13,3 +13,14 @@ $family-primary: $family-serif;
 @import 'bulma/sass/helpers/_all';
 @import 'bulma/sass/layout/_all';
 @import '@fontsource/fira-mono';
+
+/* To have a sticky footer. https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/*/
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1;
+}
