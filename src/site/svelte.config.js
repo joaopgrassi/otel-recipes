@@ -25,7 +25,10 @@ const config = {
 					scss: {
 						additionalData: '@use "src/variables.scss" as *;'
 					}
-				}
+				},
+			},
+			optimizeDeps: {
+				include: ['highlight.js/lib/core']
 			}
 		}
 	}

@@ -44,13 +44,12 @@ export class Dependency {
 
 export class Languages {
 	static readonly none: Language = { id: 'none', displayName: 'Select a language' };
+	static readonly csharp: Language = { id: 'csharp', displayName: 'C#' };
+	static readonly go: Language = { id: 'go', displayName: 'Go' };
+	static readonly java: Language = { id: 'java', displayName: 'Java' };
+	static readonly js: Language = { id: 'js', displayName: 'JavaScript' };
 
-	static readonly all: Language[] = [
-		{ id: 'csharp', displayName: 'C#' },
-		{ id: 'go', displayName: 'Go' },
-		{ id: 'java', displayName: 'Java' },
-		{ id: 'js', displayName: 'JavaScript' }
-	];
+	static readonly all: Language[] = [this.csharp, this.go, this.java, this.js];
 }
 
 export class Signals {

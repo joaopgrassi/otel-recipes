@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
 	import { Languages, Samples, Step } from '$lib/common/types';
-	import { selectedSample } from '$lib/store/store';
+	import { selectedLanguage, selectedSample } from '$lib/store/store';
+	import DotnetPackageInstall from '../package-install-step/PackageInstall.svelte';
+	import PackageInstall from '../package-install-step/PackageInstall.svelte';
 
 	const getSortedSteps = (steps: Step[]) => {
 		console.log('called');
@@ -10,7 +12,7 @@
 </script>
 
 {#if $selectedSample.id !== Samples.none.id}
-	<div in:fly="{{ x: 100, duration: 300 }}">
+	<div in:fly={{ x: 100, duration: 300 }}>
 		<section>
 			<div class="container has-text-centered">
 				<h1 class="title is-4">Steps</h1>
@@ -33,25 +35,23 @@
 							<div class="step indicator">
 								<section>
 									<small class="icon">0</small>
-									<div class="block">
-										<h1 class="title is-5 is-spaced">Install the packages</h1>
+									<img src="browser-buttons.svg" alt="browser top-bar icons" />
+									<div class="block mt-2">
+										<h1 class="title is-5 has-text-grey-lighter">Install the packages</h1>
 									</div>
-									<div class="block">
-										{#each $selectedSample.dependencies as dep}
-											<p>{dep.id}@{dep.version}</p>
-										{/each}
-									</div>
+									<PackageInstall sample={$selectedSample} language={$selectedLanguage} />
 								</section>
 							</div>
 							{#each getSortedSteps($selectedSample.steps) as step}
 								<div class="step indicator">
 									<section>
 										<small class="icon">{step.order}</small>
-										<div class="block">
-											<h1 class="title is-5 is-spaced">{step.displayName}</h1>
+										<img src="browser-buttons.svg" alt="browser top-bar icons" />
+										<div class="block mt-2">
+											<h1 class="title is-5 has-text-grey-lighter">{step.displayName}</h1>
 										</div>
 										<div class="block">
-											<pre>{step.source}</pre>
+											{step.source}
 										</div>
 									</section>
 								</div>
@@ -66,7 +66,6 @@
 
 <style lang="scss">
 	@import 'bulma/sass/utilities/initial-variables.sass';
-
 	.steps {
 		/* max-width: 1080px; */
 		padding: 0 20px;
@@ -88,12 +87,12 @@
 	}
 
 	.steps .step section {
-		background: #fff;
+		background: #22272e;
 		border-radius: 5px;
 		width: 100%;
 		padding: 20px;
 		position: relative;
-		box-shadow: 0 0.5em 1em -0.125em rgba($black, 0.1), 0 0px 0 1px rgba($black, 0.02);
+		box-shadow: 0 0.1em 1em 0 rgba($black, 0.4);
 	}
 
 	.steps .step section::before {
