@@ -1,7 +1,8 @@
 /* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */ /* Import only what you need from Bulma */
 @import 'font.scss';
 
-$family-serif: "Heebo", linkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default;
+$family-serif: 'Heebo', linkMacSystemFont, -apple-system, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+	'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
 $family-primary: $family-serif;
 
 @import 'bulma/sass/utilities/_all';
@@ -16,11 +17,32 @@ $family-primary: $family-serif;
 
 /* To have a sticky footer. https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/*/
 .site {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
 }
 
 .site-content {
-  flex: 1;
+	flex: 1;
+}
+
+pre {
+	background-color: #22272e;
+}
+
+a.navbar-item.is-active:not(:focus):not(:hover),
+.navbar-link.is-active:not(:focus):not(:hover) {
+	color: $grey-dark;
+}
+
+a.navbar-item:focus,
+a.navbar-item:focus-within,
+a.navbar-item:hover,
+a.navbar-item.is-active,
+.navbar-link:focus,
+.navbar-link:focus-within,
+.navbar-link:hover,
+.navbar-link.is-active {
+	background-color: transparent;
+	color: $link;
 }

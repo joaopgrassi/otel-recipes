@@ -44,20 +44,4 @@
 		padding: 0;
 	}
 
-	a.navbar-item.is-active:not(:focus):not(:hover),
-	.navbar-link.is-active:not(:focus):not(:hover) {
-		color: $grey-dark;
-	}
-
-	a.navbar-item:focus,
-	a.navbar-item:focus-within,
-	a.navbar-item:hover,
-	a.navbar-item.is-active,
-	.navbar-link:focus,
-	.navbar-link:focus-within,
-	.navbar-link:hover,
-	.navbar-link.is-active {
-		background-color: transparent;
-		color: $link;
-	}
 </style>
