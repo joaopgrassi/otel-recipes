@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { fade, fly } from 'svelte/transition';
-	import { Languages, Samples, Step } from '$lib/common/types';
+	import { fly } from 'svelte/transition';
+	import { Samples, Step } from '$lib/common/types';
 	import { selectedLanguage, selectedSample } from '$lib/store/store';
-	import DotnetPackageInstall from '../package-install-step/PackageInstall.svelte';
-	import PackageInstall from '../package-install-step/PackageInstall.svelte';
+	import PackageInstall from './PackageInstallStep.svelte';
 
 	const getSortedSteps = (steps: Step[]) => {
 		console.log('called');
