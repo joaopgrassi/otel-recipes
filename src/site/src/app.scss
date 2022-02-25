@@ -28,6 +28,15 @@ $family-primary: $family-serif;
 
 pre {
 	background-color: #22272e;
+	tab-size: 4;
+}
+
+.content pre {
+	padding:0;
+}
+
+pre code.hljs {
+	padding: 0;
 }
 
 a.navbar-item.is-active:not(:focus):not(:hover),

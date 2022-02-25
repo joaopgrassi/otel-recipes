@@ -2,8 +2,8 @@
 	import { fly, fade } from 'svelte/transition';
 	import { Samples } from '$lib/common/types';
 	import { selectedSample } from '$lib/store/store';
-	import RecipeSelector from '$lib/components/RecipeSelector.svelte';
-	import RecipeSteps from '$lib/components/RecipeSteps.svelte';
+	import RecipeSelector from '$lib/_components/RecipeSelector.svelte';
+	import RecipeSteps from '$lib/_components/RecipeSteps.svelte';
 </script>
 
 <div class="container">

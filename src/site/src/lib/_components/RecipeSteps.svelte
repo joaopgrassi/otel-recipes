@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { Samples, Step } from '$lib/common/types';
-	import { selectedLanguage, selectedSample } from '$lib/store/store';
+	import { languages, selectedLanguage, selectedSample } from '$lib/store/store';
 	import PackageInstall from './PackageInstallStep.svelte';
+	import CodeStep from './CodeStep.svelte';
 
 	const getSortedSteps = (steps: Step[]) => {
 		console.log('called');
@@ -32,26 +33,24 @@
 								</a>
 							</div>
 							<div class="step indicator">
+								<p class="step-language">
+									<span class="step-language-tag bd-is-html">shell</span>
+								</p>
 								<section>
 									<small class="icon">0</small>
 									<img src="browser-buttons.svg" alt="browser top-bar icons" />
-									<div class="block mt-2">
-										<h1 class="title is-5 has-text-grey-lighter">Install the packages</h1>
-									</div>
 									<PackageInstall sample={$selectedSample} language={$selectedLanguage} />
 								</section>
 							</div>
 							{#each getSortedSteps($selectedSample.steps) as step}
 								<div class="step indicator">
+									<p class="step-language">
+										<span class="step-language-tag bd-is-html">{$selectedLanguage.id}</span>
+									</p>
 									<section>
 										<small class="icon">{step.order}</small>
 										<img src="browser-buttons.svg" alt="browser top-bar icons" />
-										<div class="block mt-2">
-											<h1 class="title is-5 has-text-grey-lighter">{step.displayName}</h1>
-										</div>
-										<div class="block">
-											{step.source}
-										</div>
+										<CodeStep {step} sample={$selectedSample} language={$selectedLanguage} />
 									</section>
 								</div>
 							{/each}
@@ -65,6 +64,35 @@
 
 <style lang="scss">
 	@import 'bulma/sass/utilities/initial-variables.sass';
+
+	.step-language {
+		margin-bottom: 0;
+	}
+
+	.step-language-tag.bd-is-html {
+		background: $code-bg;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+		color: $grey-lighter;
+	}
+
+	.step-language-tag {
+		align-items: center;
+		background: $code-bg;
+		border-radius: 0.5em;
+		border-bottom-right-radius: 0.5em;
+		border-bottom-left-radius: 0.5em;
+		color: $grey-lighter;
+		display: inline-flex;
+		flex-grow: 0;
+		flex-shrink: 0;
+		font-size: 0.9em;
+		font-weight: 600;
+		height: 1.5rem;
+		padding: 0 1em;
+		vertical-align: top;
+	}
+
 	.steps {
 		/* max-width: 1080px; */
 		padding: 0 20px;
@@ -88,6 +116,7 @@
 	.steps .step section {
 		background: #22272e;
 		border-radius: 5px;
+		border-top-left-radius: 0;
 		width: 100%;
 		padding: 20px;
 		position: relative;

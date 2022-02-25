@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import RecipeSelector from '$lib/components/RecipeSelector.svelte';
+	import RecipeSelector from '$lib/_components/RecipeSelector.svelte';
 	import { setSelectedLanguage, setSelectedSignal } from '$lib/store/store';
 	import { onMount } from 'svelte';
 

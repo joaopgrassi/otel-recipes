@@ -4,6 +4,7 @@
 	import 'svelte-highlight/src/styles/github-dark-dimmed.css';
 	import { shell } from 'svelte-highlight/src/languages';
 
+	import { copyToClipboard } from '../_utils/utils';
 	import { Dependency, Language, Languages, Sample } from '$lib/common/types';
 
 	export let sample: Sample;
@@ -44,9 +45,18 @@
 	});
 </script>
 
-<div>
-	<Highlight language={shell} {code} />
-	<nav class="buttons is-right">
-		<button class="button is-small is-link is-right">Copy</button>
+{#if code}
+	<nav class="level mt-2">
+		<div class="level-left">
+			<div class="level-item">
+				<h1 class="title is-5 has-text-grey-lighter">Install the packages</h1>
+			</div>
+		</div>
+		<div class="level-right">
+			<button class="button is-small is-link is-right" on:click={() => copyToClipboard(code)}>
+				Copy
+			</button>
+		</div>
 	</nav>
-</div>
+	<Highlight language={shell} {code} />
+{/if}
