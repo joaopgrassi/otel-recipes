@@ -6,6 +6,7 @@
 	import { copyToClipboard } from '../_utils/utils';
 
 	import { Language, Languages, Sample, Samples, Step } from '$lib/common/types';
+	import LoadingStep from './LoadingStep.svelte';
 
 	export let step: Step;
 	export let sample: Sample;
@@ -13,14 +14,17 @@
 
 	let highlightJsLang: HljsLanguage;
 	let code = '';
+	let isLoading = false;
 
 	onMount(async () => {
+		isLoading = true;
 		if (!sample || sample.id === Samples.none.id) {
 			return;
 		}
 		highlightJsLang = await getHighlightJsLang();
 		const res = await fetch(step.source);
 		code = await res.text();
+		isLoading = false;
 	});
 
 	/**
@@ -42,7 +46,13 @@
 	}
 </script>
 
-{#if code}
+{#if isLoading}
+	<div class="block has-text-centered">
+		<LoadingStep />
+	</div>
+{/if}
+
+{#if code && !isLoading}
 	<nav class="level mt-2">
 		<div class="level-left">
 			<div class="level-item">
