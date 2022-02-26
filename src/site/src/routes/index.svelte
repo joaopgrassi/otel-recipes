@@ -84,13 +84,13 @@
 		</div>
 		<div class="columns">
 			<div class="column is-4 has-text-centered">
-				<img src="language-icon.svg" alt="language" width="150" />
+				<img src="language-icon.png" alt="language" width="150" />
 				<hr class="spacer is-1" />
 				<h3 class="title is-4 is-spaced">1. Programming language</h3>
 				<p class="subtitle is-5">Select one of the available programming languages.</p>
 			</div>
 			<div class="column is-4 has-text-centered">
-				<img src="signal-icon.svg" alt="language" width="150" />
+				<img src="signal-icon.png" alt="language" width="150" />
 				<hr class="spacer is-1" />
 				<h3 class="title is-4 is-spaced">2. Signal</h3>
 				<p class="subtitle is-5">
@@ -98,7 +98,7 @@
 				</p>
 			</div>
 			<div class="column is-4 has-text-centered">
-				<img src="sample-icon.svg" alt="language" width="150" />
+				<img src="sample-icon.png" alt="language" width="150" />
 				<hr class="spacer is-1" />
 				<h3 class="title is-4 is-spaced">3. Sample app</h3>
 				<p class="subtitle is-5">Lastly, select the sample app. The sample app will demonstrate in a concise way what you need to do to configure OTel in <b>your</b> apps.</p>
