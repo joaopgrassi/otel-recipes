@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { Samples, Step } from '$lib/common/types';
-	import { languages, selectedLanguage, selectedSample } from '$lib/store/store';
+	import { selectedLanguage, selectedSample } from '$lib/store/store';
 	import PackageInstall from './PackageInstallStep.svelte';
 	import CodeStep from './CodeStep.svelte';
 
@@ -24,7 +24,7 @@
 		<div class="section">
 			<div class="content">
 				<div class="columns is-centered">
-					<div class="column is-four-fifths">
+					<div class="column is-11">
 						<div class="steps">
 							<div class="center-line">
 								<!-- svelte-ignore a11y-invalid-attribute -->
