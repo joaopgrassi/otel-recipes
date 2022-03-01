@@ -5,10 +5,12 @@
 			{
 				"id": "trace",
 				"displayName": "Trace",
-				"apps": [
+				"samples": [
 					{
 						"id": "console",
 						"displayName": "Console app",
+						"description": "This is a app that demonstrate using OTel in a console app in C#",
+						"sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/csharp/trace/console",
 						"steps": [
 							{
 								"displayName": "Configure the SDK",
@@ -39,7 +41,7 @@
 			{
 				"id": "metric",
 				"displayName": "Metric",
-				"apps": [
+				"samples": [
 					{
 						"id": "console",
 						"displayName": "Console app",

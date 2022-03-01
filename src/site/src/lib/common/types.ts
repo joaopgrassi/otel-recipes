@@ -14,7 +14,7 @@ export class Language {
 export class Signal {
 	id: string;
 	displayName: string;
-	apps: Sample[];
+	samples: Sample[];
 }
 
 export interface SignalDropDown {
@@ -25,6 +25,8 @@ export interface SignalDropDown {
 export class Sample {
 	id: string;
 	displayName: string;
+	description?: string;
+	sourceRoot: string;
 	steps: Step[];
 	dependencies: Dependency[];
 }
@@ -67,6 +69,7 @@ export class Samples {
 		id: 'none',
 		displayName: 'Select a sample',
 		dependencies: [],
+		sourceRoot: '',
 		steps: []
 	};
 }

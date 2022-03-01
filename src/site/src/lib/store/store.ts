@@ -79,7 +79,7 @@ export const filteredSamples: Readable<Sample[]> = derived(
 			return [];
 		}
 
-		let samples = signal.apps.map((app: Sample) => app);
+		let samples = signal.samples.map((app: Sample) => app);
 		samples.unshift(Samples.none);
 		return samples;
 	}
@@ -106,7 +106,7 @@ export const selectedSample: Readable<Sample> = derived(
 			return Samples.none;
 		}
 
-		const sample = signal.apps.find((app: Sample) => app.id === $selectedSampleId);
+		const sample = signal.samples.find((app: Sample) => app.id === $selectedSampleId);
 		if (!sample) {
 			return Samples.none;
 		}
