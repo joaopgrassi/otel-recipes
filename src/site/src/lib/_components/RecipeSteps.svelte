@@ -2,8 +2,9 @@
 	import { fly } from 'svelte/transition';
 	import { Samples, Step } from '$lib/common/types';
 	import { selectedLanguage, selectedSample } from '$lib/store/store';
-	import PackageInstall from './PackageInstallStep.svelte';
 	import CodeStep from './CodeStep.svelte';
+	import MetadataStep from './MetadataStep.svelte';
+	import PackageInstallStep from './PackageInstallStep.svelte';
 
 	const getSortedSteps = (steps: Step[]) => {
 		console.log('called');
@@ -32,14 +33,24 @@
 									<img class="caret-up" alt="^" src="caret-up.svg" />
 								</a>
 							</div>
+							<div class="step step-metadata indicator">
+								<section>
+									<small class="icon">
+										<img class="icon-info" alt="info" src="info.svg" />
+									</small>
+									<MetadataStep sample={$selectedSample} language={$selectedLanguage} />
+								</section>
+							</div>
 							<div class="step indicator">
 								<p class="step-language">
 									<span class="step-language-tag bd-is-html">shell</span>
 								</p>
 								<section>
-									<small class="icon">0</small>
+									<small class="icon">
+										<img class="icon-package" alt="package" src="package.svg" />
+									</small>
 									<img src="browser-buttons.svg" alt="browser top-bar icons" />
-									<PackageInstall sample={$selectedSample} language={$selectedLanguage} />
+									<PackageInstallStep sample={$selectedSample} language={$selectedLanguage} />
 								</section>
 							</div>
 							{#each getSortedSteps($selectedSample.steps) as step}
@@ -123,6 +134,10 @@
 		box-shadow: 0 0.1em 1em 0 rgba($black, 0.4);
 	}
 
+	.steps .step-metadata section {
+		border-top-left-radius: 5px;
+	}
+
 	.steps .step section::before {
 		position: absolute;
 		content: '';
@@ -168,5 +183,15 @@
 	.caret-up {
 		margin: 3px 0 0 1px;
 		width: 30px;
+	}
+
+	.icon-package {
+		margin: 7px 0 0 1px;
+		height: 25px;
+	}
+
+	.icon-info {
+		margin: 8px 0 0 1px;
+		height: 23px;
 	}
 </style>
