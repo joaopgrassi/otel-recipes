@@ -5,7 +5,6 @@
 	export let language: Language;
 
 	let metadataIsVisible = false;
-
 	function toggleMetadata() {
 		metadataIsVisible = metadataIsVisible ? false : true;
 	}
@@ -26,8 +25,8 @@
 		/>
 	</div>
 </nav>
-{#key metadataIsVisible}
-	<div class="metadata" class:is-hidden={!metadataIsVisible} transition:slide>
+{#if metadataIsVisible}
+	<div class="metadata" transition:slide|local>
 		<div class="metadata-line p-1 mb-1">
 			<p>
 				<strong>Language:</strong>
@@ -49,7 +48,7 @@
 			</p>
 		</div>
 	</div>
-{/key}
+{/if}
 
 <style lang="scss">
 	.level {
