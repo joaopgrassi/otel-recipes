@@ -1,16 +1,9 @@
-import {
-	Sample,
-	Recipe,
-	Signal,
-	Language,
-	Languages,
-	Signals,
-	Samples
-} from '$lib/common/types';
+import { Sample, Recipe, Signal, Language, Languages, Signals, Samples } from '$lib/common/types';
 import type { SignalDropDown } from '$lib/common/types';
 import { readable, writable, derived } from 'svelte/store';
 import type { Readable } from 'svelte/store';
 import data from '$lib/store/data.json';
+import { browser } from '$app/env';
 
 let recipes = data as unknown as Recipe[];
 
@@ -67,6 +60,10 @@ export const filteredSignals: Readable<SignalDropDown[]> = derived(
 export const filteredSamples: Readable<Sample[]> = derived(
 	[store.allLanguages, selectedLanguage, selectedSignal],
 	([$store, $selectedLanguage, $selectedSignal]) => {
+		// reset the query params when the selected language/signal changes
+		// it's added again when the user selects a sample
+		clearQueryParams();
+
 		if ($selectedLanguage.id === Languages.none.id || $selectedSignal.id === Signals.none.id) {
 			return [];
 		}
@@ -111,32 +108,59 @@ export const selectedSample: Readable<Sample> = derived(
 			return Samples.none;
 		}
 
+		replaceStateWithQuery({
+			language: $selectedLanguage.id,
+			signal: $selectedSignal.id,
+			sample: sample.id
+		});
 		return sample;
 	}
 );
 
-export function setSelectedLanguage(langId: string): void {
-	const lang = Languages.all.find((l: Language) => l.id === langId);
-
-	if (lang) {
-		selectedLanguage.set(lang);
+export function setFromUrl(languageId?: string, signalId?: string, sampleId?: string) {
+	if (!languageId || !signalId || !sampleId) {
 		return;
 	}
 
-	// if the selected language does not exist in the list, set to none
-	// This can happen for ex if someone changes the URL. E.g. /recipes/madeup-lang
-	selectedLanguage.set(Languages.none);
+	const language = Languages.all.find((l: Language) => l.id === languageId);
+	if (!language) {
+		// if the selected language does not exist in the list, set to none
+		// This can happen for ex if someone changes the URL. E.g. /recipes?language=madeup-language
+		selectedLanguage.set(Languages.none);
+		return;
+	}
+	selectedLanguage.set(language);
+
+	const signal = Signals.all.find((s: SignalDropDown) => s.id === signalId);
+	if (!signal) {
+		// if the selected signal does not exist for the language return empty
+		// This can happen for ex if someone changes the URL. E.g. recipes/csharp/madeup-signal
+		selectedSignal.set(Signals.none);
+		return;
+	}
+	selectedSignal.set(signal);
+	selectedSampleId.set(sampleId);
 }
 
-export function setSelectedSignal(signalId: string): void {
-	const signal = Signals.all.find((s: SignalDropDown) => s.id === signalId);
+function clearQueryParams(): void {
+	replaceStateWithQuery({
+		language: null,
+		signal: null,
+		sample: null
+	});
+}
 
-	if (signal) {
-		selectedSignal.set(signal);
+function replaceStateWithQuery(values: Record<string, string>): void {
+	if (!browser) {
 		return;
 	}
-
-	// if the selected signal does not exist for the language return empty
-	// This can happen for ex if someone changes the URL. E.g. recipes/csharp/madeup-signal
-	selectedSignal.set(Signals.none);
+	const url = new URL(window.location.toString());
+	for (let [k, v] of Object.entries(values)) {
+		if (!!v) {
+			url.searchParams.set(encodeURIComponent(k), encodeURIComponent(v));
+		} else {
+			url.searchParams.delete(k);
+		}
+	}
+	history.replaceState({}, '', url);
 }

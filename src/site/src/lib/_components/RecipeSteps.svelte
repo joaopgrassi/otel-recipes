@@ -7,7 +7,6 @@
 	import PackageInstallStep from './PackageInstallStep.svelte';
 
 	const getSortedSteps = (steps: Step[]) => {
-		console.log('called');
 		return steps.sort((left: Step, right: Step) => left.order - right.order);
 	};
 </script>

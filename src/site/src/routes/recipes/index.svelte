@@ -1,9 +1,18 @@
 <script lang="ts">
-	import { fly, fade } from 'svelte/transition';
+	import { page } from '$app/stores';
+	import { fly } from 'svelte/transition';
 	import { Samples } from '$lib/common/types';
-	import { selectedSample } from '$lib/store/store';
+	import { selectedSample, setFromUrl } from '$lib/store/store';
 	import RecipeSelector from '$lib/_components/RecipeSelector.svelte';
 	import RecipeSteps from '$lib/_components/RecipeSteps.svelte';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		const lang = $page.url.searchParams.get('language');
+		const signal = $page.url.searchParams.get('signal');
+		const sample = $page.url.searchParams.get('sample');
+		setFromUrl(lang, signal, sample);
+	});
 </script>
 
 <div class="container">
