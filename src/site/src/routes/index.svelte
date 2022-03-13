@@ -2,35 +2,8 @@
 	export const prerender = true;
 </script>
 
-<script lang="ts">
-	import { onMount } from 'svelte';
-	import { fade } from 'svelte/transition';
-	const texts = [
-		'xLorem Ipsum is simply dummy text of\n the printing and typesetting industry. Lorem Ipsum has',
-		'Lorem Ipsum is simply dummy text of\n the printing and typesetting industry. Lorem Ipsum has'
-	];
-	let textIndex = 0;
-	let code = '';
-
-	onMount(() => {
-		code = texts[0];
-
-		const interval = setInterval(() => {
-			if (textIndex >= texts.length) {
-				textIndex = 0;
-			}
-			code = texts[textIndex];
-			textIndex++;
-		}, 5000);
-
-		return () => {
-			clearInterval(interval);
-		};
-	});
-</script>
-
 <svelte:head>
-	<title>Home</title>
+	<title>OTel recipes - Home</title>
 </svelte:head>
 
 <!-- intro -->
@@ -94,14 +67,23 @@
 				<hr class="spacer is-1" />
 				<h3 class="title is-4 is-spaced">2. Signal</h3>
 				<p class="subtitle is-5">
-					Then, the <a href="https://github.com/open-telemetry/opentelemetry-specification/blob/v1.8.0/specification/glossary.md#signals">Signal</a> you want to add to your app: Trace, Metric or Log.
+					Then, the <a
+						href="https://github.com/open-telemetry/opentelemetry-specification/blob/v1.8.0/specification/glossary.md#signals"
+					>
+						Signal
+					</a>
+					 you want to add to your app: Trace, Metric or Log.
 				</p>
 			</div>
 			<div class="column is-4 has-text-centered">
 				<img src="sample-icon.png" alt="language" width="150" />
 				<hr class="spacer is-1" />
 				<h3 class="title is-4 is-spaced">3. Sample app</h3>
-				<p class="subtitle is-5">Lastly, select the sample app. The sample app will demonstrate in a concise way what you need to do to configure OTel in <b>your</b> apps.</p>
+				<p class="subtitle is-5">
+					Lastly, select the sample app. The sample app will demonstrate in a concise way what you
+					need to do to configure OTel in <b>your</b>
+					 apps.
+				</p>
 			</div>
 		</div>
 	</div>
@@ -114,10 +96,26 @@
 			<div class="column is-half">
 				<div class="browser-mockup">
 					<img src="browser-buttons.svg" alt="browser top-bar icons" />
-					<div class="container mt-2">
-						{#key code}
-							<pre in:fade>{code}</pre>
-						{/key}
+					<div class="container mt-2 p-4">
+							<div class="ph-row">
+								<div class="ph-col-6 mb-1" />
+								<div class="ph-col-4 empty" />
+								<div class="ph-col-10 mb-1" />
+								<div class="ph-col-2 empty" />
+								<div class="ph-col-2 mb-1" />
+								<div class="ph-col-10 empty" />
+								<div class="ph-col-4 mb-1" />
+								<div class="ph-col-8 empty" />
+								<div class="ph-col-12 big mb-1" />
+								<div class="ph-col-6 mb-1" />
+								<div class="ph-col-6 empty" />
+								<div class="ph-col-10 mb-1" />
+								<div class="ph-col-2 empty" />
+								<div class="ph-col-2 mb-1" />
+								<div class="ph-col-10 empty mb-1" />
+								<div class="ph-col-4 mb-1" />
+								<div class="ph-col-8 empty mb-1" />
+							</div>
 					</div>
 				</div>
 			</div>
@@ -174,8 +172,8 @@
 						welcome!
 					</p>
 					<p class="subtitle is-4">
-						We foster an inclusive and welcoming community. It doesn't matter whether you are already familiar with
-						OpenTelemetry or just getting started.
+						We foster an inclusive and welcoming community. It doesn't matter whether you are
+						already familiar with OpenTelemetry or just getting started.
 					</p>
 					<div class="field is-grouped">
 						<div class="control">
@@ -191,7 +189,7 @@
 	</div>
 </section>
 
-<style>
+<style lang="scss">
 	.spacer {
 		display: block;
 		margin: 0;

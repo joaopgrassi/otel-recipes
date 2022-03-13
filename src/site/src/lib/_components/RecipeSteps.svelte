@@ -15,8 +15,7 @@
 	<div in:fly={{ x: 100, duration: 300 }}>
 		<section>
 			<div class="container has-text-centered">
-				<h1 class="title is-4">Steps</h1>
-				<h2 class="subtitle is-6">
+				<h2 class="subtitle is-5">
 					Follow the steps below to configure OpenTelemetry in your project 🔭
 				</h2>
 			</div>

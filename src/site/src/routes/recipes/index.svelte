@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { fly } from 'svelte/transition';
-	import { Samples } from '$lib/common/types';
-	import { selectedSample, setFromUrl } from '$lib/store/store';
+	import { Languages, Samples } from '$lib/common/types';
+	import { selectedLanguage, selectedSample, setFromUrl } from '$lib/store/store';
 	import RecipeSelector from '$lib/_components/RecipeSelector.svelte';
 	import RecipeSteps from '$lib/_components/RecipeSteps.svelte';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 
 	onMount(() => {
 		const lang = $page.url.searchParams.get('language');
@@ -13,11 +13,18 @@
 		const sample = $page.url.searchParams.get('sample');
 		setFromUrl(lang, signal, sample);
 	});
+
+	onDestroy(() => {
+		selectedLanguage.set(Languages.none);
+	});
 </script>
+
+<svelte:head>
+	<title>OTel recipes - Catalog</title>
+</svelte:head>
 
 <div class="container">
 	<RecipeSelector />
-
 	{#if $selectedSample.id === Samples.none.id}
 		<section class="section" in:fly={{ x: 100, duration: 300 }}>
 			<div class="container">
@@ -45,6 +52,5 @@
 			</div>
 		</section>
 	{/if}
-
 	<RecipeSteps />
 </div>
