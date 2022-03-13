@@ -4,7 +4,7 @@
 	let showNav = false;
 </script>
 
-<nav class="navbar py-3 has-background-light">
+<nav class="navbar py-3 has-background-light" aria-label="Menu navigation bar">
 	<div class="container">
 		<div class="navbar-brand">
 			<a class="navbar-item" href="/">
@@ -18,6 +18,7 @@
 				data-target="navMenu"
 				class:is-active={showNav}
 				on:click={(e) => (showNav = !showNav)}
+				tabindex="1"
 			>
 				<span aria-hidden="true" />
 				<span aria-hidden="true" />

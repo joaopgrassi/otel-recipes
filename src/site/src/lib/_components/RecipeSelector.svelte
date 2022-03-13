@@ -25,10 +25,10 @@
 		<div class="columns has-text-centered">
 			<div class="column">
 				<div class="field">
-					<label class="label" for="lang">Programming language</label>
+					<label class="label" for="language">Programming language</label>
 					<div class="control">
 						<div class="select is-rounded is-medium">
-							<select name="lang" bind:value={$selectedLanguage} on:change={languageChanged}>
+							<select id="language" name="language" bind:value={$selectedLanguage} on:change={languageChanged}>
 								{#each $languages as lang}
 									<option value={lang}>
 										{lang.displayName}
@@ -44,7 +44,7 @@
 					<label class="label" for="signal">Signal</label>
 					<div class="control">
 						<div class="select is-rounded is-medium">
-							<select name="signal" bind:value={$selectedSignal} on:change={signalChanged}>
+							<select id="signal" name="signal" bind:value={$selectedSignal} on:change={signalChanged}>
 								{#each $filteredSignals as signal}
 									<option value={signal}>
 										{signal.displayName}
@@ -60,7 +60,7 @@
 					<label class="label" for="sample">Sample app</label>
 					<div class="control">
 						<div class="select is-rounded is-medium">
-							<select name="sample" bind:value={$selectedSampleId}>
+							<select id="sample" name="sample" bind:value={$selectedSampleId}>
 								{#each $filteredSamples as sample}
 									<option value={sample.id}>
 										{sample.displayName}

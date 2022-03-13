@@ -10,7 +10,7 @@
 	}
 </script>
 
-<nav class="level mb-2">
+<nav class="level mb-2" aria-label="Code sample metadata navigation bar">
 	<div class="level-left">
 		<div class="level-item">
 			<h1 class="title is-5 has-text-grey-lighter">Sample metadata</h1>
