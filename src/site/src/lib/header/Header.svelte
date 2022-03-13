@@ -1,119 +1,48 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import logo from './svelte-logo.svg';
+	import { page } from '$app/stores';
+	let showNav = false;
 </script>
 
-<header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
+<nav class="navbar py-3 has-background-light" aria-label="Menu navigation bar">
+	<div class="container">
+		<div class="navbar-brand">
+			<a class="navbar-item" href="/">
+				<img src={logo} alt="" style="min-height: 40px;" width="auto" />
+			</a>
+			<a
+				role="button"
+				class="navbar-burger"
+				aria-label="menu"
+				aria-expanded="false"
+				data-target="navMenu"
+				class:is-active={showNav}
+				on:click={(e) => (showNav = !showNav)}
+				tabindex="1"
+			>
+				<span aria-hidden="true" />
+				<span aria-hidden="true" />
+				<span aria-hidden="true" />
+			</a>
+		</div>
+		<div class="navbar-menu" class:is-active={showNav} id="navMenu">
+			<div class="navbar-end">
+				<a href="/" class="navbar-item" class:is-active={$page.url.pathname === '/'}>Home</a>
+				<a href="/recipes" class="navbar-item" class:is-active={$page.url.pathname === '/recipes'}>
+					Recipes
+				</a>
+			</div>
+		</div>
 	</div>
+</nav>
 
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li class:active={$page.path === '/'}><a sveltekit:prefetch href="/">Home</a></li>
-			<li class:active={$page.path === '/about'}><a sveltekit:prefetch href="/about">About</a></li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
+<style lang="scss">
+	@import 'bulma/sass/utilities/initial-variables.sass';
 
-	<div class="corner">
-		<!-- TODO put something else here? github link? -->
-	</div>
-</header>
-
-<style>
-	header {
-		display: flex;
-		justify-content: space-between;
-	}
-
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
-
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
-
-	nav {
-		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
-	}
-
-	ul {
-		position: relative;
+	.navbar-menu .navbar-item {
+		margin-left: 1.2rem;
+		font-size: 1.3rem;
 		padding: 0;
-		margin: 0;
-		height: 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
 	}
 
-	li {
-		position: relative;
-		height: 100%;
-	}
-
-	li.active::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--accent-color);
-	}
-
-	nav a {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 1em;
-		color: var(--heading-color);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
-	}
-
-	a:hover {
-		color: var(--accent-color);
-	}
 </style>
