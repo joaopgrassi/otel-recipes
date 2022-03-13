@@ -38,7 +38,7 @@
 			case Languages.js.id:
 				code = getInstallText(
 					sample.dependencies,
-					(d: Dependency) => `npm install${d.id}@${d.version}`
+					(d: Dependency) => `npm install ${d.id}@${d.version}`
 				);
 				return;
 		}
