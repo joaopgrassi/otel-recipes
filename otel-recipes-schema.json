@@ -4,62 +4,73 @@
   "title": "JSON Schema for OTel recipe files",
   "type": "object",
   "properties": {
-    "lang": {
+    "languageId": {
       "type": "string",
-      "description": "The name of the language.",
+      "description": "The unique identifier of the programming language. MUST be one of the suggested by the schema",
       "enum": ["csharp", "js", "go", "java", "python"]
     },
-    "signals":{
+    "signals": {
       "type": "array",
-      "description": "The list of the languages's signals",
+      "description": "The list of telemetry signals for the programming language",
       "uniqueItems": true,
       "items": {
         "$ref": "#/definitions/signalContent"
       }
     }
   },
-  "required": ["lang", "signals"],
+  "required": ["languageId", "signals"],
   "definitions": {
     "signalContent": {
       "type": "object",
       "properties": {
-        "type": {
+        "id": {
           "type": "string",
-          "description": "The type of the signal",
+          "description": "The unique identifier of the telemetry signal. MUST be one of the suggested by the schema",
           "enum": ["trace", "metric", "log"]
         },
-        "apps":{
+        "samples": {
           "type": "array",
-          "description": "The list of the signal's sample apps",
+          "description": "The list of available sample apps for the telemetry signal",
           "uniqueItems": true,
           "items": {
-            "$ref": "#/definitions/appContent"
+            "$ref": "#/definitions/sampleContent"
           }
         }
       },
-      "required": ["type", "apps"]
+      "required": ["id", "samples"]
     },
-    "appContent": {
+    "sampleContent": {
       "type": "object",
       "properties": {
-        "type": {
+        "id": {
           "type": "string",
-          "description": "The type of app.",
-          "enum": ["console", "api", "webapp"],
-          "default": "console"
+          "description": "The unique identifier of the sample app. E.g. console, webapp, rest-api"
         },
-        "source": {
+        "displayName": {
           "type": "string",
-          "description": "The link to the source code of the app on GitHub.",
+          "description": "The user friendly name of the sample app. This is shown on the website (filters)"
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the sample app. This is shon in the 'sample metadata' section on the website"
+        },
+        "sourceRoot": {
+          "type": "string",
+          "description": "The URL to the root directory of the sample app on GitHub. It's best to use a link with a ref to a tag/release version instead of using 'main'",
           "format": "uri"
         },
-        "recipeFile": {
-          "type": "string",
-          "description": "The name of the file that contains the recipe to display on the website."
+        "steps": {
+          "type": "array",
+          "description": "The list steps necessary to configure OpenTelemetry for the sample",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/stepContent"
+          }
         },
         "dependencies": {
           "type": "array",
-          "description": "The list of OpenTelemetry dependencies.",
+          "description": "The list of dependencies (packages) necessary to configure OpenTelemetry for the sample",
           "minItems": 1,
           "uniqueItems": true,
           "items": {
@@ -67,21 +78,57 @@
           }
         }
       },
-      "required": ["type", "source", "recipeFile", "dependencies"]
+      "required": [
+        "id",
+        "displayName",
+        "description",
+        "sourceRoot",
+        "steps",
+        "dependencies"
+      ]
     },
-    "dependencyContent":{
+    "stepContent": {
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "description": "The user friendly name of the step. This is shown on the website in the list of steps to follow. E.g. Configure the exporter, Configure the Trace Provider"
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the step"
+        },
+        "order": {
+          "type": "integer",
+          "description": "The order in which this step should appear in the list. Starting with 1 for the first step",
+          "default": 1
+        },
+        "source": {
+          "type": "string",
+          "description": "The raw URL (raw.githubusercontent.com) to the file in the sample app that contains the code for this step. It's best to use a link with a ref to a tag/release version instead of using 'main'",
+          "format": "uri"
+        },
+        "required": {
+          "type": "boolean",
+          "description": "Indicates if this step is mandatory for the user or not",
+          "default": true
+        }
+      },
+      "required": ["displayName", "order", "source"]
+    },
+    "dependencyContent": {
       "type": "object",
       "properties": {
         "id": {
           "type": "string",
-          "description": "The id/name of the dependency."
+          "description": "The identifier of the dependency/package the user needs to install"
         },
-        "version":{
+        "version": {
           "type": "string",
-          "description": "The version of the depedency needed."
+          "description": "The version of the depedency/package required for the sample"
         }
       },
-      "required":["id", "version"]
+      "required": ["id", "version"]
     }
   }
 }
