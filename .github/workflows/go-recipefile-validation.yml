@@ -1,0 +1,15 @@
+name: Go recipefile JSON schema validation
+on:
+  pull_request:
+    paths:
+      - 'otel-recipes-schema.json'
+      - 'src/go/recipefile.json'
+      - '.github/workflows/jsonschema-validation-template.yml'
+      - '.github/workflows/go-recipefile-validation.yml'
+  workflow_dispatch:
+jobs:
+  jsonschema-tests:
+    name: Test
+    uses: joaopgrassi/otel-recipes/.github/workflows/jsonschema-validation-template.yml@main
+    with:
+      lang: go
