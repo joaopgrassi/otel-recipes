@@ -2,10 +2,11 @@
 	<div class="container">
 		<div class="columns">
 			<div class="column is-5 is-4-widescreen">
-				<a class="brand" href="/">
-					<div class="brand-icon">
-						<h1 class="title is-3">OTel Recipes</h1>
+				<a class="navbar-item" href="/">
+					<div class="mr-2">
+						<img src="logo.svg" alt="OTel recipes logo" style="min-height: 60px;" width="auto" />
 					</div>
+					<h1 class="title is-4 mb-3">OTel Recipes</h1>
 				</a>
 			</div>
 			<div class="column is-7 is-6-widescreen is-offset-2-widescreen">

@@ -9,7 +9,6 @@
 <!-- intro -->
 <section class="section is-medium has-background-light">
 	<div class="container">
-		<div class="columns" />
 		<div class="columns is-vcentered">
 			<div class="column is-half is-5-fullhd is-offset-1-fullhd">
 				<div class="section-header">
@@ -72,7 +71,7 @@
 					>
 						Signal
 					</a>
-					 you want to add to your app: Trace, Metric or Log.
+					you want to add to your app: Trace, Metric or Log.
 				</p>
 			</div>
 			<div class="column is-4 has-text-centered">
@@ -82,7 +81,7 @@
 				<p class="subtitle is-5">
 					Lastly, select the sample app. The sample app will demonstrate in a concise way what you
 					need to do to configure OTel in <b>your</b>
-					 apps.
+					apps.
 				</p>
 			</div>
 		</div>
@@ -97,25 +96,25 @@
 				<div class="browser-mockup">
 					<img src="browser-buttons.svg" alt="browser top-bar icons" />
 					<div class="container mt-2 p-4">
-							<div class="ph-row">
-								<div class="ph-col-6 mb-1" />
-								<div class="ph-col-4 empty" />
-								<div class="ph-col-10 mb-1" />
-								<div class="ph-col-2 empty" />
-								<div class="ph-col-2 mb-1" />
-								<div class="ph-col-10 empty" />
-								<div class="ph-col-4 mb-1" />
-								<div class="ph-col-8 empty" />
-								<div class="ph-col-12 big mb-1" />
-								<div class="ph-col-6 mb-1" />
-								<div class="ph-col-6 empty" />
-								<div class="ph-col-10 mb-1" />
-								<div class="ph-col-2 empty" />
-								<div class="ph-col-2 mb-1" />
-								<div class="ph-col-10 empty mb-1" />
-								<div class="ph-col-4 mb-1" />
-								<div class="ph-col-8 empty mb-1" />
-							</div>
+						<div class="ph-row">
+							<div class="ph-col-6 mb-1" />
+							<div class="ph-col-4 empty" />
+							<div class="ph-col-10 mb-1" />
+							<div class="ph-col-2 empty" />
+							<div class="ph-col-2 mb-1" />
+							<div class="ph-col-10 empty" />
+							<div class="ph-col-4 mb-1" />
+							<div class="ph-col-8 empty" />
+							<div class="ph-col-12 big mb-1" />
+							<div class="ph-col-6 mb-1" />
+							<div class="ph-col-6 empty" />
+							<div class="ph-col-10 mb-1" />
+							<div class="ph-col-2 empty" />
+							<div class="ph-col-2 mb-1" />
+							<div class="ph-col-10 empty mb-1" />
+							<div class="ph-col-4 mb-1" />
+							<div class="ph-col-8 empty mb-1" />
+						</div>
 					</div>
 				</div>
 			</div>
@@ -177,7 +176,7 @@
 					</p>
 					<div class="field is-grouped">
 						<div class="control">
-							<a class="button is-dark is-medium" href="https:">View the project on GitHub</a>
+							<a class="button is-dark is-medium" href="https://github.com/joaopgrassi/otel-recipes">View the project on GitHub</a>
 						</div>
 					</div>
 				</div>
