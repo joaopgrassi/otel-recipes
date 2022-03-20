@@ -31,6 +31,33 @@
               "version": "^0.27.0"
             }
           ]
+        },
+        {
+          "id": "js-console",
+          "displayName": "Console App",
+          "description": "A nodejs console application instrumented with OpenTelemetry that generates a trace.",
+          "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/js/trace/console",
+          "steps": [
+            {
+              "displayName": "Configure the SDK",
+              "order": 1,
+              "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/js/trace/console/app.js"
+            }
+          ],
+          "dependencies": [
+            {
+              "id": "@opentelemetry/api",
+              "version": "^1.0.3"
+            },
+            {
+              "id": "@opentelemetry/sdk-trace-base",
+              "version": "^1.0.1"
+            },
+            {
+              "id": "@opentelemetry/exporter-trace-otlp-grpc",
+              "version": "^0.27.0"
+            }
+          ]
         }
       ]
     }
