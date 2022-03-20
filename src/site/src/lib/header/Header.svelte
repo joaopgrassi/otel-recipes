@@ -1,5 +1,4 @@
 <script lang="ts">
-	import logo from './svelte-logo.svg';
 	import { page } from '$app/stores';
 	let showNav = false;
 </script>
@@ -8,8 +7,12 @@
 	<div class="container">
 		<div class="navbar-brand">
 			<a class="navbar-item" href="/">
-				<img src={logo} alt="" style="min-height: 40px;" width="auto" />
+				<div class="mr-2">
+					<img src="logo.svg" alt="OTel recipes logo" style="min-height: 50px;" width="auto" />
+				</div>
+				<h1 class="title is-5 mb-3">OTel Recipes</h1>
 			</a>
+			<!-- svelte-ignore a11y-missing-attribute -->
 			<a
 				role="button"
 				class="navbar-burger"
@@ -18,7 +21,6 @@
 				data-target="navMenu"
 				class:is-active={showNav}
 				on:click={(e) => (showNav = !showNav)}
-				tabindex="1"
 			>
 				<span aria-hidden="true" />
 				<span aria-hidden="true" />
@@ -38,11 +40,9 @@
 
 <style lang="scss">
 	@import 'bulma/sass/utilities/initial-variables.sass';
-
 	.navbar-menu .navbar-item {
 		margin-left: 1.2rem;
 		font-size: 1.3rem;
 		padding: 0;
 	}
-
 </style>
