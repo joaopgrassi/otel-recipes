@@ -11,4 +11,4 @@ jobs:
     name: Test
     uses: joaopgrassi/otel-recipes/.github/workflows/jsonschema-validation-template.yml@main
     with:
-      lang: csharp
+      language: csharp
