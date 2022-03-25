@@ -1,26 +1,35 @@
 {
   "$schema": "../../otel-recipes-schema.json",
-  "lang": "python",
+  "languageId": "python",
   "signals": [
     {
-      "type": "trace",
-      "apps": [
+      "id": "trace",
+      "samples": [
         {
-          "type": "console",
-          "source": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/python/trace/console",
+          "id": "python-console",
+          "displayName": "Console App",
+          "description": "A python console application instrumented with OpenTelemetry that generates a trace.",
+          "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/python/trace/console",
           "recipeFile": "app.py",
+          "steps": [
+            {
+              "displayName": "Configure the SDK",
+              "order": 1,
+              "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/python/trace/console/app.py"
+            }
+          ],
           "dependencies": [
             {
               "id": "opentelemetry-api",
-              "version": "1.8.0"
+              "version": "1.10.0"
             },
             {
               "id": "opentelemetry-sdk",
-              "version": "1.8.0"
+              "version": "1.10.0"
             },
             {
               "id": "opentelemetry-exporter-otlp-proto-grpc",
-              "version": "1.8.0"
+              "version": "1.10.0"
             }
           ]
         }
