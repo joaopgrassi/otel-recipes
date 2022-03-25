@@ -1,7 +1,7 @@
 version: "2.4"
 services:
   jaeger-otel-recipes:
-    image: jaegertracing/all-in-one:1.29
+    image: jaegertracing/all-in-one:1.32
     ports:
       - "16686:16686"
       - "14268:14268"
@@ -9,7 +9,7 @@ services:
     command: --query.max-clock-skew-adjustment 1s
 
   otel-collector-otel-recipes:
-    image: otel/opentelemetry-collector-contrib:0.40.0
+    image: otel/opentelemetry-collector-contrib:0.47.0
     command: ["--config=/etc/collector-config.yaml", "${OTELCOL_ARGS}"]
     volumes:
       - ./collector-config.yaml:/etc/collector-config.yaml
@@ -19,7 +19,7 @@ services:
       - "8889:8889"   # Prometheus exporter metrics
       - "13133:13133" # health_check extension
       - "4317:4317"        # OTLP gRPC receiver
-      - "4318:4318"        # OTLP gRPC receiver
+      - "4318:4318"        # OTLP HTTP receiver
       - "55670:55679" # zpages extension
     depends_on:
       - jaeger-otel-recipes
