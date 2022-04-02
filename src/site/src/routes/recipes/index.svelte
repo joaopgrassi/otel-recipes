@@ -24,7 +24,7 @@
 </script>
 
 <svelte:head>
-	<title>OTel recipes - Catalog</title>
+	<title>OTel Recipes - Catalog</title>
 </svelte:head>
 
 <div class="container">

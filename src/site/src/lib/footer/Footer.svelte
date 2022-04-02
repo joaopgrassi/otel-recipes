@@ -15,7 +15,7 @@
 						<div class="menu">
 							<p class="menu-label">The project</p>
 							<ul class="menu-list">
-								<li><a href="">About</a></li>
+								<li><a href="/about">About</a></li>
 								<li><a href="">Privacy</a></li>
 								<li><a href="https://github.com/joaopgrassi/otel-recipes">GitHub repo</a></li>
 							</ul>
