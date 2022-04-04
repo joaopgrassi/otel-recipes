@@ -67,7 +67,7 @@
 				<h3 class="title is-4 is-spaced">2. Signal</h3>
 				<p class="subtitle is-5">
 					Then, the <a
-						href="https://github.com/open-telemetry/opentelemetry-specification/blob/v1.8.0/specification/glossary.md#signals"
+						href="https://github.com/open-telemetry/opentelemetry-specification/blob/v1.9.0/specification/glossary.md#signals"
 					>
 						Signal
 					</a>
