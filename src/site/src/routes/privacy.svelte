@@ -37,9 +37,9 @@
 					This page explains what visiting and using OTel recipes means for your online privacy.
 					First and foremost, privacy is something <strong>very important to us</strong>
 					, and it is at the core of everything we build here. OTel recipes will never have ads or resort
-					to any sort of nasty business. It's
+					to any sort of nasty business. It is
 					<strong>not</strong>
-					in our interest to make money with the site.
+					in our interest to track you online or make money with the site.
 				</div>
 
 				<div class="block">
@@ -50,11 +50,11 @@
 				</div>
 
 				<div class="block">
-					Following this principle makes it really hard to have/rely on any sort of web analytics.
-					Free tools such as Google Analytics uses all sort of bad practices to track users online
-					and, in some countries, it is even illegal, due to data privacy laws (e.g. GDPR). Using
-					such services would require us to hire a lawyer and draft a long privacy notice and put
-					those annoying cookie banners, otherwise we could run into legal troubles.
+					Following this principle makes it really hard to have/rely on any sort of web analytics
+					though. Free tools such as Google Analytics uses all sort of bad practices to track users
+					online and, in some countries, it is even illegal, due to data privacy laws (e.g. GDPR).
+					Using such services would require us to hire a lawyer and draft a long privacy notice and
+					put those annoying cookie banners, otherwise we could run into legal troubles.
 				</div>
 
 				<div class="block">
@@ -77,7 +77,7 @@
 						GoatCounter
 					</a>
 					. It's also an open source project, and its principles around online privacy aligns well with
-					of the ones we invision for OTel recipes. According to their website:
+					the ones we invision for OTel recipes. According to their website:
 				</div>
 
 				<div class="content">
@@ -114,11 +114,7 @@
 				<h1 class="title is-5">GDPR consent notices</h1>
 
 				<div class="block">
-					The reason why we don't have a consent banner on OTel recipes is because <a
-						href="https://trinity.goatcounter.com/help/gdpr"
-					>
-						GoatCounter
-					</a>
+					The reason why we don't have a consent banner on OTel recipes is because GoatCounter
 					<em>possibly</em>
 					doesn't require one, since no personally identifiable information is collected:
 				</div>
@@ -129,6 +125,14 @@
 						the legitimate interest of a site’s owner to see how many people are visiting their
 						site.
 					</blockquote>
+				</div>
+				<div class="block">
+					A more in depth explanation can be found GoutCounter's <a
+						href="https://trinity.goatcounter.com/help/gdpr"
+					>
+						GDPR consent notices
+					</a>
+					page.
 				</div>
 			</div>
 		</div>
