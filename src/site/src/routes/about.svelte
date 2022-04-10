@@ -19,8 +19,8 @@
 
 				<div class="block">
 					The samples are curated by OpenTelemetry enthusiasts and are focused on teaching you how
-					to configure and use OpenTelemetry for various tasks <strong>the easy way</strong>.
-					The samples help you answer questions such as:
+					to configure and use OpenTelemetry for various tasks <strong>the easy way</strong>
+					. The samples help you answer questions such as:
 				</div>
 
 				<div class="content">
@@ -33,7 +33,7 @@
 
 				<div class="block">
 					The sample applications follow a structure and are <strong>broken down into steps</strong>
-					 (just like a recipe! 🥙). The website then uses this structure to present the steps needed
+					(just like a recipe! 🥙). The website then uses this structure to present the steps needed
 					to successfully configure and use OpenTelemetry in your projects. 🚀 🔭
 				</div>
 
@@ -45,14 +45,14 @@
 					>
 						contributing guidelines
 					</a>
-					 to learn how to get started.
+					to learn how to get started.
 				</div>
 
 				<h1 class="title is-4">Why OTel recipes?</h1>
 
 				<div class="block">
-					There's no doubt that OpenTelemetry is here to stay, and will eventually become the
-					de facto solution for all things observability.
+					There's no doubt that OpenTelemetry is here to stay, and will eventually become the de
+					facto solution for all things observability.
 				</div>
 
 				<div class="block">
@@ -62,13 +62,14 @@
 				</div>
 
 				<div class="block">
-					A lot of effort is put in by the OpenTelemetry community in making the barrier
-					to start low, but this is not an easy task. On top of that, the project is advancing
-					quickly, (which is great) but it can be tricky to keep up with things.
+					A lot of effort is put in by the OpenTelemetry community in making the barrier to start
+					low, but this is not an easy task. On top of that, the project is advancing quickly,
+					(which is great) but it can be tricky to keep up with things.
 				</div>
 
 				<div class="block">
-					After collaborating to the OpenTelemetry project and using it in my projects, I noticed the following pattern emerge:
+					After collaborating to the OpenTelemetry project and using it in my projects, I noticed
+					the following pattern emerge:
 					<div class="content">
 						<ul>
 							<li>I need to instrument some code/application</li>
@@ -77,7 +78,9 @@
 								to use it
 							</li>
 							<li>
-								The documentation is either lacking or outdated (<em>the project is evolving, so this is expected</em>)
+								The documentation is either lacking or outdated (
+								<em>the project is evolving, so this is expected</em>
+								)
 							</li>
 							<li>
 								I end up looking at the SDK tests to find out how to use it and interact with the
@@ -93,8 +96,9 @@
 				</div>
 
 				<div>
-					Then it "clicked" 💡: Wouldn't it be nice if there was a site where people could "ask" questions on how
-					to achieve XYZ with OpenTelemetry, and the site would "reply" with a list of steps that one could simply follow to achieve the goal?
+					Then it "clicked" 💡: Wouldn't it be nice if there was a site where people could "ask"
+					questions on how to achieve XYZ with OpenTelemetry, and the site would "reply" with a list
+					of steps that one could simply follow to achieve the goal?
 				</div>
 			</div>
 		</div>
