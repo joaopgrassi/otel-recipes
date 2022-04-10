@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>OTel recipes - Home</title>
+	<title>OTel Recipes - Home</title>
 </svelte:head>
 
 <!-- intro -->
