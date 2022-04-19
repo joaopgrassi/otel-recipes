@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'src/csharp/trace/console/**'
+      - 'src/csharp/Recipes.sln'
       - 'test/trace/**'
       - '.github/workflows/integration-template.yml'
       - '.github/workflows/csharp-console.yml'
