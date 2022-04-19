@@ -52,7 +52,7 @@
         },
         "description": {
           "type": "string",
-          "description": "A brief description of the sample app. This is shon in the 'sample metadata' section on the website"
+          "description": "A brief description of the sample app. This is shown in the 'sample metadata' section on the website"
         },
         "sourceRoot": {
           "type": "string",
