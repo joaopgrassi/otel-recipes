@@ -71,7 +71,7 @@
 					>
 						Signal
 					</a>
-					you want to add to your app: Trace, Metric or Log.
+					you want to add to your app: Traces, Metrics or Logs.
 				</p>
 			</div>
 			<div class="column is-4 has-text-centered">

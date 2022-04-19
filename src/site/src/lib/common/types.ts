@@ -59,8 +59,8 @@ export class Signals {
 
 	static readonly all: SignalDropDown[] = [
 		{ id: 'trace', displayName: 'Trace' },
-		{ id: 'metric', displayName: 'Metric' },
-		{ id: 'log', displayName: 'Log' }
+		{ id: 'metrics', displayName: 'Metrics' },
+		{ id: 'logs', displayName: 'Logs' }
 	];
 }
 
