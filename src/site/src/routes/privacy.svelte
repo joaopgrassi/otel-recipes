@@ -12,7 +12,7 @@
 			<div class="column is-8">
 				<h3 class="title is-3">Privacy policy</h3>
 
-				<h1 class="title is-4">Short version for the impatient</h1>
+				<h1 class="title is-4">Short version</h1>
 
 				<div class="block">
 					We don't like cookie banners (they are useless and misleading). We don't want to bloat our
@@ -50,9 +50,9 @@
 				</div>
 
 				<div class="block">
-					Following this principle makes it really hard to have/rely on any sort of web analytics
-					though. Free tools such as Google Analytics uses all sort of bad practices to track users
-					online and, in some countries, it is even illegal, due to data privacy laws (e.g. GDPR).
+					Following this principle makes it really hard to have/rely on web analytics
+					though. "Free" tools such as Google Analytics uses all sort of bad practices to track users
+					online and, in some countries, is even illegal due to data privacy laws (e.g. GDPR).
 					Using such services would require us to hire a lawyer and draft a long privacy notice and
 					put those annoying cookie banners, otherwise we could run into legal troubles.
 				</div>
@@ -62,12 +62,12 @@
 					analytics on the site. It gives us insights on things like: What is the most searched
 					programming language; What is the most used OpenTelemetry signal; Which browsers are being
 					used; Which screen size etc. It helps us know that our work matters, that people out there
-					are using it.
+					are using it and how can we make the site better.
 				</div>
 
 				<div class="block">
-					There are several "privacy-friendly" alternatives to Google Analytics, and in the next
-					section you can find what we use and how is your data treated.
+					There are several "privacy-friendly" alternatives to Google Analytics. In the next
+					section, you can find out the tool we use and how your data is handled.
 				</div>
 
 				<h1 class="title is-4">Web analytics with GoatCounter</h1>
@@ -99,10 +99,17 @@
 				<div class="content">
 					<blockquote>
 						<p>
-							The following information can be collected: – URL of the visited page. – Referer
-							header. – User-Agent header. – Screen size. – Country and region name based on IP
-							address. – A hash of the IP address, User-Agent, and random number.
+							The following information can be collected:
 						</p>
+
+						<ul>
+							<li>URL of the visited page.</li>
+							<li>Referer header</li>
+							<li>User-Agent header</li>
+							<li>Screen size</li>
+							<li>Country and region name based on IP address</li>
+							<li>A hash of the IP address, User-Agent, and random number</li>
+						</ul>
 						<p>
 							No personal information (such as IP address) is collected; a hash of the IP address,
 							User-Agent, and a random number (“salt”) is kept in the process memory for 8 hours to
