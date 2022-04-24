@@ -1,38 +1,46 @@
 {
-    "$schema": "../../otel-recipes-schema.json",
-    "lang": "java",
-    "signals": [
-      {
-        "type": "trace",
-        "apps": [
-          {
-            "type": "console",
-            "source": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/java/trace/console",
-            "recipeFile": "App.java",
-            "dependencies": [
-              {
-                "id": "io.opentelemetry:opentelemetry-bom",
-                "version": "1.9.1"
-              },
-              {
-                "id": "io.opentelemetry:opentelemetry-api",
-                "version": "1.9.1"
-              },
-              {
-                "id": "io.opentelemetry:opentelemetry-exporter-otlp",
-                "version": "1.9.1"
-              },
-              {
-                "id": "io.opentelemetry:opentelemetry-sdk",
-                "version": "1.9.1"
-              },
-              {
-                "id": "io.opentelemetry:opentelemetry-semconv",
-                "version": "1.10.0-alpha-rc.1"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+  "$schema": "../../otel-recipes-schema.json",
+  "languageId": "java",
+  "signals": [
+    {
+      "id": "trace",
+      "samples": [
+        {
+          "id": "java-console",
+          "displayName": "Console App",
+          "description": "A Java console application instrumented with OpenTelemetry that generates a trace.",
+          "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/java/trace/console",
+          "steps": [
+            {
+              "displayName": "Configure the SDK",
+              "order": 1,
+              "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/java/trace/console/app/src/main/java/otel/recipes/App.java"
+            }
+          ],
+          "dependencies": [
+            {
+              "id": "io.opentelemetry:opentelemetry-bom",
+              "version": "1.9.1"
+            },
+            {
+              "id": "io.opentelemetry:opentelemetry-api",
+              "version": "1.9.1"
+            },
+            {
+              "id": "io.opentelemetry:opentelemetry-exporter-otlp",
+              "version": "1.9.1"
+            },
+            {
+              "id": "io.opentelemetry:opentelemetry-sdk",
+              "version": "1.9.1"
+            },
+            {
+              "id": "io.opentelemetry:opentelemetry-semconv",
+              "version": "1.10.0-alpha-rc.1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -9,14 +9,14 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
-var lang = flag.String("lang", "none", "The name of the language folder containing the recipefile.json to be validated")
+var language = flag.String("language", "none", "The name of the language folder containing the recipefile.json to be validated")
 
 func TestJsonSchema(t *testing.T) {
 	cwd, _ := os.Getwd()
 	root := filepath.Clean(filepath.Join(cwd, "..", ".."))
 
 	schemaPath := "file://" + filepath.Join(root, "otel-recipes-schema.json")
-	recipeFile := "file://" + filepath.Join(root, "src", *lang, "recipefile.json")
+	recipeFile := "file://" + filepath.Join(root, "src", *language, "recipefile.json")
 
 	t.Logf("The schema path to load is: %s", schemaPath)
 	t.Logf("The recipefile path to load is: %s", recipeFile)
