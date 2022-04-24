@@ -5,6 +5,7 @@
     "tberman.json-schema-validator",
     "ms-dotnettools.csharp",
     "vscjava.vscode-java-pack",
-    "svelte.svelte-vscode"
+    "svelte.svelte-vscode",
+    "ms-python.python"
   ]
 }
