@@ -127,7 +127,7 @@ func getTraceWithRetry(t *testing.T) *Trace {
 
 func invokeSampleApi(t *testing.T) string {
 	t.Logf("Going to call the sample API to generate trace for sample: %s", *sample)
-	r, err := http.Get("http://localhost:5000/helloworld")
+	r, err := http.Get("http://localhost:8080/helloworld")
 	if err != nil {
 		t.Fatalf("Failed calling the helloworld endpoint in the sample API: %v", err)
 	}
