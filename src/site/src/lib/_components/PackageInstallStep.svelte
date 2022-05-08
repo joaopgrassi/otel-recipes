@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import Highlight from 'svelte-highlight';
 	import 'svelte-highlight/src/styles/github-dark-dimmed.css';
 	import { shell } from 'svelte-highlight/src/languages';
@@ -12,37 +11,37 @@
 
 	let code = '';
 
-	function getInstallText(deps: Dependency[], supplier: (dep: Dependency) => string): string {
-		let lines: string[] = [];
-		deps.forEach((d: Dependency) => lines.push(supplier(d)));
-		return lines.join('\n');
-	}
-
-	onMount(() => {
+	$:{
 		switch (language.id) {
 			case Languages.csharp.id:
 				code = getInstallText(
 					sample.dependencies,
 					(d: Dependency) => `dotnet add package ${d.id} --version ${d.version}`
 				);
-				return;
+				break;
 			case Languages.go.id:
 				code = getInstallText(
 					sample.dependencies,
 					(d: Dependency) => `go get ${d.id}@${d.version}`
 				);
-				return;
+				break;
 			case Languages.java.id:
 				code = getInstallText(sample.dependencies, (d: Dependency) => `${d.id} @ ${d.version}`);
-				return;
+				break;
 			case Languages.js.id:
 				code = getInstallText(
 					sample.dependencies,
 					(d: Dependency) => `npm install ${d.id}@${d.version}`
 				);
-				return;
+				break;
 		}
-	});
+	}
+
+	function getInstallText(deps: Dependency[], supplier: (dep: Dependency) => string): string {
+		let lines: string[] = [];
+		deps.forEach((d: Dependency) => lines.push(supplier(d)));
+		return lines.join('\n');
+	}
 </script>
 
 {#if code}
