@@ -14,4 +14,8 @@ RUN dotnet publish -c Release -o /app --no-cache
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 COPY --from=build /app ./
+
+# The integration test expects the API on port 8080
+ENV ASPNETCORE_URLS=http://+:8080
+
 ENTRYPOINT ["dotnet", "AspNetCoreApi.dll"]
