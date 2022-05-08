@@ -35,7 +35,7 @@ jobs:
 
       - name: Test
         working-directory: ./test/trace
-        run: go test -v -sample=${{ inputs.sample_name }} -run TestTraceGeneratedFromSample
+        run: go test -v -sample=${{ inputs.sample_name }} -run=^TestTraceGeneratedFromSample$
 
       - name: Stop depedencies
         run: |
