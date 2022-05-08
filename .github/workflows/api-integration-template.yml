@@ -1,0 +1,42 @@
+name: REST APIs integration tests reusable workflow
+on:
+  workflow_call:
+    inputs:
+      sample_name:
+        description: 'The name of the sample API app. It MUST be the same name used for the OpenTelemetry Tracer.'
+        required: true
+        type: string
+      sample_path:
+        description: 'The root path of the sample Dockerfile. E.g. ./src/csharp/trace/aspnet-api'
+        required: true
+        type: string
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Start dependencies
+        run: |
+          docker-compose up -d
+
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.17'
+
+      - name: Build sample Docker image
+        run: docker build -t ${{ inputs.sample_name }} ${{ inputs.sample_path }}
+
+      - name: Run sample app
+        # make sure to use the host network so the container can access the collector on localhost:4317
+        run: docker run -p 8080:80 --net=host ${{ inputs.sample_name }} --rm
+
+      - name: Test
+        working-directory: ./test/trace
+        run: go test -v -sample=${{ inputs.sample_name }} -run=^TestTraceGeneratedFromSampleApi$
+
+      - name: Stop depedencies
+        run: |
+          docker-compose stop
