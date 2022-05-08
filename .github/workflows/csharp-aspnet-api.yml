@@ -1,0 +1,17 @@
+name: C# ASP.NET Core API Sample Integration tests
+on:
+  pull_request:
+    paths:
+      - 'src/csharp/trace/aspnet-api/**'
+      - 'src/csharp/Recipes.sln'
+      - 'test/trace/**'
+      - '.github/workflows/api-integration-template.yml'
+      - '.github/workflows/csharp-aspnet-api.yml'
+  workflow_dispatch:
+jobs:
+  integration-tests:
+    name: Test
+    uses: joaopgrassi/otel-recipes/.github/workflows/api-integration-template.yml@main
+    with:
+      sample_name: csharp.aspnet.api
+      sample_path: ./src/csharp/trace/aspnet-api
