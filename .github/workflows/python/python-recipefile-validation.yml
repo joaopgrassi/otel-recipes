@@ -1,22 +1,22 @@
-name: Go recipefile validations
+name: Python recipefile validations
 on:
   pull_request:
     paths:
       - 'otel-recipes-schema.json'
-      - 'src/go/recipefile.json'
+      - 'src/python/recipefile.json'
       - '.github/workflows/jsonschema-validation-template.yml'
       - '.github/workflows/recipefile-unique-validation-template.yml'
-      - '.github/workflows/go-recipefile-validation.yml'
+      - '.github/workflows/python/python-recipefile-validation.yml'
   workflow_dispatch:
 jobs:
   jsonschema-tests:
     name: Validate recipefile against schema
     uses: joaopgrassi/otel-recipes/.github/workflows/jsonschema-validation-template.yml@main
     with:
-      language: go
+      language: python
 
   sampleid-unique-tests:
     name: Validate sample ids
     uses: joaopgrassi/otel-recipes/.github/workflows/recipefile-unique-validation-template.yml@main
     with:
-      language: go
+      language: python
