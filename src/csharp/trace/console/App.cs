@@ -12,6 +12,7 @@ namespace Console
 
         public static void Main(string[] args)
         {
+            // test
             // Configures the SDK, exporting to a local running Collector
             using var tracerProvider = Sdk.CreateTracerProviderBuilder()
                 .AddSource(Tracer.Name)

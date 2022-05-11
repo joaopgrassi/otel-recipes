@@ -15,7 +15,7 @@ provider.addSpanProcessor(new SimpleSpanProcessor(new OTLPTraceExporter()));
 
 provider.register();
 
-// Creates the tracer
+// Creates the tracer test
 const tracer = api.trace.getTracer("js.console.app");
 
 // Start a span with an attribute

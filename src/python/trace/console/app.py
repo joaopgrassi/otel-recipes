@@ -18,7 +18,7 @@ trace.get_tracer_provider().add_span_processor(
 )
 tracer = trace.get_tracer(__name__)
 
-# Starts and sets an attribute to a span
+# Starts and sets an attribute to a span test
 with tracer.start_as_current_span("HelloWorldSpan") as span:
     span.set_attribute("foo",  "bar")
     print("Hello world")

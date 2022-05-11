@@ -15,7 +15,7 @@ public class App {
   public static void main(String[] args) {
     OtlpGrpcSpanExporter spanExporter = OtlpGrpcSpanExporter.builder().build();
 
-    // Builds the Tracer Provider with span processor and resource attribute
+    // Builds the Tracer Provider with span processor and resource attribute test
     SdkTracerProvider tracerProvider =
         SdkTracerProvider.builder()
             .addSpanProcessor(SimpleSpanProcessor.create(spanExporter))

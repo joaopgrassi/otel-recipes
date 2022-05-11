@@ -35,7 +35,7 @@ func main() {
 	otel.SetTextMapPropagator(propagation.TraceContext{})
 	defer tracerProvider.Shutdown(ctx)
 
-	// Creates the tracer
+	// Creates the tracer test
 	tracer := otel.Tracer("go.console.app")
 
 	// Start a span with an attribute

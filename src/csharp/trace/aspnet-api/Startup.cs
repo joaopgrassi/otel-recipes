@@ -17,6 +17,8 @@ public class Startup
     {
         services.AddControllers();
 
+        // test
+
         // Configures the SDK, enabling Http client and ASP.NET Core instrumentation
         // Exports to a locally running collector on port 4317
         services.AddOpenTelemetryTracing(options =>
