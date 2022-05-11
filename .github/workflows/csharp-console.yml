@@ -6,7 +6,7 @@ on:
       - 'src/csharp/Recipes.sln'
       - 'test/trace/**'
       - '.github/workflows/integration-template.yml'
-      - '.github/workflows/csharp/csharp-console.yml'
+      - '.github/workflows/csharp-console.yml'
   workflow_dispatch:
 jobs:
   integration-tests:

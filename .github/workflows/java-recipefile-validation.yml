@@ -1,22 +1,22 @@
-name: JavaScript recipefile validations
+name: Java recipefile validations
 on:
   pull_request:
     paths:
       - 'otel-recipes-schema.json'
-      - 'src/js/recipefile.json'
+      - 'src/java/recipefile.json'
       - '.github/workflows/jsonschema-validation-template.yml'
       - '.github/workflows/recipefile-unique-validation-template.yml'
-      - '.github/workflows/js/js-recipefile-validation.yml'
+      - '.github/workflows/java-recipefile-validation.yml'
   workflow_dispatch:
 jobs:
   jsonschema-tests:
     name: Validate recipefile against schema
     uses: joaopgrassi/otel-recipes/.github/workflows/jsonschema-validation-template.yml@main
     with:
-      language: js
+      language: java
 
   sampleid-unique-tests:
     name: Validate sample ids
     uses: joaopgrassi/otel-recipes/.github/workflows/recipefile-unique-validation-template.yml@main
     with:
-      language: js
+      language: java

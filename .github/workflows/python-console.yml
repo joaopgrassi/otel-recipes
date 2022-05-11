@@ -1,16 +1,16 @@
-name: Go Console Sample Integration tests
+name: Python Console Sample Integration tests
 on:
   pull_request:
     paths:
-      - 'src/go/trace/console/**'
+      - 'src/python/trace/console/**'
       - 'test/trace/**'
       - '.github/workflows/integration-template.yml'
-      - '.github/workflows/go/go-console.yml'
+      - '.github/workflows/python-console.yml'
   workflow_dispatch:
 jobs:
   integration-tests:
     name: Test
     uses: joaopgrassi/otel-recipes/.github/workflows/integration-template.yml@main
     with:
-      sample_name: go.console.app
-      sample_path: ./src/go/trace/console
+      sample_name: python.console.app
+      sample_path: ./src/python/trace/console
