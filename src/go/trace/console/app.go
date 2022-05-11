@@ -15,31 +15,25 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
+const serviceName = "go.console.app"
+
+// Creates the tracer to be shared across the application
+var tracer = otel.Tracer(serviceName)
+
 func main() {
 	ctx := context.Background()
-	res, err := resource.New(ctx,
-		resource.WithAttributes(semconv.ServiceNameKey.String("go.console.app")),
-	)
-	handleErr(err, "failed to create the resource")
 
-	traceExporter, err := otlptracegrpc.New(ctx, otlptracegrpc.WithInsecure())
-	handleErr(err, "failed to create the trace exporter")
-
-	// Configures the SDK, exporting to a local running Collector
-	tracerProvider := sdktrace.NewTracerProvider(
-		sdktrace.WithSampler(sdktrace.AlwaysSample()),
-		sdktrace.WithResource(res),
-		sdktrace.WithSpanProcessor(sdktrace.NewSimpleSpanProcessor(traceExporter)),
-	)
-	otel.SetTracerProvider(tracerProvider)
-	otel.SetTextMapPropagator(propagation.TraceContext{})
-	defer tracerProvider.Shutdown(ctx)
-
-	// Creates the tracer
-	tracer := otel.Tracer("go.console.app")
+	// Configures the SDK
+	// Exports to a locally running collector on port 4317
+	tp := initTracer(ctx)
+	defer func() {
+		if err := tp.Shutdown(context.Background()); err != nil {
+			log.Printf("Error shutting down tracer provider: %v", err)
+		}
+	}()
 
 	// Start a span with an attribute
-	ctx, span := tracer.Start(
+	_, span := tracer.Start(
 		ctx,
 		"HelloWorldSpan",
 		trace.WithAttributes(attribute.String("foo", "bar")))
@@ -47,6 +41,27 @@ func main() {
 
 	// Important: pass around the ctx to operations!
 	fmt.Println("Hello world")
+}
+
+func initTracer(ctx context.Context) *sdktrace.TracerProvider {
+	// Creates a resource with the service.name attribute
+	res, err := resource.New(ctx,
+		resource.WithAttributes(semconv.ServiceNameKey.String(serviceName)),
+	)
+	handleErr(err, "failed to create the resource")
+
+	traceExporter, err := otlptracegrpc.New(ctx, otlptracegrpc.WithInsecure())
+	handleErr(err, "failed to create the trace exporter")
+
+	// Configures the SDK, exporting to a local running Collector
+	tp := sdktrace.NewTracerProvider(
+		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+		sdktrace.WithResource(res),
+		sdktrace.WithSpanProcessor(sdktrace.NewSimpleSpanProcessor(traceExporter)),
+	)
+	otel.SetTracerProvider(tp)
+	otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(propagation.TraceContext{}, propagation.Baggage{}))
+	return tp
 }
 
 func handleErr(err error, message string) {
