@@ -22,7 +22,7 @@ public class Startup
         services.AddOpenTelemetryTracing(options =>
         {
             options
-                .AddSource("csharp.aspnet.api")
+                .AddSource(Tracer.Name)
                 .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("csharp.aspnet.api"))
                 .SetSampler(new AlwaysOnSampler())
                 .AddHttpClientInstrumentation()
