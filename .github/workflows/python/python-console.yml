@@ -1,16 +1,16 @@
-name: JavaScript Console Sample Integration tests
+name: Python Console Sample Integration tests
 on:
   pull_request:
     paths:
-      - 'src/js/trace/console/**'
+      - 'src/python/trace/console/**'
       - 'test/trace/**'
       - '.github/workflows/integration-template.yml'
-      - '.github/workflows/js-console.yml'
+      - '.github/workflows/python/python-console.yml'
   workflow_dispatch:
 jobs:
   integration-tests:
     name: Test
     uses: joaopgrassi/otel-recipes/.github/workflows/integration-template.yml@main
     with:
-      sample_name: js.console.app
-      sample_path: ./src/js/trace/console
+      sample_name: python.console.app
+      sample_path: ./src/python/trace/console
