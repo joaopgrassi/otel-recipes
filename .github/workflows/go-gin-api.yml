@@ -1,0 +1,17 @@
+name: Go Gin API Sample Integration tests
+on:
+  pull_request:
+    paths:
+      - 'otel-recipes-schema.json'
+      - 'src/go/trace/gin-api/**'
+      - 'test/trace/**'
+      - '.github/workflows/api-integration-template.yml'
+      - '.github/workflows/go-gin-api.yml'
+  workflow_dispatch:
+jobs:
+  integration-tests:
+    name: Test
+    uses: joaopgrassi/otel-recipes/.github/workflows/api-integration-template.yml@main
+    with:
+      sample_name: go.gin.api
+      sample_path: ./src/go/trace/gin-api

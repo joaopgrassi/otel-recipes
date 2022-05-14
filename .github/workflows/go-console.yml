@@ -2,6 +2,7 @@ name: Go Console Sample Integration tests
 on:
   pull_request:
     paths:
+      - 'otel-recipes-schema.json'
       - 'src/go/trace/console/**'
       - 'test/trace/**'
       - '.github/workflows/integration-template.yml'
