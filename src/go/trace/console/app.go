@@ -32,14 +32,13 @@ func main() {
 		}
 	}()
 
-	// Start a span with an attribute
+	// Starts a span with an attribute
 	_, span := tracer.Start(
 		ctx,
 		"HelloWorldSpan",
 		trace.WithAttributes(attribute.String("foo", "bar")))
 	defer span.End()
 
-	// Important: pass around the ctx to operations!
 	fmt.Println("Hello world")
 }
 
