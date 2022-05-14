@@ -1,9 +1,6 @@
-FROM golang:alpine AS base
-
+FROM golang:alpine
 WORKDIR /app
 COPY . .
-
-FROM base AS gin-server
-RUN go install ./app.go
-
-CMD ["/go/bin/app"]
+RUN go mod download
+RUN go build -o go-recipe
+ENTRYPOINT [ "./go-recipe" ]
