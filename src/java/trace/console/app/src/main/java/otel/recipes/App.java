@@ -12,7 +12,7 @@ import io.opentelemetry.sdk.trace.export.SimpleSpanProcessor;
 import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
 
 public class App {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws InterruptedException {
     OtlpGrpcSpanExporter spanExporter = OtlpGrpcSpanExporter.builder().build();
 
     // Builds the Tracer Provider with span processor and resource attribute
@@ -34,7 +34,8 @@ public class App {
     span.setAttribute("foo", "bar");
     span.end();
 
-    // Shuts the Trace Provider down right before finishing the app
+    // Waits for things to settle and shuts the Trace Provider down right before finishing the app
+    Thread.sleep(2000);
     tracerProvider.shutdown();
   }
 }
