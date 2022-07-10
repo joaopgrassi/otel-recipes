@@ -10,10 +10,11 @@ from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import (
 
 # Creates a resource and adds it to the tracer provider
 resource = Resource.create({"service.name": "python.console.app"})
-trace.set_tracer_provider(TracerProvider(resource=resource))
+provider = TracerProvider(resource=resource)
+trace.set_tracer_provider(provider)
 
 # Adds span processor with the OTLP exporter to the tracer provider
-trace.get_tracer_provider().add_span_processor(
+provider.add_span_processor(
     BatchSpanProcessor(OTLPSpanExporter())
 )
 tracer = trace.get_tracer(__name__)

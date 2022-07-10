@@ -20,15 +20,15 @@
           "dependencies": [
             {
               "id": "opentelemetry-api",
-              "version": "1.10.0"
+              "version": "1.12.0rc2"
             },
             {
               "id": "opentelemetry-sdk",
-              "version": "1.10.0"
+              "version": "1.12.0rc2"
             },
             {
               "id": "opentelemetry-exporter-otlp-proto-grpc",
-              "version": "1.10.0"
+              "version": "1.12.0rc2"
             }
           ]
         }
