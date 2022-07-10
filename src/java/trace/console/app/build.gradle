@@ -8,11 +8,11 @@ repositories {
 }
 
 dependencies {
-    implementation platform("io.opentelemetry:opentelemetry-bom:1.9.1")
+    implementation platform("io.opentelemetry:opentelemetry-bom:1.15.0")
     implementation("io.opentelemetry:opentelemetry-api")
     implementation("io.opentelemetry:opentelemetry-exporter-otlp")
     implementation("io.opentelemetry:opentelemetry-sdk")
-    implementation("io.opentelemetry:opentelemetry-semconv:1.10.0-alpha-rc.2")
+    implementation("io.opentelemetry:opentelemetry-semconv:1.15.0-alpha")
 }
 
 jar {
