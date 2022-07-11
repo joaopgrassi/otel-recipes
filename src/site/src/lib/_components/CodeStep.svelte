@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import Highlight from 'svelte-highlight';
-	import 'svelte-highlight/src/styles/github-dark-dimmed.css';
-	import type { HljsLanguage } from 'svelte-highlight/src/languages';
+	import 'svelte-highlight/styles/github-dark-dimmed.css';
+	import type { HljsLanguage } from 'svelte-highlight/languages';
 	import { copyToClipboard } from '../_utils/utils';
 
 	import { Language, Languages, Sample, Samples, Step } from '$lib/common/types';
@@ -35,13 +35,13 @@
 	async function getHighlightJsLang(): Promise<HljsLanguage> {
 		switch (language.id) {
 			case Languages.csharp.id:
-				return (await import('svelte-highlight/src/languages/csharp')).default;
+				return (await import('svelte-highlight/languages/csharp')).default;
 			case Languages.go.id:
-				return (await import('svelte-highlight/src/languages/go')).default;
+				return (await import('svelte-highlight/languages/go')).default;
 			case Languages.java.id:
-				return (await import('svelte-highlight/src/languages/java')).default;
+				return (await import('svelte-highlight/languages/java')).default;
 			case Languages.js.id:
-				return (await import('svelte-highlight/src/languages/javascript')).default;
+				return (await import('svelte-highlight/languages/javascript')).default;
 		}
 	}
 </script>
