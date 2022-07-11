@@ -21,11 +21,11 @@
             "dependencies": [
               {
                 "id": "OpenTelemetry",
-                "version": "1.2.0-rc1"
+                "version": "1.3.0"
               },
               {
                 "id": "OpenTelemetry.Exporter.OpenTelemetryProtocol",
-                "version": "1.2.0-rc1"
+                "version": "1.3.0"
               }
             ]
           },
@@ -49,19 +49,19 @@
             "dependencies": [
               {
                 "id": "OpenTelemetry.Exporter.OpenTelemetryProtocol",
-                "version": "1.3.0-beta.1"
+                "version": "1.3.0"
               },
               {
                 "id": "OpenTelemetry.Extensions.Hosting",
-                "version": "1.0.0-rc9.3"
+                "version": "1.0.0-rc9.4"
               },
               {
                 "id": "OpenTelemetry.Instrumentation.AspNetCore",
-                "version": "1.0.0-rc9.3"
+                "version": "1.0.0-rc9.4"
               },
               {
                 "id": "OpenTelemetry.Instrumentation.Http",
-                "version": "1.0.0-rc9.3"
+                "version": "1.0.0-rc9.4"
               }
             ]
           }
@@ -91,11 +91,11 @@
             "dependencies": [
               {
                 "id": "go.opentelemetry.io/otel/sdk",
-                "version": "v1.3.0"
+                "version": "v1.8.0"
               },
               {
                 "id": "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc",
-                "version": "v1.3.0"
+                "version": "v1.8.0"
               }
             ]
           },
@@ -119,23 +119,23 @@
             "dependencies": [
               {
                 "id": "go.opentelemetry.io/otel",
-                "version": "v1.7.0"
+                "version": "v1.8.0"
               },
               {
                 "id": "go.opentelemetry.io/otel/sdk",
-                "version": "v1.3.0"
+                "version": "v1.8.0"
               },
               {
                 "id": "go.opentelemetry.io/otel/trace",
-                "version": "v1.3.0"
+                "version": "v1.8.0"
               },
               {
                 "id": "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc",
-                "version": "v1.3.0"
+                "version": "v1.8.0"
               },
               {
                 "id": "go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin",
-                "version": "v0.32.0"
+                "version": "v0.33.0"
               }
             ]
           }
@@ -165,23 +165,23 @@
             "dependencies": [
               {
                 "id": "io.opentelemetry:opentelemetry-bom",
-                "version": "1.9.1"
+                "version": "1.15.0"
               },
               {
                 "id": "io.opentelemetry:opentelemetry-api",
-                "version": "1.9.1"
+                "version": "1.15.0"
               },
               {
                 "id": "io.opentelemetry:opentelemetry-exporter-otlp",
-                "version": "1.9.1"
+                "version": "1.15.0"
               },
               {
                 "id": "io.opentelemetry:opentelemetry-sdk",
-                "version": "1.9.1"
+                "version": "1.15.0"
               },
               {
                 "id": "io.opentelemetry:opentelemetry-semconv",
-                "version": "1.10.0-alpha-rc.1"
+                "version": "1.15.0-alpha"
               }
             ]
           }
@@ -211,15 +211,15 @@
             "dependencies": [
               {
                 "id": "@opentelemetry/api",
-                "version": "^1.0.3"
+                "version": "^1.1.0"
               },
               {
                 "id": "@opentelemetry/sdk-trace-base",
-                "version": "^1.0.1"
+                "version": "^1.4.0"
               },
               {
                 "id": "@opentelemetry/exporter-trace-otlp-grpc",
-                "version": "^0.27.0"
+                "version": "^0.30.0"
               }
             ]
           }
@@ -249,15 +249,15 @@
             "dependencies": [
               {
                 "id": "opentelemetry-api",
-                "version": "1.10.0"
+                "version": "1.12.0rc2"
               },
               {
                 "id": "opentelemetry-sdk",
-                "version": "1.10.0"
+                "version": "1.12.0rc2"
               },
               {
                 "id": "opentelemetry-exporter-otlp-proto-grpc",
-                "version": "1.10.0"
+                "version": "1.12.0rc2"
               }
             ]
           }
