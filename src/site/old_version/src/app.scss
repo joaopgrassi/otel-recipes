@@ -1,0 +1,75 @@
+/* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */ /* Import only what you need from Bulma */
+@import 'font.scss';
+$family-serif: 'Heebo', linkMacSystemFont, -apple-system, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+	'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$family-primary: $family-serif;
+
+@import 'bulma/sass/utilities/_all';
+@import 'bulma/sass/base/_all';
+
+@import 'bulma/sass/elements/button';
+@import 'bulma/sass/elements/container';
+@import 'bulma/sass/elements/content';
+@import 'bulma/sass/elements/other';
+@import 'bulma/sass/elements/title';
+
+@import 'bulma/sass/components/card';
+@import 'bulma/sass/components/level';
+@import 'bulma/sass/components/navbar';
+@import 'bulma/sass/components/menu';
+
+@import 'bulma/sass/form/shared';
+@import 'bulma/sass/form/select';
+
+@import 'bulma/sass/grid/_all';
+@import 'bulma/sass/helpers/_all';
+@import 'bulma/sass/layout/_all';
+@import '@fontsource/fira-mono';
+
+$ph-bg: $code-bg;
+$ph-border: 0px;
+$ph-color: $grey;
+$ph-animation-duration: 1.5s;
+
+@import 'placeholder-loading/src/scss/placeholder-loading.scss';
+
+/* To have a sticky footer. https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/*/
+.site {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+.site-content {
+	flex: 1;
+}
+
+pre {
+	background-color: #22272e;
+	tab-size: 4;
+}
+
+.content pre {
+	padding:0;
+}
+
+pre code.hljs {
+	padding: 0;
+}
+
+a.navbar-item.is-active:not(:focus):not(:hover),
+.navbar-link.is-active:not(:focus):not(:hover) {
+	color: $grey-dark;
+}
+
+a.navbar-item:focus,
+a.navbar-item:focus-within,
+a.navbar-item:hover,
+a.navbar-item.is-active,
+.navbar-link:focus,
+.navbar-link:focus-within,
+.navbar-link:hover,
+.navbar-link.is-active {
+	background-color: transparent;
+	color: $link;
+}

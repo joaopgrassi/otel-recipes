@@ -1,7 +1,3 @@
-<script context="module" lang="ts">
-	export const prerender = true;
-</script>
-
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { fly } from 'svelte/transition';
