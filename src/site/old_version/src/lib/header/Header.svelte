@@ -21,7 +21,6 @@
 				data-target="navMenu"
 				class:is-active={showNav}
 				on:click={(e) => (showNav = !showNav)}
-				on:keydown={(e) => (showNav = !showNav)}
 			>
 				<span aria-hidden="true" />
 				<span aria-hidden="true" />

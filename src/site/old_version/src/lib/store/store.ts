@@ -3,7 +3,7 @@ import type { SignalDropDown } from '$lib/common/types';
 import { readable, writable, derived } from 'svelte/store';
 import type { Readable } from 'svelte/store';
 import data from '$lib/store/data.json';
-import { browser } from '$app/environment';
+import { browser } from '$app/env';
 
 let recipes = data as unknown as Recipe[];
 

@@ -12,9 +12,6 @@ const config = {
 	},
 	optimizeDeps: {
 		include: ["highlight.js", "highlight.js/lib/core"],
-	},
-	test: {
-		include: ['src/**/*.{test,spec}.{js,ts}']
 	}
 };
 
