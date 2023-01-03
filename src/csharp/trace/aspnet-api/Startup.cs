@@ -29,15 +29,15 @@ public class Startup
         // Exports to a locally running collector on port 4317
         services.AddOpenTelemetry()
             .ConfigureResource(configureResource)
-            .WithTracing(options =>
+            .WithTracing(builder =>
         {
-            options
+            builder
                 .AddSource(Tracer.Name)
                 .SetSampler(new AlwaysOnSampler())
                 .AddHttpClientInstrumentation()
                 .AddAspNetCoreInstrumentation()
                 .AddOtlpExporter();
-        });
+        }).StartWithHost();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
