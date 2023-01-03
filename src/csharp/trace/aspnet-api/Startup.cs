@@ -1,7 +1,10 @@
+using System;
 using System.Diagnostics;
+using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using OpenTelemetry;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
@@ -17,13 +20,19 @@ public class Startup
     {
         services.AddControllers();
 
+        // Build a resource configuration action to set service information.
+        Action<ResourceBuilder> configureResource = r => r.AddService(
+            serviceName: "csharp.aspnet.api",
+            serviceVersion: Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "unknown");
+
         // Configures the SDK, enabling Http client and ASP.NET Core instrumentation
         // Exports to a locally running collector on port 4317
-        services.AddOpenTelemetryTracing(options =>
+        services.AddOpenTelemetry()
+            .ConfigureResource(configureResource)
+            .WithTracing(options =>
         {
             options
                 .AddSource(Tracer.Name)
-                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("csharp.aspnet.api"))
                 .SetSampler(new AlwaysOnSampler())
                 .AddHttpClientInstrumentation()
                 .AddAspNetCoreInstrumentation()
