@@ -5,7 +5,6 @@ receivers:
       http:
 processors:
 exporters:
-  
   # Data sources: traces, metrics, logs
   logging:
     loglevel: debug
@@ -15,6 +14,9 @@ exporters:
     endpoint: "jaeger-otel-recipes:14250"
     tls:
       insecure: true
+  # Data source: Metrics to our test server
+  otlphttp:
+    metrics_endpoint: test-metrics-server:4319
 service:
   pipelines:
     traces:
@@ -24,4 +26,4 @@ service:
     metrics:
       receivers: [otlp]
       processors: []
-      exporters: [logging]
+      exporters: [otlphttp]
