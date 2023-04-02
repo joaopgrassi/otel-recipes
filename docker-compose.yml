@@ -9,7 +9,7 @@ services:
     command: --query.max-clock-skew-adjustment 1s
 
   otel-collector-otel-recipes:
-    image: otel/opentelemetry-collector-contrib:0.47.0
+    image: otel/opentelemetry-collector-contrib:0.74.0
     command: ["--config=/etc/collector-config.yaml", "${OTELCOL_ARGS}"]
     volumes:
       - ./collector-config.yaml:/etc/collector-config.yaml
