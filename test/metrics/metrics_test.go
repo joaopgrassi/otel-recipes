@@ -17,35 +17,76 @@ var sample = flag.String("sample", "none", "The name of the sample app used to q
 var expDim = &common.KeyValue{Key: "foo", Value: &common.AnyValue{Value: &common.AnyValue_StringValue{StringValue: "testValue"}}}
 
 func TestMetricGeneratedFromSample(t *testing.T) {
-	m := getMetricWithRetry(t)
-	var dims []*common.KeyValue
+	sm := getScopeMetricsWithRetry(t)
+	metrics := sm.GetMetrics()
 
-	// The metric name contains the "instrument type" which we can use to extract the data
-	if strings.Contains(strings.ToLower(*sample), "counter") {
-		s := m.GetData().(*v1.Metric_Sum)
-		dp := s.Sum.DataPoints[0]
-		dims = dp.Attributes
-		assert.Equal(t, 3, dp.GetAsInt())
-	} else if strings.Contains(strings.ToLower(*sample), "gauge") {
-		g := m.GetData().(*v1.Metric_Gauge)
-		dp := g.Gauge.DataPoints[0]
-		dims = dp.Attributes
-		assert.Equal(t, 5.7, dp.GetAsDouble())
-	} else if strings.Contains(strings.ToLower(*sample), "histogram") {
-		h := m.GetData().(*v1.Metric_Histogram)
-		dp := h.Histogram.DataPoints[0]
-		dims = dp.Attributes
-		assert.Equal(t, 3, dp.GetCount())
-	}
+	// 1 counter, 1 gauge, 1 histogram
+	assert.Equal(t, len(metrics), 3)
 
-	assert.Contains(t, dims, expDim, "Metric does not contain dimension 'foo:bar'")
+	assertCounter(t, metrics)
+	assertGauge(t, metrics)
 }
 
-func getMetric(t *testing.T) *v1.Metric {
-	t.Logf("Going to call the metrics server to fetch metric for sample: %s", *sample)
-	r, err := http.Get("http://localhost:8090/getMetric?metricName=" + *sample)
+func assertCounter(t *testing.T, metrics []*v1.Metric) {
+	m := findMetric(t, metrics, "counter")
+	s := m.GetData().(*v1.Metric_Sum)
+	dp := s.Sum.DataPoints[0]
+	assert.Equal(t, 3, dp.GetAsInt())
+	assert.Contains(t, dp.Attributes, expDim, "Metric does not contain dimension 'foo:bar'")
+}
+
+func assertGauge(t *testing.T, metrics []*v1.Metric) {
+	m := findMetric(t, metrics, "gauge")
+	g := m.GetData().(*v1.Metric_Gauge)
+	dp := g.Gauge.DataPoints[0]
+	assert.Equal(t, 5.7, dp.GetAsInt())
+	assert.Contains(t, dp.Attributes, expDim, "Metric does not contain dimension 'foo:bar'")
+}
+
+func findMetric(t *testing.T, metrics []*v1.Metric, mt string) *v1.Metric {
+	for _, m := range metrics {
+		if strings.Contains(strings.ToLower(m.GetName()), mt) {
+			return m
+		}
+	}
+	t.Fatalf("Could not find metric with type: %s", mt)
+	return nil
+}
+
+func getScopeMetricsWithRetry(t *testing.T) *v1.ScopeMetrics {
+	backoffSchedule := []time.Duration{
+		1 * time.Second,
+		3 * time.Second,
+		10 * time.Second,
+	}
+
+	var sm *v1.ScopeMetrics
+
+	// do some retries until we Jaeger has it
+	for _, backoff := range backoffSchedule {
+		sm = getScopeMetrics(t)
+
+		if sm != nil {
+			break
+		}
+
+		t.Logf("Metrics not found yet, retrying in %v\n", backoff)
+		time.Sleep(backoff)
+	}
+
+	// All retries failed
+	if sm == nil {
+		t.Fatalf("Failed getting metrics from metrics server")
+	}
+
+	return sm
+}
+
+func getScopeMetrics(t *testing.T) *v1.ScopeMetrics {
+	t.Logf("Going to call the metrics server to fetch metrics for sample: %s", *sample)
+	r, err := http.Get("http://localhost:8090/getMetric?scopeName=" + *sample)
 	if err != nil {
-		t.Fatalf("Failed getting metric from server: %v", err)
+		t.Fatalf("Failed getting metrics from server: %v", err)
 	}
 
 	t.Log("Received 200 response from metrics server")
@@ -56,40 +97,11 @@ func getMetric(t *testing.T) *v1.Metric {
 		t.Fatalf("Error reading payload from metrics server: %v", err)
 	}
 
-	m := &v1.Metric{}
-	err = proto.Unmarshal(body, m)
+	sm := &v1.ScopeMetrics{}
+	err = proto.Unmarshal(body, sm)
 	if err != nil {
 		t.Fatalf("Error reading payload from metrics server: %v", err)
 	}
 
-	return m
-}
-
-func getMetricWithRetry(t *testing.T) *v1.Metric {
-	backoffSchedule := []time.Duration{
-		1 * time.Second,
-		3 * time.Second,
-		10 * time.Second,
-	}
-
-	var metric *v1.Metric
-
-	// do some retries until we Jaeger has it
-	for _, backoff := range backoffSchedule {
-		metric = getMetric(t)
-
-		if metric != nil {
-			break
-		}
-
-		t.Logf("Metric not found yet, retrying in %v\n", backoff)
-		time.Sleep(backoff)
-	}
-
-	// All retries failed
-	if metric == nil {
-		t.Fatalf("Failed getting metric from metrics server")
-	}
-
-	return metric
+	return sm
 }
