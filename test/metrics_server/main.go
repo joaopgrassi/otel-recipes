@@ -67,7 +67,7 @@ func main() {
 	scopeMetrics = make(map[string]*v1.ScopeMetrics)
 
 	// POST endpoint called by the OTLP exporter in the collector
-	http.HandleFunc("/v1/scopeMetrics", postMetric)
+	http.HandleFunc("/v1/metrics", postMetric)
 
 	// GET endpoint called by the tests to assert the exported scopeMetrics
 	http.HandleFunc("/getMetric", getScopeMetrics)

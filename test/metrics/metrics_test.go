@@ -31,7 +31,7 @@ func assertCounter(t *testing.T, metrics []*v1.Metric) {
 	m := findMetric(t, metrics, "counter")
 	s := m.GetData().(*v1.Metric_Sum)
 	dp := s.Sum.DataPoints[0]
-	assert.Equal(t, 3, dp.GetAsInt())
+	assert.Equal(t, int64(3), dp.GetAsInt())
 	assert.Contains(t, dp.Attributes, expDim, "Metric does not contain dimension 'foo:bar'")
 }
 
@@ -39,7 +39,7 @@ func assertGauge(t *testing.T, metrics []*v1.Metric) {
 	m := findMetric(t, metrics, "gauge")
 	g := m.GetData().(*v1.Metric_Gauge)
 	dp := g.Gauge.DataPoints[0]
-	assert.Equal(t, 5.7, dp.GetAsInt())
+	assert.Equal(t, 5.5, dp.GetAsInt())
 	assert.Contains(t, dp.Attributes, expDim, "Metric does not contain dimension 'foo:bar'")
 }
 
@@ -84,7 +84,7 @@ func getScopeMetricsWithRetry(t *testing.T) *v1.ScopeMetrics {
 
 func getScopeMetrics(t *testing.T) *v1.ScopeMetrics {
 	t.Logf("Going to call the metrics server to fetch metrics for sample: %s", *sample)
-	r, err := http.Get("http://localhost:8090/getMetric?scopeName=" + *sample)
+	r, err := http.Get("http://localhost:4319/getMetric?scopeName=" + *sample)
 	if err != nil {
 		t.Fatalf("Failed getting metrics from server: %v", err)
 	}
