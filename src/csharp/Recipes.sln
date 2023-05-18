@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "trace\console\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreApi", "trace\aspnet-api\AspNetCoreApi.csproj", "{19E0D29E-3EBD-43D9-ABC5-D46741C665B7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "metrics", "metrics", "{878D4C00-5335-4D47-95CE-141DFC46F10D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "metrics\console\Console.csproj", "{1898E3AE-5093-43CA-AF4F-DC8372A6392E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,9 +30,14 @@ Global
 		{19E0D29E-3EBD-43D9-ABC5-D46741C665B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19E0D29E-3EBD-43D9-ABC5-D46741C665B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19E0D29E-3EBD-43D9-ABC5-D46741C665B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1898E3AE-5093-43CA-AF4F-DC8372A6392E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1898E3AE-5093-43CA-AF4F-DC8372A6392E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1898E3AE-5093-43CA-AF4F-DC8372A6392E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1898E3AE-5093-43CA-AF4F-DC8372A6392E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FDCB4D25-7205-48E8-A814-609753FE09CD} = {A64112D2-3ED5-4607-B98B-3BBA5720B8B9}
 		{19E0D29E-3EBD-43D9-ABC5-D46741C665B7} = {A64112D2-3ED5-4607-B98B-3BBA5720B8B9}
+		{1898E3AE-5093-43CA-AF4F-DC8372A6392E} = {878D4C00-5335-4D47-95CE-141DFC46F10D}
 	EndGlobalSection
 EndGlobal
