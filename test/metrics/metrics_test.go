@@ -14,14 +14,14 @@ import (
 )
 
 var sample = flag.String("sample", "none", "The name of the sample app used to query traces from Jaeger")
-var expDim = &common.KeyValue{Key: "foo", Value: &common.AnyValue{Value: &common.AnyValue_StringValue{StringValue: "testValue"}}}
+var expDim = &common.KeyValue{Key: "foo", Value: &common.AnyValue{Value: &common.AnyValue_StringValue{StringValue: "bar"}}}
 
 func TestMetricGeneratedFromSample(t *testing.T) {
 	sm := getScopeMetricsWithRetry(t)
 	metrics := sm.GetMetrics()
 
-	// 1 counter, 1 gauge, 1 histogram
-	assert.Equal(t, len(metrics), 3)
+	// 1 counter, 1 gauge
+	assert.Equal(t, len(metrics), 2)
 
 	assertCounter(t, metrics)
 	assertGauge(t, metrics)
@@ -39,7 +39,7 @@ func assertGauge(t *testing.T, metrics []*v1.Metric) {
 	m := findMetric(t, metrics, "gauge")
 	g := m.GetData().(*v1.Metric_Gauge)
 	dp := g.Gauge.DataPoints[0]
-	assert.Equal(t, 5.5, dp.GetAsInt())
+	assert.Equal(t, 3.5, dp.GetAsDouble())
 	assert.Contains(t, dp.Attributes, expDim, "Metric does not contain dimension 'foo:bar'")
 }
 

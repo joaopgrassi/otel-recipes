@@ -16,7 +16,8 @@ exporters:
       insecure: true
   # Data source: Metrics to our test server
   otlphttp:
-    metrics_endpoint: test-metrics-server:4319
+    metrics_endpoint: http://test-metrics-server:4319/v1/metrics
+    compression: none
 service:
   pipelines:
     traces:
@@ -26,4 +27,4 @@ service:
     metrics:
       receivers: [otlp]
       processors: []
-      exporters: [otlphttp]
+      exporters: [otlphttp, logging]
