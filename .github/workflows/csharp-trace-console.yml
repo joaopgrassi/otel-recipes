@@ -1,4 +1,4 @@
-name: C# Console Sample Integration tests
+name: C# Trace Console integration tests
 on:
   pull_request:
     paths:
@@ -6,7 +6,7 @@ on:
       - 'src/csharp/Recipes.sln'
       - 'test/trace/**'
       - '.github/workflows/integration-template.yml'
-      - '.github/workflows/csharp-console.yml'
+      - '.github/workflows/csharp-trace-console.yml'
   workflow_dispatch:
 jobs:
   integration-tests:
@@ -15,3 +15,4 @@ jobs:
     with:
       sample_name: csharp.console.app
       sample_path: ./src/csharp/trace/console
+      telemetry_signal: trace

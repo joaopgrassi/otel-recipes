@@ -1,4 +1,4 @@
-name: C# ASP.NET Core API Sample Integration tests
+name: C# Trace ASP.NET API integration tests
 on:
   pull_request:
     paths:
@@ -6,7 +6,7 @@ on:
       - 'src/csharp/Recipes.sln'
       - 'test/trace/**'
       - '.github/workflows/api-integration-template.yml'
-      - '.github/workflows/csharp-aspnet-api.yml'
+      - '.github/workflows/csharp-trace-aspnet-api.yml'
   workflow_dispatch:
 jobs:
   integration-tests:
@@ -15,3 +15,4 @@ jobs:
     with:
       sample_name: csharp.aspnet.api
       sample_path: ./src/csharp/trace/aspnet-api
+      telemetry_signal: trace
