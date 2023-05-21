@@ -10,6 +10,11 @@ on:
         description: 'The root path of the sample Dockerfile. E.g. ./src/csharp/trace/aspnet-api'
         required: true
         type: string
+      telemetry_signal:
+        description: 'The telemetry signal the sample generates. Allowed values: trace | metrics | logs'
+        required: true
+        type: string
+        default: 'trace'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,9 +38,15 @@ jobs:
         # make sure to use the host network so the container can access the collector on localhost:4317
         run: docker run -d --net=host ${{ inputs.sample_name }} --rm
 
-      - name: Test
+      - name: Test trace
+        if: ${{ inputs.telemetry_signal == 'trace' }}
         working-directory: ./test/trace
         run: go test -v -sample=${{ inputs.sample_name }} -run=^TestTraceGeneratedFromSampleApi$
+
+      - name: Test metrics
+        if: ${{ inputs.telemetry_signal == 'metrics' }}
+        working-directory: ./test/metrics
+        run: go test -v -sample=${{ inputs.sample_name }} -run=^TestMetricGeneratedFromSampleApi$
 
       - name: Stop depedencies
         run: |
