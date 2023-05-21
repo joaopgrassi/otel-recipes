@@ -1,12 +1,12 @@
-name: C# Console Sample Integration tests
+name: C# Metrics Console integration tests
 on:
   pull_request:
     paths:
-      - 'src/csharp/trace/console/**'
+      - 'src/csharp/metrics/console/**'
       - 'src/csharp/Recipes.sln'
-      - 'test/trace/**'
+      - 'test/metrics/**'
       - '.github/workflows/integration-template.yml'
-      - '.github/workflows/csharp-console.yml'
+      - '.github/workflows/csharp-metric-console.yml'
   workflow_dispatch:
 jobs:
   integration-tests:
@@ -14,4 +14,5 @@ jobs:
     uses: joaopgrassi/otel-recipes/.github/workflows/integration-template.yml@main
     with:
       sample_name: csharp.console.app
-      sample_path: ./src/csharp/trace/console
+      sample_path: ./src/csharp/metrics/console
+      telemetry_signal: metrics
