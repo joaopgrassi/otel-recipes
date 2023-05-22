@@ -20,4 +20,4 @@ jobs:
 
       - name: Test
         working-directory: ./test/jsonschema
-        run: go test -v -language=${{ inputs.language }}
+        run: go test -v -lang=${{ inputs.language }}

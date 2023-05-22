@@ -20,4 +20,4 @@ jobs:
 
       - name: Test
         working-directory: ./test/sample-unique
-        run: go test -v -language=${{ inputs.language }}
+        run: go test -v -lang=${{ inputs.language }}

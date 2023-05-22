@@ -3,7 +3,7 @@ on:
   pull_request:
     paths:
       - 'otel-recipes-schema.json'
-      - 'src/js/recipefile.json'
+      - 'src/js/**/recipefile.json'
       - '.github/workflows/jsonschema-validation-template.yml'
       - '.github/workflows/recipefile-unique-validation-template.yml'
       - '.github/workflows/js-recipefile-validation.yml'
