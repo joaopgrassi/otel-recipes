@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id "com.diffplug.spotless" version "6.0.0"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation platform("io.opentelemetry:opentelemetry-bom:1.26.0")
+    implementation("io.opentelemetry:opentelemetry-api")
+    implementation("io.opentelemetry:opentelemetry-exporter-otlp")
+    implementation("io.opentelemetry:opentelemetry-sdk")
+    implementation("io.opentelemetry:opentelemetry-semconv:1.26.0-alpha")
+}
+
+jar {
+    duplicatesStrategy = 'exclude'
+    manifest {
+        attributes 'Main-Class': 'otel.recipes.App'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+spotless {
+    format 'misc', {
+        target '*.gradle', '*.md', '.gitignore'
+
+        trimTrailingWhitespace()
+        indentWithSpaces(4)
+        endWithNewline()
+    }
+    java {
+        googleJavaFormat()
+    }
+}
