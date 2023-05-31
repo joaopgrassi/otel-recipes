@@ -1,12 +1,11 @@
-name: Go Console Sample Integration tests
+name: Go Metrics Console integration tests
 on:
   pull_request:
     paths:
-      - 'otel-recipes-schema.json'
-      - 'src/go/trace/console/**'
-      - 'test/trace/**'
+      - 'src/go/metrics/console/**'
+      - 'test/metrics/**'
       - '.github/workflows/integration-template.yml'
-      - '.github/workflows/go-console.yml'
+      - '.github/workflows/go-metric-console.yml'
   workflow_dispatch:
 jobs:
   integration-tests:
@@ -14,4 +13,5 @@ jobs:
     uses: joaopgrassi/otel-recipes/.github/workflows/integration-template.yml@main
     with:
       sample_name: go.console.app
-      sample_path: ./src/go/trace/console
+      sample_path: ./src/go/metrics/console
+      telemetry_signal: metrics
