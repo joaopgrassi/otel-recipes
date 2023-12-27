@@ -2,17 +2,18 @@
 	import { onMount } from 'svelte';
 	import Highlight from 'svelte-highlight';
 	import 'svelte-highlight/styles/github-dark-dimmed.css';
-	import type { HljsLanguage } from 'svelte-highlight/languages';
+	import type { javascript } from 'svelte-highlight/languages/javascript';
 	import { copyToClipboard } from '../_utils/utils';
 
 	import { Language, Languages, Sample, Samples, Step } from '$lib/common/types';
 	import LoadingStep from './LoadingStep.svelte';
+	import type { LanguageType } from 'svelte-highlight/languages';
 
 	export let step: Step;
 	export let sample: Sample;
 	export let language: Language;
 
-	let highlightJsLang: HljsLanguage;
+	let highlightJsLang: LanguageType<string>;
 	let code = '';
 	let isLoading = false;
 
@@ -32,7 +33,7 @@
 	 * This circumvents dynamic imports limitations:
 	 * https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#limitations
 	 */
-	async function getHighlightJsLang(): Promise<HljsLanguage> {
+	async function getHighlightJsLang(): Promise<LanguageType<string>> {
 		switch (language.id) {
 			case Languages.csharp.id:
 				return (await import('svelte-highlight/languages/csharp')).default;

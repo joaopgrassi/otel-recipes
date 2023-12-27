@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Highlight from 'svelte-highlight';
 	import 'svelte-highlight/styles/github-dark-dimmed.css';
-	import { shell } from 'svelte-highlight/languages';
+	import { shell } from 'svelte-highlight/languages/shell';
 
 	import { copyToClipboard } from '../_utils/utils';
 	import { Dependency, Language, Languages, Sample } from '$lib/common/types';
