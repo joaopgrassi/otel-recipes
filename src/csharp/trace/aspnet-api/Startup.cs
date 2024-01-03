@@ -1,10 +1,9 @@
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using OpenTelemetry;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
@@ -37,7 +36,7 @@ public class Startup
                 .AddHttpClientInstrumentation()
                 .AddAspNetCoreInstrumentation()
                 .AddOtlpExporter();
-        }).StartWithHost();
+        });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
