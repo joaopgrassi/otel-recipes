@@ -9,7 +9,7 @@
 			svelte-preprocess cannot figure out whether you have a value or a type, so tell TypeScript
 			to enforce using \`import type\` instead of \`import\` for Types.
 			*/
-		"importsNotUsedAsValues": "error",
+		"ignoreDeprecations": "5.0",
 		"isolatedModules": true,
 		"resolveJsonModule": true,
 		/**
