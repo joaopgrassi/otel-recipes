@@ -20,11 +20,11 @@
           "dependencies": [
             {
               "id": "OpenTelemetry",
-              "version": "1.3.0"
+              "version": "1.7.0"
             },
             {
               "id": "OpenTelemetry.Exporter.OpenTelemetryProtocol",
-              "version": "1.3.0"
+              "version": "1.7.0"
             }
           ]
         },
@@ -48,19 +48,19 @@
           "dependencies": [
             {
               "id": "OpenTelemetry.Exporter.OpenTelemetryProtocol",
-              "version": "1.3.0"
+              "version": "1.7.0"
             },
             {
               "id": "OpenTelemetry.Extensions.Hosting",
-              "version": "1.0.0-rc9.4"
+              "version": "1.7.0"
             },
             {
               "id": "OpenTelemetry.Instrumentation.AspNetCore",
-              "version": "1.0.0-rc9.4"
+              "version": "1.7.0"
             },
             {
               "id": "OpenTelemetry.Instrumentation.Http",
-              "version": "1.0.0-rc9.4"
+              "version": "1.7.0"
             }
           ]
         }
