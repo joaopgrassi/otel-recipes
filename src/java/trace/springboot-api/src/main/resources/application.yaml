@@ -1,0 +1,5 @@
+otel:
+  springboot:
+    resource:
+      attributes:
+        service.name: "java.springboot.api"
