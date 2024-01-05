@@ -36,7 +36,7 @@ jobs:
 
       - name: Run sample app
         # make sure to use the host network so the container can access the collector on localhost:4317
-        run: docker run -d --net=host ${{ inputs.sample_name }} --rm
+        run: docker run -d --network host ${{ inputs.sample_name }} --rm
 
       - name: Test trace
         if: ${{ inputs.telemetry_signal == 'trace' }}
