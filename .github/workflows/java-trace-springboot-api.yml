@@ -1,0 +1,17 @@
+name: Java Trace Spring Boot API integration tests
+on:
+  pull_request:
+    paths:
+      - 'src/java/trace/springboot-api/**'
+      - 'test/trace/**'
+      - '.github/workflows/api-integration-template.yml'
+      - '.github/workflows/java-trace-springboot-api.yml'
+  workflow_dispatch:
+jobs:
+  integration-tests:
+    name: Test
+    uses: joaopgrassi/otel-recipes/.github/workflows/api-integration-template.yml@main
+    with:
+      sample_name: java.springboot.api
+      sample_path: ./src/java/trace/springboot-api
+      telemetry_signal: trace
