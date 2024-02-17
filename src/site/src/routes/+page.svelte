@@ -3,19 +3,50 @@
 </svelte:head>
 
 <!-- intro -->
-<section class="section is-medium has-background-light">
-	<div class="container">
+<section class="hero is-fullheight has-background-grey-darker">
+  <div class="hero-body">
+    <div class="container is-fluid">
+			<div class="columns is-vcentered">
+				<div class="column is-7 ml-6">
+					<div class="section-header">
+						<h1 class="title hero-home-title has-text-white-bis mb-6 pb-6">
+							Navigate the world of OpenTelemetry
+						</h1>
+
+						<div class="block">
+							<span class="subtitle is-5 has-text-white-bis">
+								The place to get started with OpenTelemetry. Learn how to instrument your code by leveraging our specially curated, bite-sized code samples to get you started quickly.
+							</span>
+						</div>
+
+						<div class="field is-grouped">
+							<div class="control">
+								<a class="button is-primary is-medium" href="/recipes">Check the recipes</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="column ml-6 mt-6">
+					<img src="vision.svg" alt="Girl on laptop chilling with cute dogue" />
+				</div>
+			</div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section is-medium has-background-grey-darker">
+	<div class="container is-fluid">
 		<div class="columns is-vcentered">
-			<div class="column is-half is-5-fullhd is-offset-1-fullhd">
+			<div class="column">
 				<div class="section-header">
-					<h1 class="title is-spaced is-1">
-						OpenTelemetry
-						<span class="is-hidden-touch"><br /></span>
-						Recipes
+					<h1 class="title is-spaced is-1 has-text-white-bis">
+						Navigate the world of OpenTelemetry
 					</h1>
 
 					<div class="block">
-						<span class="subtitle is-4">
+						<span class="subtitle is-4 has-text-white-bis">
 							The place to get started with OpenTelemetry <span class="is-hidden-touch">
 								<br />
 							</span>
@@ -24,7 +55,7 @@
 					</div>
 
 					<div class="block">
-						<span class="subtitle is-4">
+						<span class="subtitle is-4 has-text-white-bis">
 							Explore the collection of bite-sized samples, specially curated to get you started
 							quickly.
 						</span>
@@ -37,12 +68,12 @@
 					</div>
 				</div>
 			</div>
-			<div class="column is-7">
+			<div class="column is-5">
 				<img src="vision.svg" alt="Girl on laptop chilling with cute dogue" />
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
 
 <!-- How it works section -->
 <section class="section is-medium">

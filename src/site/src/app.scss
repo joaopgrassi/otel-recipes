@@ -1,6 +1,6 @@
 /* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */ /* Import only what you need from Bulma */
 @import 'font.scss';
-$family-serif: 'Heebo', linkMacSystemFont, -apple-system, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+$family-serif: 'Manrope', linkMacSystemFont, -apple-system, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
 	'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
 $family-primary: $family-serif;
 
@@ -72,4 +72,13 @@ a.navbar-item.is-active,
 .navbar-link.is-active {
 	background-color: transparent;
 	color: $link;
+}
+
+
+.hero-home-title {
+	font-size: 6rem;
+}
+
+.hero-home-container {
+	// max-width: 1500px;
 }
