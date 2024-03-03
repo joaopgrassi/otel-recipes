@@ -7,23 +7,19 @@ $family-primary: $family-serif;
 @import 'bulma/sass/utilities/_all';
 @import 'bulma/sass/base/_all';
 
-@import 'bulma/sass/elements/button';
-@import 'bulma/sass/elements/container';
-@import 'bulma/sass/elements/content';
-@import 'bulma/sass/elements/other';
-@import 'bulma/sass/elements/title';
+@import 'bulma/sass/elements/_all';
 
 @import 'bulma/sass/components/card';
 @import 'bulma/sass/components/level';
+@import 'bulma/sass/components/media';
 @import 'bulma/sass/components/navbar';
 @import 'bulma/sass/components/menu';
 
-@import 'bulma/sass/form/shared';
-@import 'bulma/sass/form/select';
-
+@import 'bulma/sass/form/_all';
 @import 'bulma/sass/grid/_all';
 @import 'bulma/sass/helpers/_all';
 @import 'bulma/sass/layout/_all';
+
 @import '@fontsource/fira-mono';
 
 $ph-bg: $code-bg;

@@ -21,41 +21,9 @@ export const selectedLanguage = writable(Languages.none);
 export const selectedSignal = writable(Signals.none);
 export const selectedSampleId = writable(Samples.none.id);
 
-export const languages: Readable<Language[]> = derived([store.allLanguages], ([$langStore]) => {
-	// The set of languages we have samples for
-	const langIds = new Set($langStore.map((r: Recipe) => r.languageId));
+export const allLanguages: Readable<SignalDropDown[]> = readable(Languages.all);
 
-	const langs = Languages.all.filter((l: Language) => langIds.has(l.id));
-	langs.unshift(Languages.none);
-
-	return langs;
-});
-
-export const filteredSignals: Readable<SignalDropDown[]> = derived(
-	[store.allLanguages, selectedLanguage],
-	([$langStore, $selectedLanguage]) => {
-		if ($selectedLanguage.id === Languages.none.id) {
-			return [];
-		}
-
-		// if the selected language does not exist in the list, return empty
-		// This can happen for ex if someone changes the URL. E.g. /recipes/madeup-lang
-		if (!$langStore.some((r: Recipe) => r.languageId === $selectedLanguage.id)) {
-			return [];
-		}
-
-		const signalsIds = new Set(
-			$langStore
-				.find((r: Recipe) => r.languageId === $selectedLanguage.id)
-				.signals.map((s: Signal) => s.id)
-		);
-
-		const signals = Signals.all.filter((s: SignalDropDown) => signalsIds.has(s.id));
-		signals.unshift(Signals.none);
-
-		return signals;
-	}
-);
+export const allSignals: Readable<SignalDropDown[]> = readable(Signals.all);
 
 export const filteredSamples: Readable<Sample[]> = derived(
 	[store.allLanguages, selectedLanguage, selectedSignal],

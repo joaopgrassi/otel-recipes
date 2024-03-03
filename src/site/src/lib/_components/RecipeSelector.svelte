@@ -1,35 +1,23 @@
 <script lang="ts">
-	import { Signals, Samples } from '$lib/common/types';
-
-	import {
-		selectedLanguage,
-		languages,
-		filteredSignals,
-		selectedSignal,
-		selectedSampleId,
-		filteredSamples
-	} from '$lib/store/store';
-
-	function languageChanged() {
-		selectedSignal.set(Signals.none);
-		selectedSampleId.set(Samples.none.id);
-	}
-
-	function signalChanged() {
-		selectedSampleId.set(Samples.none.id);
-	}
+	import { selectedLanguage, allLanguages, allSignals, selectedSignal } from '$lib/store/store';
+	import RecipeCard from './RecipeCard.svelte';
 </script>
 
 <section class="section">
 	<div class="container">
 		<div class="columns has-text-centered">
 			<div class="column">
-				<div class="field">
-					<label class="label" for="language">Programming language</label>
+				<div class="field has-addons">
+					<!-- Input search -->
+					<div class="control is-expanded">
+						<input class="input is-medium" type="text" placeholder="Search for sample apps" />
+					</div>
+
+					<!-- Language select -->
 					<div class="control">
-						<div class="select is-rounded is-medium">
-							<select id="language" name="language" bind:value={$selectedLanguage} on:change={languageChanged}>
-								{#each $languages as lang}
+						<div class="select is-medium">
+							<select id="language" name="language" bind:value={$selectedLanguage}>
+								{#each $allLanguages as lang}
 									<option value={lang}>
 										{lang.displayName}
 									</option>
@@ -37,15 +25,12 @@
 							</select>
 						</div>
 					</div>
-				</div>
-			</div>
-			<div class="column">
-				<div class="field">
-					<label class="label" for="signal">Signal</label>
+
+					<!-- Signal select -->
 					<div class="control">
-						<div class="select is-rounded is-medium">
-							<select id="signal" name="signal" bind:value={$selectedSignal} on:change={signalChanged}>
-								{#each $filteredSignals as signal}
+						<div class="select is-medium">
+							<select class="" id="signal" name="signal" bind:value={$selectedSignal}>
+								{#each $allSignals as signal}
 									<option value={signal}>
 										{signal.displayName}
 									</option>
@@ -55,22 +40,15 @@
 					</div>
 				</div>
 			</div>
-			<div class="column">
-				<div class="field">
-					<label class="label" for="sample">Sample app</label>
-					<div class="control">
-						<div class="select is-rounded is-medium">
-							<select id="sample" name="sample" bind:value={$selectedSampleId}>
-								{#each $filteredSamples as sample}
-									<option value={sample.id}>
-										{sample.displayName}
-									</option>
-								{/each}
-							</select>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      <div class="column is-4-desktop is-6-tablet">
+
+				<RecipeCard></RecipeCard>
+      </div>
 </section>

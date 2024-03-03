@@ -45,19 +45,20 @@ export class Dependency {
 }
 
 export class Languages {
-	static readonly none: Language = { id: 'none', displayName: 'Select a language' };
+	static readonly none: Language = { id: 'none', displayName: 'Language' };
 	static readonly csharp: Language = { id: 'csharp', displayName: 'C#' };
 	static readonly go: Language = { id: 'go', displayName: 'Go' };
 	static readonly java: Language = { id: 'java', displayName: 'Java' };
 	static readonly js: Language = { id: 'js', displayName: 'JavaScript' };
 
-	static readonly all: Language[] = [this.csharp, this.go, this.java, this.js];
+	static readonly all: Language[] = [this.none, this.csharp, this.go, this.java, this.js];
 }
 
 export class Signals {
-	static readonly none: SignalDropDown = { id: 'none', displayName: 'Select a signal' };
+	static readonly none: SignalDropDown = { id: 'none', displayName: 'Signal' };
 
 	static readonly all: SignalDropDown[] = [
+		this.none,
 		{ id: 'trace', displayName: 'Trace' },
 		{ id: 'metrics', displayName: 'Metrics' },
 		{ id: 'logs', displayName: 'Logs' }
