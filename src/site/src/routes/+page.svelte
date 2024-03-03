@@ -7,17 +7,20 @@
   <div class="hero-body">
     <div class="container is-fluid">
 			<div class="columns is-vcentered">
-				<div class="column is-7 ml-6">
+				<div class="column is-7">
 					<div class="section-header">
-						<h1 class="title hero-home-title has-text-white-bis mb-6 pb-6">
+						<h1 class="title is-size-1 is-size-3-mobile has-text-white-bis mb-6">
 							Navigate the world of OpenTelemetry
 						</h1>
-
+						<h2 class="subtitle is-size-4 is-size-6-mobile has-text-white-bis">
+							Learn how to instrument your code by leveraging our specially curated, bite-sized code samples to get you started quickly with OpenTelemetry.
+						</h2>
+<!--
 						<div class="block">
 							<span class="subtitle is-5 has-text-white-bis">
-								The place to get started with OpenTelemetry. Learn how to instrument your code by leveraging our specially curated, bite-sized code samples to get you started quickly.
+								Learn how to instrument your code by leveraging our specially curated, bite-sized code samples to get you started quickly with OpenTelemetry.
 							</span>
-						</div>
+						</div> -->
 
 						<div class="field is-grouped">
 							<div class="control">
@@ -26,7 +29,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="column ml-6 mt-6">
+				<div class="column is-offset-1 mt-6">
 					<img src="vision.svg" alt="Girl on laptop chilling with cute dogue" />
 				</div>
 			</div>

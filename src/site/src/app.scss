@@ -57,11 +57,6 @@ pre code.hljs {
 	padding: 0;
 }
 
-a.navbar-item.is-active:not(:focus):not(:hover),
-.navbar-link.is-active:not(:focus):not(:hover) {
-	color: $grey-dark;
-}
-
 a.navbar-item:focus,
 a.navbar-item:focus-within,
 a.navbar-item:hover,
@@ -72,13 +67,4 @@ a.navbar-item.is-active,
 .navbar-link.is-active {
 	background-color: transparent;
 	color: $link;
-}
-
-
-.hero-home-title {
-	font-size: 6rem;
-}
-
-.hero-home-container {
-	// max-width: 1500px;
 }

@@ -1,10 +1,10 @@
-<footer class="footer has-background-light">
+<footer class="footer has-background-grey-darker">
 	<div class="container">
 		<div class="columns">
 			<div class="column is-5 is-4-widescreen">
 				<a class="navbar-item" href="/">
 					<div class="mr-2">
-						<img src="logotype-blue.svg" alt="OTel recipes logo" style="min-height: 60px;" width="auto" />
+						<img src="logotype-white.svg" alt="OTel recipes logo" style="min-height: 60px;" width="auto" />
 					</div>
 				</a>
 			</div>
@@ -57,21 +57,30 @@
 	</div>
 </footer>
 
-<style>
+<style lang="scss">
 	.menu {
 		font-size: 1rem;
 	}
 
 	.menu-label {
-		font-size: 1.275rem;
+		font-size: 1.3rem;
 		font-weight: 500;
 		text-transform: none;
 		letter-spacing: 0;
-		color: inherit;
+		color: $cultured;
 	}
 
 	.menu-list {
 		line-height: 1.25;
 		margin-left: -0.75rem;
+	}
+
+	.menu-list a {
+		color: $cultured;
+	}
+
+	.menu-list a:hover {
+		background-color: transparent;
+		color: $link;
 	}
 </style>
