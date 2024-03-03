@@ -1,302 +1,260 @@
 [
-  {
-    "$schema": "../../../otel-recipes-schema.json",
-    "languageId": "csharp",
-    "signals": [
-      {
-        "id": "metrics",
-        "samples": [
-          {
-            "id": "csharp-metrics-console",
-            "displayName": "Console App",
-            "description": "A C# console application instrumented with OpenTelemetry that generate metrics.",
-            "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/csharp/metrics/console",
-            "steps": [
-              {
-                "displayName": "Configure the SDK",
-                "order": 1,
-                "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/csharp/metrics/console/App.cs"
-              }
-            ],
-            "dependencies": [
-              {
-                "id": "OpenTelemetry",
-                "version": "1.4.0"
-              },
-              {
-                "id": "OpenTelemetry.Exporter.OpenTelemetryProtocol",
-                "version": "1.4.0"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "$schema": "../../../otel-recipes-schema.json",
-    "languageId": "csharp",
-    "signals": [
-      {
-        "id": "trace",
-        "samples": [
-          {
-            "id": "csharp-console",
-            "displayName": "Console App",
-            "description": "A C# console application instrumented with OpenTelemetry that generates a trace.",
-            "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/csharp/trace/console",
-            "steps": [
-              {
-                "displayName": "Configure the SDK",
-                "order": 1,
-                "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/csharp/trace/console/App.cs"
-              }
-            ],
-            "dependencies": [
-              {
-                "id": "OpenTelemetry",
-                "version": "1.3.0"
-              },
-              {
-                "id": "OpenTelemetry.Exporter.OpenTelemetryProtocol",
-                "version": "1.3.0"
-              }
-            ]
-          },
-          {
-            "id": "aspnet-api",
-            "displayName": "ASP.NET Core API",
-            "description": "An ASP.NET Core API instrumented with OpenTelemetry that generates a trace when the /helloworld endpoint is called",
-            "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/csharp/trace/aspnet-api",
-            "steps": [
-              {
-                "displayName": "Configure the SDK",
-                "order": 1,
-                "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/csharp/trace/aspnet-api/Startup.cs"
-              },
-              {
-                "displayName": "Create a span",
-                "order": 2,
-                "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/csharp/trace/aspnet-api/Controllers/HelloWorldController.cs"
-              }
-            ],
-            "dependencies": [
-              {
-                "id": "OpenTelemetry.Exporter.OpenTelemetryProtocol",
-                "version": "1.3.0"
-              },
-              {
-                "id": "OpenTelemetry.Extensions.Hosting",
-                "version": "1.0.0-rc9.4"
-              },
-              {
-                "id": "OpenTelemetry.Instrumentation.AspNetCore",
-                "version": "1.0.0-rc9.4"
-              },
-              {
-                "id": "OpenTelemetry.Instrumentation.Http",
-                "version": "1.0.0-rc9.4"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "$schema": "../../otel-recipes-schema.json",
-    "languageId": "go",
-    "signals": [
-      {
-        "id": "trace",
-        "samples": [
-          {
-            "id": "go-console",
-            "displayName": "Console App",
-            "description": "A go console application instrumented with OpenTelemetry that generates a trace.",
-            "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/go/trace/console",
-            "steps": [
-              {
-                "displayName": "Configure the SDK",
-                "order": 1,
-                "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/go/trace/console/app.go"
-              }
-            ],
-            "dependencies": [
-              {
-                "id": "go.opentelemetry.io/otel/sdk",
-                "version": "v1.8.0"
-              },
-              {
-                "id": "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc",
-                "version": "v1.8.0"
-              }
-            ]
-          },
-          {
-            "id": "gin-api",
-            "displayName": "Gin API",
-            "description": "A Gin API instrumented with OpenTelemetry that generates a trace when the /helloworld endpoint is called",
-            "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/go/trace/gin-api",
-            "steps": [
-              {
-                "displayName": "Configure the SDK",
-                "order": 1,
-                "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/go/trace/gin-api/app.go"
-              },
-              {
-                "displayName": "Create a span",
-                "order": 2,
-                "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/go/trace/gin-api/handlers.go"
-              }
-            ],
-            "dependencies": [
-              {
-                "id": "go.opentelemetry.io/otel",
-                "version": "v1.8.0"
-              },
-              {
-                "id": "go.opentelemetry.io/otel/sdk",
-                "version": "v1.8.0"
-              },
-              {
-                "id": "go.opentelemetry.io/otel/trace",
-                "version": "v1.8.0"
-              },
-              {
-                "id": "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc",
-                "version": "v1.8.0"
-              },
-              {
-                "id": "go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin",
-                "version": "v0.33.0"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "$schema": "../../otel-recipes-schema.json",
-    "languageId": "java",
-    "signals": [
-      {
-        "id": "trace",
-        "samples": [
-          {
-            "id": "java-console",
-            "displayName": "Console App",
-            "description": "A Java console application instrumented with OpenTelemetry that generates a trace.",
-            "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/java/trace/console",
-            "steps": [
-              {
-                "displayName": "Configure the SDK",
-                "order": 1,
-                "source": "https://raw.githubusercontent.com/open-telemetry/opentelemetry-java/main/api/events/src/main/java/io/opentelemetry/api/events/EventBuilder.java"
-              }
-            ],
-            "dependencies": [
-              {
-                "id": "io.opentelemetry:opentelemetry-bom",
-                "version": "1.15.0"
-              },
-              {
-                "id": "io.opentelemetry:opentelemetry-api",
-                "version": "1.15.0"
-              },
-              {
-                "id": "io.opentelemetry:opentelemetry-exporter-otlp",
-                "version": "1.15.0"
-              },
-              {
-                "id": "io.opentelemetry:opentelemetry-sdk",
-                "version": "1.15.0"
-              },
-              {
-                "id": "io.opentelemetry:opentelemetry-semconv",
-                "version": "1.15.0-alpha"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "$schema": "../../otel-recipes-schema.json",
-    "languageId": "js",
-    "signals": [
-      {
-        "id": "trace",
-        "samples": [
-          {
-            "id": "js-console",
-            "displayName": "Console App",
-            "description": "A nodejs console application instrumented with OpenTelemetry that generates a trace.",
-            "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/js/trace/console",
-            "steps": [
-              {
-                "displayName": "Configure the SDK",
-                "order": 1,
-                "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/js/trace/console/app.js"
-              }
-            ],
-            "dependencies": [
-              {
-                "id": "@opentelemetry/api",
-                "version": "^1.1.0"
-              },
-              {
-                "id": "@opentelemetry/sdk-trace-base",
-                "version": "^1.4.0"
-              },
-              {
-                "id": "@opentelemetry/exporter-trace-otlp-grpc",
-                "version": "^0.30.0"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "$schema": "../../otel-recipes-schema.json",
-    "languageId": "python",
-    "signals": [
-      {
-        "id": "trace",
-        "samples": [
-          {
-            "id": "python-console",
-            "displayName": "Console App",
-            "description": "A python console application instrumented with OpenTelemetry that generates a trace.",
-            "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/python/trace/console",
-            "steps": [
-              {
-                "displayName": "Configure the SDK",
-                "order": 1,
-                "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/python/trace/console/app.py"
-              }
-            ],
-            "dependencies": [
-              {
-                "id": "opentelemetry-api",
-                "version": "1.12.0rc2"
-              },
-              {
-                "id": "opentelemetry-sdk",
-                "version": "1.12.0rc2"
-              },
-              {
-                "id": "opentelemetry-exporter-otlp-proto-grpc",
-                "version": "1.12.0rc2"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+	{
+		"$schema": "../../../otel-recipes-schema.json",
+		"id": "csharp-metrics-console",
+		"languageId": "csharp",
+		"signal": "metrics",
+		"displayName": "Console App",
+		"description": "A C# console application instrumented with OpenTelemetry that generate metrics.",
+		"sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/csharp/metrics/console",
+		"steps": [
+			{
+				"displayName": "Configure the SDK",
+				"order": 1,
+				"source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/csharp/metrics/console/App.cs"
+			}
+		],
+		"dependencies": [
+			{
+				"id": "OpenTelemetry",
+				"version": "1.4.0"
+			},
+			{
+				"id": "OpenTelemetry.Exporter.OpenTelemetryProtocol",
+				"version": "1.4.0"
+			}
+		]
+	},
+	{
+		"$schema": "../../../otel-recipes-schema.json",
+		"id": "csharp-console",
+		"languageId": "csharp",
+		"signal": "trace",
+		"displayName": "Console App",
+		"description": "A C# console application instrumented with OpenTelemetry that generates a trace.",
+		"sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/csharp/trace/console",
+		"steps": [
+			{
+				"displayName": "Configure the SDK",
+				"order": 1,
+				"source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/csharp/trace/console/App.cs"
+			}
+		],
+		"dependencies": [
+			{
+				"id": "OpenTelemetry",
+				"version": "1.3.0"
+			},
+			{
+				"id": "OpenTelemetry.Exporter.OpenTelemetryProtocol",
+				"version": "1.3.0"
+			}
+		]
+	},
+	{
+		"$schema": "../../../otel-recipes-schema.json",
+		"id": "aspnet-api",
+		"languageId": "csharp",
+		"signal": "trace",
+		"displayName": "ASP.NET Core API",
+		"description": "An ASP.NET Core API instrumented with OpenTelemetry that generates a trace when the /helloworld endpoint is called",
+		"sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/csharp/trace/aspnet-api",
+		"steps": [
+			{
+				"displayName": "Configure the SDK",
+				"order": 1,
+				"source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/csharp/trace/aspnet-api/Startup.cs"
+			},
+			{
+				"displayName": "Create a span",
+				"order": 2,
+				"source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/csharp/trace/aspnet-api/Controllers/HelloWorldController.cs"
+			}
+		],
+		"dependencies": [
+			{
+				"id": "OpenTelemetry.Exporter.OpenTelemetryProtocol",
+				"version": "1.3.0"
+			},
+			{
+				"id": "OpenTelemetry.Extensions.Hosting",
+				"version": "1.0.0-rc9.4"
+			},
+			{
+				"id": "OpenTelemetry.Instrumentation.AspNetCore",
+				"version": "1.0.0-rc9.4"
+			},
+			{
+				"id": "OpenTelemetry.Instrumentation.Http",
+				"version": "1.0.0-rc9.4"
+			}
+		]
+	},
+	{
+		"$schema": "../../otel-recipes-schema.json",
+		"id": "go-console",
+		"languageId": "go",
+		"signal": "trace",
+		"displayName": "Console App",
+		"description": "A go console application instrumented with OpenTelemetry that generates a trace.",
+		"sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/go/trace/console",
+		"steps": [
+			{
+				"displayName": "Configure the SDK",
+				"order": 1,
+				"source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/go/trace/console/app.go"
+			}
+		],
+		"dependencies": [
+			{
+				"id": "go.opentelemetry.io/otel/sdk",
+				"version": "v1.8.0"
+			},
+			{
+				"id": "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc",
+				"version": "v1.8.0"
+			}
+		]
+	},
+	{
+		"$schema": "../../otel-recipes-schema.json",
+		"id": "gin-api",
+		"languageId": "go",
+		"signal": "trace",
+		"displayName": "Gin API",
+		"description": "A Gin API instrumented with OpenTelemetry that generates a trace when the /helloworld endpoint is called",
+		"sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/go/trace/gin-api",
+		"steps": [
+			{
+				"displayName": "Configure the SDK",
+				"order": 1,
+				"source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/go/trace/gin-api/app.go"
+			},
+			{
+				"displayName": "Create a span",
+				"order": 2,
+				"source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/go/trace/gin-api/handlers.go"
+			}
+		],
+		"dependencies": [
+			{
+				"id": "go.opentelemetry.io/otel",
+				"version": "v1.8.0"
+			},
+			{
+				"id": "go.opentelemetry.io/otel/sdk",
+				"version": "v1.8.0"
+			},
+			{
+				"id": "go.opentelemetry.io/otel/trace",
+				"version": "v1.8.0"
+			},
+			{
+				"id": "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc",
+				"version": "v1.8.0"
+			},
+			{
+				"id": "go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin",
+				"version": "v0.33.0"
+			}
+		]
+	},
+	{
+		"$schema": "../../otel-recipes-schema.json",
+		"id": "java-console",
+		"languageId": "java",
+		"signal": "trace",
+		"displayName": "Console App",
+		"description": "A Java console application instrumented with OpenTelemetry that generates a trace.",
+		"sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/java/trace/console",
+		"steps": [
+			{
+				"displayName": "Configure the SDK",
+				"order": 1,
+				"source": "https://raw.githubusercontent.com/open-telemetry/opentelemetry-java/main/api/events/src/main/java/io/opentelemetry/api/events/EventBuilder.java"
+			}
+		],
+		"dependencies": [
+			{
+				"id": "io.opentelemetry:opentelemetry-bom",
+				"version": "1.15.0"
+			},
+			{
+				"id": "io.opentelemetry:opentelemetry-api",
+				"version": "1.15.0"
+			},
+			{
+				"id": "io.opentelemetry:opentelemetry-exporter-otlp",
+				"version": "1.15.0"
+			},
+			{
+				"id": "io.opentelemetry:opentelemetry-sdk",
+				"version": "1.15.0"
+			},
+			{
+				"id": "io.opentelemetry:opentelemetry-semconv",
+				"version": "1.15.0-alpha"
+			}
+		]
+	},
+	{
+		"$schema": "../../otel-recipes-schema.json",
+		"id": "js-console",
+		"languageId": "js",
+		"signal": "trace",
+		"displayName": "Console App",
+		"description": "A nodejs console application instrumented with OpenTelemetry that generates a trace.",
+		"sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/js/trace/console",
+		"steps": [
+			{
+				"displayName": "Configure the SDK",
+				"order": 1,
+				"source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/js/trace/console/app.js"
+			}
+		],
+		"dependencies": [
+			{
+				"id": "@opentelemetry/api",
+				"version": "^1.1.0"
+			},
+			{
+				"id": "@opentelemetry/sdk-trace-base",
+				"version": "^1.4.0"
+			},
+			{
+				"id": "@opentelemetry/exporter-trace-otlp-grpc",
+				"version": "^0.30.0"
+			}
+		]
+	},
+	{
+		"$schema": "../../otel-recipes-schema.json",
+		"id": "python-console",
+		"languageId": "python",
+		"signal": "trace",
+		"displayName": "Console App",
+		"description": "A python console application instrumented with OpenTelemetry that generates a trace.",
+		"sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/python/trace/console",
+		"steps": [
+			{
+				"displayName": "Configure the SDK",
+				"order": 1,
+				"source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/python/trace/console/app.py"
+			}
+		],
+		"dependencies": [
+			{
+				"id": "opentelemetry-api",
+				"version": "1.12.0rc2"
+			},
+			{
+				"id": "opentelemetry-sdk",
+				"version": "1.12.0rc2"
+			},
+			{
+				"id": "opentelemetry-exporter-otlp-proto-grpc",
+				"version": "1.12.0rc2"
+			}
+		]
+	}
 ]

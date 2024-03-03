@@ -1,5 +1,11 @@
 <script lang="ts">
-	import { selectedLanguage, allLanguages, allSignals, selectedSignal } from '$lib/store/store';
+	import {
+		selectedLanguage,
+		allLanguages,
+		allSignals,
+		selectedSignal,
+		filteredSamples
+	} from '$lib/store/store';
 	import RecipeCard from './RecipeCard.svelte';
 </script>
 
@@ -45,10 +51,17 @@
 </section>
 
 <section class="section">
-  <div class="container">
-    <div class="columns is-multiline">
-      <div class="column is-4-desktop is-6-tablet">
-
-				<RecipeCard></RecipeCard>
-      </div>
+	<div class="container">
+		<div class="columns is-multiline">
+			{#if $filteredSamples.length > 0}
+				{#each $filteredSamples as sample}
+					<RecipeCard
+						title="{sample.displayName},"
+						description="{sample.description},"
+						source={sample.sourceRoot}
+					/>
+				{/each}
+			{/if}
+		</div>
+	</div>
 </section>

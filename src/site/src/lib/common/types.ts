@@ -1,32 +1,25 @@
 /**
  * Mapping types for the schema file.
  */
+
+export class LanguageDropDown {
+	id: string;
+	displayName: string;
+}
+
+export class SignalDropDown {
+	id: string;
+	displayName: string;
+}
+
 export class Recipe {
+	id: string;
 	languageId: string;
-	signals: Signal[];
-}
-
-export class Language {
-	id: string;
-	displayName: string;
-}
-
-export class Signal {
-	id: string;
-	displayName: string;
-	samples: Sample[];
-}
-
-export interface SignalDropDown {
-	id: string;
-	displayName: string;
-}
-
-export class Sample {
-	id: string;
+	signal: string;
 	displayName: string;
 	description?: string;
 	sourceRoot: string;
+	tags?: string[];
 	steps: Step[];
 	dependencies: Dependency[];
 }
@@ -45,13 +38,13 @@ export class Dependency {
 }
 
 export class Languages {
-	static readonly none: Language = { id: 'none', displayName: 'Language' };
-	static readonly csharp: Language = { id: 'csharp', displayName: 'C#' };
-	static readonly go: Language = { id: 'go', displayName: 'Go' };
-	static readonly java: Language = { id: 'java', displayName: 'Java' };
-	static readonly js: Language = { id: 'js', displayName: 'JavaScript' };
+	static readonly none: LanguageDropDown = { id: 'none', displayName: 'Language' };
+	static readonly csharp: LanguageDropDown = { id: 'csharp', displayName: 'C#' };
+	static readonly go: LanguageDropDown = { id: 'go', displayName: 'Go' };
+	static readonly java: LanguageDropDown = { id: 'java', displayName: 'Java' };
+	static readonly js: LanguageDropDown = { id: 'js', displayName: 'JavaScript' };
 
-	static readonly all: Language[] = [this.none, this.csharp, this.go, this.java, this.js];
+	static readonly all: LanguageDropDown[] = [this.none, this.csharp, this.go, this.java, this.js];
 }
 
 export class Signals {
@@ -65,9 +58,11 @@ export class Signals {
 	];
 }
 
-export class Samples {
-	static readonly none: Sample = {
+export class Recipes {
+	static readonly none: Recipe = {
 		id: 'none',
+		languageId: 'none',
+		signal: 'none',
 		displayName: 'Select a sample',
 		dependencies: [],
 		sourceRoot: '',

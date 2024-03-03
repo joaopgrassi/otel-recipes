@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
-	import { Samples, Step } from '$lib/common/types';
+	import { Recipes, Step } from '$lib/common/types';
 	import { selectedLanguage, selectedSample } from '$lib/store/store';
 	import CodeStep from './CodeStep.svelte';
 	import MetadataStep from './MetadataStep.svelte';
@@ -11,7 +11,7 @@
 	};
 </script>
 
-{#if $selectedSample.id !== Samples.none.id}
+{#if $selectedSample.id !== Recipes.none.id}
 	<div in:fly={{ x: 100, duration: 300 }}>
 		<section>
 			<div class="container has-text-centered">

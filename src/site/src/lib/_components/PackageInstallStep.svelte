@@ -4,10 +4,10 @@
 	import { shell } from 'svelte-highlight/languages/shell';
 
 	import { copyToClipboard } from '../_utils/utils';
-	import { Dependency, Language, Languages, Sample } from '$lib/common/types';
+	import { Dependency, LanguageDropDown, Languages, Recipe } from '$lib/common/types';
 
-	export let sample: Sample;
-	export let language: Language;
+	export let sample: Recipe;
+	export let language: LanguageDropDown;
 
 	let code = '';
 
