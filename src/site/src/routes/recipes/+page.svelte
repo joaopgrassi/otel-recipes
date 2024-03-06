@@ -2,7 +2,12 @@
 	import { page } from '$app/stores';
 	import { fly } from 'svelte/transition';
 	import { Languages, Recipes } from '$lib/common/types';
-	import { selectedLanguage, selectedSample, setFromUrl } from '$lib/store/store';
+	import {
+		selectedLanguage,
+		filteredSamples,
+		setFromUrl,
+		selectedSampleId
+	} from '$lib/store/store';
 	import RecipeSelector from '$lib/_components/RecipeSelector.svelte';
 	import RecipeSteps from '$lib/_components/RecipeSteps.svelte';
 	import { onDestroy, onMount } from 'svelte';
@@ -25,7 +30,7 @@
 
 <div class="container">
 	<RecipeSelector />
-	{#if $selectedSample.id === Recipes.none.id}
+	{#if $filteredSamples.length === 0 && $selectedSampleId === Recipes.none.id}
 		<section class="section" in:fly={{ x: 100, duration: 300 }}>
 			<div class="container">
 				<div class="columns is-5 is-variable is-vcentered ml-5">

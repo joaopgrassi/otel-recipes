@@ -1,12 +1,15 @@
 <script lang="ts">
+	import { Recipes } from '$lib/common/types';
 	import {
 		selectedLanguage,
 		allLanguages,
 		allSignals,
 		selectedSignal,
-		filteredSamples
+		filteredSamples,
+		selectedSampleId
 	} from '$lib/store/store';
 	import RecipeCard from './RecipeCard.svelte';
+	import { fly } from 'svelte/transition';
 </script>
 
 <section class="section">
@@ -50,18 +53,15 @@
 	</div>
 </section>
 
-<section class="section">
-	<div class="container">
-		<div class="columns is-multiline">
-			{#if $filteredSamples.length > 0}
+{#if $filteredSamples.length > 0 && $selectedSampleId === Recipes.none.id}
+	<section class="section" in:fly={{ x: 100, duration: 300 }}>
+		<div class="container">
+			<div class="columns is-multiline">
 				{#each $filteredSamples as sample}
-					<RecipeCard
-						title="{sample.displayName},"
-						description="{sample.description},"
-						source={sample.sourceRoot}
-					/>
+					<span />
+					<RecipeCard {sample} />
 				{/each}
-			{/if}
+			</div>
 		</div>
-	</div>
-</section>
+	</section>
+{/if}

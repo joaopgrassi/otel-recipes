@@ -1,4 +1,11 @@
-import { Recipe, LanguageDropDown, SignalDropDown, Languages, Signals, Recipes } from '$lib/common/types';
+import {
+	Recipe,
+	LanguageDropDown,
+	SignalDropDown,
+	Languages,
+	Signals,
+	Recipes
+} from '$lib/common/types';
 import { readable, writable, derived } from 'svelte/store';
 import type { Readable } from 'svelte/store';
 import data from '$lib/store/data.json';
@@ -6,7 +13,7 @@ import { browser } from '$app/environment';
 
 let recipes = data as unknown as Recipe[];
 
-const NONE: string = "none";
+const NONE: string = 'none';
 
 class LangStore {
 	get allRecipes(): Readable<Recipe[]> {
@@ -33,8 +40,6 @@ export const filteredSamples: Readable<Recipe[]> = derived(
 		// it's added again when the user selects a sample
 		clearQueryParams();
 
-		let filteredSamples: Recipe[] = [];
-
 		if ($selectedLanguage.id === Languages.none.id && $selectedSignal.id === Signals.none.id) {
 			return [];
 		}
@@ -52,7 +57,9 @@ export const filteredSamples: Readable<Recipe[]> = derived(
 		}
 
 		// Both filters selected
-		return $store.filter((r: Recipe) => r.languageId === $selectedLanguage.id && r.signal === $selectedSignal.id);
+		return $store.filter(
+			(r: Recipe) => r.languageId === $selectedLanguage.id && r.signal === $selectedSignal.id
+		);
 
 		// let signal = $store
 		// 	.find((l: Recipe) => l.languageId === $selectedLanguage.id)
@@ -69,38 +76,24 @@ export const filteredSamples: Readable<Recipe[]> = derived(
 );
 
 export const selectedSample: Readable<Recipe> = derived(
-	[store.allRecipes, selectedLanguage, selectedSignal, selectedSampleId],
-	([$store, $selectedLanguage, $selectedSignal, $selectedSampleId]) => {
-		// if (
-		// 	$selectedLanguage.id === Languages.none.id ||
-		// 	$selectedSignal.id === Signals.none.id ||
-		// 	$selectedSampleId === NONE
-		// ) {
-		// 	return NONE;
-		// }
+	[store.allRecipes, selectedSampleId],
+	([$store, $selectedSampleId]) => {
+		if ($selectedSampleId === NONE) {
+			return Recipes.none;
+		}
 
-		// const recipe = $store.find((l: Recipe) => l.languageId === $selectedLanguage.id);
-		// if (!recipe) {
-		// 	return NONE;
-		// }
+		const recipe = $store.find((r: Recipe) => r.id === $selectedSampleId);
+		if (!recipe) {
+			return Recipes.none;
+		}
 
-		// const signal = recipe.signals.find((s: Signal) => s.id === $selectedSignal.id);
-		// if (!signal) {
-		// 	return Samples.none;
-		// }
-
-		// const sample = signal.samples.find((app: Recipe) => app.id === $selectedSampleId);
-		// if (!sample) {
-		// 	return Samples.none;
-		// }
+		return recipe;
 
 		// replaceStateWithQuery({
 		// 	language: $selectedLanguage.id,
 		// 	signal: $selectedSignal.id,
 		// 	sample: sample.id
 		// });
-		// return sample;
-		return Recipes.none;
 	}
 );
 

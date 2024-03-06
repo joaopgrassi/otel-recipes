@@ -64,3 +64,13 @@ a.navbar-item.is-active,
 	background-color: transparent;
 	color: $link;
 }
+
+
+.card-equal-height {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+.card-equal-height .card-footer {
+ margin-top: auto;
+}

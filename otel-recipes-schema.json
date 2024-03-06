@@ -20,11 +20,17 @@
     },
     "displayName": {
       "type": "string",
-      "description": "The user friendly name of the sample app. This is shown on the website (filters)"
+      "description": "The user friendly name of the sample app. This is shown on the website (filters)",
+      "maxLength": 100
     },
     "description": {
       "type": "string",
-      "description": "A brief description of the sample app. This is shown in the 'sample metadata' section on the website"
+      "description": "A brief description of the sample app. This is shown in the 'sample metadata' section on the website",
+      "maxLength": 250
+    },
+    "tags": {
+      "type": "array",
+      "description": "Related tags with the language/technology of the recipe."
     },
     "sourceRoot": {
       "type": "string",

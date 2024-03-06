@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { Recipes, Step } from '$lib/common/types';
-	import { selectedLanguage, selectedSample } from '$lib/store/store';
+	import { selectedLanguage, selectedSample, selectedSampleId } from '$lib/store/store';
 	import CodeStep from './CodeStep.svelte';
 	import MetadataStep from './MetadataStep.svelte';
 	import PackageInstallStep from './PackageInstallStep.svelte';
@@ -18,6 +18,7 @@
 				<h2 class="subtitle is-5">
 					Follow the steps below to configure OpenTelemetry in your project 🔭
 				</h2>
+				<button class="button is-primary ml-auto" on:click={() => selectedSampleId.set(Recipes.none.id)}>Back to results</button>
 			</div>
 		</section>
 		<div class="section">
