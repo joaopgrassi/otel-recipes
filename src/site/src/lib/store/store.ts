@@ -60,18 +60,6 @@ export const filteredSamples: Readable<Recipe[]> = derived(
 		return $store.filter(
 			(r: Recipe) => r.languageId === $selectedLanguage.id && r.signal === $selectedSignal.id
 		);
-
-		// let signal = $store
-		// 	.find((l: Recipe) => l.languageId === $selectedLanguage.id)
-		// 	.signals.find((s: Signal) => s.id === $selectedSignal.id);
-
-		// if (!signal) {
-		// 	return [];
-		// }
-
-		// let samples = signal.samples.map((app: Recipe) => app);
-		// samples.unshift(Samples.none);
-		// return samples;
 	}
 );
 
@@ -87,6 +75,12 @@ export const selectedSample: Readable<Recipe> = derived(
 			return Recipes.none;
 		}
 
+		// When a sample is selected, make sure to also select the language and signal
+		// the filters are not all required for the search, but are required to display
+		// the sample metadata
+		selectedLanguage.set(Languages.all.find((l) => l.id === recipe.languageId));
+		selectedSignal.set(Signals.all.find((l) => l.id === recipe.signal));
+
 		return recipe;
 
 		// replaceStateWithQuery({
@@ -96,6 +90,12 @@ export const selectedSample: Readable<Recipe> = derived(
 		// });
 	}
 );
+
+export function resetSearch() {
+	selectedLanguage.set(Languages.none);
+	selectedSignal.set(Signals.none);
+	selectedSampleId.set(NONE);
+}
 
 export function setFromUrl(languageId?: string, signalId?: string, sampleId?: string) {
 	if (!languageId || !signalId || !sampleId) {

@@ -1,13 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { fly } from 'svelte/transition';
-	import { Languages, Recipes } from '$lib/common/types';
-	import {
-		selectedLanguage,
-		filteredSamples,
-		setFromUrl,
-		selectedSampleId
-	} from '$lib/store/store';
+	import { Recipes } from '$lib/common/types';
+	import { filteredSamples, setFromUrl, selectedSampleId, resetSearch } from '$lib/store/store';
 	import RecipeSelector from '$lib/_components/RecipeSelector.svelte';
 	import RecipeSteps from '$lib/_components/RecipeSteps.svelte';
 	import { onDestroy, onMount } from 'svelte';
@@ -20,7 +15,7 @@
 	});
 
 	onDestroy(() => {
-		selectedLanguage.set(Languages.none);
+		resetSearch();
 	});
 </script>
 
