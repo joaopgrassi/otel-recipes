@@ -10,10 +10,21 @@ import { readable, writable, derived } from 'svelte/store';
 import type { Readable } from 'svelte/store';
 import data from '$lib/store/data.json';
 import { browser } from '$app/environment';
+import Fuse from 'fuse.js';
 
 let recipes = data as unknown as Recipe[];
 
 const NONE: string = 'none';
+
+const fuseOpts = {
+	includeScore: true,
+	minMatchCharLength: 3,
+	ignoreLocation: true,
+	threshold: 0,
+	keys: ['displayName', 'description']
+};
+
+const fuse = new Fuse(recipes, fuseOpts);
 
 class LangStore {
 	get allRecipes(): Readable<Recipe[]> {
@@ -25,6 +36,7 @@ class LangStore {
 }
 
 export const store = new LangStore();
+export const textSearch = writable('');
 export const selectedLanguage = writable(Languages.none);
 export const selectedSignal = writable(Signals.none);
 export const selectedSampleId = writable(NONE);
@@ -34,32 +46,38 @@ export const allLanguages: Readable<SignalDropDown[]> = readable(Languages.all);
 export const allSignals: Readable<SignalDropDown[]> = readable(Signals.all);
 
 export const filteredSamples: Readable<Recipe[]> = derived(
-	[store.allRecipes, selectedLanguage, selectedSignal],
-	([$store, $selectedLanguage, $selectedSignal]) => {
+	[store.allRecipes, textSearch, selectedLanguage, selectedSignal],
+	([$store, $textSearch, $selectedLanguage, $selectedSignal]) => {
 		// reset the query params when the selected language/signal changes
 		// it's added again when the user selects a sample
 		clearQueryParams();
 
-		if ($selectedLanguage.id === Languages.none.id && $selectedSignal.id === Signals.none.id) {
+		if (
+			$textSearch === '' &&
+			$selectedLanguage.id === Languages.none.id &&
+			$selectedSignal.id === Signals.none.id
+		) {
 			return [];
 		}
 
-		// Only language filter selected
-		if ($selectedLanguage.id !== Languages.none.id && $selectedSignal.id === Signals.none.id) {
-			const recipes = $store.filter((r: Recipe) => r.languageId === $selectedLanguage.id);
-			return recipes;
+		let recipes: Recipe[] = $store;
+
+		// if there's any text, filter for it first.
+		if ($textSearch !== '') {
+			recipes = fuse.search($textSearch).map((r) => r.item);
+		}
+
+		if ($selectedLanguage.id !== Languages.none.id) {
+			recipes = recipes.filter((r: Recipe) => r.languageId === $selectedLanguage.id);
 		}
 
 		// Only signal filter selected
-		if ($selectedLanguage.id === Languages.none.id && $selectedSignal.id !== Signals.none.id) {
-			const recipes = $store.filter((r: Recipe) => r.signal === $selectedSignal.id);
+		if ($selectedSignal.id !== Signals.none.id) {
+			recipes = recipes.filter((r: Recipe) => r.signal === $selectedSignal.id);
 			return recipes;
 		}
 
-		// Both filters selected
-		return $store.filter(
-			(r: Recipe) => r.languageId === $selectedLanguage.id && r.signal === $selectedSignal.id
-		);
+		return recipes;
 	}
 );
 
@@ -97,11 +115,7 @@ export function resetSearch() {
 	selectedSampleId.set(NONE);
 }
 
-export function setFromUrl(languageId?: string, signalId?: string, sampleId?: string) {
-	if (!languageId || !signalId || !sampleId) {
-		return;
-	}
-
+export function setFromUrl(languageId?: string, signalId?: string, recipeId?: string) {
 	const language = Languages.all.find((l: LanguageDropDown) => l.id === languageId);
 	if (!language) {
 		// if the selected language does not exist in the list, set to none
@@ -119,7 +133,7 @@ export function setFromUrl(languageId?: string, signalId?: string, sampleId?: st
 		return;
 	}
 	selectedSignal.set(signal);
-	selectedSampleId.set(sampleId);
+	selectedSampleId.set(recipeId);
 }
 
 function clearQueryParams(): void {

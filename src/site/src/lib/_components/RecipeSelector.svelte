@@ -6,7 +6,8 @@
 		allSignals,
 		selectedSignal,
 		filteredSamples,
-		selectedSampleId
+		selectedSampleId,
+		textSearch
 	} from '$lib/store/store';
 	import RecipeCard from './RecipeCard.svelte';
 	import { fly } from 'svelte/transition';
@@ -20,7 +21,12 @@
 					<div class="field has-addons">
 						<!-- Input search -->
 						<div class="control is-expanded">
-							<input class="input is-medium" type="text" placeholder="Search for sample apps" />
+							<input
+								class="input is-medium"
+								type="text"
+								placeholder="Search for sample apps"
+								bind:value={$textSearch}
+							/>
 						</div>
 
 						<!-- Language select -->
