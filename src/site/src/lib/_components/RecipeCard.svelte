@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Recipe } from '$lib/common/types';
-	import { selectedSampleId } from '$lib/store/store';
+	import { selectedRecipeId } from '$lib/store/store';
 	import { fly } from 'svelte/transition';
 	export let sample: Recipe;
 </script>
@@ -49,7 +49,7 @@
 		<footer class="card-footer">
 			<div class="card-footer-item">
 				<div class="is-flex is-justify-content-space-between" style="width: 100%;">
-					<button class="button is-primary ml-auto" on:click={() => selectedSampleId.set(sample.id)}
+					<button class="button is-primary ml-auto" on:click={() => selectedRecipeId.set(sample.id)}
 						>See recipe</button
 					>
 				</div>

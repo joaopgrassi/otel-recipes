@@ -6,14 +6,14 @@
 		allSignals,
 		selectedSignal,
 		filteredSamples,
-		selectedSampleId,
+		selectedRecipeId,
 		textSearch
 	} from '$lib/store/store';
 	import RecipeCard from './RecipeCard.svelte';
 	import { fly } from 'svelte/transition';
 </script>
 
-{#if $selectedSampleId === Recipes.none.id}
+{#if $selectedRecipeId === Recipes.none.id}
 	<section class="section">
 		<div class="container">
 			<div class="columns has-text-centered">
@@ -61,7 +61,7 @@
 	</section>
 {/if}
 
-{#if $filteredSamples.length > 0 && $selectedSampleId === Recipes.none.id}
+{#if $filteredSamples.length > 0 && $selectedRecipeId === Recipes.none.id}
 	<section class="section" in:fly={{ x: 100, duration: 300 }}>
 		<div class="container">
 			<div class="columns is-multiline">

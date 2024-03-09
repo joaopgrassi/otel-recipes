@@ -5,10 +5,20 @@
 	import CodeStep from './CodeStep.svelte';
 	import MetadataStep from './MetadataStep.svelte';
 	import PackageInstallStep from './PackageInstallStep.svelte';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 
 	const getSortedSteps = (steps: Step[]) => {
 		return steps.sort((left: Step, right: Step) => left.order - right.order);
 	};
+
+	function reset() {
+		resetSearch();
+		$page.url.searchParams.delete('language');
+		$page.url.searchParams.delete('signal');
+		$page.url.searchParams.delete('recipe');
+		goto($page.url);
+	}
 </script>
 
 {#if $selectedSample.id !== Recipes.none.id}
@@ -18,7 +28,7 @@
 				<h2 class="subtitle is-5">
 					Follow the steps below to configure OpenTelemetry in your project 🔭
 				</h2>
-				<button class="button is-primary ml-auto" on:click={() => resetSearch()}>Start over</button>
+				<button class="button is-primary ml-auto" on:click={() => reset()}>Start over</button>
 			</div>
 		</section>
 		<div class="section">

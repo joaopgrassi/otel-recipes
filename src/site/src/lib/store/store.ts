@@ -11,6 +11,7 @@ import type { Readable } from 'svelte/store';
 import data from '$lib/store/data.json';
 import { browser } from '$app/environment';
 import Fuse from 'fuse.js';
+import { page } from '$app/stores';
 
 let recipes = data as unknown as Recipe[];
 
@@ -39,7 +40,7 @@ export const store = new LangStore();
 export const textSearch = writable('');
 export const selectedLanguage = writable(Languages.none);
 export const selectedSignal = writable(Signals.none);
-export const selectedSampleId = writable(NONE);
+export const selectedRecipeId = writable(NONE);
 
 // For drop-downs
 export const allLanguages: Readable<SignalDropDown[]> = readable(Languages.all);
@@ -50,10 +51,10 @@ export const filteredSamples: Readable<Recipe[]> = derived(
 	([$store, $textSearch, $selectedLanguage, $selectedSignal]) => {
 		// reset the query params when the selected language/signal changes
 		// it's added again when the user selects a sample
-		clearQueryParams();
+		// clearQueryParams();
 
 		if (
-			$textSearch === '' &&
+			!$textSearch &&
 			$selectedLanguage.id === Languages.none.id &&
 			$selectedSignal.id === Signals.none.id
 		) {
@@ -63,7 +64,7 @@ export const filteredSamples: Readable<Recipe[]> = derived(
 		let recipes: Recipe[] = $store;
 
 		// if there's any text, filter for it first.
-		if ($textSearch !== '') {
+		if ($textSearch) {
 			recipes = fuse.search($textSearch).map((r) => r.item);
 		}
 
@@ -82,13 +83,13 @@ export const filteredSamples: Readable<Recipe[]> = derived(
 );
 
 export const selectedSample: Readable<Recipe> = derived(
-	[store.allRecipes, selectedSampleId],
-	([$store, $selectedSampleId]) => {
-		if ($selectedSampleId === NONE) {
+	[store.allRecipes, selectedRecipeId],
+	([$store, $selectedRecipeId]) => {
+		if ($selectedRecipeId === NONE) {
 			return Recipes.none;
 		}
 
-		const recipe = $store.find((r: Recipe) => r.id === $selectedSampleId);
+		const recipe = $store.find((r: Recipe) => r.id === $selectedRecipeId);
 		if (!recipe) {
 			return Recipes.none;
 		}
@@ -100,22 +101,22 @@ export const selectedSample: Readable<Recipe> = derived(
 		selectedSignal.set(Signals.all.find((l) => l.id === recipe.signal));
 
 		return recipe;
-
-		// replaceStateWithQuery({
-		// 	language: $selectedLanguage.id,
-		// 	signal: $selectedSignal.id,
-		// 	sample: sample.id
-		// });
 	}
 );
 
 export function resetSearch() {
+	textSearch.set(null);
 	selectedLanguage.set(Languages.none);
 	selectedSignal.set(Signals.none);
-	selectedSampleId.set(NONE);
+	selectedRecipeId.set(NONE);
 }
 
 export function setFromUrl(languageId?: string, signalId?: string, recipeId?: string) {
+	if (recipeId) {
+		selectedRecipeId.set(recipeId);
+		return;
+	}
+
 	const language = Languages.all.find((l: LanguageDropDown) => l.id === languageId);
 	if (!language) {
 		// if the selected language does not exist in the list, set to none
@@ -133,28 +134,27 @@ export function setFromUrl(languageId?: string, signalId?: string, recipeId?: st
 		return;
 	}
 	selectedSignal.set(signal);
-	selectedSampleId.set(recipeId);
 }
 
-function clearQueryParams(): void {
-	replaceStateWithQuery({
-		language: null,
-		signal: null,
-		sample: null
-	});
-}
+// function clearQueryParams(): void {
+// 	replaceStateWithQuery({
+// 		language: null,
+// 		signal: null,
+// 		sample: null
+// 	});
+// }
 
-function replaceStateWithQuery(values: Record<string, string>): void {
-	if (!browser) {
-		return;
-	}
-	const url = new URL(window.location.toString());
-	for (let [k, v] of Object.entries(values)) {
-		if (!!v) {
-			url.searchParams.set(encodeURIComponent(k), encodeURIComponent(v));
-		} else {
-			url.searchParams.delete(k);
-		}
-	}
-	history.replaceState({}, '', url);
-}
+// function replaceStateWithQuery(values: Record<string, string>): void {
+// 	if (!browser) {
+// 		return;
+// 	}
+// 	const url = new URL(window.location.toString());
+// 	for (let [k, v] of Object.entries(values)) {
+// 		if (!!v) {
+// 			url.searchParams.set(encodeURIComponent(k), encodeURIComponent(v));
+// 		} else {
+// 			url.searchParams.delete(k);
+// 		}
+// 	}
+// 	replaceState(url, {});
+// }

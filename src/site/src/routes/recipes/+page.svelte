@@ -1,21 +1,61 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { fly } from 'svelte/transition';
-	import { Recipes } from '$lib/common/types';
-	import { filteredSamples, setFromUrl, selectedSampleId, resetSearch } from '$lib/store/store';
+	import {
+		LanguageDropDown,
+		Languages,
+		Recipe,
+		Recipes,
+		SignalDropDown,
+		Signals
+	} from '$lib/common/types';
+	import {
+		filteredSamples,
+		setFromUrl,
+		selectedRecipeId,
+		resetSearch,
+		selectedSample,
+		selectedLanguage,
+		selectedSignal
+	} from '$lib/store/store';
 	import RecipeSelector from '$lib/_components/RecipeSelector.svelte';
 	import RecipeSteps from '$lib/_components/RecipeSteps.svelte';
 	import { onDestroy, onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 
 	onMount(() => {
-		const lang = $page.url.searchParams.get('language');
+		const language = $page.url.searchParams.get('language');
 		const signal = $page.url.searchParams.get('signal');
-		const sample = $page.url.searchParams.get('sample');
-		setFromUrl(lang, signal, sample);
+		const sample = $page.url.searchParams.get('recipe');
+		setFromUrl(language, signal, sample);
+	});
+
+	const selectedRecipeStore$ = selectedSample.subscribe((recipe: Recipe) => {
+		if (recipe.id !== 'none') {
+			$page.url.searchParams.set('recipe', recipe.id);
+			goto(`?${$page.url.searchParams.toString()}`);
+		}
+	});
+
+	const selectedLanguageStore$ = selectedLanguage.subscribe((lang: LanguageDropDown) => {
+		if (lang.id !== Languages.none.id) {
+			$page.url.searchParams.set('language', lang.id);
+			goto(`?${$page.url.searchParams.toString()}`);
+		}
+	});
+
+	const selectedSignalStore$ = selectedSignal.subscribe((signal: SignalDropDown) => {
+		if (signal.id !== Signals.none.id) {
+			$page.url.searchParams.set('signal', signal.id);
+			goto(`?${$page.url.searchParams.toString()}`);
+		}
 	});
 
 	onDestroy(() => {
-		resetSearch();
+		selectedRecipeStore$;
+		selectedLanguageStore$;
+		selectedSignalStore$;
+		// resetSearch();
 	});
 </script>
 
@@ -25,7 +65,7 @@
 
 <div class="container">
 	<RecipeSelector />
-	{#if $filteredSamples.length === 0 && $selectedSampleId === Recipes.none.id}
+	{#if $filteredSamples.length === 0 && $selectedRecipeId === Recipes.none.id}
 		<section class="section" in:fly={{ x: 100, duration: 300 }}>
 			<div class="container">
 				<div class="columns is-5 is-variable is-vcentered ml-5">
