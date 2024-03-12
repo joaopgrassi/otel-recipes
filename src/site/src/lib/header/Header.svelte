@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { resetSearch } from '$lib/store/store';
 	let showNav = false;
 </script>
 
@@ -30,7 +30,7 @@
 		<div class="navbar-menu" class:is-active={showNav} id="navMenu">
 			<div class="navbar-end">
 				<a href="/" class="navbar-item">Home</a>
-				<a href="/recipes" class="navbar-item">
+				<a href="/recipes" class="navbar-item" on:click={() => resetSearch()}>
 					Recipes
 				</a>
 			</div>

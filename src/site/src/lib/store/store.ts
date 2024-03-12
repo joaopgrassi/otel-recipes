@@ -82,7 +82,7 @@ export const filteredSamples: Readable<Recipe[]> = derived(
 	}
 );
 
-export const selectedSample: Readable<Recipe> = derived(
+export const selectedRecipe: Readable<Recipe> = derived(
 	[store.allRecipes, selectedRecipeId],
 	([$store, $selectedRecipeId]) => {
 		if ($selectedRecipeId === NONE) {

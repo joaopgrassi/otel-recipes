@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { Recipes } from '$lib/common/types';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
+	import { LanguageDropDown, Languages, Recipes, SignalDropDown, Signals } from '$lib/common/types';
 	import {
 		selectedLanguage,
 		allLanguages,
@@ -9,8 +11,28 @@
 		selectedRecipeId,
 		textSearch
 	} from '$lib/store/store';
+	import { onDestroy } from 'svelte';
 	import RecipeCard from './RecipeCard.svelte';
 	import { fly } from 'svelte/transition';
+
+	const selectedLanguageStore$ = selectedLanguage.subscribe((lang: LanguageDropDown) => {
+		if (lang.id !== Languages.none.id) {
+			$page.url.searchParams.set('language', lang.id);
+			goto(`?${$page.url.searchParams.toString()}`);
+		}
+	});
+
+	const selectedSignalStore$ = selectedSignal.subscribe((signal: SignalDropDown) => {
+		if (signal.id !== Signals.none.id) {
+			$page.url.searchParams.set('signal', signal.id);
+			goto(`?${$page.url.searchParams.toString()}`);
+		}
+	});
+
+	onDestroy(() => {
+		selectedLanguageStore$;
+		selectedSignalStore$;
+	});
 </script>
 
 {#if $selectedRecipeId === Recipes.none.id}

@@ -1,27 +1,39 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
-	import { Recipes, Step } from '$lib/common/types';
-	import { resetSearch, selectedLanguage, selectedSample } from '$lib/store/store';
+	import { Recipe, Recipes, Step } from '$lib/common/types';
+	import { resetSearch, selectedLanguage, selectedRecipe } from '$lib/store/store';
 	import CodeStep from './CodeStep.svelte';
 	import MetadataStep from './MetadataStep.svelte';
 	import PackageInstallStep from './PackageInstallStep.svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
+	import { onDestroy } from 'svelte';
 
 	const getSortedSteps = (steps: Step[]) => {
 		return steps.sort((left: Step, right: Step) => left.order - right.order);
 	};
 
+	const selectedRecipeStore$ = selectedRecipe.subscribe((recipe: Recipe) => {
+		if (recipe.id !== 'none') {
+			$page.url.searchParams.delete('language');
+			$page.url.searchParams.delete('signal');
+			$page.url.searchParams.set('recipe', recipe.id);
+			goto(`?${$page.url.searchParams.toString()}`);
+		}
+	});
+
 	function reset() {
 		resetSearch();
-		$page.url.searchParams.delete('language');
-		$page.url.searchParams.delete('signal');
 		$page.url.searchParams.delete('recipe');
 		goto($page.url);
 	}
+
+	onDestroy(() => {
+		selectedRecipeStore$;
+	});
 </script>
 
-{#if $selectedSample.id !== Recipes.none.id}
+{#if $selectedRecipe.id !== Recipes.none.id}
 	<div in:fly={{ x: 100, duration: 300 }}>
 		<section class="section">
 			<div class="container has-text-centered">
@@ -47,7 +59,7 @@
 									<small class="icon">
 										<img class="icon-info" alt="info" src="info.svg" />
 									</small>
-									<MetadataStep sample={$selectedSample} language={$selectedLanguage} />
+									<MetadataStep sample={$selectedRecipe} language={$selectedLanguage} />
 								</section>
 							</div>
 							<div class="step indicator">
@@ -59,10 +71,10 @@
 										<img class="icon-package" alt="package" src="package.svg" />
 									</small>
 									<img src="browser-buttons.svg" alt="browser top-bar icons" />
-									<PackageInstallStep sample={$selectedSample} language={$selectedLanguage} />
+									<PackageInstallStep sample={$selectedRecipe} language={$selectedLanguage} />
 								</section>
 							</div>
-							{#each getSortedSteps($selectedSample.steps) as step}
+							{#each getSortedSteps($selectedRecipe.steps) as step}
 								<div class="step indicator">
 									<p class="step-language">
 										<span class="step-language-tag bd-is-html">{$selectedLanguage.id}</span>
@@ -70,7 +82,7 @@
 									<section>
 										<small class="icon">{step.order}</small>
 										<img src="browser-buttons.svg" alt="browser top-bar icons" />
-										<CodeStep {step} sample={$selectedSample} language={$selectedLanguage} />
+										<CodeStep {step} sample={$selectedRecipe} language={$selectedLanguage} />
 									</section>
 								</div>
 							{/each}
