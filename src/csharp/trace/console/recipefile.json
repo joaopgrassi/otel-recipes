@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../../otel-recipes-schema.json",
+  "id": "csharp-console",
+  "languageId": "csharp",
+  "signal": "trace",
+  "displayName": "Console App",
+  "tags": [],
+  "description": "A C# console application instrumented with OpenTelemetry that generates a trace.",
+  "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/csharp/trace/console",
+  "steps": [
+    {
+      "displayName": "Configure the SDK",
+      "order": 1,
+      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/csharp/trace/console/App.cs"
+    }
+  ],
+  "dependencies": [
+    {
+      "id": "OpenTelemetry",
+      "version": "1.7.0"
+    },
+    {
+      "id": "OpenTelemetry.Exporter.OpenTelemetryProtocol",
+      "version": "1.7.0"
+    }
+  ]
+}
