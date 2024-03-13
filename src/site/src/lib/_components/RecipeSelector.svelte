@@ -1,76 +1,97 @@
 <script lang="ts">
-	import { Signals, Samples } from '$lib/common/types';
-
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
+	import { LanguageDropDown, Languages, Recipes, SignalDropDown, Signals } from '$lib/common/types';
 	import {
 		selectedLanguage,
-		languages,
-		filteredSignals,
+		allLanguages,
+		allSignals,
 		selectedSignal,
-		selectedSampleId,
-		filteredSamples
+		filteredSamples,
+		selectedRecipeId,
+		textSearch
 	} from '$lib/store/store';
+	import { onDestroy } from 'svelte';
+	import RecipeCard from './RecipeCard.svelte';
+	import { fly } from 'svelte/transition';
 
-	function languageChanged() {
-		selectedSignal.set(Signals.none);
-		selectedSampleId.set(Samples.none.id);
-	}
+	const selectedLanguageStore$ = selectedLanguage.subscribe((lang: LanguageDropDown) => {
+		if (lang.id !== Languages.none.id) {
+			$page.url.searchParams.set('language', lang.id);
+			goto(`?${$page.url.searchParams.toString()}`);
+		}
+	});
 
-	function signalChanged() {
-		selectedSampleId.set(Samples.none.id);
-	}
+	const selectedSignalStore$ = selectedSignal.subscribe((signal: SignalDropDown) => {
+		if (signal.id !== Signals.none.id) {
+			$page.url.searchParams.set('signal', signal.id);
+			goto(`?${$page.url.searchParams.toString()}`);
+		}
+	});
+
+	onDestroy(() => {
+		selectedLanguageStore$;
+		selectedSignalStore$;
+	});
 </script>
 
-<section class="section">
-	<div class="container">
-		<div class="columns has-text-centered">
-			<div class="column">
-				<div class="field">
-					<label class="label" for="language">Programming language</label>
-					<div class="control">
-						<div class="select is-rounded is-medium">
-							<select id="language" name="language" bind:value={$selectedLanguage} on:change={languageChanged}>
-								{#each $languages as lang}
-									<option value={lang}>
-										{lang.displayName}
-									</option>
-								{/each}
-							</select>
+{#if $selectedRecipeId === Recipes.none.id}
+	<section class="section">
+		<div class="container">
+			<div class="columns has-text-centered">
+				<div class="column">
+					<div class="field has-addons">
+						<!-- Input search -->
+						<div class="control is-expanded">
+							<input
+								class="input is-medium"
+								type="text"
+								placeholder="Search for sample apps"
+								bind:value={$textSearch}
+							/>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="column">
-				<div class="field">
-					<label class="label" for="signal">Signal</label>
-					<div class="control">
-						<div class="select is-rounded is-medium">
-							<select id="signal" name="signal" bind:value={$selectedSignal} on:change={signalChanged}>
-								{#each $filteredSignals as signal}
-									<option value={signal}>
-										{signal.displayName}
-									</option>
-								{/each}
-							</select>
+
+						<!-- Language select -->
+						<div class="control">
+							<div class="select is-medium">
+								<select id="language" name="language" bind:value={$selectedLanguage}>
+									{#each $allLanguages as lang}
+										<option value={lang}>
+											{lang.displayName}
+										</option>
+									{/each}
+								</select>
+							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="column">
-				<div class="field">
-					<label class="label" for="sample">Sample app</label>
-					<div class="control">
-						<div class="select is-rounded is-medium">
-							<select id="sample" name="sample" bind:value={$selectedSampleId}>
-								{#each $filteredSamples as sample}
-									<option value={sample.id}>
-										{sample.displayName}
-									</option>
-								{/each}
-							</select>
+
+						<!-- Signal select -->
+						<div class="control">
+							<div class="select is-medium">
+								<select class="" id="signal" name="signal" bind:value={$selectedSignal}>
+									{#each $allSignals as signal}
+										<option value={signal}>
+											{signal.displayName}
+										</option>
+									{/each}
+								</select>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
+{/if}
+
+{#if $filteredSamples.length > 0 && $selectedRecipeId === Recipes.none.id}
+	<section class="section" in:fly={{ x: 100, duration: 300 }}>
+		<div class="container">
+			<div class="columns is-multiline">
+				{#each $filteredSamples as sample}
+					<span />
+					<RecipeCard {sample} />
+				{/each}
+			</div>
+		</div>
+	</section>
+{/if}

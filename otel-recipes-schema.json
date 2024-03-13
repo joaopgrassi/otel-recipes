@@ -4,89 +4,71 @@
   "title": "JSON Schema for OTel recipe files",
   "type": "object",
   "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the sample app. E.g. console, webapp, rest-api"
+    },
     "languageId": {
       "type": "string",
       "description": "The unique identifier of the programming language. MUST be one of the suggested by the schema",
       "enum": ["csharp", "js", "go", "java", "python"]
     },
-    "signals": {
+    "signal": {
+      "type": "string",
+      "description": "The unique identifier of the telemetry signal. MUST be one of the suggested by the schema",
+      "enum": ["trace", "metrics", "logs"]
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The user friendly name of the sample app. This is shown on the website (filters)",
+      "maxLength": 100
+    },
+    "description": {
+      "type": "string",
+      "description": "A brief description of the sample app. This is shown in the 'sample metadata' section on the website",
+      "maxLength": 250
+    },
+    "tags": {
       "type": "array",
-      "description": "The list of telemetry signals for the programming language",
+      "description": "Related tags with the language/technology of the recipe."
+    },
+    "sourceRoot": {
+      "type": "string",
+      "description": "The URL to the root directory of the sample app on GitHub. It's best to use a link with a ref to a tag/release version instead of using 'main'",
+      "format": "uri"
+    },
+    "steps": {
+      "type": "array",
+      "description": "The list steps necessary to configure OpenTelemetry for the sample",
+      "minItems": 1,
       "uniqueItems": true,
       "items": {
-        "$ref": "#/definitions/signalContent"
+        "$ref": "#/definitions/stepContent"
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "description": "The list of dependencies (packages) necessary to configure OpenTelemetry for the sample",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/dependencyContent"
       }
     }
   },
-  "required": ["languageId", "signals"],
+
+  "required": [
+    "id",
+    "languageId",
+    "signal",
+    "displayName",
+    "description",
+    "sourceRoot",
+    "steps",
+    "dependencies"
+  ],
+
   "definitions": {
-    "signalContent": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "The unique identifier of the telemetry signal. MUST be one of the suggested by the schema",
-          "enum": ["trace", "metrics", "logs"]
-        },
-        "samples": {
-          "type": "array",
-          "description": "The list of available sample apps for the telemetry signal",
-          "uniqueItems": true,
-          "items": {
-            "$ref": "#/definitions/sampleContent"
-          }
-        }
-      },
-      "required": ["id", "samples"]
-    },
-    "sampleContent": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "The unique identifier of the sample app. E.g. console, webapp, rest-api"
-        },
-        "displayName": {
-          "type": "string",
-          "description": "The user friendly name of the sample app. This is shown on the website (filters)"
-        },
-        "description": {
-          "type": "string",
-          "description": "A brief description of the sample app. This is shown in the 'sample metadata' section on the website"
-        },
-        "sourceRoot": {
-          "type": "string",
-          "description": "The URL to the root directory of the sample app on GitHub. It's best to use a link with a ref to a tag/release version instead of using 'main'",
-          "format": "uri"
-        },
-        "steps": {
-          "type": "array",
-          "description": "The list steps necessary to configure OpenTelemetry for the sample",
-          "minItems": 1,
-          "uniqueItems": true,
-          "items": {
-            "$ref": "#/definitions/stepContent"
-          }
-        },
-        "dependencies": {
-          "type": "array",
-          "description": "The list of dependencies (packages) necessary to configure OpenTelemetry for the sample",
-          "minItems": 1,
-          "uniqueItems": true,
-          "items": {
-            "$ref": "#/definitions/dependencyContent"
-          }
-        }
-      },
-      "required": [
-        "id",
-        "displayName",
-        "description",
-        "sourceRoot",
-        "steps",
-        "dependencies"
-      ]
-    },
     "stepContent": {
       "type": "object",
       "properties": {

@@ -1,14 +1,32 @@
-import { Sample, Recipe, Signal, Language, Languages, Signals, Samples } from '$lib/common/types';
-import type { SignalDropDown } from '$lib/common/types';
+import {
+	Recipe,
+	LanguageDropDown,
+	SignalDropDown,
+	Languages,
+	Signals,
+	Recipes
+} from '$lib/common/types';
 import { readable, writable, derived } from 'svelte/store';
 import type { Readable } from 'svelte/store';
 import data from '$lib/store/data.json';
-import { browser } from '$app/environment';
+import Fuse from 'fuse.js';
 
 let recipes = data as unknown as Recipe[];
 
+const NONE: string = 'none';
+
+const fuseOpts = {
+	includeScore: true,
+	minMatchCharLength: 3,
+	ignoreLocation: true,
+	threshold: 0,
+	keys: ['displayName', 'description']
+};
+
+const fuse = new Fuse(recipes, fuseOpts);
+
 class LangStore {
-	get allLanguages(): Readable<Recipe[]> {
+	get allRecipes(): Readable<Recipe[]> {
 		return readable(null, function start(set) {
 			set(recipes);
 			return function stop() {};
@@ -17,112 +35,87 @@ class LangStore {
 }
 
 export const store = new LangStore();
+export const textSearch = writable('');
 export const selectedLanguage = writable(Languages.none);
 export const selectedSignal = writable(Signals.none);
-export const selectedSampleId = writable(Samples.none.id);
+export const selectedRecipeId = writable(NONE);
 
-export const languages: Readable<Language[]> = derived([store.allLanguages], ([$langStore]) => {
-	// The set of languages we have samples for
-	const langIds = new Set($langStore.map((r: Recipe) => r.languageId));
+// For drop-downs
+export const allLanguages: Readable<SignalDropDown[]> = readable(Languages.all);
+export const allSignals: Readable<SignalDropDown[]> = readable(Signals.all);
 
-	const langs = Languages.all.filter((l: Language) => langIds.has(l.id));
-	langs.unshift(Languages.none);
-
-	return langs;
-});
-
-export const filteredSignals: Readable<SignalDropDown[]> = derived(
-	[store.allLanguages, selectedLanguage],
-	([$langStore, $selectedLanguage]) => {
-		if ($selectedLanguage.id === Languages.none.id) {
-			return [];
-		}
-
-		// if the selected language does not exist in the list, return empty
-		// This can happen for ex if someone changes the URL. E.g. /recipes/madeup-lang
-		if (!$langStore.some((r: Recipe) => r.languageId === $selectedLanguage.id)) {
-			return [];
-		}
-
-		const signalsIds = new Set(
-			$langStore
-				.find((r: Recipe) => r.languageId === $selectedLanguage.id)
-				.signals.map((s: Signal) => s.id)
-		);
-
-		const signals = Signals.all.filter((s: SignalDropDown) => signalsIds.has(s.id));
-		signals.unshift(Signals.none);
-
-		return signals;
-	}
-);
-
-export const filteredSamples: Readable<Sample[]> = derived(
-	[store.allLanguages, selectedLanguage, selectedSignal],
-	([$store, $selectedLanguage, $selectedSignal]) => {
+export const filteredSamples: Readable<Recipe[]> = derived(
+	[store.allRecipes, textSearch, selectedLanguage, selectedSignal],
+	([$store, $textSearch, $selectedLanguage, $selectedSignal]) => {
 		// reset the query params when the selected language/signal changes
 		// it's added again when the user selects a sample
-		clearQueryParams();
+		// clearQueryParams();
 
-		if ($selectedLanguage.id === Languages.none.id || $selectedSignal.id === Signals.none.id) {
-			return [];
-		}
-
-		let signal = $store
-			.find((l: Recipe) => l.languageId === $selectedLanguage.id)
-			.signals.find((s: Signal) => s.id === $selectedSignal.id);
-
-		if (!signal) {
-			return [];
-		}
-
-		let samples = signal.samples.map((app: Sample) => app);
-		samples.unshift(Samples.none);
-		return samples;
-	}
-);
-
-export const selectedSample: Readable<Sample> = derived(
-	[store.allLanguages, selectedLanguage, selectedSignal, selectedSampleId],
-	([$store, $selectedLanguage, $selectedSignal, $selectedSampleId]) => {
 		if (
-			$selectedLanguage.id === Languages.none.id ||
-			$selectedSignal.id === Signals.none.id ||
-			$selectedSampleId == Samples.none.id
+			!$textSearch &&
+			$selectedLanguage.id === Languages.none.id &&
+			$selectedSignal.id === Signals.none.id
 		) {
-			return Samples.none;
+			return [];
 		}
 
-		const recipe = $store.find((l: Recipe) => l.languageId === $selectedLanguage.id);
-		if (!recipe) {
-			return Samples.none;
+		let recipes: Recipe[] = $store;
+
+		// if there's any text, filter for it first.
+		if ($textSearch) {
+			recipes = fuse.search($textSearch).map((r) => r.item);
 		}
 
-		const signal = recipe.signals.find((s: Signal) => s.id === $selectedSignal.id);
-		if (!signal) {
-			return Samples.none;
+		if ($selectedLanguage.id !== Languages.none.id) {
+			recipes = recipes.filter((r: Recipe) => r.languageId === $selectedLanguage.id);
 		}
 
-		const sample = signal.samples.find((app: Sample) => app.id === $selectedSampleId);
-		if (!sample) {
-			return Samples.none;
+		// Only signal filter selected
+		if ($selectedSignal.id !== Signals.none.id) {
+			recipes = recipes.filter((r: Recipe) => r.signal === $selectedSignal.id);
+			return recipes;
 		}
 
-		replaceStateWithQuery({
-			language: $selectedLanguage.id,
-			signal: $selectedSignal.id,
-			sample: sample.id
-		});
-		return sample;
+		return recipes;
 	}
 );
 
-export function setFromUrl(languageId?: string, signalId?: string, sampleId?: string) {
-	if (!languageId || !signalId || !sampleId) {
+export const selectedRecipe: Readable<Recipe> = derived(
+	[store.allRecipes, selectedRecipeId],
+	([$store, $selectedRecipeId]) => {
+		if ($selectedRecipeId === NONE) {
+			return Recipes.none;
+		}
+
+		const recipe = $store.find((r: Recipe) => r.id === $selectedRecipeId);
+		if (!recipe) {
+			return Recipes.none;
+		}
+
+		// When a sample is selected, make sure to also select the language and signal
+		// the filters are not all required for the search, but are required to display
+		// the sample metadata
+		selectedLanguage.set(Languages.all.find((l) => l.id === recipe.languageId));
+		selectedSignal.set(Signals.all.find((l) => l.id === recipe.signal));
+
+		return recipe;
+	}
+);
+
+export function resetSearch() {
+	textSearch.set(null);
+	selectedLanguage.set(Languages.none);
+	selectedSignal.set(Signals.none);
+	selectedRecipeId.set(NONE);
+}
+
+export function setFromUrl(languageId?: string, signalId?: string, recipeId?: string) {
+	if (recipeId) {
+		selectedRecipeId.set(recipeId);
 		return;
 	}
 
-	const language = Languages.all.find((l: Language) => l.id === languageId);
+	const language = Languages.all.find((l: LanguageDropDown) => l.id === languageId);
 	if (!language) {
 		// if the selected language does not exist in the list, set to none
 		// This can happen for ex if someone changes the URL. E.g. /recipes?language=madeup-language
@@ -139,28 +132,4 @@ export function setFromUrl(languageId?: string, signalId?: string, sampleId?: st
 		return;
 	}
 	selectedSignal.set(signal);
-	selectedSampleId.set(sampleId);
-}
-
-function clearQueryParams(): void {
-	replaceStateWithQuery({
-		language: null,
-		signal: null,
-		sample: null
-	});
-}
-
-function replaceStateWithQuery(values: Record<string, string>): void {
-	if (!browser) {
-		return;
-	}
-	const url = new URL(window.location.toString());
-	for (let [k, v] of Object.entries(values)) {
-		if (!!v) {
-			url.searchParams.set(encodeURIComponent(k), encodeURIComponent(v));
-		} else {
-			url.searchParams.delete(k);
-		}
-	}
-	history.replaceState({}, '', url);
 }

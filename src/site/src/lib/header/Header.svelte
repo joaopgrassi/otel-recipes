@@ -1,16 +1,15 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { resetSearch } from '$lib/store/store';
 	let showNav = false;
 </script>
 
-<nav class="navbar py-3 has-background-light" aria-label="Menu navigation bar">
+<nav class="navbar py-3 has-background-grey-darker" aria-label="Menu navigation bar">
 	<div class="container">
 		<div class="navbar-brand">
 			<a class="navbar-item" href="/">
 				<div class="mr-2">
-					<img src="logo.svg" alt="OTel recipes logo" style="min-height: 50px;" width="auto" />
+					<img src="logotype-white.svg" alt="OTel recipes logo" style="min-height: 50px;" width="auto" />
 				</div>
-				<h1 class="title is-5 mb-3">OTel Recipes</h1>
 			</a>
 			<!-- svelte-ignore a11y-missing-attribute -->
 			<a
@@ -30,8 +29,8 @@
 		</div>
 		<div class="navbar-menu" class:is-active={showNav} id="navMenu">
 			<div class="navbar-end">
-				<a href="/" class="navbar-item" class:is-active={$page.url.pathname === '/'}>Home</a>
-				<a href="/recipes" class="navbar-item" class:is-active={$page.url.pathname === '/recipes'}>
+				<a href="/" class="navbar-item">Home</a>
+				<a href="/recipes" class="navbar-item" on:click={() => resetSearch()}>
 					Recipes
 				</a>
 			</div>

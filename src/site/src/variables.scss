@@ -1,19 +1,35 @@
 /* Variables and mixins declared here will be available in all other SCSS files */ /* https://github.com/jgthms/bulma/issues/1293 */
 $body-overflow-y: auto;
 
-$purple: #5222D0;
-$opal-light: #EC615B;
-$opal: #ca4342;
-$champagne-pink: #FFE5D4;
-$cultured: #EFF0EB;
-$cultured-lighter: #f9f9f7;
-$mustard: #FFDD57;
 
+// Primary brand colors
+$dark: #010101;
+$charleston-green: #22272E;
+$cultured: #f9f9f7;
+$white: #FFFFFF;
+$ultramarine-blue: #3562F7;
+$fire-opal: #E95858;
+$crayola: #7E55C2;
+
+// Secondary brand colors
+$cultured-darker: #EFF0EB;
+$champagne-pink: #FFE5D4;
+$mustard: #FFDD57;
 $code-bg: #22272e;
 
 // Update Bulma's global variables
-$body-background-color: $cultured-lighter;
-$primary: $purple;
-$link: $opal;
-$white-ter: $cultured;
+$body-background-color: $cultured;
+$primary: $ultramarine-blue;
+$info: $crayola;
+$link: $fire-opal;
+
 $yellow: $mustard;
+
+$black: $dark;
+$grey-darker: $charleston-green;
+$white-bis: $cultured;
+$white-ter: $cultured-darker;
+
+$navbar-item-color: $cultured;
+
+$size-1: 6rem;

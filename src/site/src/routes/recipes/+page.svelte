@@ -1,21 +1,21 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { fly } from 'svelte/transition';
-	import { Languages, Samples } from '$lib/common/types';
-	import { selectedLanguage, selectedSample, setFromUrl } from '$lib/store/store';
+	import { Recipes } from '$lib/common/types';
+	import { filteredSamples, setFromUrl, selectedRecipeId, resetSearch } from '$lib/store/store';
 	import RecipeSelector from '$lib/_components/RecipeSelector.svelte';
 	import RecipeSteps from '$lib/_components/RecipeSteps.svelte';
 	import { onDestroy, onMount } from 'svelte';
 
 	onMount(() => {
-		const lang = $page.url.searchParams.get('language');
+		const language = $page.url.searchParams.get('language');
 		const signal = $page.url.searchParams.get('signal');
-		const sample = $page.url.searchParams.get('sample');
-		setFromUrl(lang, signal, sample);
+		const sample = $page.url.searchParams.get('recipe');
+		setFromUrl(language, signal, sample);
 	});
 
 	onDestroy(() => {
-		selectedLanguage.set(Languages.none);
+		resetSearch();
 	});
 </script>
 
@@ -25,7 +25,7 @@
 
 <div class="container">
 	<RecipeSelector />
-	{#if $selectedSample.id === Samples.none.id}
+	{#if $filteredSamples.length === 0 && $selectedRecipeId === Recipes.none.id}
 		<section class="section" in:fly={{ x: 100, duration: 300 }}>
 			<div class="container">
 				<div class="columns is-5 is-variable is-vcentered ml-5">

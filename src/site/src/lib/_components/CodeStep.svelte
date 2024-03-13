@@ -5,13 +5,13 @@
 	import type { javascript } from 'svelte-highlight/languages/javascript';
 	import { copyToClipboard } from '../_utils/utils';
 
-	import { Language, Languages, Sample, Samples, Step } from '$lib/common/types';
+	import { LanguageDropDown, Languages, Recipe, Recipes, Step } from '$lib/common/types';
 	import LoadingStep from './LoadingStep.svelte';
 	import type { LanguageType } from 'svelte-highlight/languages';
 
 	export let step: Step;
-	export let sample: Sample;
-	export let language: Language;
+	export let sample: Recipe;
+	export let language: LanguageDropDown;
 
 	let highlightJsLang: LanguageType<string>;
 	let code = '';
@@ -19,7 +19,7 @@
 
 	onMount(async () => {
 		isLoading = true;
-		if (!sample || sample.id === Samples.none.id) {
+		if (!sample || sample.id === Recipes.none.id) {
 			return;
 		}
 		highlightJsLang = await getHighlightJsLang();

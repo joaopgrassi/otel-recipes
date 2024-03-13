@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
-	import type { Language, Sample } from '$lib/common/types';
-	export let sample: Sample;
-	export let language: Language;
+	import type { LanguageDropDown, Recipe } from '$lib/common/types';
+	export let sample: Recipe;
+	export let language: LanguageDropDown;
 
 	let metadataIsVisible = false;
 	function toggleMetadata() {

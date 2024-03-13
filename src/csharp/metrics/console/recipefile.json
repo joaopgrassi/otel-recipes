@@ -1,5 +1,5 @@
 {
-  "$schema": "otel-recipes-schema.json",
+  "$schema": "../../../../otel-recipes-schema.json",
   "id": "csharp-metrics-console",
   "languageId": "csharp",
   "signal": "metrics",
