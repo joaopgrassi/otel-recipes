@@ -9,9 +9,7 @@ import {
 import { readable, writable, derived } from 'svelte/store';
 import type { Readable } from 'svelte/store';
 import data from '$lib/store/data.json';
-import { browser } from '$app/environment';
 import Fuse from 'fuse.js';
-import { page } from '$app/stores';
 
 let recipes = data as unknown as Recipe[];
 
@@ -135,26 +133,3 @@ export function setFromUrl(languageId?: string, signalId?: string, recipeId?: st
 	}
 	selectedSignal.set(signal);
 }
-
-// function clearQueryParams(): void {
-// 	replaceStateWithQuery({
-// 		language: null,
-// 		signal: null,
-// 		sample: null
-// 	});
-// }
-
-// function replaceStateWithQuery(values: Record<string, string>): void {
-// 	if (!browser) {
-// 		return;
-// 	}
-// 	const url = new URL(window.location.toString());
-// 	for (let [k, v] of Object.entries(values)) {
-// 		if (!!v) {
-// 			url.searchParams.set(encodeURIComponent(k), encodeURIComponent(v));
-// 		} else {
-// 			url.searchParams.delete(k);
-// 		}
-// 	}
-// 	replaceState(url, {});
-// }
