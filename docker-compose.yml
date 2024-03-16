@@ -1,19 +1,14 @@
 version: "2.4"
 services:
-  jaeger-otel-recipes:
-    image: jaegertracing/all-in-one:1.32
-    ports:
-      - "16686:16686"
-      - "14268:14268"
-      - "14250:14250"
-    command: --query.max-clock-skew-adjustment 1s
 
-  test-metrics-server:
+  otlp_backend:
     build:
-      context: ./test/metrics_server
+      context: ./internal/otlp_backend
       dockerfile: Dockerfile
     ports:
       - "4319:4319" # OTLP HTTP receiver
+    networks:
+      - otel-recipes
 
   otel-collector-otel-recipes:
     image: otel/opentelemetry-collector-contrib:0.77.0
@@ -29,4 +24,8 @@ services:
       - "4318:4318"   # OTLP HTTP receiver
       - "55670:55679" # zpages extension
     depends_on:
-      - jaeger-otel-recipes
+      - otlp_backend
+    networks:
+      - otel-recipes
+networks:
+  otel-recipes:

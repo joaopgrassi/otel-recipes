@@ -147,7 +147,7 @@ func getOtlpData(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	serviceName := r.URL.Query().Get("serviceName")
+	serviceName := r.URL.Query().Get("servicename")
 	if serviceName == "" {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte("Missing serviceName parameter"))
@@ -188,7 +188,7 @@ func main() {
 	resourceMetrics = make(map[string]*otlpmetrics.ResourceMetrics)
 	resourceLogs = make(map[string]*otlplogs.ResourceLogs)
 
-	http.HandleFunc("/v1/trace", postTrace)
+	http.HandleFunc("/v1/traces", postTrace)
 	http.HandleFunc("/v1/metrics", postMetrics)
 	http.HandleFunc("/v1/logs", postLogs)
 

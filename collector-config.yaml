@@ -9,22 +9,20 @@ exporters:
   logging:
     loglevel: debug
 
-  # Data sources: traces
-  jaeger:
-    endpoint: "jaeger-otel-recipes:14250"
-    tls:
-      insecure: true
-  # Data source: Metrics to our test server
   otlphttp:
-    metrics_endpoint: http://test-metrics-server:4319/v1/metrics
+    endpoint: http://otlp_backend:4319
     compression: none
 service:
   pipelines:
     traces:
       receivers: [otlp]
       processors: []
-      exporters: [logging, jaeger]
+      exporters: [otlphttp, logging]
     metrics:
+      receivers: [otlp]
+      processors: []
+      exporters: [otlphttp, logging]
+    logs:
       receivers: [otlp]
       processors: []
       exporters: [otlphttp, logging]
