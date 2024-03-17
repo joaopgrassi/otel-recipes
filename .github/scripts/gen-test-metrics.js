@@ -4,6 +4,8 @@ const fs = require("fs");
 function findDockerfileDirectories(modifiedDirs) {
     const dockerfileDirectories = [];
 
+    console.log(modifiedDirs);
+
     modifiedDirs.forEach(dir => {
       let currentPath = dir;
       const basePath = 'src'; // Most generic base path
