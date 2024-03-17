@@ -30,7 +30,7 @@ jobs:
         id: generator
         with:
           script: |
-            const script = require('.github/scripts/gen-test-metrics.js')
+            const script = require('.github/scripts/find-recipes-to-test.js')
             return script(
               '${{ steps.diff.outputs.all_changed_files }}'
             );
