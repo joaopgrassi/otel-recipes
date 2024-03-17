@@ -31,6 +31,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const script = require(`${process.env.GITHUB_WORKSPACE}/gen-test-metrics.js`)
+            console.log(${{ fromJson(steps.diff.outputs.all_changed_files) }});
             return script(
               ${{ steps.diff.outputs.all_changed_files }}
             );
