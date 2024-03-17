@@ -25,16 +25,13 @@ jobs:
         run: echo '${{ steps.diff.outputs.all_changed_files }}'
 
       - name: Generate testing matrix for modified recipes
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         id: generator
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            console.log(${{ steps.diff.outputs.all_changed_files }});
             const script = require('.github/scripts/gen-test-metrics.js')
-            
             return script(
-              ${{ steps.diff.outputs.all_changed_files }}
+              '${{ steps.diff.outputs.all_changed_files }}'
             );
     outputs:
       matrix: ${{ steps.generator.outputs.result }}
