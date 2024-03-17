@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using OpenTelemetry;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
@@ -17,7 +18,9 @@ namespace Console
                 .AddSource(Tracer.Name)
                 .SetSampler(new AlwaysOnSampler())
                 .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("csharp.console.app"))
-                .AddOtlpExporter()
+                .AddOtlpExporter(opts => {
+                    opts.Endpoint = new Uri("http://collector-otel-recipes:4317");
+                })
                 .Build();
 
             // Start a span with a tag
