@@ -66,7 +66,7 @@ func GetTraceWithRetry(t *testing.T, serviceName string) *otlptrace.ResourceSpan
 
 func GetTrace(t *testing.T, serviceName string) *otlptrace.ResourceSpans {
 	t.Logf("Going to call OTLP backend to fetch trace for sample: %s", serviceName)
-	r, err := http.Get(fmt.Sprintf("%s/getotlp?signal=trace&serviceName=%s", OtlpBackendUri, serviceName))
+	r, err := http.Get(fmt.Sprintf("%s/getotlp?signal=trace&servicename=%s", OtlpBackendUri, serviceName))
 	if err != nil {
 		t.Fatalf("Failed getting trace from OTLP backend: %v", err)
 	}

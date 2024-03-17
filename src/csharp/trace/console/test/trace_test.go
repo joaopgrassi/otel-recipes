@@ -1,4 +1,4 @@
-package tracetest
+package test
 
 import (
 	"testing"

@@ -1,0 +1,36 @@
+version: "2.4"
+services:
+
+  app:
+    build:
+      dockerfile: Dockerfile
+    depends_on:
+      - otlp_backend
+      - collector-otel-recipes
+    networks:
+      - otel-recipes
+
+  otlp_backend:
+    build:
+      context: ../../../../internal/otlp_backend
+      dockerfile: Dockerfile
+    ports:
+      - "4319:4319" # OTLP HTTP receiver
+    networks:
+      - otel-recipes
+
+  collector-otel-recipes:
+    image: otel/opentelemetry-collector-contrib:0.96.0
+    command: ["--config=/etc/collector-config.yaml", "${OTELCOL_ARGS}"]
+    volumes:
+      - ./collector-config.yaml:/etc/collector-config.yaml
+    ports:
+      - "13133:13133" # health_check extension
+      - "4317:4317"   # OTLP gRPC receiver
+      - "4318:4318"   # OTLP HTTP receiver
+    depends_on:
+      - otlp_backend
+    networks:
+      - otel-recipes
+networks:
+  otel-recipes:

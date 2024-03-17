@@ -1,0 +1,17 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+processors:
+exporters:
+  debug:
+    verbosity: detailed
+  otlphttp:
+    endpoint: http://otlp_backend:4319
+    compression: none
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [otlphttp, debug]
