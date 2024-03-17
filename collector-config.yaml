@@ -10,7 +10,7 @@ exporters:
     loglevel: debug
 
   otlphttp:
-    endpoint: http://otlp_backend:4319
+    endpoint: http://otlp-backend:4319
     compression: none
 service:
   pipelines:

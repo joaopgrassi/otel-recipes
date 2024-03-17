@@ -1,7 +1,7 @@
 version: "2.4"
 services:
 
-  otlp_backend:
+  otlp-backend:
     build:
       context: ./internal/otlp_backend
       dockerfile: Dockerfile
@@ -24,7 +24,7 @@ services:
       - "4318:4318"   # OTLP HTTP receiver
       - "55670:55679" # zpages extension
     depends_on:
-      - otlp_backend
+      - otlp-backend
     networks:
       - otel-recipes
 networks:

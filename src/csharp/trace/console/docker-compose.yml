@@ -6,12 +6,12 @@ services:
       context: .
       dockerfile: Dockerfile
     depends_on:
-      - otlp_backend
+      - otlp-backend
       - collector-otel-recipes
     networks:
       - otel-recipes
 
-  otlp_backend:
+  otlp-backend:
     build:
       context: ../../../../internal/otlp_backend
       dockerfile: Dockerfile
@@ -30,7 +30,7 @@ services:
       - "4317:4317"   # OTLP gRPC receiver
       - "4318:4318"   # OTLP HTTP receiver
     depends_on:
-      - otlp_backend
+      - otlp-backend
     networks:
       - otel-recipes
 networks:
