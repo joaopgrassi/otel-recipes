@@ -20,6 +20,8 @@ jobs:
         with:
           json: true
           dir_names: true
+      - name: List all changed files
+        run: echo '${{ steps.diff.outputs.all_changed_files }}'
 
       - name: Generate testing matrix for modified recipes
         uses: actions/github-script@v6
