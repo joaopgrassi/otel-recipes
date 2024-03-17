@@ -41,13 +41,14 @@ jobs:
     strategy:
       fail-fast: false
       max-parallel: 4
-      files: ${{ fromJson(needs.gen-matrix.outputs.matrix) }}
+      matrix:
+        file: ${{ fromJson(needs.gen-matrix.outputs.matrix) }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Test
         run: |
-          echo ${{ files }}
+          echo ${{ file }}
 
       # start the compose file from the matrix folder
 
