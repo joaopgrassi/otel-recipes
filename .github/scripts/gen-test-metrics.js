@@ -43,6 +43,7 @@ function findDockerfileDirectories(modifiedDirs) {
 // }
 
 const generateBuildMatrix = (modifiedFiles) => {
+    console.log(modifiedFiles);
   return findDockerfileDirectories(modifiedFiles);
 };
 
