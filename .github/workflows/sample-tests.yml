@@ -48,7 +48,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Test
         run: |
-          echo ${{ file }}
+          echo ${{ matrix.file }}
 
       # start the compose file from the matrix folder
 
