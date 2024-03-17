@@ -4,6 +4,7 @@ const fs = require("fs");
 function findDockerfileDirectories(modifiedDirs) {
     const dockerfileDirectories = [];
 
+    console.log("test")
     console.log(modifiedDirs);
 
     modifiedDirs.forEach(dir => {
