@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - "src/**"
-      - '!src/site/**'
+      - "!src/site/**"
 
 jobs:
   gen-matrix:
@@ -48,12 +48,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Test
+
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: "1.22.1"
+
+      - name: Start compose file
+        working-directory: ${{ matrix.file }}
         run: |
-          echo ${{ matrix.file }}
+          docker-compose up -d
 
-      # start the compose file from the matrix folder
-
-
-
-      # run the go test from the matrix folder
+      - name: Run tests
+        working-directory: ${{ matrix.file }}/test
+        run: go test -v
