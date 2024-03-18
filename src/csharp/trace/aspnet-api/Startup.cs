@@ -35,7 +35,9 @@ public class Startup
                 .SetSampler(new AlwaysOnSampler())
                 .AddHttpClientInstrumentation()
                 .AddAspNetCoreInstrumentation()
-                .AddOtlpExporter();
+                .AddOtlpExporter(opts => {
+                    opts.Endpoint = new Uri("http://collector-otel-recipes:4317");
+                });
         });
     }
 

@@ -81,6 +81,10 @@ func GetTrace(t *testing.T, serviceName string) *otlptrace.ResourceSpans {
 		t.Fatalf("Error reading payload from OTLP backend: %v", err)
 	}
 
+	if len(body) == 0 {
+		return nil
+	}
+
 	rs := &otlptrace.ResourceSpans{}
 	err = proto.Unmarshal(body, rs)
 	if err != nil {
