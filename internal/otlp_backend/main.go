@@ -157,11 +157,17 @@ func getOtlpData(w http.ResponseWriter, r *http.Request) {
 	var res []byte
 	switch signal {
 	case "trace":
-		res = makeOtlpResponse(resourceSpans[serviceName])
+		if rm, found := resourceSpans[serviceName]; found {
+			res = makeOtlpResponse(rm)
+		}
 	case "metrics":
-		res = makeOtlpResponse(resourceMetrics[serviceName])
+		if rm, found := resourceMetrics[serviceName]; found {
+			res = makeOtlpResponse(rm)
+		}
 	case "logs":
-		res = makeOtlpResponse(resourceLogs[serviceName])
+		if rm, found := resourceLogs[serviceName]; found {
+			res = makeOtlpResponse(rm)
+		}
 	}
 
 	if res == nil {
@@ -173,8 +179,10 @@ func getOtlpData(w http.ResponseWriter, r *http.Request) {
 
 func makeOtlpResponse(m protoiface.MessageV1) []byte {
 	if m == nil {
+		slog.Info("m is nil")
 		return nil
 	}
+	slog.Info("data: ", m)
 	data, err := proto.Marshal(m)
 	if err != nil {
 		slog.Error("marshaling error: ", err)
