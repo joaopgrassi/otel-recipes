@@ -14,16 +14,26 @@ import (
 )
 
 func AssertSpanWithAttributeExists(t *testing.T, spanTest *SpanTest) {
-	rs := GetTraceWithRetry(t, spanTest.serviceName)
+	backoffSchedule := []time.Duration{
+		1 * time.Second,
+		3 * time.Second,
+		10 * time.Second,
+	}
 
+	// do some retries until we backend has it
 	var span *otlptrace.Span
-
-	for _, ss := range rs.ScopeSpans {
-		for _, s := range ss.Spans {
-			if s.Name == spanTest.spanName {
-				span = s
+	for _, backoff := range backoffSchedule {
+		rs := GetTraceWithRetry(t, spanTest.serviceName)
+		for _, ss := range rs.ScopeSpans {
+			for _, s := range ss.Spans {
+				if s.Name == spanTest.spanName {
+					span = s
+					break
+				}
 			}
 		}
+		t.Logf("Trace not found yet, retrying in %v\n", backoff)
+		time.Sleep(backoff)
 	}
 
 	assert.NotNil(t, span)
@@ -44,7 +54,7 @@ func GetTraceWithRetry(t *testing.T, serviceName string) *otlptrace.ResourceSpan
 
 	var rs *otlptrace.ResourceSpans
 
-	// do some retries until we Jaeger has it
+	// do some retries until we backend has it
 	for _, backoff := range backoffSchedule {
 		rs = GetTrace(t, serviceName)
 
