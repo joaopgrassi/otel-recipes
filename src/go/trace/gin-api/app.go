@@ -50,7 +50,7 @@ func initTracer() *sdktrace.TracerProvider {
 
 	// Exports to a locally running collector on port 4317
 	traceExporter, err := otlptracegrpc.New(
-		ctx, otlptracegrpc.WithInsecure(), otlptracegrpc.WithEndpoint("http://collector-otel-recipes:4317"))
+		ctx, otlptracegrpc.WithInsecure(), otlptracegrpc.WithEndpoint("collector-otel-recipes:4317"))
 
 	handleErr(err, "failed to create the trace exporter")
 

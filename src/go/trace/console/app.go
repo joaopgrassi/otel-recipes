@@ -50,7 +50,7 @@ func initTracer(ctx context.Context) *sdktrace.TracerProvider {
 	handleErr(err, "failed to create the resource")
 
 	traceExporter, err := otlptracegrpc.New(
-		ctx, otlptracegrpc.WithInsecure(), otlptracegrpc.WithEndpoint("http://collector-otel-recipes:4317"))
+		ctx, otlptracegrpc.WithInsecure(), otlptracegrpc.WithEndpoint("collector-otel-recipes:4317"))
 
 	handleErr(err, "failed to create the trace exporter")
 
