@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+	"log"
+
 	"github.com/gin-gonic/gin"
 	"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
 	"go.opentelemetry.io/otel"
@@ -11,7 +13,6 @@ import (
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 	"go.opentelemetry.io/otel/trace"
-	"log"
 )
 
 const serviceName = "go.gin.api"
@@ -48,7 +49,9 @@ func initTracer() *sdktrace.TracerProvider {
 	handleErr(err, "failed to create the resource")
 
 	// Exports to a locally running collector on port 4317
-	traceExporter, err := otlptracegrpc.New(ctx, otlptracegrpc.WithInsecure())
+	traceExporter, err := otlptracegrpc.New(
+		ctx, otlptracegrpc.WithInsecure(), otlptracegrpc.WithEndpoint("http://collector-otel-recipes:4317"))
+
 	handleErr(err, "failed to create the trace exporter")
 
 	tp := sdktrace.NewTracerProvider(
