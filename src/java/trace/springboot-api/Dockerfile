@@ -1,12 +1,18 @@
-FROM gradle:jdk21-alpine as build
-COPY --chown=gradle:gradle . /home/gradle/src
-WORKDIR /home/gradle/src
-RUN gradle build --no-daemon
-CMD [ "java", "-jar", "app/build/libs/app.jar" ]
+FROM eclipse-temurin:21-jdk as builder
 
+WORKDIR /usr/src/app/
 
-FROM openjdk:21-slim
+COPY ./gradlew* ./settings.gradle* ./build.gradle .
+COPY ./gradle ./gradle
+COPY ./src ./src
+
+RUN ./gradlew
+RUN ./gradlew build
+
+FROM eclipse-temurin:21-jre
+
+WORKDIR /usr/src/app/
+
 EXPOSE 8080
-RUN mkdir /app
-COPY --from=build /home/gradle/src/build/libs/*.jar /app/spring-boot-application.jar
-ENTRYPOINT ["java", "-jar","/app/spring-boot-application.jar"]
+COPY --from=builder /usr/src/app/build/libs/*.jar ./spring-boot-application.jar
+CMD [ "java", "-jar", "spring-boot-application.jar" ]
