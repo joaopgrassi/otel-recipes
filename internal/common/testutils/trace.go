@@ -18,6 +18,9 @@ func AssertSpanWithAttributeExists(t *testing.T, spanTest *SpanTest) {
 		1 * time.Second,
 		3 * time.Second,
 		10 * time.Second,
+		15 * time.Second,
+		20 * time.Second,
+		30 * time.Second,
 	}
 
 	// do some retries until we backend has it
