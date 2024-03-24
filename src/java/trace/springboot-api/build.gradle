@@ -1,34 +1,38 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.2.1'
-	id 'io.spring.dependency-management' version '1.1.4'
+    id 'java'
+    id 'org.springframework.boot' version '3.2.4'
+    id 'io.spring.dependency-management' version '1.1.4'
 }
 
 group = 'com.otel.recipes'
 version = '0.0.1-SNAPSHOT'
-def otelVersion = '1.33.0'
 
 java {
-	sourceCompatibility = '21'
+    sourceCompatibility = '17'
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
+}
+
+
+dependencyManagement {
+    imports {
+        mavenBom("io.opentelemetry:opentelemetry-bom:1.36.0")
+        mavenBom("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:2.2.0-alpha")
+    }
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework:spring-web'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework:spring-web'
 
-	implementation(platform("io.opentelemetry:opentelemetry-bom:1.33.0"))
-	implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:1.32.0-alpha"))
+    implementation("io.opentelemetry:opentelemetry-api")
+    implementation("io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter")
 
-	implementation("io.opentelemetry:opentelemetry-api")
-	implementation("io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter")
-
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }

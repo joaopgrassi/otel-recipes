@@ -13,7 +13,8 @@ import io.opentelemetry.semconv.ResourceAttributes;
 
 public class App {
   public static void main(String[] args) throws InterruptedException {
-    OtlpGrpcSpanExporter spanExporter = OtlpGrpcSpanExporter.builder().build();
+    OtlpGrpcSpanExporter spanExporter =
+        OtlpGrpcSpanExporter.builder().setEndpoint("http://collector-otel-recipes:4317").build();
 
     // Builds the Tracer Provider with span processor and resource attribute
     SdkTracerProvider tracerProvider =
