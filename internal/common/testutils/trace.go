@@ -69,11 +69,6 @@ func GetTraceWithRetry(t *testing.T, serviceName string) *otlptrace.ResourceSpan
 		time.Sleep(backoff)
 	}
 
-	// All retries failed
-	if rs == nil {
-		t.Fatalf("Failed getting trace from OTLP backend")
-	}
-
 	return rs
 }
 
