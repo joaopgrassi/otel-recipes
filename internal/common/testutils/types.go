@@ -42,11 +42,67 @@ func NewSpanTest(options ...SpanTestOption) *SpanTest {
 		option(opts)
 	}
 
-	st := &SpanTest{
+	return &SpanTest{
 		serviceName: opts.ServiceName,
 		spanName:    opts.SpanName,
 		attributes:  opts.Attributes,
 	}
+}
 
-	return st
+type MetricTestCase struct {
+	metricName  string
+	description string
+	unit        string
+	value       float64
+	attributes  []*otlpcommon.KeyValue
+}
+type MetricTestCaseOptions struct {
+	MetricName  string
+	Description string
+	Unit        string
+	Value       float64
+	Attributes  []*otlpcommon.KeyValue
+}
+
+type MetricTestCaseOption func(*MetricTestCaseOptions)
+
+func WithMetricName(name string) MetricTestCaseOption {
+	return func(s *MetricTestCaseOptions) {
+		s.MetricName = name
+	}
+}
+func WithMetricDescription(description string) MetricTestCaseOption {
+	return func(s *MetricTestCaseOptions) {
+		s.Description = description
+	}
+}
+func WithMetricUnit(unit string) MetricTestCaseOption {
+	return func(s *MetricTestCaseOptions) {
+		s.Unit = unit
+	}
+}
+func WithMetricValue(value float64) MetricTestCaseOption {
+	return func(s *MetricTestCaseOptions) {
+		s.Value = value
+	}
+}
+func WithMetricAttributes(attributes ...*otlpcommon.KeyValue) MetricTestCaseOption {
+	return func(s *MetricTestCaseOptions) {
+		s.Attributes = attributes
+	}
+}
+
+func NewMetricTestCase(options ...MetricTestCaseOption) *MetricTestCase {
+	opts := &MetricTestCaseOptions{}
+	for _, option := range options {
+		option(opts)
+	}
+
+	return &MetricTestCase{
+		metricName:  opts.MetricName,
+		description: opts.Description,
+		unit:        opts.Unit,
+		value:       opts.Value,
+		attributes:  opts.Attributes,
+	}
 }
