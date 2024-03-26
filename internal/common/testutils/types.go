@@ -42,11 +42,31 @@ func NewSpanTest(options ...SpanTestOption) *SpanTest {
 		option(opts)
 	}
 
-	st := &SpanTest{
+	return &SpanTest{
 		serviceName: opts.ServiceName,
 		spanName:    opts.SpanName,
 		attributes:  opts.Attributes,
 	}
+}
 
-	return st
+type Number interface {
+	int | int64 | float64
+}
+
+type MetricTestCase[T Number] struct {
+	metricName  string
+	description string
+	unit        string
+	value       T
+	attributes  []*otlpcommon.KeyValue
+}
+
+func NewMetricTestCase[T Number](name, description, unit string, value T, attributes ...*otlpcommon.KeyValue) *MetricTestCase[T] {
+	return &MetricTestCase[T]{
+		metricName:  name,
+		description: description,
+		unit:        unit,
+		value:       value,
+		attributes:  attributes,
+	}
 }

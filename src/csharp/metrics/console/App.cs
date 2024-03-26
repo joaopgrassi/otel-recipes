@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
 
 namespace Console
 {
@@ -9,10 +11,10 @@ namespace Console
     {
         // Creates the Meter
         private static readonly Meter Meter = new("csharp.console.app", "1.0");
-        
+
         // Creates the Counter instrument
         private static readonly Counter<int> MyCounter = Meter.CreateCounter<int>("myCounter", "1", "I count things");
-        
+
         // Creates the Gauge instrument passing the callback that will produce the metric values
         static App()
         {
@@ -24,7 +26,10 @@ namespace Console
             // Configures the SDK, exporting to a local running Collector
             using var meterProvider = Sdk.CreateMeterProviderBuilder()
                 .AddMeter("csharp.console.app")
-                .AddOtlpExporter()
+                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("csharp.console.app"))
+                .AddOtlpExporter(opts => {
+                    opts.Endpoint = new Uri("http://collector-otel-recipes:4317");
+                })
                 .Build();
 
             // Add to our counter with an attribute

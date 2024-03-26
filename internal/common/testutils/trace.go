@@ -100,23 +100,3 @@ func GetTrace(t *testing.T, serviceName string) *otlptrace.ResourceSpans {
 	}
 	return rs
 }
-
-func InvokeSampleApi(t *testing.T, url string) string {
-	t.Logf("Going to call the sample API to generate trace for URL: %s", url)
-	r, err := http.Get(url)
-	if err != nil {
-		t.Fatalf("Failed calling the sample endpoint in the sample API: %v", err)
-	}
-
-	t.Log("Received 200 response from the sample API")
-
-	defer r.Body.Close()
-
-	//We Read the response body on the line below.
-	body, err := io.ReadAll(io.Reader(r.Body))
-	if err != nil {
-		t.Fatalf("Failed reading response body from the sample API: %v", err)
-	}
-
-	return string(body)
-}
