@@ -13,7 +13,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func AssertCounter(t *testing.T, tc *MetricTestCase, actualMetrics []*otlpmetrics.Metric) {
+func AssertCounter[T Number](t *testing.T, tc *MetricTestCase[T], actualMetrics []*otlpmetrics.Metric) {
 	// find metric by name
 	m := findMetric(t, actualMetrics, tc.metricName)
 
@@ -22,14 +22,14 @@ func AssertCounter(t *testing.T, tc *MetricTestCase, actualMetrics []*otlpmetric
 	assert.Equal(t, tc.unit, m.GetUnit())
 	s := m.GetData().(*v1.Metric_Sum)
 	dp := s.Sum.DataPoints[0]
-	assert.Equal(t, tc.value, dp.GetAsDouble())
+	assert.Equal(t, tc.value, dp.GetAsInt())
 
 	for _, exp := range tc.attributes {
 		assert.Contains(t, dp.Attributes, exp)
 	}
 }
 
-func AssertGauge(t *testing.T, tc *MetricTestCase, actualMetrics []*otlpmetrics.Metric) {
+func AssertGauge[T Number](t *testing.T, tc *MetricTestCase[T], actualMetrics []*otlpmetrics.Metric) {
 	// find metric by name
 	m := findMetric(t, actualMetrics, tc.metricName)
 
