@@ -22,19 +22,19 @@
   "dependencies": [
     {
       "id": "io.opentelemetry:opentelemetry-bom",
-      "version": "1.33.0"
+      "version": "1.36.0"
     },
     {
       "id": "io.opentelemetry:opentelemetry-api",
-      "version": "1.33.0"
+      "version": "1.36.0"
     },
     {
       "id": "io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha",
-      "version": "1.32.0-alpha"
+      "version": "2.2.0-alpha"
     },
     {
       "id": "io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter",
-      "version": "1.32.0-alpha"
+      "version": "2.2.0-alpha"
     }
   ]
 }
