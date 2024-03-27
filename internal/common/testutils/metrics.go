@@ -9,7 +9,6 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	otlpmetrics "go.opentelemetry.io/proto/otlp/metrics/v1"
-	v1 "go.opentelemetry.io/proto/otlp/metrics/v1"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -20,7 +19,7 @@ func AssertCounter[T Number](t *testing.T, tc *MetricTestCase[T], actualMetrics 
 	// assert
 	assert.Equal(t, tc.description, m.GetDescription())
 	assert.Equal(t, tc.unit, m.GetUnit())
-	s := m.GetData().(*v1.Metric_Sum)
+	s := m.GetData().(*otlpmetrics.Metric_Sum)
 	dp := s.Sum.DataPoints[0]
 	assert.Equal(t, tc.value, dp.GetAsInt())
 
@@ -36,7 +35,7 @@ func AssertGauge[T Number](t *testing.T, tc *MetricTestCase[T], actualMetrics []
 	// assert
 	assert.Equal(t, tc.description, m.GetDescription())
 	assert.Equal(t, tc.unit, m.GetUnit())
-	g := m.GetData().(*v1.Metric_Gauge)
+	g := m.GetData().(*otlpmetrics.Metric_Gauge)
 	dp := g.Gauge.DataPoints[0]
 	assert.Equal(t, tc.value, dp.GetAsDouble())
 
@@ -45,7 +44,7 @@ func AssertGauge[T Number](t *testing.T, tc *MetricTestCase[T], actualMetrics []
 	}
 }
 
-func findMetric(t *testing.T, metrics []*v1.Metric, name string) *v1.Metric {
+func findMetric(t *testing.T, metrics []*otlpmetrics.Metric, name string) *otlpmetrics.Metric {
 	for _, m := range metrics {
 		if m.GetName() == name {
 			return m
