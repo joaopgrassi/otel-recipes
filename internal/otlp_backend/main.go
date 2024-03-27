@@ -12,7 +12,6 @@ import (
 	otlplogs "go.opentelemetry.io/proto/otlp/logs/v1"
 	otlpmetrics "go.opentelemetry.io/proto/otlp/metrics/v1"
 	otlptrace "go.opentelemetry.io/proto/otlp/trace/v1"
-	"google.golang.org/protobuf/runtime/protoiface"
 )
 
 var resourceSpans map[string]*otlptrace.ResourceSpans
@@ -157,16 +156,16 @@ func getOtlpData(w http.ResponseWriter, r *http.Request) {
 	var res []byte
 	switch signal {
 	case "trace":
-		if rm, found := resourceSpans[serviceName]; found {
-			res = makeOtlpResponse(rm)
+		if rs, found := resourceSpans[serviceName]; found {
+			res = makeOtlpTraceResponse(rs)
 		}
 	case "metrics":
 		if rm, found := resourceMetrics[serviceName]; found {
-			res = makeOtlpResponse(rm)
+			res = makeOtlpMetricResponse(rm)
 		}
 	case "logs":
-		if rm, found := resourceLogs[serviceName]; found {
-			res = makeOtlpResponse(rm)
+		if rl, found := resourceLogs[serviceName]; found {
+			res = makeOtlpLogResponse(rl)
 		}
 	}
 
@@ -177,13 +176,38 @@ func getOtlpData(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func makeOtlpResponse(m protoiface.MessageV1) []byte {
-	if m == nil {
-		slog.Info("m is nil")
+func makeOtlpTraceResponse(rs *otlptrace.ResourceSpans) []byte {
+	if rs == nil {
+		slog.Info("ResourceSpans is nil")
 		return nil
 	}
-	slog.Info("data: ", m)
-	data, err := proto.Marshal(m)
+	data, err := proto.Marshal(rs)
+	if err != nil {
+		slog.Error("marshaling error: ", err)
+		return nil
+	}
+	return data
+}
+
+func makeOtlpMetricResponse(rm *otlpmetrics.ResourceMetrics) []byte {
+	if rm == nil {
+		slog.Info("ResourceMetrics is nil")
+		return nil
+	}
+	data, err := proto.Marshal(rm)
+	if err != nil {
+		slog.Error("marshaling error: ", err)
+		return nil
+	}
+	return data
+}
+
+func makeOtlpLogResponse(rl *otlplogs.ResourceLogs) []byte {
+	if rl == nil {
+		slog.Info("ResourceLogs is nil")
+		return nil
+	}
+	data, err := proto.Marshal(rl)
 	if err != nil {
 		slog.Error("marshaling error: ", err)
 		return nil

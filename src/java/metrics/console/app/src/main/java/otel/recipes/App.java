@@ -16,7 +16,8 @@ import io.opentelemetry.semconv.ResourceAttributes;
 public class App {
 
   public static void main(String[] args) {
-    OtlpGrpcMetricExporter metricsExporter = OtlpGrpcMetricExporter.builder().build();
+    OtlpGrpcMetricExporter metricsExporter =
+        OtlpGrpcMetricExporter.builder().setEndpoint("http://collector-otel-recipes:4317").build();
 
     // Builds the Meter Provider with the OTLP exporter
     SdkMeterProvider meterProvider =
@@ -34,7 +35,7 @@ public class App {
 
     // Creates the Counter instrument
     LongCounter counter =
-        meter.counterBuilder("myCounter").setDescription("I count things!").setUnit("1").build();
+        meter.counterBuilder("myCounter").setDescription("I count things").setUnit("1").build();
 
     // Add to our counter with an attribute
     counter.add(3, Attributes.of(stringKey("foo"), "bar"));

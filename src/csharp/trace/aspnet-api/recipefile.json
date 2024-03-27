@@ -30,11 +30,11 @@
     },
     {
       "id": "OpenTelemetry.Instrumentation.AspNetCore",
-      "version": "1.7.0"
+      "version": "1.7.1"
     },
     {
       "id": "OpenTelemetry.Instrumentation.Http",
-      "version": "1.7.0"
+      "version": "1.7.1"
     }
   ]
 }

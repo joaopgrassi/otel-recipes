@@ -25,13 +25,14 @@ func AssertSpanWithAttributeExists(t *testing.T, spanTest *SpanTest) {
 
 	// do some retries until we backend has it
 	var span *otlptrace.Span
+found:
 	for _, backoff := range backoffSchedule {
 		rs := GetTraceWithRetry(t, spanTest.serviceName)
 		for _, ss := range rs.ScopeSpans {
 			for _, s := range ss.Spans {
 				if s.Name == spanTest.spanName {
 					span = s
-					break
+					break found
 				}
 			}
 		}
