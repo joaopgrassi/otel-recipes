@@ -12,7 +12,6 @@ import (
 	otlplogs "go.opentelemetry.io/proto/otlp/logs/v1"
 	otlpmetrics "go.opentelemetry.io/proto/otlp/metrics/v1"
 	otlptrace "go.opentelemetry.io/proto/otlp/trace/v1"
-	"google.golang.org/protobuf/runtime/protoiface"
 )
 
 var resourceSpans map[string]*otlptrace.ResourceSpans
@@ -158,15 +157,15 @@ func getOtlpData(w http.ResponseWriter, r *http.Request) {
 	switch signal {
 	case "trace":
 		if rm, found := resourceSpans[serviceName]; found {
-			res = makeOtlpResponse(rm)
+			res, _ = proto.Marshal(rm)
 		}
 	case "metrics":
 		if rm, found := resourceMetrics[serviceName]; found {
-			res = makeOtlpResponse(rm)
+			res, _ = proto.Marshal(rm)
 		}
 	case "logs":
 		if rm, found := resourceLogs[serviceName]; found {
-			res = makeOtlpResponse(rm)
+			res, _ = proto.Marshal(rm)
 		}
 	}
 
@@ -175,20 +174,6 @@ func getOtlpData(w http.ResponseWriter, r *http.Request) {
 	} else {
 		w.Write(res)
 	}
-}
-
-func makeOtlpResponse(m protoiface.MessageV1) []byte {
-	if m == nil {
-		slog.Info("m is nil")
-		return nil
-	}
-	slog.Info("data: ", m)
-	data, err := proto.Marshal(m)
-	if err != nil {
-		slog.Error("marshaling error: ", err)
-		return nil
-	}
-	return data
 }
 
 func main() {
