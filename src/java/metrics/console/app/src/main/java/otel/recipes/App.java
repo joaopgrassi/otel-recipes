@@ -17,7 +17,7 @@ public class App {
 
   public static void main(String[] args) {
     OtlpGrpcMetricExporter metricsExporter =
-        OtlpGrpcMetricExporter.builder().setEndpoint("http://localhost:4317").build();
+        OtlpGrpcMetricExporter.builder().setEndpoint("http://collector-otel-recipes:4317").build();
 
     // Builds the Meter Provider with the OTLP exporter
     SdkMeterProvider meterProvider =
