@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  pull_request:
+    paths:
+      - "**/recipefile.json"
+
+jobs:
+  gen-matrix:
+    name: Find recipe files to test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get changed files
+        id: diff
+        uses: tj-actions/changed-files@v43
+        with:
+          json: true
+          dir_names_exclude_current_dir: true
+
+      - name: Get duplicate recipe ids
+        uses: actions/github-script@v7
+        id: generator
+        with:
+          script: |
+            const script = require('.github/scripts/find-recipefiles-to-test.js');
+            return script('${{ steps.diff.outputs.all_changed_files }}', '${{ github.workspace }}');
+
+      - name: Validate
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const errors = JSON.parse("${{ steps.generator.outputs.result }}");
+            if (errors.length === 0) {
+              return 0;
+            }
+            for (const msg of invalids) {
+              console.log(msg);
+            }
+            return -1;
