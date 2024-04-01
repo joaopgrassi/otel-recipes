@@ -110,7 +110,10 @@
           "description": "The version of the depedency/package required for the sample"
         }
       },
-      "required": ["id", "version"]
+      "required": [
+        "id",
+        "version"
+      ]
     }
   }
 }
