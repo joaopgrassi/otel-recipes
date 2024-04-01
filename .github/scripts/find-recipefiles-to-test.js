@@ -6,7 +6,7 @@ function findRecipesToTest(modifiedFiles, rootDir) {
   if (modifiedFiles.includes("otel-recipes-schema.json")) {
     return findAllRecipeFiles(rootDir);
   }
-  const recipeFileDirectories = [];
+  const recipeFilePaths = [];
 
   modifiedFiles.forEach((file) => {
     let currentPath = path.dirname(file);
@@ -16,16 +16,16 @@ function findRecipesToTest(modifiedFiles, rootDir) {
       const recipeFileToCheckPath = path.join(currentPath, "recipefile.json");
       if (
         fs.existsSync(recipeFileToCheckPath) &&
-        !recipeFileDirectories.includes(currentPath)
+        !recipeFilePaths.includes(recipeFileToCheckPath)
       ) {
-        recipeFileDirectories.push(currentPath);
+        recipeFilePaths.push(recipeFileToCheckPath);
         break; // Stop once a recipefile is found
       }
       currentPath = path.dirname(currentPath); // Move up a directory level
     }
   });
 
-  return recipeFileDirectories;
+  return recipeFilePaths;
 }
 
 /**

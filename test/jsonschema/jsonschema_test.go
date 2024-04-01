@@ -16,7 +16,7 @@ func TestJsonSchema(t *testing.T) {
 	root := filepath.Clean(filepath.Join(cwd, "..", ".."))
 
 	schemaPath := "file://" + filepath.Join(root, "otel-recipes-schema.json")
-	recipeFile := "file://" + filepath.Join(*recipePath, "recipefile.json")
+	recipeFile := "file://" + *recipePath
 
 	t.Logf("The schema path to load is: %s", schemaPath)
 	t.Logf("The recipefile path to load is: %s", recipeFile)
