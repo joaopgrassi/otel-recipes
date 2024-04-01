@@ -7,7 +7,7 @@ on:
 
 jobs:
   gen-matrix:
-    name: Find recipe files to test
+    name: Validate unique recipe ids
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
