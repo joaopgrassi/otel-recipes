@@ -26,10 +26,8 @@ jobs:
         id: generator
         with:
           script: |
-            const script = require('.github/scripts/find-recipefiles-to-test.js')
-            return script(
-              '${{ steps.diff.outputs.all_changed_files }}', ${GITHUB_WORKSPACE}
-            );
+            const script = require('.github/scripts/find-recipefiles-to-test.js');
+            return script('${{ steps.diff.outputs.all_changed_files }}', '${GITHUB_WORKSPACE}');
     outputs:
       matrix: ${{ steps.generator.outputs.result }}
 

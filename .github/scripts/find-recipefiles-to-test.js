@@ -52,7 +52,7 @@ function findAllRecipeFiles(dir, fileList = []) {
 }
 
 const generateBuildMatrix = (modifiedFiles, rootDir) => {
-  return findRecipesToTest(JSON.parse(modifiedFiles));
+  return findRecipesToTest(JSON.parse(modifiedFiles), rootDir);
 };
 
 module.exports = generateBuildMatrix;
