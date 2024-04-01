@@ -33,7 +33,7 @@ function findDuplicatedRecipeIds(modifiedFiles, rootDir) {
   invalid = [];
   toCheckRecipes.forEach((toCheck) => {
     if (allRecipes.some((r) => r.id == toCheck.id)) {
-      invalid.push(`Duplicated Recipe id: ${toCheck.id}, source: ${sourceRoot}`);
+      invalid.push(`Duplicated Recipe id: ${toCheck.id}, source: ${toCheck.sourceRoot}`);
     }
   });
   return invalid;
