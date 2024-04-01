@@ -27,7 +27,7 @@ jobs:
         with:
           script: |
             const script = require('.github/scripts/find-recipefiles-to-test.js');
-            return script('${{ steps.diff.outputs.all_changed_files }}', '${GITHUB_WORKSPACE}');
+            return script('${{ steps.diff.outputs.all_changed_files }}', '${{ github.workspace }}');
     outputs:
       matrix: ${{ steps.generator.outputs.result }}
 
