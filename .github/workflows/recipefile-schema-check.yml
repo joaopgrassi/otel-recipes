@@ -51,4 +51,4 @@ jobs:
 
       - name: Test
         working-directory: ./test/jsonschema
-        run: go test -v -recipePath=${{ matrix.file }}
+        run: go test -v -path=${{ matrix.file }}
