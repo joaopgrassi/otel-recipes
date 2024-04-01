@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../otel-recipes-schema.json",
-  "id": "csharp-console",
+  "id": "go-console",
   "languageId": "csharp",
   "signal": "trace",
   "displayName": "Console App",
