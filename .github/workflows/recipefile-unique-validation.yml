@@ -36,7 +36,7 @@ jobs:
             if (errors.length === 0) {
               return 0;
             }
-            for (const msg of invalids) {
+            for (const msg of errors) {
               console.log(msg);
             }
             return -1;
