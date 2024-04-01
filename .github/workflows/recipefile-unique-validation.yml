@@ -34,9 +34,9 @@ jobs:
           script: |
             const errors = JSON.parse('${{ steps.generator.outputs.result }}');
             if (errors.length === 0) {
-              return 0;
+              return;
             }
             for (const msg of errors) {
               console.log(msg);
             }
-            return -1;
+            core.setFailed("Encountered duplicate recipe ids. See the above logs for more information.");
