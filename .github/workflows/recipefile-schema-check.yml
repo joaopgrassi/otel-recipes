@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  pull_request:
+    paths:
+      - "src/**"
+      - "!src/site/**"
+
+jobs:
+  gen-matrix:
+    name: Find recipe files to test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get changed files
+        id: diff
+        uses: tj-actions/changed-files@v43
+        with:
+          json: true
+          dir_names_exclude_current_dir: true
+
+      - name: Generate testing matrix for modified recipes
+        uses: actions/github-script@v7
+        id: generator
+        with:
+          script: |
+            const script = require('.github/scripts/find-recipefiles-to-test.js')
+            return script(
+              '${{ steps.diff.outputs.all_changed_files }}', ${GITHUB_WORKSPACE}
+            );
+    outputs:
+      matrix: ${{ steps.generator.outputs.result }}
+
+  matrix-job:
+    name: Check recipe file
+    runs-on: ubuntu-latest
+    needs: gen-matrix
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        file: ${{ fromJson(needs.gen-matrix.outputs.matrix) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22.1"
+
+      - name: Test
+        working-directory: ./test/jsonschema
+        run: go test -v -recipePath=${{ matrix.file }}
