@@ -25,9 +25,7 @@ namespace Console
 
             // Start a span with a tag
             using var activity = Tracer.StartActivity("HelloWorldSpan");
-
             activity?.SetTag("foo", "bar");
-
         }
     }
 }
