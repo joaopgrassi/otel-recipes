@@ -36,7 +36,9 @@ jobs:
             if (errors.length === 0) {
               return;
             }
+            console.log("#################### Recipes with duplicated Ids: ####################")
             for (const msg of errors) {
-              console.log(msg);
+              console.log(`- ${msg}`);
             }
+            console.log("#################### Recipes with duplicated Ids: ####################")
             core.setFailed("Encountered duplicate recipe ids. See the above logs for more information.");
