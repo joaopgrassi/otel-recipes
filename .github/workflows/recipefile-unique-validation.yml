@@ -41,4 +41,4 @@ jobs:
               console.log(`- ${msg}`);
             }
             console.log("#################### Recipes with duplicated Ids: ####################")
-            core.setFailed("Encountered duplicate recipe ids. See the above logs for more information.");
+            core.setFailed("Encountered duplicated recipe ids. See the above logs for more information.");
