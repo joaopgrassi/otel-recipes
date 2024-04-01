@@ -14,11 +14,12 @@ function findRecipesToTest(modifiedFiles, rootDir) {
 
     while (currentPath !== basePath && currentPath.includes(basePath)) {
       const recipeFileToCheckPath = path.join(currentPath, "recipefile.json");
+      const absoluteRecipeFilePath = path.join(rootDir, recipeFileToCheckPath);
       if (
         fs.existsSync(recipeFileToCheckPath) &&
-        !recipeFilePaths.includes(recipeFileToCheckPath)
+        !recipeFilePaths.includes(absoluteRecipeFilePath)
       ) {
-        recipeFilePaths.push(recipeFileToCheckPath);
+        recipeFilePaths.push(absoluteRecipeFilePath);
         break; // Stop once a recipefile is found
       }
       currentPath = path.dirname(currentPath); // Move up a directory level
