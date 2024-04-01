@@ -30,10 +30,6 @@
     {
       "id": "io.opentelemetry:opentelemetry-sdk",
       "version": "1.26.0"
-    },
-    {
-      "id": "io.opentelemetry.semconv:opentelemetry-semconv",
-      "version": "1.23.1-alpha"
     }
   ]
 }
