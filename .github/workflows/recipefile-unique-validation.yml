@@ -25,7 +25,7 @@ jobs:
         id: generator
         with:
           script: |
-            const script = require('.github/scripts/find-recipefiles-to-test.js');
+            const script = require('.github/scripts/unique-recipe-ids.js');
             return script('${{ steps.diff.outputs.all_changed_files }}', '${{ github.workspace }}');
 
       - name: Validate
