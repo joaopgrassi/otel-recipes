@@ -11,7 +11,7 @@ func TestMetricsGeneratedFromSample(t *testing.T) {
 	m := rm.GetScopeMetrics()[0].Metrics
 
 	// Counter metric
-	ctc := tu.NewMetricTestCase("myCounter", "I count things", "1", int64(3), tu.StringAttribute("foo", "bar"))
+	ctc := tu.NewMetricTestCase("myCounter", "I count things", "1", float64(3), tu.StringAttribute("foo", "bar"))
 	tu.AssertCounter(t, ctc, m)
 
 	// Gauge metric

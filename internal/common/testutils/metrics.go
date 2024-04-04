@@ -21,7 +21,15 @@ func AssertCounter[T Number](t *testing.T, tc *MetricTestCase[T], actualMetrics 
 	assert.Equal(t, tc.unit, m.GetUnit())
 	s := m.GetData().(*otlpmetrics.Metric_Sum)
 	dp := s.Sum.DataPoints[0]
-	assert.Equal(t, tc.value, dp.GetAsInt())
+
+	switch any(tc.value).(type) {
+	case int, int64:
+		assert.Equal(t, tc.value, dp.GetAsInt())
+	case float64:
+		assert.Equal(t, tc.value, dp.GetAsDouble())
+	default:
+		t.Fatalf("invalid datapoint value type")
+	}
 
 	for _, exp := range tc.attributes {
 		assert.Contains(t, dp.Attributes, exp)
