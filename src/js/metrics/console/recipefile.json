@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../../otel-recipes-schema.json",
+  "id": "js-metrics-console",
+  "languageId": "js",
+  "signal": "metrics",
+  "displayName": "Console App",
+  "tags": [],
+  "description": "A nodejs console application instrumented with OpenTelemetry that generate metrics.",
+  "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/js/metrics/console",
+  "steps": [
+    {
+      "displayName": "Configure the SDK",
+      "order": 1,
+      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/js/metrics/console/app.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "id": "@opentelemetry/sdk-metrics",
+      "version": "^1.23.0"
+    },
+    {
+      "id": "@opentelemetry/exporter-metrics-otlp-grpc",
+      "version": "^0.50.0"
+    },
+    {
+      "id": "@opentelemetry/semantic-conventions",
+      "version": "^1.23.0"
+    }
+  ]
+}
