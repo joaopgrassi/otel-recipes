@@ -1,4 +1,4 @@
-module github.com/joaopgrassi/otel-recipes/python/metrics/console
+module github.com/joaopgrassi/otel-recipes/go/metrics/console
 
 go 1.22.1
 
