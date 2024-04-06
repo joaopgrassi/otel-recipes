@@ -1,17 +1,17 @@
 {
   "$schema": "../../../../otel-recipes-schema.json",
   "languageId": "python",
-  "signal": "trace",
-  "id": "python-console",
+  "signal": "metrics",
+  "id": "python-metrics-console",
   "displayName": "Console App",
   "tags": [],
-  "description": "A python console application instrumented with OpenTelemetry that generates a trace.",
-  "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/python/trace/console",
+  "description": "A python console application instrumented with OpenTelemetry that generate metrics.",
+  "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/python/metrics/console",
   "steps": [
     {
       "displayName": "Configure the SDK",
       "order": 1,
-      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/python/trace/console/app.py"
+      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/python/metrics/console/app.py"
     }
   ],
   "dependencies": [
