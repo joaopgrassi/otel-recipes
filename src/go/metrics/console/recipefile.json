@@ -1,0 +1,39 @@
+{
+  "$schema": "../../../../otel-recipes-schema.json",
+  "id": "go-metrics-console",
+  "languageId": "go",
+  "signal": "metrics",
+  "displayName": "Console App",
+  "tags": [],
+  "description": "A go console application instrumented with OpenTelemetry that generate metrics.",
+  "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/go/metrics/console",
+  "steps": [
+    {
+      "displayName": "Configure the SDK",
+      "order": 1,
+      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/go/metrics/console/app.go"
+    }
+  ],
+  "dependencies": [
+    {
+      "id": "go.opentelemetry.io/otel",
+      "version": "v1.25.0"
+    },
+    {
+      "id": "go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc",
+      "version": "v1.25.0"
+    },
+    {
+      "id": "go.opentelemetry.io/otel/sdk",
+      "version": "v1.25.0"
+    },
+    {
+      "id": "go.opentelemetry.io/otel/metric",
+      "version": "v1.25.0"
+    },
+    {
+      "id": "go.opentelemetry.io/otel/sdk/metric",
+      "version": "v1.25.0"
+    }
+  ]
+}
