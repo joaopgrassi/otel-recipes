@@ -25,7 +25,7 @@ func AssertLogWithAttributeExists(t *testing.T, tc *LogTestCase) {
 	var actual *otlplogs.LogRecord
 	for _, backoff := range backoffSchedule {
 		logs := GetLogsWithRetry(t, tc.serviceName)
-		log := findLog(t, logs, tc.body)
+		log := findLog(logs, tc.body)
 
 		if log != nil {
 			actual = log
