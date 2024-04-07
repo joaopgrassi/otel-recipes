@@ -70,3 +70,19 @@ func NewMetricTestCase[T Number](name, description, unit string, value T, attrib
 		attributes:  attributes,
 	}
 }
+
+type LogTestCase struct {
+	serviceName string
+	severity    string
+	body        string
+	attributes  []*otlpcommon.KeyValue
+}
+
+func NewLogTestCase(serviceName, severity, body, traceId, spanId string, attributes []*otlpcommon.KeyValue) *LogTestCase {
+	return &LogTestCase{
+		serviceName: serviceName,
+		severity:    severity,
+		body:        body,
+		attributes:  attributes,
+	}
+}
