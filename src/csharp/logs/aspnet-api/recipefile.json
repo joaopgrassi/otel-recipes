@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../../otel-recipes-schema.json",
+  "id": "aspnet-api-logs",
+  "languageId": "csharp",
+  "signal": "logs",
+  "displayName": "ASP.NET Core API",
+  "tags": [],
+  "description": "An ASP.NET Core API instrumented with OpenTelemetry that generates logs when the /helloworld endpoint is called",
+  "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/csharp/logs/aspnet-api",
+  "steps": [
+    {
+      "displayName": "Configure the SDK",
+      "order": 1,
+      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/csharp/logs/aspnet-api/Program.cs"
+    },
+    {
+      "displayName": "Record a log message",
+      "order": 2,
+      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/csharp/logs/aspnet-api/Controllers/HelloWorldController.cs"
+    }
+  ],
+  "dependencies": [
+    {
+      "id": "OpenTelemetry.Exporter.OpenTelemetryProtocol",
+      "version": "1.7.0"
+    },
+    {
+      "id": "OpenTelemetry.Extensions.Hosting",
+      "version": "1.7.0"
+    },
+    {
+      "id": "OpenTelemetry.Instrumentation.AspNetCore",
+      "version": "1.7.1"
+    },
+    {
+      "id": "OpenTelemetry.Instrumentation.Http",
+      "version": "1.7.1"
+    }
+  ]
+}
