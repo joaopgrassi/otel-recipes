@@ -13,21 +13,40 @@ import (
 )
 
 func AssertLogWithAttributeExists(t *testing.T, tc *LogTestCase) {
-	logs := GetLogsWithRetry(t, tc.serviceName)
+	backoffSchedule := []time.Duration{
+		1 * time.Second,
+		3 * time.Second,
+		10 * time.Second,
+		15 * time.Second,
+		20 * time.Second,
+		30 * time.Second,
+	}
 
-	log := findLog(t, logs, tc.body)
+	var actual *otlplogs.LogRecord
+	for _, backoff := range backoffSchedule {
+		logs := GetLogsWithRetry(t, tc.serviceName)
+		log := findLog(t, logs, tc.body)
+
+		if log != nil {
+			actual = log
+			break
+		}
+
+		t.Logf("Log not found yet, retrying in %v\n", backoff)
+		time.Sleep(backoff)
+	}
 
 	// assert
-	assert.Equal(t, tc.severity, log.GetSeverityText())
-	assert.NotEmpty(t, log.GetTraceId())
-	assert.NotEmpty(t, log.GetSpanId())
+	assert.Equal(t, tc.severity, actual.GetSeverityText())
+	assert.NotEmpty(t, actual.GetTraceId())
+	assert.NotEmpty(t, actual.GetSpanId())
 
 	for _, exp := range tc.attributes {
-		assert.Contains(t, log.Attributes, exp)
+		assert.Contains(t, actual.Attributes, exp)
 	}
 }
 
-func findLog(t *testing.T, logs *otlplogs.ResourceLogs, body string) *otlplogs.LogRecord {
+func findLog(logs *otlplogs.ResourceLogs, body string) *otlplogs.LogRecord {
 	for _, sl := range logs.ScopeLogs {
 		for _, l := range sl.LogRecords {
 			if l.Body.GetStringValue() == body {
@@ -35,8 +54,6 @@ func findLog(t *testing.T, logs *otlplogs.ResourceLogs, body string) *otlplogs.L
 			}
 		}
 	}
-
-	t.Fatalf("Could not find log with body: %s", body)
 	return nil
 }
 

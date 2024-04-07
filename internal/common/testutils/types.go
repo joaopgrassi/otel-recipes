@@ -78,7 +78,7 @@ type LogTestCase struct {
 	attributes  []*otlpcommon.KeyValue
 }
 
-func NewLogTestCase(serviceName, severity, body, traceId, spanId string, attributes []*otlpcommon.KeyValue) *LogTestCase {
+func NewLogTestCase(serviceName, severity, body string, attributes ...*otlpcommon.KeyValue) *LogTestCase {
 	return &LogTestCase{
 		serviceName: serviceName,
 		severity:    severity,
