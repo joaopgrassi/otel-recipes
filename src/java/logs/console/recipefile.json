@@ -1,0 +1,55 @@
+{
+  "$schema": "../../../../otel-recipes-schema.json",
+  "id": "java-logs-console",
+  "languageId": "java",
+  "signal": "logs",
+  "displayName": "Console App",
+  "tags": [],
+  "description": "A Java console application instrumented with OpenTelemetry that generate logs.",
+  "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/java/logs/console",
+  "steps": [
+    {
+      "displayName": "Configure the SDK and Log a message",
+      "order": 1,
+      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/java/logs/console/app/src/main/java/otel/recipes/App.java"
+    }
+  ],
+  "dependencies": [
+    {
+      "id": "io.opentelemetry:opentelemetry-bom",
+      "version": "1.37.0"
+    },
+    {
+      "id": "io.opentelemetry:opentelemetry-api",
+      "version": "1.37.0"
+    },
+    {
+      "id": "io.opentelemetry:opentelemetry-exporter-otlp",
+      "version": "1.37.0"
+    },
+    {
+      "id": "io.opentelemetry:opentelemetry-sdk",
+      "version": "1.37.0"
+    },
+    {
+      "id": "io.opentelemetry.semconv:opentelemetry-semconv",
+      "version": "1.23.1-alpha"
+    },
+    {
+      "id": "org.apache.logging.log4j:log4j-bom:2.23.1",
+      "version": "2.23.1"
+    },
+    {
+      "id": "org.apache.logging.log4j:log4j-api",
+      "version": "2.23.1"
+    },
+    {
+      "id": "org.apache.logging.log4j:log4j-core",
+      "version": "2.23.1"
+    },
+    {
+      "id": "io.opentelemetry.instrumentation:opentelemetry-log4j-appender-2.17",
+      "version": "2.2.0-alpha"
+    }
+  ]
+}
