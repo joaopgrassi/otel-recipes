@@ -22,7 +22,7 @@ public class App {
             .addLogRecordProcessor(
                 BatchLogRecordProcessor.builder(
                         OtlpGrpcLogRecordExporter.builder()
-                            .setEndpoint("http://localhost:4317")
+                            .setEndpoint("http://collector-otel-recipes:4317")
                             .build())
                     .build())
             .build();
