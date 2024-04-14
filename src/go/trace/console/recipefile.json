@@ -2,7 +2,7 @@
   "$schema": "../../../../otel-recipes-schema.json",
   "id": "go-console",
   "languageId": "go",
-  "signal": "trace",
+  "signal": "traces",
   "displayName": "Console App",
   "tags": [],
   "description": "A go console application instrumented with OpenTelemetry that generates a trace.",

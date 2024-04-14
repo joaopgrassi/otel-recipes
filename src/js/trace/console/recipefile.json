@@ -2,7 +2,7 @@
   "$schema": "../../../../otel-recipes-schema.json",
   "id": "js-console",
   "languageId": "js",
-  "signal": "trace",
+  "signal": "traces",
   "displayName": "Console App",
   "tags": [],
   "description": "A nodejs console application instrumented with OpenTelemetry that generates a trace.",

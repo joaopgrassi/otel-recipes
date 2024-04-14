@@ -2,7 +2,7 @@
   "$schema": "../../../../otel-recipes-schema.json",
   "id": "springboot-api",
   "languageId": "java",
-  "signal": "trace",
+  "signal": "traces",
   "displayName": "Spring Boot API",
   "tags": [],
   "description": "A Spring Boot API instrumented with OpenTelemetry Spring Boot starter that generates a trace when the /helloworld endpoint is called.",

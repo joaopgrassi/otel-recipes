@@ -2,7 +2,7 @@
   "$schema": "../../../../otel-recipes-schema.json",
   "id": "csharp-console",
   "languageId": "csharp",
-  "signal": "trace",
+  "signal": "traces",
   "displayName": "Console App",
   "tags": [],
   "description": "A C# console application instrumented with OpenTelemetry that generates a trace.",
