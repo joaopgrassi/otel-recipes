@@ -1,7 +1,7 @@
 {
   "$schema": "../../../../otel-recipes-schema.json",
   "languageId": "python",
-  "signal": "trace",
+  "signal": "traces",
   "id": "python-console",
   "displayName": "Console App",
   "tags": [],

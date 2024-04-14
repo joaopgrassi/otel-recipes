@@ -16,7 +16,7 @@
     "signal": {
       "type": "string",
       "description": "The unique identifier of the telemetry signal. MUST be one of the suggested by the schema",
-      "enum": ["trace", "metrics", "logs"]
+      "enum": ["traces", "metrics", "logs"]
     },
     "displayName": {
       "type": "string",

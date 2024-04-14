@@ -2,7 +2,7 @@
   "$schema": "../../../../otel-recipes-schema.json",
   "id": "aspnet-api",
   "languageId": "csharp",
-  "signal": "trace",
+  "signal": "traces",
   "displayName": "ASP.NET Core API",
   "tags": [],
   "description": "An ASP.NET Core API instrumented with OpenTelemetry that generates a trace when the /helloworld endpoint is called",

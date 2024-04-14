@@ -2,7 +2,7 @@
   "$schema": "../../../../otel-recipes-schema.json",
   "id": "java-console",
   "languageId": "java",
-  "signal": "trace",
+  "signal": "traces",
   "displayName": "Console App",
   "tags": [],
   "description": "A Java console application instrumented with OpenTelemetry that generates a trace.",

@@ -2,7 +2,7 @@
   "$schema": "../../../../otel-recipes-schema.json",
   "id": "gin-api",
   "languageId": "go",
-  "signal": "trace",
+  "signal": "traces",
   "displayName": "Gin API",
   "tags": [],
   "description": "A Gin API instrumented with OpenTelemetry that generates a trace when the /helloworld endpoint is called",
