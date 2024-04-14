@@ -2,7 +2,7 @@
   "$schema": "../../../../otel-recipes-schema.json",
   "languageId": "python",
   "signal": "metrics",
-  "id": "python-metrics-console",
+  "id": "python-console-metrics",
   "displayName": "Console App",
   "tags": [],
   "description": "A python console application instrumented with OpenTelemetry that generate metrics.",
