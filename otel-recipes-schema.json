@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "https://json-schema.org/draft-07/schema",
   "$id": "https://github.com/joaopgrassi/otel-recipes/otel-recipes-schema.json",
   "title": "JSON Schema for OTel recipe files",
   "type": "object",
@@ -30,7 +30,12 @@
     },
     "tags": {
       "type": "array",
-      "description": "Related tags with the language/technology of the recipe."
+      "description": "Related tags with the language/technology of the recipe.",
+      "items": [
+        { "enum": ["api", "db", "http", "web", "manual", "automatic"] }
+      ],
+      "maxItems": 4,
+      "additionalItems": false
     },
     "sourceRoot": {
       "type": "string",
