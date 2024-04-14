@@ -1,6 +1,12 @@
 const path = require("path");
 const fs = require("fs");
 
+/**
+ *
+ * @param {String} modifiedFiles
+ * @param {String} rootDir
+ * @returns {String[]}
+ */
 function findRecipesToTest(modifiedFiles, rootDir) {
   // If the schema is changed, run the test on all recipe files
   if (modifiedFiles.includes("otel-recipes-schema.json")) {
@@ -56,4 +62,7 @@ const generateBuildMatrix = (modifiedFiles, rootDir) => {
   return findRecipesToTest(JSON.parse(modifiedFiles), rootDir);
 };
 
-module.exports = generateBuildMatrix;
+module.exports = {
+  generateBuildMatrix: generateBuildMatrix,
+  findRecipesToTest: findRecipesToTest
+}

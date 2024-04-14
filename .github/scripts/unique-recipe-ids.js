@@ -1,13 +1,6 @@
 const path = require("path");
 const fs = require("fs");
 
-class Rectangle {
-  constructor(height, width) {
-    this.height = height;
-    this.width = width;
-  }
-}
-
 function findDuplicatedRecipeIds(modifiedFiles, rootDir) {
   // get all other recipes
   allRecipeFilePaths = findAllRecipeFiles(rootDir);
