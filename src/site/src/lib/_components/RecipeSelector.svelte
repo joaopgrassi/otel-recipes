@@ -16,14 +16,14 @@
 	import { fly } from 'svelte/transition';
 
 	const selectedLanguageStore$ = selectedLanguage.subscribe((lang: LanguageDropDown) => {
-		if (lang.id !== Languages.none.id) {
+		if (lang.id !== Languages.none.id && $page.url.searchParams.get('language') !== lang.id) {
 			$page.url.searchParams.set('language', lang.id);
 			goto(`?${$page.url.searchParams.toString()}`);
 		}
 	});
 
 	const selectedSignalStore$ = selectedSignal.subscribe((signal: SignalDropDown) => {
-		if (signal.id !== Signals.none.id) {
+		if (signal.id !== Signals.none.id && $page.url.searchParams.get('signal') !== signal.id) {
 			$page.url.searchParams.set('signal', signal.id);
 			goto(`?${$page.url.searchParams.toString()}`);
 		}

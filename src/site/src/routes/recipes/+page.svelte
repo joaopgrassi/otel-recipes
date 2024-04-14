@@ -5,9 +5,10 @@
 	import { filteredSamples, setFromUrl, selectedRecipeId, resetSearch } from '$lib/store/store';
 	import RecipeSelector from '$lib/_components/RecipeSelector.svelte';
 	import RecipeSteps from '$lib/_components/RecipeSteps.svelte';
-	import { onDestroy, onMount } from 'svelte';
+	import { onDestroy } from 'svelte';
+	import { afterNavigate } from '$app/navigation';
 
-	onMount(() => {
+	afterNavigate(() => {
 		const language = $page.url.searchParams.get('language');
 		const signal = $page.url.searchParams.get('signal');
 		const sample = $page.url.searchParams.get('recipe');

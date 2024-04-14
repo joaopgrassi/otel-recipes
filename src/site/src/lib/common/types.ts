@@ -52,7 +52,7 @@ export class Signals {
 
 	static readonly all: SignalDropDown[] = [
 		this.none,
-		{ id: 'trace', displayName: 'Trace' },
+		{ id: 'traces', displayName: 'Traces' },
 		{ id: 'metrics', displayName: 'Metrics' },
 		{ id: 'logs', displayName: 'Logs' }
 	];

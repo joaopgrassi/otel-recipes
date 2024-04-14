@@ -13,8 +13,6 @@ import Fuse from 'fuse.js';
 
 let recipes = data as unknown as Recipe[];
 
-const NONE: string = 'none';
-
 const fuseOpts = {
 	includeScore: true,
 	minMatchCharLength: 3,
@@ -38,7 +36,7 @@ export const store = new LangStore();
 export const textSearch = writable('');
 export const selectedLanguage = writable(Languages.none);
 export const selectedSignal = writable(Signals.none);
-export const selectedRecipeId = writable(NONE);
+export const selectedRecipeId = writable(Recipes.none.id);
 
 // For drop-downs
 export const allLanguages: Readable<SignalDropDown[]> = readable(Languages.all);
@@ -83,7 +81,7 @@ export const filteredSamples: Readable<Recipe[]> = derived(
 export const selectedRecipe: Readable<Recipe> = derived(
 	[store.allRecipes, selectedRecipeId],
 	([$store, $selectedRecipeId]) => {
-		if ($selectedRecipeId === NONE) {
+		if ($selectedRecipeId === Recipes.none.id) {
 			return Recipes.none;
 		}
 
@@ -106,13 +104,15 @@ export function resetSearch() {
 	textSearch.set(null);
 	selectedLanguage.set(Languages.none);
 	selectedSignal.set(Signals.none);
-	selectedRecipeId.set(NONE);
+	selectedRecipeId.set(Recipes.none.id);
 }
 
 export function setFromUrl(languageId?: string, signalId?: string, recipeId?: string) {
 	if (recipeId) {
 		selectedRecipeId.set(recipeId);
 		return;
+	} else {
+		selectedRecipeId.set(Recipes.none.id);
 	}
 
 	const language = Languages.all.find((l: LanguageDropDown) => l.id === languageId);
@@ -122,6 +122,7 @@ export function setFromUrl(languageId?: string, signalId?: string, recipeId?: st
 		selectedLanguage.set(Languages.none);
 		return;
 	}
+	selectedLanguage
 	selectedLanguage.set(language);
 
 	const signal = Signals.all.find((s: SignalDropDown) => s.id === signalId);
