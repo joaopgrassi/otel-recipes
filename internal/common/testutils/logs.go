@@ -38,8 +38,11 @@ func AssertLogWithAttributeExists(t *testing.T, tc *LogTestCase) {
 
 	// assert
 	assert.Equal(t, tc.severity, actual.GetSeverityText())
-	assert.NotEmpty(t, actual.GetTraceId())
-	assert.NotEmpty(t, actual.GetSpanId())
+
+	if tc.withTrace {
+		assert.NotEmpty(t, actual.GetTraceId())
+		assert.NotEmpty(t, actual.GetSpanId())
+	}
 
 	for _, exp := range tc.attributes {
 		assert.Contains(t, actual.Attributes, exp)
