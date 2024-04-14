@@ -38,8 +38,11 @@ func AssertLogWithAttributeExists(t *testing.T, tc *LogTestCase) {
 
 	// assert
 	assert.Equal(t, tc.severity, actual.GetSeverityText())
-	assert.NotEmpty(t, actual.GetTraceId())
-	assert.NotEmpty(t, actual.GetSpanId())
+
+	if tc.withTrace {
+		assert.NotEmpty(t, actual.GetTraceId())
+		assert.NotEmpty(t, actual.GetSpanId())
+	}
 
 	for _, exp := range tc.attributes {
 		assert.Contains(t, actual.Attributes, exp)
@@ -77,12 +80,12 @@ func GetLogsWithRetry(t *testing.T, serviceName string) *otlplogs.ResourceLogs {
 			break
 		}
 
-		t.Logf("Trace not found yet, retrying in %v\n", backoff)
+		t.Logf("Log not found yet, retrying in %v\n", backoff)
 		time.Sleep(backoff)
 	}
 
 	if len(rl.ScopeLogs) == 0 {
-		t.Fatalf("Could not find logs logs for sample: %s", serviceName)
+		t.Fatalf("Could not find logs for sample: %s", serviceName)
 	}
 
 	return rl
