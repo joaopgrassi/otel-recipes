@@ -35,7 +35,7 @@ public class App {
     OpenTelemetryAppender.install(sdk);
 
     // Creates the Logger
-    Logger log4jLogger = LogManager.getLogger();
+    Logger log4jLogger = LogManager.getLogger("mylogger");
 
     // Log an info message with an attribute
     StringMapMessage message = new StringMapMessage();
