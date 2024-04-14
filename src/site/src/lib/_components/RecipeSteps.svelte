@@ -14,9 +14,7 @@
 	};
 
 	const selectedRecipeStore$ = selectedRecipe.subscribe((recipe: Recipe) => {
-		if (recipe.id !== 'none') {
-			$page.url.searchParams.delete('language');
-			$page.url.searchParams.delete('signal');
+		if (recipe.id !== 'none' && $page.url.searchParams.get('recipe') !== recipe.id) {
 			$page.url.searchParams.set('recipe', recipe.id);
 			goto(`?${$page.url.searchParams.toString()}`);
 		}
