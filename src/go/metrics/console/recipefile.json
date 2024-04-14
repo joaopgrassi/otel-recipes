@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../otel-recipes-schema.json",
-  "id": "go-metrics-console",
+  "id": "go-console-metrics",
   "languageId": "go",
   "signal": "metrics",
   "displayName": "Console App",
