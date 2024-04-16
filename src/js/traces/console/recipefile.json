@@ -29,7 +29,7 @@
     },
     {
       "id": "@opentelemetry/semantic-conventions",
-      "version": "^1.23.0"
+      "version": "1.23.0"
     }
   ]
 }
