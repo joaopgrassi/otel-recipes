@@ -1,9 +1,9 @@
 const path = require("path");
 const fs = require("fs");
-const findRecipes = require("./find-recipefiles-to-test");
+const utils = require("./utils");
 
 function findOutSyncRecipeFiles(modifiedFiles, rootDir) {
-  const recipesToTest = findRecipes.findRecipesToTest(modifiedFiles, rootDir);
+  const recipesToTest = utils.findRecipesToTest(modifiedFiles, rootDir);
   let result = [];
   recipesToTest.forEach((f) => {
     const recipePath = path.dirname(f);
