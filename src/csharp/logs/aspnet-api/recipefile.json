@@ -22,7 +22,7 @@
   "dependencies": [
     {
       "id": "OpenTelemetry.Exporter.OpenTelemetryProtocol",
-      "version": "1.1.0"
+      "version": "1.7.0"
     },
     {
       "id": "OpenTelemetry.Extensions.Hosting",

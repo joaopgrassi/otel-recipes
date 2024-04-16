@@ -17,7 +17,7 @@
   "dependencies": [
     {
       "id": "io.opentelemetry:opentelemetry-bom",
-      "version": "1.32.0"
+      "version": "1.36.0"
     },
     {
       "id": "io.opentelemetry:opentelemetry-api",
@@ -28,7 +28,7 @@
       "version": "1.36.0"
     },
     {
-      "id": "io.opentelemetry:opentelemetry-sda",
+      "id": "io.opentelemetry:opentelemetry-sdk",
       "version": "1.36.0"
     },
     {
