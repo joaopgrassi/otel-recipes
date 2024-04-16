@@ -28,7 +28,7 @@ function findOutSyncRecipeFiles(modifiedFiles, rootDir) {
         break;
     }
   });
-  return result;
+  return result.filter(Boolean);
 }
 
 function checkCsharpDeps(recipe, recipePath) {
