@@ -2,7 +2,7 @@ const path = require("path");
 const fs = require("fs");
 
 /**
- *
+ * Returns a list of recipefile.json to test.
  * @param {String} modifiedFiles
  * @param {String} rootDir
  * @returns {String[]}
