@@ -165,4 +165,9 @@ function findFirstFileByExtension(directory, extension) {
   return null;
 }
 
-module.exports = findOutSyncRecipeFiles;
+
+const generateOutOfSyncDependencies = (modifiedFiles, rootDir) => {
+  return findOutSyncRecipeFiles(JSON.parse(modifiedFiles), rootDir);
+};
+
+module.exports = generateOutOfSyncDependencies;
