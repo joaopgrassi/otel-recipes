@@ -11,7 +11,6 @@ const provider = new BasicTracerProvider({
   }),
 });
 
-
 provider.addSpanProcessor(new SimpleSpanProcessor(new OTLPTraceExporter({
   url: "http://collector-otel-recipes:4317"
 })));
