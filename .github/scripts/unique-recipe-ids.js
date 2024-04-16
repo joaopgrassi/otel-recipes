@@ -71,9 +71,7 @@ function findAllRecipeFiles(dir, fileList = []) {
 }
 
 const generateDuplicatedRecipeIds = (modifiedFiles, rootDir) => {
-  const errors = findDuplicatedRecipeIds(JSON.parse(modifiedFiles), rootDir);
-  console.log(errors);
-  return errors
+  return findDuplicatedRecipeIds(JSON.parse(modifiedFiles), rootDir);
 };
 
 module.exports = generateDuplicatedRecipeIds;

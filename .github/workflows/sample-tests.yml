@@ -31,9 +31,7 @@ jobs:
         with:
           script: |
             const script = require('.github/scripts/find-recipes-to-test.js')
-            return script.generateBuildMatrix(
-              '${{ steps.diff.outputs.all_changed_files }}'
-            );
+            return script('${{ steps.diff.outputs.all_changed_files }}');
     outputs:
       matrix: ${{ steps.generator.outputs.result }}
 
