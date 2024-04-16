@@ -17,7 +17,7 @@
   "dependencies": [
     {
       "id": "go.opentelemetry.io/otel",
-      "version": "v1.25.0"
+      "version": "v1.251.0"
     },
     {
       "id": "go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc",
@@ -28,7 +28,7 @@
       "version": "v1.25.0"
     },
     {
-      "id": "go.opentelemetry.io/otel/metric",
+      "id": "go.opentelemetry.io/otel/metriA",
       "version": "v1.25.0"
     },
     {
