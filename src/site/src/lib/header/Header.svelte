@@ -8,12 +8,18 @@
 		<div class="navbar-brand">
 			<a class="navbar-item" href="/">
 				<div class="mr-2">
-					<img src="logotype-white.svg" alt="OTel recipes logo" style="min-height: 50px;" width="auto" />
+					<img
+						src="logotype-white.svg"
+						alt="OTel recipes logo"
+						style="min-height: 50px;"
+						width="auto"
+					/>
 				</div>
 			</a>
 			<!-- svelte-ignore a11y-missing-attribute -->
 			<a
 				role="button"
+				tabindex="0"
 				class="navbar-burger"
 				aria-label="menu"
 				aria-expanded="false"
@@ -30,9 +36,7 @@
 		<div class="navbar-menu" class:is-active={showNav} id="navMenu">
 			<div class="navbar-end">
 				<a href="/" class="navbar-item">Home</a>
-				<a href="/recipes" class="navbar-item" on:click={() => resetSearch()}>
-					Recipes
-				</a>
+				<a href="/recipes" class="navbar-item" on:click={() => resetSearch()}> Recipes </a>
 			</div>
 		</div>
 	</div>
