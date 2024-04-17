@@ -19,6 +19,7 @@
 		"placeholder-loading": "^0.6.0"
 	},
 	"devDependencies": {
+		"@fontsource/fira-mono": "^4.5.10",
 		"@neoconfetti/svelte": "^1.0.0",
 		"@playwright/test": "^1.32.1",
 		"@sveltejs/adapter-auto": "^3.0.0",
