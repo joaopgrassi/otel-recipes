@@ -29,6 +29,16 @@ $ph-animation-duration: 1.5s;
 
 @import 'placeholder-loading/src/scss/placeholder-loading.scss';
 
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+#wrapper {
+	flex: 1;
+}
+
 /* To have a sticky footer. https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/*/
 .site {
 	display: flex;

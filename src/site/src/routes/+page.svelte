@@ -4,8 +4,8 @@
 
 <!-- intro -->
 <section class="hero is-fullheight has-background-grey-darker">
-  <div class="hero-body">
-    <div class="container is-fluid">
+	<div class="hero-body">
+		<div class="container is-fluid">
 			<div class="columns is-vcentered">
 				<div class="column is-7">
 					<div class="section-header">
@@ -13,15 +13,9 @@
 							Navigate the world of OpenTelemetry
 						</h1>
 						<h2 class="subtitle is-size-4 is-size-6-mobile has-text-white-bis">
-							Learn how to instrument your code by leveraging our specially curated, bite-sized code samples to get you started quickly with OpenTelemetry.
+							Learn how to instrument your code by leveraging our specially curated, bite-sized code
+							samples to get you started quickly with OpenTelemetry.
 						</h2>
-<!--
-						<div class="block">
-							<span class="subtitle is-5 has-text-white-bis">
-								Learn how to instrument your code by leveraging our specially curated, bite-sized code samples to get you started quickly with OpenTelemetry.
-							</span>
-						</div> -->
-
 						<div class="field is-grouped">
 							<div class="control">
 								<a class="button is-primary is-medium" href="/recipes">Check the recipes</a>
@@ -33,50 +27,9 @@
 					<img src="vision.svg" alt="Girl on laptop chilling with cute dogue" />
 				</div>
 			</div>
-
-
-    </div>
-  </div>
-</section>
-
-<!-- <section class="section is-medium has-background-grey-darker">
-	<div class="container is-fluid">
-		<div class="columns is-vcentered">
-			<div class="column">
-				<div class="section-header">
-					<h1 class="title is-spaced is-1 has-text-white-bis">
-						Navigate the world of OpenTelemetry
-					</h1>
-
-					<div class="block">
-						<span class="subtitle is-4 has-text-white-bis">
-							The place to get started with OpenTelemetry <span class="is-hidden-touch">
-								<br />
-							</span>
-							<span class="is-underlined">the easy way.</span>
-						</span>
-					</div>
-
-					<div class="block">
-						<span class="subtitle is-4 has-text-white-bis">
-							Explore the collection of bite-sized samples, specially curated to get you started
-							quickly.
-						</span>
-					</div>
-
-					<div class="field is-grouped">
-						<div class="control">
-							<a class="button is-link is-medium" href="/recipes">🌮 Check the recipes</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="column is-5">
-				<img src="vision.svg" alt="Girl on laptop chilling with cute dogue" />
-			</div>
 		</div>
 	</div>
-</section> -->
+</section>
 
 <!-- How it works section -->
 <section class="section is-medium">
@@ -206,7 +159,9 @@
 					</p>
 					<div class="field is-grouped">
 						<div class="control">
-							<a class="button is-dark is-medium" href="https://github.com/joaopgrassi/otel-recipes">View the project on GitHub</a>
+							<a class="button is-dark is-medium" href="https://github.com/joaopgrassi/otel-recipes"
+								>View the project on GitHub</a
+							>
 						</div>
 					</div>
 				</div>
@@ -271,65 +226,3 @@
 		background: linear-gradient(to right, #e96443 10%, rgba(1, 254, 228, 0) 100%);
 	}
 </style>
-
-
-
-<!-- <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
-</script>
-
-<svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
-
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
-</section>
-
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
-</style> -->

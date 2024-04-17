@@ -4,7 +4,12 @@
 			<div class="column is-5 is-4-widescreen">
 				<a class="navbar-item" href="/">
 					<div class="mr-2">
-						<img src="logotype-white.svg" alt="OTel recipes logo" style="min-height: 60px;" width="auto" />
+						<img
+							src="logotype-white.svg"
+							alt="OTel recipes logo"
+							style="min-height: 60px;"
+							width="auto"
+						/>
 					</div>
 				</a>
 			</div>
