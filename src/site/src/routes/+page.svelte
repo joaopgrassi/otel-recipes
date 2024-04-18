@@ -167,7 +167,7 @@
 				</div>
 			</div>
 			<div class="column">
-				<img src="welcome.svg" alt="Girl on laptop chilling with cute dogue" />
+				<img src="welcome.svg" alt="Girl on laptop chilling with cute cat" />
 			</div>
 		</div>
 	</div>
