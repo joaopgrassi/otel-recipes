@@ -8,129 +8,107 @@
 			<div class="column is-8">
 				<h3 class="title is-3">Privacy policy</h3>
 
-				<h1 class="title is-4">Short version</h1>
-
 				<div class="block">
-					We don't like cookie banners (they are useless and misleading). We don't want to bloat our
-					site with them and compromise your experience. <strong>But</strong>
-					we would like to have
-					<em>some</em>
-					idea of how many people are visiting OTel recipes.
+					This page explains what visiting this site means for your online privacy. First and
+					foremost, online privacy is something <strong>very important to me</strong>. This site was
+					built with your online privacy as a priority from the start. This site is entirely Open
+					Source and its code can be found on [GitHub](https://github.com/joaopgrassi/otel-recipes).
 				</div>
 
 				<div class="block">
-					For that, we decided to use <a href="https://www.goatcounter.com/">GoatCounter</a>
-					- a privacy-friendly web analytics alternative to Google Analytics. This way we all win.
-					<strong>We</strong>
-					have some idea of the traffic and things we can use to improve OTel recipes, and
-					<strong>you</strong>
-					don't have to be nagged with cookie banners or worry about being tracked online.
+					Although I have <strong>no interest</strong> in collecting nor sharing any of your data,
+					due to technicalities <em>some</em> data might be transmitted. The next sections describe in
+					detail the scope of such data transmission.
 				</div>
 
-				<h1 class="title is-4">Long version</h1>
+				<h1 class="title is-4">1. Data controller</h1>
 
 				<div class="block">
-					This page explains what visiting and using OTel recipes means for your online privacy.
-					First and foremost, privacy is something <strong>very important to us</strong>
-					, and it is at the core of everything we build here. OTel recipes will never have ads or resort
-					to any sort of nasty business. It is
-					<strong>not</strong>
-					in our interest to track you online or make money with the site.
+					<p>Joao Grassi</p>
+
+					<p>privacy (at) otelrecipes (dot) com</p>
 				</div>
+
+				<h1 class="title is-4">2. Accessing this site</h1>
+
+				<h1 class="title is-5">2.1 Host provider</h1>
 
 				<div class="block">
-					I'm sure you despise what the "web" of today has become. Annoying, distracting and
-					misleading cookie/consent banners all over the place, newsletter popups, intrusive
-					advertisements, you name it. We are set in <strong>not making</strong>
-					OTel recipes part of this bad experience.
+					Data processor: <a href="https://www.hetzner.com/legal/legal-notice"
+						>Hetzner Online GmbH</a
+					> with servers within Germany/Finland. When visiting the site, the following data is stored
+					in the host provider's log files:
+				</div>
+				<div class="block content">
+					<ul>
+						<li>Anonymized IP address</li>
+						<li>Browser</li>
+						<li>Date and time of visit</li>
+						<li>Operating system</li>
+					</ul>
 				</div>
 
-				<div class="block">
-					Following this principle makes it really hard to have/rely on web analytics
-					though. "Free" tools such as Google Analytics uses all sort of bad practices to track users
-					online and, in some countries, is even illegal due to data privacy laws (e.g. GDPR).
-					Using such services would require us to hire a lawyer and draft a long privacy notice and
-					put those annoying cookie banners, otherwise we could run into legal troubles.
-				</div>
-
-				<div class="block">
-					Nevertheless, for us, the creators of OTel recipes, it is still valuable to have some web
-					analytics on the site. It gives us insights on things like: What is the most searched
-					programming language; What is the most used OpenTelemetry signal; Which browsers are being
-					used; Which screen size etc. It helps us know that our work matters, that people out there
-					are using it and how can we make the site better.
-				</div>
-
-				<div class="block">
-					There are several "privacy-friendly" alternatives to Google Analytics. In the next
-					section, you can find out the tool we use and how your data is handled.
-				</div>
-
-				<h1 class="title is-4">Web analytics with GoatCounter</h1>
-
-				<div class="block">
-					After some research, we settled to use <a href="https://www.goatcounter.com/">
-						GoatCounter
-					</a>
-					. It's also an open source project, and its principles around online privacy aligns well with
-					the ones we invision for OTel recipes. According to their website:
-				</div>
-
-				<div class="content">
-					<blockquote>
-						GoatCounter aims to offer easy to use and meaningful privacy-friendly web analytics as
-						an alternative to Google Analytics or Matomo
-					</blockquote>
-				</div>
-
-				<div class="block">
-					Regarding what GoatCounter uses for web analytics, their <a
-						href="https://trinity.goatcounter.com/help/privacy"
+				<div class="block content">
+					From the provider's <a
+						href="https://docs.hetzner.com/general/general-terms-and-conditions/data-privacy-faq/#which-data-is-stored-in-the-log-files"
+						>FAQ:</a
 					>
-						privacy policy
-					</a>
-					states:
-				</div>
-
-				<div class="content">
-					<blockquote>
-						<p>
-							The following information can be collected:
-						</p>
-
-						<ul>
-							<li>URL of the visited page.</li>
-							<li>Referer header</li>
-							<li>User-Agent header</li>
-							<li>Screen size</li>
-							<li>Country and region name based on IP address</li>
-							<li>A hash of the IP address, User-Agent, and random number</li>
-						</ul>
-						<p>
-							No personal information (such as IP address) is collected; a hash of the IP address,
-							User-Agent, and a random number (“salt”) is kept in the process memory for 8 hours to
-							identify a browsing session, and is never stored to disk.
-						</p>
+					<blockquote class="mt-5">
+						At the web server level, this happens by default by storing an IP address
+						123.123.123.XXX in the log file instead of the visitor's actual IP address, for example,
+						123.123.123.123. The XXX is a random value between 1 and 254, so it is no longer
+						possible to establish the true identity of the visitor.
 					</blockquote>
 				</div>
 
-				<h1 class="title is-5">GDPR consent notices</h1>
-
-				<div class="block">
-					The reason why we don't have a consent banner on OTel recipes is because GoatCounter
-					<em>possibly</em>
-					doesn't require one, since no personally identifiable information is collected:
+				<div class="block content">
+					Purposes of processing:
+					<ul>
+						<li>Ensuring the function of the website</li>
+						<li>Traceability and protection against attacks</li>
+						<li>Legitimate interest based on Article 6(1)(f) GDPR</li>
+					</ul>
+					Data is stored for:<strong>14 days in encrypted backups**</strong>.
 				</div>
-				<div class="content">
-					<blockquote>
-						The short version is that GoatCounter probably doesn’t require a GDPR consent notice, on
-						the basis that 1) no personally identifiable information is collected, and 2) it is in
-						the legitimate interest of a site’s owner to see how many people are visiting their
-						site.
+
+				<h1 class="title is-5">2.2 Analytics</h1>
+
+				<div class="block content">
+					Data processor: <a href="https://www.goatcounter.com/help/privacy">GoatCounter</a> When
+					visiting the site, the following data can be stored by the provider:
+					<ul>
+						<li>URL of the visited page</li>
+						<li><code>Referer</code> header</li>
+						<li>
+							Browser and system information (derived from User-Agent header or HTTP client hints;
+							the original headers are not stored)
+						</li>
+						<li>Screen size</li>
+						<li>Country and region name derived from the IP address</li>
+					</ul>
+				</div>
+
+				<div class="block content">
+					From the provider's <a href="https://www.goatcounter.com/help/privacy">Privacy policy:</a>
+					<blockquote class="mt-5">
+						<strong>No personal information (such as IP address) is collected.</strong> a hash of
+						the
+						<code>IP address</code>, <code>User-Agent</code>, and a random number (“salt”) is kept
+						in the process memory for 8 hours to identify a browsing session, and is never stored to
+						disk.
 					</blockquote>
 				</div>
-				<div class="block">
-					A more in depth explanation can be found GoutCounter's <a
+
+				<div class="block content">
+					The usage of GoatCounter does not require a consent on the basis that
+					<ol>
+						<li>No personally identifiable information is collected</li>
+						<li>
+							It is in the legitimate interest of a site’s owner to see how many people are visiting
+							their site
+						</li>
+					</ol>
+					A more in depth explanation can be found GoutCounter's<a
 						href="https://trinity.goatcounter.com/help/gdpr"
 					>
 						GDPR consent notices
