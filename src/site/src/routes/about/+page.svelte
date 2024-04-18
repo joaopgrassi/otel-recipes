@@ -14,7 +14,7 @@
 				</div>
 
 				<div class="block">
-					The samples are curated by OpenTelemetry enthusiasts and are focused on teaching you how
+					The samples are curated by the OpenTelemetry community and are focused on teaching you how
 					to configure and use OpenTelemetry for various tasks <strong>the easy way</strong>
 					. The samples help you answer questions such as:
 				</div>
@@ -47,54 +47,16 @@
 				<h1 class="title is-4">Why OTel recipes?</h1>
 
 				<div class="block">
-					There's no doubt that OpenTelemetry is here to stay, and will eventually become the de
-					facto solution for all things observability.
-				</div>
-
-				<div class="block">
 					As OpenTelemetry adoption grows, more and more people will start to hear about it and want
 					to see what it is about. The truth is, for many, it will be the first time they are
-					exposed to the many concepts that the OpenTelemetry project brings.
+					exposed to the many concepts that the OpenTelemetry project brings, and it can be a little
+					overwhelming.
 				</div>
 
 				<div class="block">
-					A lot of effort is put in by the OpenTelemetry community in making the barrier to start
-					low, but this is not an easy task. On top of that, the project is advancing quickly,
-					(which is great) but it can be tricky to keep up with things.
-				</div>
-
-				<div class="block">
-					After collaborating to the OpenTelemetry project and using it in my projects, I noticed
-					the following pattern emerge:
-					<div class="content">
-						<ul>
-							<li>I need to instrument some code/application</li>
-							<li>
-								I go to either the official documentation or to the GitHub SDK repository to see how
-								to use it
-							</li>
-							<li>
-								The documentation is either lacking or outdated (
-								<em>the project is evolving, so this is expected</em>
-								)
-							</li>
-							<li>
-								I end up looking at the SDK tests to find out how to use it and interact with the
-								SDK
-							</li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="block">
-					The cycle above works, but it's a bit cumbersome. Of course, things will improve as the
-					project matures, but I realized that many will probably face the same challenges.
-				</div>
-
-				<div>
-					Then it "clicked" 💡: Wouldn't it be nice if there was a site where people could "ask"
-					questions on how to achieve XYZ with OpenTelemetry, and the site would "reply" with a list
-					of steps that one could simply follow to achieve the goal?
+					Trying things out is a great way to learn new things and this is the goal of OTel recipes.
+					Via simple and use-case focused sample applications, users can absorb and understand
+					concepts in a productive way.
 				</div>
 			</div>
 		</div>
