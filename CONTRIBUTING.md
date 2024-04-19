@@ -81,7 +81,7 @@ Here is an overview of the most important fields in the recipe file:
 
 During a PR, several checks are performed against recipe files, such as unique id and schema validations
 
-You can find an example of a recipe file in [example-recipefile.json](./example-recipefile.json).
+You can find an example of a recipe file in [example-recipefile.json](./src/csharp/traces/console/recipefile.json).
 
 #### Testing a recipe
 
