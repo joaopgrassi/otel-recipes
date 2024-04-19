@@ -1,0 +1,43 @@
+name: ✨ Propose a new recipe application
+description: Propose a new recipe application you'd like to be part of OTel recipes.
+labels: ["enhancement", "triage:needs-triage", "new-recipe"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please make sure to fill out the entire form below, providing as much context as you can in order to help us triage the proposal as quickly as possible.
+
+        Before filing the proposal, please be sure you have searched through [existing requests](https://github.com/joaopgrassi/otel-recipes/issues?q=is%3Aopen+is%3Aissue+label%3Anew-recipe) to see if an existing issue covers your proposal.
+  - type: dropdown
+    id: language
+    attributes:
+      label: Programming language(s)
+      description: Which programming language?
+      multiple: false
+      options:
+        - lang:cplusplus
+        - lang:csharp
+        - lang:elixir
+        - lang:erlang
+        - lang:go
+        - lang:java
+        - lang:js
+        - lang:php
+        - lang:python
+        - lang:ruby
+        - lang:rust
+        - lang:swift
+  - type: textarea
+    attributes:
+      label: What OpenTelemetry concepts/features does the sample application teach users?
+      description: A clear description of what OTel feature(s) the application is going to teach users. Remember to keep use-cases small and to the point. E.g. The application shows how to configure tracing in a REST API written in Go.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Describe why you think this is a good addition to the project
+      description: A clear and concise description of why you think this recipe app is a good addition and how it will benefit users.
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Add any other context or information you want to add.
