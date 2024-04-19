@@ -1,0 +1,53 @@
+name: 🐛 Bug report
+description: Create a report to help us improve
+labels: ["bug", "triage:needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report! Please make sure to fill out the entire form below, providing as much context as you can in order to help us triage and track down your bug as quickly as possible.
+
+        Before filing a bug, please be sure you have searched through [existing bugs](https://github.com/joaopgrassi/otel-recipes/issues?q=is%3Aopen+is%3Aissue+label%3Abug) to see if an existing issue covers your bug.
+  - type: dropdown
+    id: language
+    attributes:
+      label: Programming language(s)
+      description: Which programming language?
+      multiple: false
+      options:
+        - lang:cplusplus
+        - lang:csharp
+        - lang:elixir
+        - lang:erlang
+        - lang:go
+        - lang:java
+        - lang:js
+        - lang:php
+        - lang:python
+        - lang:ruby
+        - lang:rust
+        - lang:swift
+  - type: textarea
+    attributes:
+      label: What happened?
+      description: Please provide as much detail as you reasonably can.
+      value: |
+        ## Description
+
+        ## Steps to Reproduce (if any)
+
+        ## Expected Result
+
+        ## Actual Result
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Which recipe?
+      description: Please provide the value of the `id` field from the affected `recipefile.json`.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Any additional information you think may be relevant to this issue.
