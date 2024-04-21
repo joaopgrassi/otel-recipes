@@ -10,7 +10,7 @@ namespace Console
     public class App
     {
         // Creates the Meter
-        private static readonly Meter Meter = new("csharp.console.app", "1.0");
+        private static readonly Meter Meter = new("csharp.console.metrics", "1.0");
 
         // Creates the Counter instrument
         private static readonly Counter<int> MyCounter = Meter.CreateCounter<int>("myCounter", "1", "I count things");
@@ -25,8 +25,8 @@ namespace Console
         {
             // Configures the SDK, exporting to a local running Collector
             using var meterProvider = Sdk.CreateMeterProviderBuilder()
-                .AddMeter("csharp.console.app")
-                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("csharp.console.app"))
+                .AddMeter("csharp.console.metrics")
+                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("csharp.console.metrics"))
                 .AddOtlpExporter(opts => {
                     opts.Endpoint = new Uri("http://collector-otel-recipes:4317");
                 })

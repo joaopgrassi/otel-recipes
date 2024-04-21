@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../otel-recipes-schema.json",
-  "id": "csharp-console-metrics",
+  "id": "csharp.console.metrics",
   "languageId": "csharp",
   "signal": "metrics",
   "displayName": "Console App",

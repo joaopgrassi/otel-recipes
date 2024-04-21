@@ -7,7 +7,7 @@ import (
 )
 
 func TestMetricsGeneratedFromSample(t *testing.T) {
-	rm := tu.GetMetricsWithRetry(t, "csharp.console.app")
+	rm := tu.GetMetricsWithRetry(t, "csharp.console.metrics")
 	m := rm.GetScopeMetrics()[0].Metrics
 
 	// Counter metric
