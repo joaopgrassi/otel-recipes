@@ -9,7 +9,7 @@ namespace Console
     public class App
     {
         // Creates the Tracer
-        private static readonly ActivitySource Tracer = new ActivitySource("csharp.console.app");
+        private static readonly ActivitySource Tracer = new ActivitySource("csharp.console.traces");
 
         public static void Main(string[] args)
         {
@@ -17,7 +17,7 @@ namespace Console
             using var tracerProvider = Sdk.CreateTracerProviderBuilder()
                 .AddSource(Tracer.Name)
                 .SetSampler(new AlwaysOnSampler())
-                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("csharp.console.app"))
+                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("csharp.console.traces"))
                 .AddOtlpExporter(opts => {
                     opts.Endpoint = new Uri("http://collector-otel-recipes:4317");
                 })

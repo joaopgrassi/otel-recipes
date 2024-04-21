@@ -91,7 +91,7 @@ import (
 )
 
 func TestTraceGeneratedFromSample(t *testing.T) {
-	tc := tu.NewTraceTestCase("csharp.console.app", "HelloWorldSpan", tu.StringAttribute("foo", "bar"))
+	tc := tu.NewTraceTestCase("csharp.console.traces", "HelloWorldSpan", tu.StringAttribute("foo", "bar"))
 
 	tu.AssertSpanWithAttributeExists(t, tc)
 }
@@ -112,7 +112,7 @@ import (
 )
 
 func TestMetricsGeneratedFromSample(t *testing.T) {
-	rm := tu.GetMetricsWithRetry(t, "csharp.console.app")
+	rm := tu.GetMetricsWithRetry(t, "csharp.console.metrics")
 	m := rm.GetScopeMetrics()[0].Metrics
 
 	// Counter metric

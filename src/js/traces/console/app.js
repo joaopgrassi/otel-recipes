@@ -7,7 +7,7 @@ const { SEMRESATTRS_SERVICE_NAME } = require('@opentelemetry/semantic-convention
 // Creates the tracer provider and configures OTLP collector
 const provider = new BasicTracerProvider({
   resource: new Resource({
-    [SEMRESATTRS_SERVICE_NAME]: 'js.console.app',
+    [SEMRESATTRS_SERVICE_NAME]: 'js.console.traces',
   }),
 });
 
@@ -18,7 +18,7 @@ provider.addSpanProcessor(new SimpleSpanProcessor(new OTLPTraceExporter({
 provider.register();
 
 // Creates the tracer
-const tracer = api.trace.getTracer("js.console.app");
+const tracer = api.trace.getTracer("js.console.traces");
 
 // Start a span with an attribute
 const span = tracer.startSpan("HelloWorldSpan", {

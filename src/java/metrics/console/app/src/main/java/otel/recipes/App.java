@@ -23,7 +23,8 @@ public class App {
     SdkMeterProvider meterProvider =
         SdkMeterProvider.builder()
             .setResource(
-                Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "java.console.app")))
+                Resource.create(
+                    Attributes.of(ResourceAttributes.SERVICE_NAME, "java.console.metrics")))
             .registerMetricReader(PeriodicMetricReader.builder(metricsExporter).build())
             .build();
 
@@ -31,7 +32,7 @@ public class App {
     OpenTelemetrySdk.builder().setMeterProvider(meterProvider).buildAndRegisterGlobal();
 
     // Creates the meter
-    Meter meter = GlobalOpenTelemetry.getMeter("java.console.app");
+    Meter meter = GlobalOpenTelemetry.getMeter("java.console.metrics");
 
     // Creates the Counter instrument
     LongCounter counter =

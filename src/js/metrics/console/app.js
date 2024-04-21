@@ -15,13 +15,13 @@ const metricReader = new PeriodicExportingMetricReader({
 // Creates the meter provider
 const meterProvider = new MeterProvider({
   resource: new Resource({
-    [SEMRESATTRS_SERVICE_NAME]: 'js.console.app',
+    [SEMRESATTRS_SERVICE_NAME]: 'js.console.metrics',
   }),
   readers: [metricReader]
 });
 
 // Creates the meter
-const meter = meterProvider.getMeter('js.console.app');
+const meter = meterProvider.getMeter('js.console.metrics');
 
 // Creates the Counter instrument
 const counter = meter.createCounter('myCounter', {

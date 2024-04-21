@@ -13,7 +13,7 @@ public class Startup
 {
     // Creates the tracer to be shared across the application
     // It could also be in its own class, or registered in the DI framework
-    public static readonly ActivitySource Tracer = new("csharp.aspnet.api");
+    public static readonly ActivitySource Tracer = new("csharp.aspnetapi.traces");
 
     public void ConfigureServices(IServiceCollection services)
     {
@@ -21,7 +21,7 @@ public class Startup
 
         // Build a resource configuration action to set service information.
         Action<ResourceBuilder> configureResource = r => r.AddService(
-            serviceName: "csharp.aspnet.api",
+            serviceName: "csharp.aspnetapi.traces",
             serviceVersion: Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "unknown");
 
         // Configures the SDK, enabling Http client and ASP.NET Core instrumentation

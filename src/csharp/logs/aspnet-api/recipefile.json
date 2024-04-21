@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../otel-recipes-schema.json",
-  "id": "aspnet-api-logs",
+  "id": "csharp.aspnetapi.logs",
   "languageId": "csharp",
   "signal": "logs",
   "displayName": "ASP.NET Core API",

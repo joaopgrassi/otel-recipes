@@ -15,7 +15,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
-const serviceName = "go.console.app"
+const serviceName = "go.console.traces"
 
 // Creates the tracer to be shared across the application
 var tracer = otel.Tracer(serviceName)

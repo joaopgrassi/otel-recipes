@@ -9,7 +9,7 @@ from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import (
 )
 
 # Creates a resource and adds it to the tracer provider
-resource = Resource.create({"service.name": "python.console.app"})
+resource = Resource.create({"service.name": "python.console.traces"})
 provider = TracerProvider(resource=resource)
 trace.set_tracer_provider(provider)
 
