@@ -28,7 +28,7 @@ OTel recipes can be split into two parts: The collection of sample applications 
 The recipes are organized by programming language and telemetry signal.
 An example of directory structure for a recipe is:
 
-```
+```shell
 src/
 └── csharp/
     └── traces/
@@ -43,13 +43,14 @@ src/
                 ├── go.sum
                 └── traces_test.go
 ```
+
 Each recipe MUST:
 
 - Be containerized and define a `Dockerfile`
 - Define a `recipefile.json` (See below for more info)
 - Be configured to export OTLP data to an OpenTelemetry collector
   - Can be via `gRPC` or `HTTP`
-  - Thus need to have a `collector-config.yaml` and a collector container inside the compose file
+  - Thus the need to have a `collector-config.yaml` and a collector container inside the compose file
 - Be a container inside the `docker-compose.yaml` file
   - Also declare any dependency it uses. E.g., database, messaging system etc.
 - Be testable. Each app must achieve a goal (e.g. record a span) and this goal MUST be tested e2e. See [Testing a recipe](#testing-a-recipe) below
@@ -94,8 +95,8 @@ In a nutshell, the way it works is:
 1. A recipe define its container file `Dockerfile`
 2. A recipe defines a `docker-compose.yaml` file, which at minimum contain a container for the app, the collector and the OTLP back-end
 3. The app produces *some* telemetry, for example a span named `HelloWorld` with an attribute `foo=bar`.
-4. The span is exported to the collector, which then exports to the telemetry back-end [OTLP back-end](./internal/otlp_backend/)
-5. The recipe defines a `go` test, which uses the test framework from [Test utils](./internal/common/testutils/)
+4. The span is exported to the collector, which then exports to the telemetry back-end [OTLP back-end](./internal/otlp_backend/README.md)
+5. The recipe defines a `go` test, which uses the test framework from [Test utils](./internal/common/testutils/README.md)
 6. The test is responsible for creating the expected data, then querying the OTLP back-end for the actual data and doing the assertions
 
 For an example, see the [C# console app test](./src/csharp/traces/console/test/).

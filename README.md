@@ -1,23 +1,35 @@
-# otel-recipes
+# OpenTelemetry (OTel) Recipes
 
+![CI](https://github.com/joaopgrassi/otel-recipes/actions/workflows/sample-tests.yml/badge.svg?branch=main)
 
-## Starting a local Collector
+[![OTel recipes Logo](./brand/logotype/recipes-horizontal-blue.png)](https://otel.recipes)
 
-Requirements:
-- Docker and Compose
+Welcome to OTel recipes!
 
-At the root of the repo, execute:
+For many, observability is a whole new world and getting started can be a bit overwhelming in the beginning.
 
-```shell
-docker-compose up
-```
+OTel recipes is an open source project that aims to help users get started with OpenTelemetry
+*the easy way*.
 
-Traces can be viewed:
+With the help of simple, to-the-point sample applications and well-defined steps (just like a recipe!)
+users can learn OpenTelemetry concepts and apply them on their applications.
 
-- Console
-- Jaeger: http://localhost:16686
+In a nutshell, OTel recipes is composed of two parts: the collection of sample
+applications that are focused on achieving a specific goal with OpenTelemetry and
+[the website](https://otel.recipes), that allows you to browse the samples
+in a simple and structured way.
 
-If you don't want to see the Traces in the console or don't want
-to block the terminal, you can start compose in detached mode:
-`docker-compose up -d`.
-To stop all containers, just run `docker-compose stop`.
+## Contributing
+
+The goal of OTel recipes is to help users get started with it, which can't
+happen without sample applications 😅.
+
+Contributions are very much welcome, and we tried to make the process of contributing
+to OTel recipes as easy as possible.
+
+Please see [CONTRIBUTING](./CONTRIBUTING.md) on how to get started. Feel free to start a discussion
+or open an issue if you get stuck or if something is unclear along the way.
+
+## How does all work?
+
+Curious to the architecture behind OTel recipes? Then take a look at [ARCHITECTURE](./ARCHITECTURE.md) for the nitty-gritty details.
