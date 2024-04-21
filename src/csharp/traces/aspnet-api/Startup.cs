@@ -21,7 +21,7 @@ public class Startup
 
         // Build a resource configuration action to set service information.
         Action<ResourceBuilder> configureResource = r => r.AddService(
-            serviceName: "aspnet.api.traces",
+            serviceName: "csharp.aspnetapi.traces",
             serviceVersion: Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "unknown");
 
         // Configures the SDK, enabling Http client and ASP.NET Core instrumentation

@@ -9,7 +9,7 @@ import (
 func TestLogGeneratedFromSample(t *testing.T) {
 	tu.InvokeSampleApi(t, "http://localhost:8080/helloworld")
 
-	tc := tu.NewLogTestCase("csharp.aspnetapi.logs", "Information", "This is a info message {foo}", tu.StringAttribute("foo", "bar"))
+	tc := tu.NewLogTestCase("csharp.aspnetapi.logs", "Information", "This is a info message {foo}", true, tu.StringAttribute("foo", "bar"))
 
 	tu.AssertLogWithAttributeExists(t, tc)
 }

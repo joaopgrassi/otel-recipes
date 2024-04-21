@@ -23,7 +23,8 @@ public class App {
     SdkMeterProvider meterProvider =
         SdkMeterProvider.builder()
             .setResource(
-                Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "java.console.metrics")))
+                Resource.create(
+                    Attributes.of(ResourceAttributes.SERVICE_NAME, "java.console.metrics")))
             .registerMetricReader(PeriodicMetricReader.builder(metricsExporter).build())
             .build();
 

@@ -21,7 +21,8 @@ public class App {
         SdkTracerProvider.builder()
             .addSpanProcessor(SimpleSpanProcessor.create(spanExporter))
             .setResource(
-                Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "java.console.traces")))
+                Resource.create(
+                    Attributes.of(ResourceAttributes.SERVICE_NAME, "java.console.traces")))
             .build();
 
     // Sets and registers the Tracer Provider as Global
