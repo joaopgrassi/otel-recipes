@@ -9,14 +9,14 @@ from opentelemetry.sdk.metrics.export import (
 from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExporter
 
 # Creates a resource and adds it to the tracer provider
-resource = Resource.create({"service.name": "python.console.app"})
+resource = Resource.create({"service.name": "python.console.metrics"})
 
 reader = PeriodicExportingMetricReader(OTLPMetricExporter(endpoint="http://collector-otel-recipes:4317"))
 provider = MeterProvider(metric_readers=[reader], resource=resource)
 metrics.set_meter_provider(provider)
 
 # Creates the meter
-meter = provider.get_meter("python.console.app")
+meter = provider.get_meter("python.console.metrics")
 
 # Creates the Counter instrument
 counter = meter.create_counter("mycounter", "1", "I count things")
