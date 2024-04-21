@@ -7,7 +7,7 @@ import (
 )
 
 func TestMetricsGeneratedFromSample(t *testing.T) {
-	rm := tu.GetMetricsWithRetry(t, "js.console.app")
+	rm := tu.GetMetricsWithRetry(t, "js.console.metrics")
 	m := rm.GetScopeMetrics()[0].Metrics
 
 	// Counter metric
