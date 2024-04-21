@@ -1,8 +1,8 @@
 {
   "$schema": "../../../../otel-recipes-schema.json",
+  "id": "python-console-traces",
   "languageId": "python",
   "signal": "traces",
-  "id": "python-console",
   "displayName": "Console App",
   "tags": [],
   "description": "A python console application instrumented with OpenTelemetry that generates a trace.",

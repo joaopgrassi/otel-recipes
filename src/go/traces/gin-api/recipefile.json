@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../otel-recipes-schema.json",
-  "id": "gin-api",
+  "id": "gin-api-traces",
   "languageId": "go",
   "signal": "traces",
   "displayName": "Gin API",
