@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../otel-recipes-schema.json",
-  "id": "java-console-metrics",
+  "id": "java.console.metrics",
   "languageId": "java",
   "signal": "metrics",
   "displayName": "Console App",

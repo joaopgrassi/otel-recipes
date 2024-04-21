@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../otel-recipes-schema.json",
-  "id": "springboot-api-traces",
+  "id": "java.springbootapi.traces",
   "languageId": "java",
   "signal": "traces",
   "displayName": "Spring Boot API",

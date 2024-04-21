@@ -21,14 +21,14 @@ public class App {
         SdkTracerProvider.builder()
             .addSpanProcessor(SimpleSpanProcessor.create(spanExporter))
             .setResource(
-                Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "java.console.app")))
+                Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "java.console.traces")))
             .build();
 
     // Sets and registers the Tracer Provider as Global
     OpenTelemetrySdk.builder().setTracerProvider(tracerProvider).buildAndRegisterGlobal();
 
     // Creates the tracer
-    Tracer tracer = GlobalOpenTelemetry.getTracer("java.console.app");
+    Tracer tracer = GlobalOpenTelemetry.getTracer("java.console.traces");
 
     // Creates a span, set its attributes and finishes it
     Span span = tracer.spanBuilder("HelloWorldSpan").startSpan();

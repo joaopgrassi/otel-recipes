@@ -17,7 +17,7 @@ public class HelloWorldController {
 	public HelloWorldController(OpenTelemetry openTelemetry) {
 		// Obtain the OpenTelemetry trace provider from DI
 		// and use it to create the tracer
-		this.tracer = openTelemetry.getTracer("java.springboot.api");
+		this.tracer = openTelemetry.getTracer("java.springbootapi.traces");
 	}
 
 	@GetMapping()

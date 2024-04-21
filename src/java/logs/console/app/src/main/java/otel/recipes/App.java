@@ -18,7 +18,7 @@ public class App {
     SdkLoggerProvider loggerProvider =
         SdkLoggerProvider.builder()
             .setResource(
-                Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "java.console.app")))
+                Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "java.console.logs")))
             .addLogRecordProcessor(
                 BatchLogRecordProcessor.builder(
                         OtlpGrpcLogRecordExporter.builder()
