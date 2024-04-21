@@ -13,7 +13,7 @@ public class Startup
 {
     // Creates the tracer to be shared across the application
     // It could also be in its own class, or registered in the DI framework
-    public static readonly ActivitySource Tracer = new("aspnet.api.traces");
+    public static readonly ActivitySource Tracer = new("csharp.aspnetapi.traces");
 
     public void ConfigureServices(IServiceCollection services)
     {

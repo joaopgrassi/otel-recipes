@@ -12,7 +12,7 @@ var appBuilder = WebApplication.CreateBuilder(args);
 
 // Build a resource configuration action to set service information.
 Action<ResourceBuilder> configureResource = r => r.AddService(
-    serviceName: "aspnet.api.logs",
+    serviceName: "csharp.aspnetapi.logs",
     serviceVersion: Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "unknown");
 
 // Also configure tracing so logs are correlated with traces

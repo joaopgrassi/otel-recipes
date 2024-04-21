@@ -15,7 +15,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
-const serviceName = "go.gin.api"
+const serviceName = "go.ginapi.traces"
 
 // Tracer the tracer to be shared across the application
 var Tracer trace.Tracer

@@ -14,7 +14,7 @@ import (
 	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 )
 
-const serviceName = "go.console.app"
+const serviceName = "go.console.metrics"
 
 func main() {
 	ctx := context.Background()
