@@ -32,4 +32,4 @@ or open an issue if you get stuck or if something is unclear along the way.
 
 ## How does all work?
 
-Curious to the architecture behind OTel recipes? Then take a look at [ARCHITECTURE](./ARCHITECTURE.md) for the nitty-gritty details.
+Curious about the architecture behind OTel recipes? Then take a look at [ARCHITECTURE](./ARCHITECTURE.md) for the nitty-gritty details.
