@@ -7,11 +7,7 @@ import (
 )
 
 func TestTraceGeneratedFromSample(t *testing.T) {
-	tc := tu.NewSpanTest(
-		tu.WithServiceName("js.console.app"),
-		tu.WithSpanName("HelloWorldSpan"),
-		tu.WithAttributes(tu.StringAttribute("foo", "bar")),
-	)
+	tc := tu.NewTraceTestCase("js.console.app", "HelloWorldSpan", tu.StringAttribute("foo", "bar"))
 
 	tu.AssertSpanWithAttributeExists(t, tc)
 }
