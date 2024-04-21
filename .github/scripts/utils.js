@@ -9,7 +9,7 @@ const fs = require("fs");
  */
 function findRecipesToTest(modifiedFiles, rootDir) {
   // If the schema is changed, run the test on all recipe files
-  if (modifiedFiles.includes("otel-recipes-schema.json")) {
+  if (modifiedFiles.includes("otel-recipes-schema.json") || modifiedFiles.includes("internal/")) {
     return findAllRecipeFiles(rootDir);
   }
   const recipeFilePaths = [];

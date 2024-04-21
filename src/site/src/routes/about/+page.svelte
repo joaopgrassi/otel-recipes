@@ -9,7 +9,7 @@
 				<h3 class="title is-3">Introducing: OTel Recipes</h3>
 				<div class="block">
 					OTel Recipes is an open source project composed of two parts: a collection of sample
-					applications that focus on achieving a specific goal with OpenTelemetry and this website,
+					applications that are focused on achieving a specific goal with OpenTelemetry and this website,
 					that allows you to browse the samples in a simple and structured way.
 				</div>
 

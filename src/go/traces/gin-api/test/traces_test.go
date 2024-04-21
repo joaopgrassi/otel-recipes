@@ -9,11 +9,7 @@ import (
 func TestTraceGeneratedFromSample(t *testing.T) {
 	tu.InvokeSampleApi(t, "http://localhost:8080/helloworld")
 
-	tc := tu.NewSpanTest(
-		tu.WithServiceName("go.gin.api"),
-		tu.WithSpanName("HelloWorldSpan"),
-		tu.WithAttributes(tu.StringAttribute("foo", "bar")),
-	)
+	tc := tu.NewTraceTestCase("go.gin.api", "HelloWorldSpan", tu.StringAttribute("foo", "bar"))
 
 	tu.AssertSpanWithAttributeExists(t, tc)
 }
