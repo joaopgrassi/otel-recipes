@@ -13,7 +13,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func AssertSpanWithAttributeExists(t *testing.T, spanTest *SpanTest) {
+func AssertSpanWithAttributeExists(t *testing.T, tc *TraceTestCase) {
 	backoffSchedule := []time.Duration{
 		1 * time.Second,
 		3 * time.Second,
@@ -27,10 +27,10 @@ func AssertSpanWithAttributeExists(t *testing.T, spanTest *SpanTest) {
 	var span *otlptrace.Span
 found:
 	for _, backoff := range backoffSchedule {
-		rs := GetTraceWithRetry(t, spanTest.serviceName)
+		rs := GetTraceWithRetry(t, tc.serviceName)
 		for _, ss := range rs.ScopeSpans {
 			for _, s := range ss.Spans {
-				if s.Name == spanTest.spanName {
+				if s.Name == tc.spanName {
 					span = s
 					break found
 				}
@@ -41,10 +41,10 @@ found:
 	}
 
 	assert.NotNil(t, span)
-	assert.Equal(t, spanTest.attributes[0], span.Attributes[0])
-	assert.Contains(t, span.Attributes, spanTest.attributes[0])
+	assert.Equal(t, tc.attributes[0], span.Attributes[0])
+	assert.Contains(t, span.Attributes, tc.attributes[0])
 
-	for _, exp := range spanTest.attributes {
+	for _, exp := range tc.attributes {
 		assert.Contains(t, span.Attributes, exp)
 	}
 }

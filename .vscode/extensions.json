@@ -6,6 +6,7 @@
     "ms-dotnettools.csharp",
     "vscjava.vscode-java-pack",
     "svelte.svelte-vscode",
-    "ms-python.python"
+    "ms-python.python",
+    "DavidAnson.vscode-markdownlint",
   ]
 }
