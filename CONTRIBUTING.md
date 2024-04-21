@@ -66,7 +66,7 @@ essentially being the "database" the website uses to show up the recipes.
 
 Here is an overview of the most important fields in the recipe file:
 
-- `id`: Follow the convention of `{language}-{short-name-of-app}-{signal}`. For example for a C# console app that exports traces, `csharp-console-metrics`
+- `id`: Follow the convention of `{language}.{shortnameofapp}.{signal}`. For example for a C# console app that exports traces, `csharp.console.metrics`
 - `languageId`: Stick with the schema allowed values
 - `signal`: Stick with the schema allowed values
 - `displayName`: The name of the app that will be shown in the website.
@@ -93,11 +93,12 @@ You only need to define the below and the rest is all magic ✨.
 In a nutshell, the way it works is:
 
 1. A recipe define its container file `Dockerfile`
-2. A recipe defines a `docker-compose.yaml` file, which at minimum contain a container for the app, the collector and the OTLP back-end
-3. The app produces *some* telemetry, for example a span named `HelloWorld` with an attribute `foo=bar`.
-4. The span is exported to the collector, which then exports to the telemetry back-end [OTLP back-end](./internal/otlp_backend/README.md)
-5. The recipe defines a `go` test, which uses the test framework from [Test utils](./internal/common/testutils/README.md)
-6. The test is responsible for creating the expected data, then querying the OTLP back-end for the actual data and doing the assertions
+2. The `id` on the recipe file MUST be used as the `service.name` and as for the [name of the meter](https://opentelemetry.io/docs/specs/otel/metrics/api/#get-a-meter)
+3. A recipe defines a `docker-compose.yaml` file, which at minimum contain a container for the app, the collector and the OTLP back-end
+4. The app produces *some* telemetry, for example a span named `HelloWorld` with an attribute `foo=bar`.
+5. The span is exported to the collector, which then exports to the telemetry back-end [OTLP back-end](./internal/otlp_backend/README.md)
+6. The recipe defines a `go` test, which uses the test framework from [Test utils](./internal/common/testutils/README.md)
+7. The test is responsible for creating the expected data, then querying the OTLP back-end for the actual data and doing the assertions
 
 For an example, see the [C# console app test](./src/csharp/traces/console/test/).
 
