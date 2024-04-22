@@ -60,6 +60,14 @@ jobs:
           docker-compose up -d --build
         shell: bash
 
+      - name: Test access container
+        run: |
+          docker-compose logs otlp-backend
+
+      - name: Test access container
+        run: |
+          curl http://127.0.0.1:4319/getotlp?signal=trace
+
 
       - name: Run tests
         working-directory: ${{ matrix.file }}/test
