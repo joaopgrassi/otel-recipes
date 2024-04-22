@@ -8,7 +8,7 @@ on:
 
 jobs:
   gen-matrix:
-    name: Find recipe files to test
+    name: Get recipe files to test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
