@@ -1,4 +1,4 @@
-name: Checks - Recipe unique ids
+name: Checks - Recipe ids
 
 on:
   pull_request:

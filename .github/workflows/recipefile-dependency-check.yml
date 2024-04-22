@@ -1,4 +1,4 @@
-name: Checks - Recipe deps
+name: Checks - Recipe dependencies
 
 on:
   pull_request:
