@@ -1,4 +1,4 @@
-name: CI
+name: Build/Test
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   gen-matrix:
-    name: Find recipes to test
+    name: Get recipes to test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

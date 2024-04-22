@@ -1,6 +1,6 @@
 # OpenTelemetry (OTel) Recipes
 
-![CI](https://github.com/joaopgrassi/otel-recipes/actions/workflows/sample-tests.yml/badge.svg?branch=main)
+![CI](https://github.com/joaopgrassi/otel-recipes/actions/workflows/recipe-samples-tests.yml/badge.svg?branch=main)
 
 [![OTel recipes Logo](./brand/logotype/recipes-horizontal-blue.png)](https://otel.recipes)
 

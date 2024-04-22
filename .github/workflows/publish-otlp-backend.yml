@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  push-store-image:
+  push-otlp-backend-image:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

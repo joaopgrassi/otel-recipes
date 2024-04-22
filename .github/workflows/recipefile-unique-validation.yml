@@ -1,4 +1,4 @@
-name: CI
+name: Checks - Recipe unique ids
 
 on:
   pull_request:
