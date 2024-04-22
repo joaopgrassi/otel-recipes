@@ -15,6 +15,7 @@ dependencies {
     implementation("io.opentelemetry:opentelemetry-sdk")
     implementation("io.opentelemetry.semconv:opentelemetry-semconv:1.23.1-alpha")
 
+
     // Log4j
     implementation(platform("org.apache.logging.log4j:log4j-bom:2.23.1"))
     implementation("org.apache.logging.log4j:log4j-api")
