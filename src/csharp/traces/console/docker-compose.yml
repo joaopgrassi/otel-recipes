@@ -12,7 +12,9 @@ services:
       - otel-recipes
 
   otlp-backend:
-    image: ghcr.io/joaopgrassi/otel-recipes/otlp-backend:latest
+    build:
+      context: ../../../../internal/otlp_backend
+      dockerfile: Dockerfile
     ports:
       - "4319:4319" # OTLP HTTP receiver
     networks:
