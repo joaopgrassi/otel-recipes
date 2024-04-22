@@ -58,7 +58,10 @@ jobs:
         working-directory: ${{ matrix.file }}
         run: |
           docker-compose up -d --build
+        shell: bash
+
 
       - name: Run tests
         working-directory: ${{ matrix.file }}/test
         run: go test -v
+        shell: bash
