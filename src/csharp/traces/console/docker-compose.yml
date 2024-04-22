@@ -11,6 +11,7 @@ services:
     networks:
       - otel-recipes
 
+
   otlp-backend:
     build:
       context: ../../../../internal/otlp_backend
