@@ -51,7 +51,7 @@ Along with its `recipefile.json`, each application MUST declare its `Dockerfile`
 a Go test module and a `docker-compose.yaml`. During CI, the application is started
 and its declaring integration test is executed.
 
-This all happens in the workflow [Build and Test](./.github/workflows/sample-tests.yml):
+This all happens in the workflow [Build and Test](./.github/workflows/recipe-samples-tests.yml):
 
 ![build architecture](./assets/build-architecture.png)
 
