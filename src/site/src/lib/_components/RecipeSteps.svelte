@@ -33,15 +33,14 @@
 
 {#if $selectedRecipe.id !== Recipes.none.id}
 	<div in:fly={{ x: 100, duration: 300 }}>
-		<section class="section">
+		<div class="block mt-6">
 			<div class="container has-text-centered">
 				<h2 class="subtitle is-5">
 					Follow the steps below to configure OpenTelemetry in your project 🔭
 				</h2>
-				<button class="button is-primary ml-auto" on:click={() => reset()}>Start over</button>
 			</div>
-		</section>
-		<div class="section">
+		</div>
+		<section class="section">
 			<div class="content">
 				<div class="columns is-centered">
 					<div class="column is-11">
@@ -88,7 +87,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	</div>
 {/if}
 
