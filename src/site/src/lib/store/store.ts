@@ -107,30 +107,11 @@ export function resetSearch() {
 	selectedRecipeId.set(Recipes.none.id);
 }
 
-export function setFromUrl(languageId?: string, signalId?: string, recipeId?: string) {
+export function setFromUrl(recipeId?: string) {
 	if (recipeId) {
 		selectedRecipeId.set(recipeId);
 		return;
 	} else {
 		selectedRecipeId.set(Recipes.none.id);
 	}
-
-	const language = Languages.all.find((l: LanguageDropDown) => l.id === languageId);
-	if (!language) {
-		// if the selected language does not exist in the list, set to none
-		// This can happen for ex if someone changes the URL. E.g. /recipes?language=madeup-language
-		selectedLanguage.set(Languages.none);
-		return;
-	}
-	selectedLanguage
-	selectedLanguage.set(language);
-
-	const signal = Signals.all.find((s: SignalDropDown) => s.id === signalId);
-	if (!signal) {
-		// if the selected signal does not exist for the language return empty
-		// This can happen for ex if someone changes the URL. E.g. recipes/csharp/madeup-signal
-		selectedSignal.set(Signals.none);
-		return;
-	}
-	selectedSignal.set(signal);
 }

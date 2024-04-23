@@ -9,10 +9,8 @@
 	import { afterNavigate } from '$app/navigation';
 
 	afterNavigate(() => {
-		const language = $page.url.searchParams.get('language');
-		const signal = $page.url.searchParams.get('signal');
-		const sample = $page.url.searchParams.get('recipe');
-		setFromUrl(language, signal, sample);
+		const recipeId = $page.url.searchParams.get('recipe');
+		setFromUrl(recipeId);
 	});
 
 	onDestroy(() => {
