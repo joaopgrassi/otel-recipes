@@ -43,8 +43,9 @@ export class Languages {
 	static readonly go: LanguageDropDown = { id: 'go', displayName: 'Go' };
 	static readonly java: LanguageDropDown = { id: 'java', displayName: 'Java' };
 	static readonly js: LanguageDropDown = { id: 'js', displayName: 'JavaScript' };
+	static readonly python: LanguageDropDown = { id: 'python', displayName: 'Python' };
 
-	static readonly all: LanguageDropDown[] = [this.none, this.csharp, this.go, this.java, this.js];
+	static readonly all: LanguageDropDown[] = [this.none, this.csharp, this.go, this.java, this.js, this.python];
 }
 
 export class Signals {
