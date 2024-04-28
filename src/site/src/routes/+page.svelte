@@ -18,7 +18,7 @@
 						</h2>
 						<div class="field is-grouped">
 							<div class="control">
-								<a class="button is-primary is-medium" href="/recipes">Check the recipes 🌮</a>
+								<a class="button is-primary is-medium" href="/recipes">Check the recipes</a>
 							</div>
 						</div>
 					</div>

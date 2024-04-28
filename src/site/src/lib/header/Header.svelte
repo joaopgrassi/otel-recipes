@@ -37,6 +37,7 @@
 			<div class="navbar-end">
 				<a href="/" class="navbar-item">Home</a>
 				<a href="/recipes" class="navbar-item" on:click={() => resetSearch()}> Recipes </a>
+				<a href="https://github.com/joaopgrassi/otel-recipes" class="navbar-item"> <img src="github-mark-white.svg" alt="GitHub"/> </a>
 			</div>
 		</div>
 	</div>
