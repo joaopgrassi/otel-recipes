@@ -5,6 +5,7 @@ on:
     paths:
       - "src/**"
       - "otel-recipes-schema.json"
+      - "!src/site/**"
 
 jobs:
   gen-matrix:
