@@ -60,6 +60,9 @@
 			</div>
 		</div>
 	</div>
+	<div class="has-background-grey-darker has-text-centered has-text-grey-light">
+		<p class="mt-6">Illustrations from: <a class="has-text-grey-light" href="https://storyset.com/">Amico and Bro @storyset</a> </p>
+	</div>
 </footer>
 
 <style lang="scss">
