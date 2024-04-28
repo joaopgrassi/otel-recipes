@@ -13,18 +13,18 @@
 							Navigate the world of OpenTelemetry
 						</h1>
 						<h2 class="subtitle is-size-4 is-size-6-mobile has-text-white-bis">
-							Learn how to instrument your code by leveraging our specially curated, bite-sized code
-							samples to get you started quickly with OpenTelemetry.
+							With the help of our sample applications and well-defined steps (just like a recipe!)
+							you will learn how instrument your applications and become an OpenTelemetry chef in no time 😎
 						</h2>
 						<div class="field is-grouped">
 							<div class="control">
-								<a class="button is-primary is-medium" href="/recipes">Check the recipes</a>
+								<a class="button is-primary is-medium" href="/recipes">Check the recipes 🌮</a>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="column is-offset-1 mt-6">
-					<img src="vision.svg" alt="Girl on laptop chilling with cute dogue" />
+					<img src="chef-amico.svg" alt="Girl on laptop chilling with cute dogue" />
 				</div>
 			</div>
 		</div>
@@ -35,36 +35,31 @@
 <section class="section is-medium">
 	<div class="container">
 		<div class="column has-text-centered mb-3">
-			<h1 class="title is-3">Here's how it works:</h1>
+			<h1 class="title is-2">Here's how it works:</h1>
 		</div>
 		<div class="columns">
 			<div class="column is-4 has-text-centered">
-				<img src="language-icon.png" alt="language" width="150" />
+				<img src="searching-bro.svg" alt="explore apps" width="300" />
 				<hr class="spacer is-1" />
-				<h3 class="title is-4 is-spaced">1. Programming language</h3>
-				<p class="subtitle is-5">Select one of the available programming languages.</p>
+				<h3 class="title is-4 is-spaced">1. Explore the samples</h3>
+				<p class="subtitle is-5">Explore the available samples. You can text search or use the filters.</p>
 			</div>
+
 			<div class="column is-4 has-text-centered">
-				<img src="signal-icon.png" alt="language" width="150" />
+				<img src="choice-bro.svg" alt="sample app" width="300" />
 				<hr class="spacer is-1" />
-				<h3 class="title is-4 is-spaced">2. Signal</h3>
+				<h3 class="title is-4 is-spaced">2. Pick a sample</h3>
 				<p class="subtitle is-5">
-					Then, the <a
-						href="https://github.com/open-telemetry/opentelemetry-specification/blob/v1.9.0/specification/glossary.md#signals"
-					>
-						Signal
-					</a>
-					you want to add to your app: Traces, Metrics or Logs.
+					Click on the sample to view its details
 				</p>
 			</div>
+
 			<div class="column is-4 has-text-centered">
-				<img src="sample-icon.png" alt="language" width="150" />
+				<img src="steps.svg" alt="language" width="300" />
 				<hr class="spacer is-1" />
-				<h3 class="title is-4 is-spaced">3. Sample app</h3>
+				<h3 class="title is-4 is-spaced">3. Follow the steps</h3>
 				<p class="subtitle is-5">
-					Lastly, select the sample app. The sample app will demonstrate in a concise way what you
-					need to do to configure OTel in <b>your</b>
-					apps.
+					Follow the steps given by the sample to configure OTel in your application.
 				</p>
 			</div>
 		</div>
@@ -104,35 +99,19 @@
 			<div class="column">
 				<div class="content">
 					<h1 class="title is-3 is-spaced has-text-light">
-						Learn how to configure and use OTel in your projects.
+						Learn and apply OpenTelemetry concepts the practical way.
 					</h1>
 					<hr class="is-line-learn" />
 					<p class="subtitle is-5 has-text-light">
-						The OpenTelemetry project can greatly improve the observability of your your apps, but
-						it also brings a bit of a baggage with it.
+						For many, observability is a whole new world and getting started can be a bit overwhelming in the beginning.
+						But don't worry, OTel recipes is here to help!
 					</p>
-					<p class="subtitle is-5 has-text-light">
-						If you are new to the concepts that OpenTelemetry uses, it can be a bit overwhelming.
-						But don't worry, <b>we're here for you.</b>
-					</p>
-
 					<p class="subtitle is-5 has-text-light">
 						With the help of <i>small, to-the-point samples,</i>
-						you can learn how to quickly get started and add OTel to your projects.
+						and well-defined steps, you can learn how to quickly get started and add OTel to your projects.
 					</p>
-
 					<p class="subtitle is-5 has-text-light">
-						Once you are ready, you can dive into more advance topics, over on
-						<a href="https://opentelemetry.io" class="has-text-light islink-underline">
-							opentelemetry.io
-						</a>
-						and on
-						<a
-							href="https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification"
-							class="has-text-light islink-underline"
-						>
-							GitHub.
-						</a>
+						The samples are end-to-end tested, to guarantee a frustration-free experience when trying it out on your own. 🧘‍♂️
 					</p>
 				</div>
 			</div>
@@ -208,10 +187,6 @@
 			#904e95,
 			#e96443
 		); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	}
-
-	.islink-underline {
-		border-bottom: 1px solid currentColor;
 	}
 
 	hr {
