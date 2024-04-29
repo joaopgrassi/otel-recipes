@@ -21,11 +21,11 @@
     },
     {
       "id": "@opentelemetry/exporter-metrics-otlp-grpc",
-      "version": "^0.50.0"
+      "version": "^0.51.0"
     },
     {
       "id": "@opentelemetry/semantic-conventions",
-      "version": "1.23.0"
+      "version": "1.24.0"
     }
   ]
 }
