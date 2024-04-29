@@ -2,7 +2,7 @@
 
 ![CI](https://github.com/joaopgrassi/otel-recipes/actions/workflows/recipe-samples-tests.yml/badge.svg?branch=main)
 
-[![OTel recipes Logo](./brand/logotype/recipes-horizontal-blue.png)](https://otel.recipes)
+[![OTel recipes Logo](./brand/logotype/recipes-horizontal-blue.png)](https://otelrecipes.com)
 
 Welcome to OTel recipes!
 
@@ -16,7 +16,7 @@ users can learn OpenTelemetry concepts and apply them on their applications.
 
 In a nutshell, OTel recipes is composed of two parts: the collection of sample
 applications that are focused on achieving a specific goal with OpenTelemetry and
-[the website](https://otel.recipes), that allows you to browse the samples
+[the website](https://otelrecipes.com), that allows you to browse the samples
 in a simple and structured way.
 
 ## Contributing
