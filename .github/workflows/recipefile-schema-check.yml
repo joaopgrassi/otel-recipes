@@ -17,7 +17,7 @@ jobs:
 
       - name: Get changed files
         id: diff
-        uses: tj-actions/changed-files@v43
+        uses: tj-actions/changed-files@v44
         with:
           json: true
           dir_names_exclude_current_dir: true

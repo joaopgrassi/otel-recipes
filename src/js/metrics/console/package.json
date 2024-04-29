@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@opentelemetry/sdk-metrics": "^1.23.0",
-    "@opentelemetry/semantic-conventions": "1.23.0",
-    "@opentelemetry/exporter-metrics-otlp-grpc": "^0.50.0"
+    "@opentelemetry/semantic-conventions": "1.24.0",
+    "@opentelemetry/exporter-metrics-otlp-grpc": "^0.51.0"
   }
 }
