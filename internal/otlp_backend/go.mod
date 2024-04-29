@@ -3,7 +3,7 @@ module github.com/joaopgrassi/otel-recipes/test/metrics_server
 go 1.22.1
 
 require (
-	github.com/golang/protobuf v1.5.2
+	github.com/golang/protobuf v1.5.4
 	go.opentelemetry.io/proto/otlp v0.19.0
 )
 
@@ -14,5 +14,5 @@ require (
 	golang.org/x/text v0.4.0 // indirect
 	google.golang.org/genproto v0.0.0-20211118181313-81c1377c94b1 // indirect
 	google.golang.org/grpc v1.51.0 // indirect
-	google.golang.org/protobuf v1.28.1 // indirect
+	google.golang.org/protobuf v1.33.0 // indirect
 )
