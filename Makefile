@@ -8,3 +8,4 @@ recipedb:
 .PHONY: site
 site:
 	npm --prefix src/site run build
+	cd src/site && zip -r build.zip build
