@@ -17,11 +17,11 @@
   "dependencies": [
     {
       "id": "OpenTelemetry",
-      "version": "1.7.0"
+      "version": "1.8.1"
     },
     {
       "id": "OpenTelemetry.Exporter.OpenTelemetryProtocol",
-      "version": "1.7.0"
+      "version": "1.8.1"
     }
   ]
 }

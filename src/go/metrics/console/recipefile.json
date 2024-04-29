@@ -17,23 +17,23 @@
   "dependencies": [
     {
       "id": "go.opentelemetry.io/otel",
-      "version": "v1.25.0"
+      "version": "v1.26.0"
     },
     {
       "id": "go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc",
-      "version": "v1.25.0"
+      "version": "v1.26.0"
     },
     {
       "id": "go.opentelemetry.io/otel/sdk",
-      "version": "v1.25.0"
+      "version": "v1.26.0"
     },
     {
       "id": "go.opentelemetry.io/otel/metric",
-      "version": "v1.25.0"
+      "version": "v1.26.0"
     },
     {
       "id": "go.opentelemetry.io/otel/sdk/metric",
-      "version": "v1.25.0"
+      "version": "v1.26.0"
     }
   ]
 }
