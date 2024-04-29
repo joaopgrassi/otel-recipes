@@ -17,15 +17,15 @@
   "dependencies": [
     {
       "id": "io.opentelemetry:opentelemetry-bom",
-      "version": "1.36.0"
+      "version": "1.37.0"
     },
     {
       "id": "io.opentelemetry:opentelemetry-api",
-      "version": "1.36.0"
+      "version": "1.37.0"
     },
     {
       "id": "io.opentelemetry:opentelemetry-exporter-otlp",
-      "version": "1.36.0"
+      "version": "1.37.0"
     },
     {
       "id": "io.opentelemetry:opentelemetry-sdk",
