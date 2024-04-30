@@ -34,6 +34,12 @@
 					(d: Dependency) => `npm install ${d.id}@${d.version}`
 				);
 				break;
+			case Languages.python.id:
+				code = getInstallText(
+					sample.dependencies,
+					(d: Dependency) => `pip install ${d.id}==${d.version}`
+				);
+				break;
 		}
 	}
 

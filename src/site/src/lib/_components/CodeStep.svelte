@@ -43,6 +43,8 @@
 				return (await import('svelte-highlight/languages/java')).default;
 			case Languages.js.id:
 				return (await import('svelte-highlight/languages/javascript')).default;
+			case Languages.python.id:
+				return (await import('svelte-highlight/languages/python')).default;
 		}
 	}
 </script>
