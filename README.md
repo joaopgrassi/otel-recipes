@@ -1,6 +1,8 @@
 # OpenTelemetry (OTel) Recipes
 
-![CI](https://github.com/joaopgrassi/otel-recipes/actions/workflows/recipe-samples-tests.yml/badge.svg?branch=main)
+[![CI](https://github.com/joaopgrassi/otel-recipes/actions/workflows/recipe-samples-tests.yml/badge.svg)](https://github.com/joaopgrassi/otel-recipes/actions/workflows/recipe-samples-tests.yml)
+[![Checks - Recipe dependencies](https://github.com/joaopgrassi/otel-recipes/actions/workflows/recipefile-dependency-check.yml/badge.svg)](https://github.com/joaopgrassi/otel-recipes/actions/workflows/recipefile-dependency-check.yml)
+[![Checks - Recipe schema](https://github.com/joaopgrassi/otel-recipes/actions/workflows/recipefile-schema-check.yml/badge.svg)](https://github.com/joaopgrassi/otel-recipes/actions/workflows/recipefile-schema-check.yml)
 
 [![OTel recipes Logo](./brand/logotype/recipes-horizontal-blue.png)](https://otelrecipes.com)
 
