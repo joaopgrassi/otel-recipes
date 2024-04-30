@@ -12,7 +12,7 @@
 					This page explains what visiting this site means for your online privacy. First and
 					foremost, online privacy is something <strong>very important to me</strong>. This site was
 					built with your online privacy as a priority from the start. This site is entirely Open
-					Source and its code can be found on [GitHub](https://github.com/joaopgrassi/otel-recipes).
+					Source and its code can be found on <a href="https://github.com/joaopgrassi/otel-recipes">GitHub</a>.
 				</div>
 
 				<div class="block">
@@ -91,7 +91,7 @@
 				<div class="block content">
 					From the provider's <a href="https://www.goatcounter.com/help/privacy">Privacy policy:</a>
 					<blockquote class="mt-5">
-						<strong>No personal information (such as IP address) is collected.</strong> a hash of
+						<strong>No personal information (such as IP address) is collected.</strong> A hash of
 						the
 						<code>IP address</code>, <code>User-Agent</code>, and a random number (“salt”) is kept
 						in the process memory for 8 hours to identify a browsing session, and is never stored to
@@ -108,7 +108,7 @@
 							their site
 						</li>
 					</ol>
-					A more in depth explanation can be found GoutCounter's<a
+					A more in depth explanation can be found GoutCounter's <a
 						href="https://trinity.goatcounter.com/help/gdpr"
 					>
 						GDPR consent notices
