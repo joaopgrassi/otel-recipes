@@ -4,7 +4,7 @@
   "languageId": "java",
   "signal": "logs",
   "displayName": "Console App",
-  "tags": [],
+  "tags": ["console", "manual"],
   "description": "A Java console application instrumented with OpenTelemetry that generate logs.",
   "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/java/logs/console",
   "steps": [

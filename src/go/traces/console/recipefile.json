@@ -4,14 +4,14 @@
   "languageId": "go",
   "signal": "traces",
   "displayName": "Console App",
-  "tags": [],
+  "tags": ["console", "manual"],
   "description": "A go console application instrumented with OpenTelemetry that generates a trace.",
-  "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/go/trace/console",
+  "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/go/traces/console",
   "steps": [
     {
       "displayName": "Configure the SDK",
       "order": 1,
-      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/go/trace/console/app.go"
+      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/go/traces/console/app.go"
     }
   ],
   "dependencies": [

@@ -4,7 +4,7 @@
   "languageId": "csharp",
   "signal": "logs",
   "displayName": "ASP.NET Core API",
-  "tags": [],
+  "tags": ["api", "manual"],
   "description": "An ASP.NET Core API instrumented with OpenTelemetry that generates logs when the /helloworld endpoint is called",
   "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/csharp/logs/aspnet-api",
   "steps": [

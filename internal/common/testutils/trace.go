@@ -73,6 +73,10 @@ func GetTraceWithRetry(t *testing.T, serviceName string) *otlptrace.ResourceSpan
 		time.Sleep(backoff)
 	}
 
+	if len(rs.ScopeSpans) == 0 {
+		t.Fatalf("Could not find traces for sample: %s", serviceName)
+	}
+
 	return rs
 }
 
@@ -84,8 +88,6 @@ func GetTrace(t *testing.T, serviceName string) *otlptrace.ResourceSpans {
 	}
 
 	t.Log("Received 200 response from OTLP backend")
-
-	defer r.Body.Close()
 
 	body, err := io.ReadAll(r.Body)
 	defer r.Body.Close()

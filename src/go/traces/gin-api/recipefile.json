@@ -4,19 +4,19 @@
   "languageId": "go",
   "signal": "traces",
   "displayName": "Gin API",
-  "tags": [],
+  "tags": ["api", "manual"],
   "description": "A Gin API instrumented with OpenTelemetry that generates a trace when the /helloworld endpoint is called",
-  "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/go/trace/gin-api",
+  "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/go/traces/gin-api",
   "steps": [
     {
       "displayName": "Configure the SDK",
       "order": 1,
-      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/go/trace/gin-api/app.go"
+      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/go/traces/gin-api/app.go"
     },
     {
       "displayName": "Create a span",
       "order": 2,
-      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/go/trace/gin-api/handlers.go"
+      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/go/traces/gin-api/handlers.go"
     }
   ],
   "dependencies": [

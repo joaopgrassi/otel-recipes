@@ -4,19 +4,19 @@
   "languageId": "csharp",
   "signal": "traces",
   "displayName": "ASP.NET Core API",
-  "tags": [],
+  "tags": ["api", "manual"],
   "description": "An ASP.NET Core API instrumented with OpenTelemetry that generates a trace when the /helloworld endpoint is called",
-  "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/csharp/trace/aspnet-api",
+  "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/csharp/traces/aspnet-api",
   "steps": [
     {
       "displayName": "Configure the SDK",
       "order": 1,
-      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/csharp/trace/aspnet-api/Startup.cs"
+      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/csharp/traces/aspnet-api/Startup.cs"
     },
     {
       "displayName": "Create a span",
       "order": 2,
-      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/csharp/trace/aspnet-api/Controllers/HelloWorldController.cs"
+      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/csharp/traces/aspnet-api/Controllers/HelloWorldController.cs"
     }
   ],
   "dependencies": [
