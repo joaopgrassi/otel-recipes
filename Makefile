@@ -6,7 +6,8 @@ recipedb:
 
 # Prod build of the website
 .PHONY: site
-site:
+site: recipedb
+	npm --prefix src/site install
 	npm --prefix src/site run build
 	cd src/site && zip -r build.zip build
 
