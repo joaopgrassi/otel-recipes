@@ -54,6 +54,9 @@ func GetTraceWithRetry(t *testing.T, serviceName string) *otlptrace.ResourceSpan
 		1 * time.Second,
 		3 * time.Second,
 		10 * time.Second,
+		15 * time.Second,
+		20 * time.Second,
+		30 * time.Second,
 	}
 
 	var rs *otlptrace.ResourceSpans
