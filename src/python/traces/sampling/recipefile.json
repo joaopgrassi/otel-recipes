@@ -3,7 +3,7 @@
   "id": "python.traces.sampling",
   "languageId": "python",
   "signal": "traces",
-  "displayName": "Sampling ratio App",
+  "displayName": "Sampling App",
   "tags": ["console", "manual"],
   "description": "A python application instrumented with OpenTelemetry that generates and samples traces based on ratio.",
   "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/python/traces/sampling",
