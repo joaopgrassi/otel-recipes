@@ -24,8 +24,8 @@ tracer = trace.get_tracer(__name__)
 
 for i in range(10000):
     with tracer.start_as_current_span("SamplingSpan") as span:
-        # Trace flag 0x01 for sampled spans and
+        # Trace flag will be 0x01 for sampled ones
+        span.set_attribute("sampler", "traceidratio")
         # Check if span is not NonRecordingSpan
         if span.is_recording():
-            span.set_attribute("sampled", "1")
-            span.set_attribute("sampler", "traceidratio")
+            print("Doing something with sampled spans")
