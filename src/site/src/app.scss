@@ -82,3 +82,15 @@ a.navbar-item.is-active,
 .card-equal-height .card-footer {
  margin-top: auto;
 }
+
+.intro-text {
+	font-size: 6rem;
+
+	@include tablet-only {
+    font-size: 4rem;
+  }
+
+	@include mobile {
+    font-size: 2rem;
+  }
+}
