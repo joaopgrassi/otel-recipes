@@ -49,15 +49,15 @@ export const filteredSamples: Readable<Recipe[]> = derived(
 		// it's added again when the user selects a sample
 		// clearQueryParams();
 
+		let recipes: Recipe[] = $store;
+
 		if (
 			!$textSearch &&
 			$selectedLanguage.id === Languages.none.id &&
 			$selectedSignal.id === Signals.none.id
 		) {
-			return [];
+			return recipes.sort((a: Recipe, b: Recipe) => a.languageId.localeCompare(b.languageId));
 		}
-
-		let recipes: Recipe[] = $store;
 
 		// if there's any text, filter for it first.
 		if ($textSearch) {
@@ -90,15 +90,13 @@ export const selectedRecipe: Readable<Recipe> = derived(
 			return Recipes.none;
 		}
 
-		// When a sample is selected, make sure to also select the language and signal
-		// the filters are not all required for the search, but are required to display
-		// the sample metadata
-		selectedLanguage.set(Languages.all.find((l) => l.id === recipe.languageId));
-		selectedSignal.set(Signals.all.find((l) => l.id === recipe.signal));
-
 		return recipe;
 	}
 );
+
+export function getLanguage(languageId: string) {
+	return Languages.all.find((l) => l.id === languageId)
+}
 
 export function resetSearch() {
 	textSearch.set(null);
