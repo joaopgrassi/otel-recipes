@@ -95,8 +95,7 @@ export const selectedRecipe: Readable<Recipe> = derived(
 );
 
 export function getLanguage(languageId: string) {
-	let l = Languages.all.find((l) => l.id === languageId)
-	return l;
+	return Languages.all.find((l) => l.id === languageId)
 }
 
 export function resetSearch() {
