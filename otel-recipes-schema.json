@@ -33,7 +33,7 @@
       "description": "Related tags with the language/technology of the recipe.",
       "items": {
         "type": "string",
-        "enum": ["console", "api", "db", "http", "web", "manual", "automatic"]
+        "enum": ["console", "api", "db", "http", "web", "manual", "automatic", "sampling"]
       },
       "maxItems": 4,
       "additionalItems": false

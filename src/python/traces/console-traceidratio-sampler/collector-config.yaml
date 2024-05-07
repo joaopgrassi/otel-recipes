@@ -1,0 +1,23 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+processors:
+  batch:
+    send_batch_size: 1
+    send_batch_max_size: 1
+exporters:
+  debug:
+    verbosity: detailed
+  otlphttp:
+    endpoint: http://otlp-backend:4319
+    compression: none
+    tls:
+      insecure: true
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlphttp, debug]

@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../../otel-recipes-schema.json",
+  "id": "python.traces.traceidratio.sampler",
+  "languageId": "python",
+  "signal": "traces",
+  "displayName": "Console app using TraceIdRatioBased sampler",
+  "tags": ["console", "manual", "sampling"],
+  "description": "A python console application instrumented with OpenTelemetry that generates and samples traces based on a given ratio.",
+  "sourceRoot": "https://github.com/joaopgrassi/otel-recipes/tree/main/src/python/traces/console-traceidratio-sampler",
+  "steps": [
+    {
+      "displayName": "Configure the SDK",
+      "order": 1,
+      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/python/traces/console-traceidratio-sampler/app.py"
+    }
+  ],
+  "dependencies": [
+    {
+      "id": "opentelemetry-api",
+      "version": "1.24"
+    },
+    {
+      "id": "opentelemetry-sdk",
+      "version": "1.24"
+    },
+    {
+      "id": "opentelemetry-exporter-otlp-proto-grpc",
+      "version": "1.24"
+    }
+  ]
+}
