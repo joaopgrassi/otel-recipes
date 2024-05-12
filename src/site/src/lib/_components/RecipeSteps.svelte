@@ -1,13 +1,15 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { Recipe, Recipes, Step } from '$lib/common/types';
-	import { resetSearch, selectedLanguage, selectedRecipe } from '$lib/store/store';
+	import { getLanguage, resetSearch, selectedRecipe } from '$lib/store/store';
 	import CodeStep from './CodeStep.svelte';
 	import MetadataStep from './MetadataStep.svelte';
 	import PackageInstallStep from './PackageInstallStep.svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { onDestroy } from 'svelte';
+
+	$: language = getLanguage($selectedRecipe.languageId);
 
 	const getSortedSteps = (steps: Step[]) => {
 		return steps.sort((left: Step, right: Step) => left.order - right.order);
@@ -56,7 +58,7 @@
 									<small class="icon">
 										<img class="icon-info" alt="info" src="info.svg" />
 									</small>
-									<MetadataStep sample={$selectedRecipe} language={$selectedLanguage} />
+									<MetadataStep sample={$selectedRecipe} language={language} />
 								</section>
 							</div>
 							<div class="step indicator">
@@ -68,18 +70,18 @@
 										<img class="icon-package" alt="package" src="package.svg" />
 									</small>
 									<img src="browser-buttons.svg" alt="browser top-bar icons" />
-									<PackageInstallStep sample={$selectedRecipe} language={$selectedLanguage} />
+									<PackageInstallStep sample={$selectedRecipe} language={language} />
 								</section>
 							</div>
 							{#each getSortedSteps($selectedRecipe.steps) as step}
 								<div class="step indicator">
 									<p class="step-language">
-										<span class="step-language-tag bd-is-html">{$selectedLanguage.id}</span>
+										<span class="step-language-tag bd-is-html">{language.id}</span>
 									</p>
 									<section>
 										<small class="icon">{step.order}</small>
 										<img src="browser-buttons.svg" alt="browser top-bar icons" />
-										<CodeStep {step} sample={$selectedRecipe} language={$selectedLanguage} />
+										<CodeStep {step} sample={$selectedRecipe} language={language} />
 									</section>
 								</div>
 							{/each}
