@@ -33,7 +33,7 @@
 				<span aria-hidden="true" />
 			</a>
 		</div>
-		<div class="navbar-menu" class:is-active={showNav} id="navMenu">
+		<div class="navbar-menu has-background-grey-darker" class:is-active={showNav} id="navMenu">
 			<div class="navbar-end">
 				<a href="/" class="navbar-item">Home</a>
 				<a href="/recipes" class="navbar-item" on:click={() => resetSearch()}> Recipes </a>

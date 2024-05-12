@@ -5,14 +5,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "8080:8080"
     depends_on:
       - otlp-backend
       - collector-otel-recipes
     networks:
       - otel-recipes
-
+      
   otlp-backend:
     image: ghcr.io/joaopgrassi/otel-recipes/otlp-backend:latest
     ports:
@@ -29,6 +27,7 @@ services:
       - "13133:13133" # health_check extension
       - "4317:4317"   # OTLP gRPC receiver
       - "4318:4318"   # OTLP HTTP receiver
+      - "8888:8888"   # metrics
     depends_on:
       - otlp-backend
     networks:
