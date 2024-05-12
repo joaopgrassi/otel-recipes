@@ -4,7 +4,7 @@
 [![Checks - Recipe dependencies](https://github.com/joaopgrassi/otel-recipes/actions/workflows/recipefile-dependency-check.yml/badge.svg)](https://github.com/joaopgrassi/otel-recipes/actions/workflows/recipefile-dependency-check.yml)
 [![Checks - Recipe schema](https://github.com/joaopgrassi/otel-recipes/actions/workflows/recipefile-schema-check.yml/badge.svg)](https://github.com/joaopgrassi/otel-recipes/actions/workflows/recipefile-schema-check.yml)
 
-[![OTel recipes Logo](./brand/logotype/recipes-horizontal-blue.png)](https://otelrecipes.com)
+[![OTel recipes Logo](./assets/logo-readme.png)](https://otelrecipes.com)
 
 Welcome to OTel recipes!
 
