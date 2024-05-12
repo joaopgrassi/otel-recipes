@@ -32,7 +32,7 @@
 								<li><a href="https://opentelemetry.io">Official website</a></li>
 								<li>
 									<a
-										href="https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md"
+										href="https://opentelemetry.io/docs/specs/otel/"
 									>
 										Specification
 									</a>

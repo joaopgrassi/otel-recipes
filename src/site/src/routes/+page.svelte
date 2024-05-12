@@ -6,15 +6,14 @@
 <section class="hero is-fullheight has-background-grey-darker">
 	<div class="hero-body">
 		<div class="container is-fluid">
-			<div class="columns is-vcentered">
-				<div class="column is-7">
+			<div class="columns is-vcentered is-desktop">
+				<div class="column">
 					<div class="section-header">
-						<h1 class="title is-size-1 is-size-3-mobile has-text-white-bis mb-6">
-							Navigate the world of OpenTelemetry
-						</h1>
+						<h1 class="title intro-text has-text-white-bis mb-6">Navigate the world of OpenTelemetry</h1>
 						<h2 class="subtitle is-size-4 is-size-6-mobile has-text-white-bis">
 							With the help of our sample applications and well-defined steps (just like a recipe!)
-							you will learn how instrument your applications and become an OpenTelemetry chef in no time 😎
+							you will learn how to instrument your applications and become an OpenTelemetry chef in
+							no time 😎
 						</h2>
 						<div class="field is-grouped">
 							<div class="control">
@@ -23,7 +22,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="column is-offset-1 mt-6">
+				<div
+					class="column is-three-quarters-mobile is-two-thirds-tablet is-two-fifths-desktop is-two-fifths-widescreen is-one-third-fullhd is-offset-1 mt-6">
 					<img src="chef-amico.svg" alt="Girl on laptop chilling with cute dogue" />
 				</div>
 			</div>
@@ -42,16 +42,16 @@
 				<img src="searching-bro.svg" alt="explore apps" width="300" />
 				<hr class="spacer is-1" />
 				<h3 class="title is-4 is-spaced">1. Explore the samples</h3>
-				<p class="subtitle is-5">Explore the available samples. You can text search or use the filters.</p>
+				<p class="subtitle is-5">
+					Explore the available samples. You can text search or use the filters.
+				</p>
 			</div>
 
 			<div class="column is-4 has-text-centered">
 				<img src="choice-bro.svg" alt="sample app" width="300" />
 				<hr class="spacer is-1" />
 				<h3 class="title is-4 is-spaced">2. Pick a sample</h3>
-				<p class="subtitle is-5">
-					Click on the sample to view its details
-				</p>
+				<p class="subtitle is-5">Click on the sample to view its details</p>
 			</div>
 
 			<div class="column is-4 has-text-centered">
@@ -103,15 +103,16 @@
 					</h1>
 					<hr class="is-line-learn" />
 					<p class="subtitle is-5 has-text-light">
-						For many, observability is a whole new world and getting started can be a bit overwhelming in the beginning.
-						But don't worry, OTel recipes is here to help!
+						For many, observability is a whole new world and getting started can be a bit
+						overwhelming in the beginning. But don't worry, OTel recipes is here to help!
 					</p>
 					<p class="subtitle is-5 has-text-light">
 						With the help of <i>small, to-the-point samples,</i>
 						and well-defined steps, you can learn how to quickly get started and add OTel to your projects.
 					</p>
 					<p class="subtitle is-5 has-text-light">
-						The samples are end-to-end tested, to guarantee a frustration-free experience when trying it out on your own. 🧘‍♂️
+						The samples are end-to-end tested, to guarantee a frustration-free experience when
+						trying it out on your own. 🧘‍♂️
 					</p>
 				</div>
 			</div>
