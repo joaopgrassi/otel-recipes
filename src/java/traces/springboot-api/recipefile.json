@@ -14,8 +14,14 @@
       "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/java/traces/springboot-api/build.gradle"
     },
     {
-      "displayName": "Create a span",
+      "displayName": "Configure the SDK and OTLP exporter via the application.properties file",
+      "description": "For more configuration options, see: https://opentelemetry.io/docs/languages/java/automatic/configuration/#sdk-autoconfiguration",
       "order": 2,
+      "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/java/traces/springboot-api/src/main/resources/application.properties"
+    },
+    {
+      "displayName": "Create a span",
+      "order": 3,
       "source": "https://raw.githubusercontent.com/joaopgrassi/otel-recipes/main/src/java/traces/springboot-api/src/main/java/com/otel/recipes/springbootapi/HelloWorldController.java"
     }
   ],
