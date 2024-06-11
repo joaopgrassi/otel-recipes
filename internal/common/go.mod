@@ -4,7 +4,7 @@ go 1.22.1
 
 require go.opentelemetry.io/proto/otlp v1.2.0
 
-require google.golang.org/protobuf v1.34.0
+require google.golang.org/protobuf v1.34.2
 
 require github.com/google/go-cmp v0.5.8 // indirect
 
