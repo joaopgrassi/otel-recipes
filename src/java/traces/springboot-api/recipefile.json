@@ -28,11 +28,11 @@
   "dependencies": [
     {
       "id": "io.opentelemetry:opentelemetry-bom",
-      "version": "1.37.0"
+      "version": "1.42.1"
     },
     {
       "id": "io.opentelemetry:opentelemetry-api",
-      "version": "1.37.0"
+      "version": "1.42.1"
     },
     {
       "id": "io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha",
