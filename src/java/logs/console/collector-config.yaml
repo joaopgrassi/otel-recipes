@@ -10,6 +10,8 @@ exporters:
   otlphttp:
     endpoint: http://otlp-backend:4319
     compression: none
+    tls:
+      insecure: true
 service:
   pipelines:
     logs:
