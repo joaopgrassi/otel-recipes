@@ -14,7 +14,7 @@
 	},
 	"dependencies": {
 		"@lukeed/uuid": "^2.0.1",
-		"cookie": "^0.6.0",
+		"cookie": "^0.7.0",
 		"fuse.js": "^7.0.0",
 		"placeholder-loading": "^0.6.0"
 	},
